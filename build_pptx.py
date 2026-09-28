@@ -193,14 +193,14 @@ def build_slide1(prs):
 
     orch = add_rect(slide, Inches(0.62), Inches(1.22), Inches(6.75), Inches(0.58),
                     TEAL_D, radius=0.12)
-    add_shape_text(orch, "End to End Agentic Orchestration for Construction Lifecycle Management",
+    add_shape_text(orch, "1     End to End Agentic Orchestration for Construction Lifecycle Management",
                    15, True, WHITE, PP_ALIGN.CENTER)
 
     mods = [
-        (1, "AI Generated Unified BoQ"),
-        (2, "Dynamic Bottom Up CAPEX Estimation"),
-        (3, "Smart Tender Bid Evaluation"),
-        (4, "Agentic Procurement and Construction Progress Tracking"),
+        (2, "AI Generated Unified BoQ"),
+        (3, "Dynamic Bottom Up CAPEX Estimation"),
+        (4, "Smart Tender Bid Evaluation"),
+        (5, "Agentic Cost Realization Tracking"),
     ]
     mw = Inches(1.58)
     gap = Inches(0.12)
@@ -216,9 +216,9 @@ def build_slide1(prs):
 
     val = add_rect(slide, Inches(0.62), Inches(3.30), Inches(6.75), Inches(0.50),
                    WHITE, AMBER, 1.25, radius=0.1)
-    add_oval(slide, Inches(3.22), Inches(3.38), Inches(0.34), Inches(0.34), AMBER, WHITE, "5", 12)
-    add_text(slide, Inches(3.62), Inches(3.38), Inches(2.4), Inches(0.34),
-             "Value Optimizer", 15, True, AMBER, PP_ALIGN.LEFT, anchor=MSO_ANCHOR.MIDDLE)
+    add_oval(slide, Inches(2.95), Inches(3.38), Inches(0.34), Inches(0.34), AMBER, WHITE, "6", 12)
+    add_text(slide, Inches(3.35), Inches(3.38), Inches(2.9), Inches(0.34),
+             "AI-Based Value Optimizer", 15, True, AMBER, PP_ALIGN.LEFT, anchor=MSO_ANCHOR.MIDDLE)
 
     core = add_rect(slide, Inches(0.62), Inches(3.96), Inches(6.75), Inches(0.72),
                     DARK, radius=0.1)
@@ -245,18 +245,18 @@ def build_slide1(prs):
     add_rect(slide, Inches(7.78), Inches(1.36), Inches(5.12), Inches(0.02), INK)
 
     items = [
-        (TEAL_D, "★", "End to End Agentic Orchestration",
-         "One governed layer across every stage, learning from each project"),
-        (TEAL, "1", "AI Generated Unified BoQ",
-         "Unique item codes, any format mapped into one standard"),
-        (TEAL, "2", "Dynamic Bottom Up CAPEX",
-         "Item-level forecasts live with commodity, labor and FX"),
-        (TEAL, "3", "Smart Tender Bid Evaluation",
-         "Bids normalized, outliers flagged, ranked in minutes"),
-        (TEAL, "4", "Procurement and Progress Tracking",
-         "Quantities and progress checked, overruns flagged early"),
-        (AMBER, "5", "Value Optimizer",
-         "Always-on value engineering mined from past projects"),
+        (TEAL_D, "1", "End to End Agentic Orchestration",
+         "Single platform view to manage projects from project brief to end of construction"),
+        (TEAL, "2", "AI Generated Unified BoQ",
+         "AI-based unified BoQ catalog creator and data cleaner at spec level, using the client's dirty historical data"),
+        (TEAL, "3", "Dynamic Bottom Up CAPEX",
+         "Item-level cost breakdown structure creator, with live commodity and macro-economic price index integration for forecasting"),
+        (TEAL, "4", "Smart Tender Bid Evaluation",
+         "Automatically collects bids, flags outliers and generates an AI-recommended price range to score each bid"),
+        (TEAL, "5", "Agentic Cost Realization Tracking",
+         "Agentic contract and IPC collection to track cost realization and project progress in real time"),
+        (AMBER, "6", "AI-Based Value Optimizer",
+         "Agentic workflow to predict risks and procurement value optimization opportunities by learning from historical data"),
     ]
     y = Inches(1.46)
     for fill, num, name, sub in items:
@@ -273,8 +273,8 @@ def build_slide1(prs):
 
     vps = [
         "More complete than AI point tools, more AI-native than legacy suites",
-        "Easy to use — the fundamentals, without suite complexity",
-        "Plug and play, with near zero data prep",
+        "Easy to use — covering all the fundamentals, without suite complexities",
+        "Plug and play: limited data prep or integration need",
         "Modular, and works with other McKinsey assets",
     ]
     vw = Inches(2.48)
@@ -332,32 +332,32 @@ def build_slide2(prs):
         add_shape_text(h, text, 14, True, WHITE, PP_ALIGN.LEFT, "ctr")
 
     rows = [
-        ("★", TEAL_D, "End to End Agentic Orchestration",
+        ("1", TEAL_D, "End to End Agentic Orchestration",
          "Point tools stitched by IT.", 0.76, HIGH,
          "Isolated stages, email only.", 0.96, CRIT,
          "Nothing learns from the last project.",
          "One governed agentic layer across every stage, smarter with each project."),
-        ("1", TEAL, "AI Generated Unified BoQ",
+        ("2", TEAL, "AI Generated Unified BoQ",
          "In-house coding, kept by hand.", 0.72, HIGH,
          "Cost items as free text.", 0.92, CRIT,
          "No comparison across projects or bidders.",
          "AI codes every item and maps any format into one standard BoQ."),
-        ("2", TEAL, "Dynamic Bottom Up CAPEX",
+        ("3", TEAL, "Dynamic Bottom Up CAPEX",
          "Estimating on old rates.", 0.54, MED,
          "Last cost plus inflation.", 0.84, HIGH,
          "Budgets set on prices already stale.",
          "Item-level forecasts kept live with commodity, labor and FX."),
-        ("3", TEAL, "Smart Tender Bid Evaluation",
+        ("4", TEAL, "Smart Tender Bid Evaluation",
          "Leveling by hand in Excel.", 0.70, HIGH,
          "Each bidder's own format.", 0.88, CRIT,
          "Weeks per tender; scope gaps priced in.",
          "Bids mapped to one structure, then scored and ranked in minutes."),
-        ("4", TEAL, "Procurement and Progress Tracking",
+        ("5", TEAL, "Agentic Cost Realization Tracking",
          "PM platforms, manual reports.", 0.80, HIGH,
          "Spreadsheets and site walks.", 0.94, CRIT,
          "Overruns surface once irreversible.",
          "AI checks quantities and progress, and flags mismatches early."),
-        ("5", AMBER, "Value Optimizer",
+        ("6", AMBER, "AI-Based Value Optimizer",
          "Value engineering at gates.", 0.48, MED,
          "Cost cuts after the breach.", 0.74, HIGH,
          "Savings found too late to design in.",
@@ -550,7 +550,7 @@ def build_slide4(prs):
         add_shape_text(h, text, 14, True, WHITE, PP_ALIGN.LEFT, "ctr")
 
     rows = [
-        ("★", TEAL_D, "End to End Agentic Orchestration",
+        ("1", TEAL_D, "End to End Agentic Orchestration",
          ("WHITE SPACE", "ours to take", TEAL_D, WHITE, RGBColor(0xB9, 0xDC, 0xD8)),
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
           "Suites link stages through integration — workflow, not a model that learns.",
@@ -558,7 +558,7 @@ def build_slide4(prs):
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
           "Each tool owns a single stage; nobody governs the whole lifecycle.",
           "Kreo   ·   Buildots   ·   ConWize")),
-        ("1", TEAL, "AI Generated Unified BoQ",
+        ("2", TEAL, "AI Generated Unified BoQ",
          ("OPEN GAP", "partly served", TEAL_SOFT, TEAL_D, RGBColor(0x5D, 0x8C, 0x88)),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
           "Cost structures exist, but coding items and mapping formats stays manual.",
@@ -566,7 +566,7 @@ def build_slide4(prs):
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
           "Good at classifying documents into data; they stop short of a live BoQ.",
           "Costify   ·   Zebel   ·   ConWize")),
-        ("2", TEAL, "Dynamic Bottom Up CAPEX",
+        ("3", TEAL, "Dynamic Bottom Up CAPEX",
          ("CROWDED", "well served", MOD_BG, RGBColor(0x5C, 0x66, 0x70), GREY_L),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "Mature estimating engines, priced off libraries rather than live markets.",
@@ -574,7 +574,7 @@ def build_slide4(prs):
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "Genuinely strong AI estimating, but preconstruction only.",
           "Zebel   ·   Kreo   ·   Ediphi")),
-        ("3", TEAL, "Smart Tender Bid Evaluation",
+        ("4", TEAL, "Smart Tender Bid Evaluation",
          ("OPEN GAP", "partly served", TEAL_SOFT, TEAL_D, RGBColor(0x5D, 0x8C, 0x88)),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
           "Sourcing workflow is solved; leveling construction BoQs is not.",
@@ -582,7 +582,7 @@ def build_slide4(prs):
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "Real line-by-line bid comparison exists — and it ends at the tender.",
           "ConWize   ·   Zebel   ·   Ediphi")),
-        ("4", TEAL, "Procurement and Progress Tracking",
+        ("5", TEAL, "Agentic Cost Realization Tracking",
          ("CROWDED", "well served", MOD_BG, RGBColor(0x5C, 0x66, 0x70), GREY_L),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "Entrenched systems of record, still fed by manual site reporting.",
@@ -590,7 +590,7 @@ def build_slide4(prs):
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "Best-in-class AI progress capture, with no link to procurement.",
           "Buildots   ·   Doxel   ·   OpenSpace")),
-        ("5", AMBER, "Value Optimizer",
+        ("6", AMBER, "AI-Based Value Optimizer",
          ("WHITE SPACE", "ours to take", TEAL_D, WHITE, RGBColor(0xB9, 0xDC, 0xD8)),
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
           "Static what-if analysis at gates; no continuous savings loop anywhere.",
