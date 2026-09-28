@@ -89,9 +89,9 @@
   .bus{height:2px;background:var(--teal);opacity:.35;margin:0 6%;}
   /* auto tracks: each bubble gets at least its longest word, then the slack is shared out equally */
   .bubbles{display:grid;grid-template-columns:repeat(7,auto);justify-content:stretch;gap:5px;}
-  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:32px;min-height:46px;
-    display:flex;align-items:center;justify-content:center;text-align:center;padding:5px 4px;
-    font-size:12.5px;font-weight:600;color:var(--teal-d);line-height:1.2;box-shadow:0 3px 9px rgba(10,95,89,.07);}
+  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:6px;min-height:46px;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:5px 6px;
+    font-size:13.5px;font-weight:600;color:var(--teal-d);line-height:1.2;box-shadow:0 3px 9px rgba(10,95,89,.07);}
   .bubble::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--teal);opacity:.35;}
 
   /* sits outside the panel on purpose: these are integrations, not McKinsey assets */
@@ -221,8 +221,8 @@
   .q .qn{font-size:16px;font-weight:700;color:var(--ink);display:block;line-height:1.2;}
   .q .qd{font-size:14px;line-height:1.28;color:var(--ink2);}
   .q .vhd{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--grey);
-    margin-top:auto;}
-  .q .qf{margin-top:3px;padding-top:6px;border-top:1px solid #D7DEE2;font-size:14px;line-height:1.28;font-weight:700;color:var(--ink);}
+    margin-top:2px;}
+  .q .qf{padding-bottom:6px;border-bottom:1px solid #D7DEE2;font-size:14px;line-height:1.28;font-weight:700;color:var(--ink);}
   .q .qf span{color:var(--red);}
   .chips{display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;}
   .chip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
@@ -249,7 +249,7 @@
 
   .q.empty{background:#F4FAF9;border:2px dashed #79B8B1;}
   .q.empty .qn{color:var(--teal-d);}
-  .q.empty .qf{border-top-color:#CFE4E0;color:var(--teal-d);}
+  .q.empty .qf{border-bottom-color:#CFE4E0;color:var(--teal-d);}
   .q.empty .qf span{color:var(--teal-d);}
   .emptytag{flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;
     letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);
@@ -288,7 +288,7 @@
   .pov{font-size:14px;line-height:1.3;color:var(--ink);font-weight:700;}
   .vcol{display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start;}
   .vchip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
-    border-radius:18px;padding:2px 8px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
+    border-radius:18px;padding:2px 8px;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;font-family:inherit;
     line-height:1.25;text-align:left;max-width:100%;}
   .vchip:hover,.vchip.open{box-shadow:0 3px 10px rgba(10,95,89,.18);}
   .pop{
@@ -305,8 +305,13 @@
   .pop .pcat{margin-left:auto;font-size:13px;font-weight:700;padding:2px 8px;border-radius:10px;border:none;white-space:nowrap;}
   .pop .pcat.established{background:#C9D2DB;color:#26303A;}
   .pop .pcat.startup{background:#9FD9B4;color:#14472A;}
-  .pop .mlvl{display:block;margin-top:7px;font-size:14px;font-weight:700;color:#43C6B0;}
-  .pop .mlvl small{font-size:14px;font-weight:500;color:#B8CBC8;}
+  /* how AI-native the vendor is, filled up to the level the evidence supports */
+  .pop .pscale{display:block;margin-top:8px;}
+  .pop .psl{display:block;font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
+  .pop .psbar{display:flex;gap:3px;margin-top:4px;}
+  .pop .psbar i{flex:1;height:7px;border-radius:2px;background:rgba(255,255,255,.14);}
+  .pop .psbar i.on{background:#43C6B0;}
+  .pop .psv{display:block;margin-top:4px;font-size:14px;font-weight:700;color:#43C6B0;}
   .pop .pev{display:block;margin-top:3px;font-size:14px;line-height:1.3;color:#DCEDEA;font-weight:500;}
   .pop .pmh{display:block;margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.18);
     font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
@@ -315,13 +320,10 @@
   .pop .mrow i{flex:0 0 18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;
     font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.10);color:#8D9EA2;}
   .pop .mrow em{margin-left:auto;font-style:normal;font-size:14px;font-weight:700;color:#8D9EA2;white-space:nowrap;}
-  /* green / amber / grey squares = full / partial / no evidence */
+  /* green square = covers the capability, grey = does not */
   .pop .mrow.full{color:#fff;font-weight:700;}
   .pop .mrow.full i{background:#43C6B0;color:#06342F;}
   .pop .mrow.full em{color:#43C6B0;}
-  .pop .mrow.partial{color:#fff;}
-  .pop .mrow.partial i{background:#E0B25A;color:#3A2A05;}
-  .pop .mrow.partial em{color:#E0B25A;}
   .pop .pcols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .pop .pcols ul{list-style:none;margin:5px 0 0;padding:0;}
   .pop .pcols li{position:relative;padding-left:10px;font-size:14px;line-height:1.25;color:#DCEDEA;margin-top:3px;}
@@ -532,14 +534,13 @@
   <section class="stage" id="p3">
     <div class="pgno">3</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them</h1>
+    <h1>Our solution can target the middle ground: <b>more AI than the ERPs and more coverage than the AI specialists</b></h1>
 
     <div class="catleg">
-      <span class="lgt">Pill colour = company maturity</span>
-      <span class="lg est"><span class="cdot est"></span>Established platform</span>
+      <span class="lgt">Company profile</span>
+      <span class="lg est"><span class="cdot est"></span>Legacy</span>
       <span class="lg stp"><span class="cdot stp"></span>Startup</span>
     </div>
-    <div class="mhint">hover or tap a vendor for its coverage of our six capabilities</div>
 
     <div class="p3">
       <div class="matrix">
@@ -553,8 +554,10 @@
           <div class="q ai">
             <span class="qn">AI specialists</span>
             <div class="qd">Model-driven products that own a single step of the lifecycle</div>
+            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
+              <button type="button" class="chip" data-v="documentcrunch">Document Crunch</button>
               <button type="button" class="chip" data-v="kreo">Kreo</button>
               <button type="button" class="chip" data-v="buildots">Buildots</button>
               <button type="button" class="chip" data-v="costify">Costify</button>
@@ -566,21 +569,20 @@
               <button type="button" class="chip" data-v="alice">ALICE</button>
               <button type="button" class="chip" data-v="nplan">nPlan</button>
               <button type="button" class="chip" data-v="trunktools">Trunk Tools</button>
-              <button type="button" class="chip" data-v="documentcrunch">Document Crunch</button>
             </div>
-            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
           </div>
 
           <div class="q empty">
             <span class="qn">Agentic platforms</span>
             <div class="qd">One platform whose agents reason across every stage as one thread</div>
-            <div class="emptytag">No one is here yet</div>
             <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
+            <div class="emptytag">No one is here yet</div>
           </div>
 
           <div class="q">
             <span class="qn">Point tools</span>
             <div class="qd">Single-task software where the operator makes every judgement</div>
+            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
               <button type="button" class="chip" data-v="bluebeam">Bluebeam Revu</button>
@@ -591,18 +593,17 @@
               <button type="button" class="chip" data-v="causeway">Causeway</button>
               <button type="button" class="chip" data-v="excel">Excel templates</button>
             </div>
-            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
           </div>
 
           <div class="q">
             <span class="qn">Enterprise suites</span>
             <div class="qd">Systems of record that span stages through configuration, not reasoning</div>
+            <div class="qf">Broad, now adding copilots, <span>but still configured rather than reasoning across stages</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
               <button type="button" class="chip" data-v="oracle">Oracle</button>
               <button type="button" class="chip" data-v="procore">Procore</button>
               <button type="button" class="chip" data-v="ribitwo">RIB iTWO</button>
-              <button type="button" class="chip" data-v="cleopatra">Cleopatra</button>
               <button type="button" class="chip" data-v="sapariba">SAP Ariba</button>
               <button type="button" class="chip" data-v="autodesk">Autodesk ACC / Forma</button>
               <button type="button" class="chip" data-v="ineight">InEight</button>
@@ -611,14 +612,14 @@
               <button type="button" class="chip" data-v="hexagon">Hexagon</button>
               <button type="button" class="chip" data-v="nemetschek">Nemetschek</button>
               <button type="button" class="chip" data-v="jaggaer">Jaggaer</button>
+              <button type="button" class="chip" data-v="usbim">usBIM</button>
+              <button type="button" class="chip" data-v="cleopatra">Cleopatra</button>
               <button type="button" class="chip" data-v="dalux">Dalux</button>
               <button type="button" class="chip" data-v="revizto">Revizto</button>
               <button type="button" class="chip" data-v="catenda">Catenda</button>
-              <button type="button" class="chip" data-v="usbim">usBIM</button>
               <button type="button" class="chip" data-v="northspyre">Northspyre</button>
               <button type="button" class="chip" data-v="mastt">Mastt</button>
             </div>
-            <div class="qf">Broad, now adding copilots, <span>but still configured rather than reasoning across stages</span>.</div>
           </div>
 
           <div class="bcmark">
@@ -643,11 +644,10 @@
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive deep dive</div>
     <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
 
-    <div class="legend">
-      <span class="lgt">Badge = how much of the module that group already covers</span>
-      <span class="lg"><span class="sw h"></span>Covers most</span>
-      <span class="lg"><span class="sw m"></span>Partial</span>
-      <span class="lg"><span class="sw l"></span>Barely</span>
+    <div class="catleg">
+      <span class="lgt">Company profile</span>
+      <span class="lg est"><span class="cdot est"></span>Legacy</span>
+      <span class="lg stp"><span class="cdot stp"></span>Startup</span>
     </div>
 
     <div class="mv plain">
@@ -1140,8 +1140,9 @@
   };
   // two data-v spellings point at the same company
   const ALIAS={autodeskacc:'autodesk',alicetechnologies:'alice'};
-  const CATLAB={established:'Established platform',startup:'Startup'};
-  const COVLAB={full:'Full',partial:'Partial',none:'No evidence'};
+  const CATLAB={established:'Legacy',startup:'Startup'};
+  // the AI-native scale the lvl field is drawn from, weakest to strongest
+  const SCALE=['Rules/manual','ML-assisted','AI assistant / copilot','AI-native workflow','Agentic / action-taking AI'];
 
   const MODS=[['orch','End-to-end orchestration'],['boq','AI-generated unified BoQ'],['capex','Dynamic bottom-up CAPEX'],
               ['tender','Smart tender bid evaluation'],['cost','Portfolio performance management'],['value','AI value intelligence']];
@@ -1151,13 +1152,18 @@
 
   function bubble(v){
     const rows=MODS.map(([k,nm],i)=>{
-      const cv=(v.c&&v.c[k])||'none';
-      return '<span class="mrow '+cv+'"><i>'+(i+1)+'</i>'+nm+'<em>'+COVLAB[cv]+'</em></span>';
+      const on=((v.c&&v.c[k])||'none')!=='none';
+      return '<span class="mrow '+(on?'full':'')+'"><i>'+(i+1)+'</i>'+nm
+        +'<em>'+(on?'Covers':'No')+'</em></span>';
     }).join('');
+    const step=SCALE.indexOf(v.lvl);
+    const scale='<span class="pscale"><span class="psl">AI native scale</span>'
+      +'<span class="psbar">'+SCALE.map((_,n)=>'<i class="'+(n<=step?'on':'')+'"></i>').join('')+'</span>'
+      +'<span class="psv">'+esc(step<0?'Not rated':SCALE[step])+'</span></span>';
     return '<span class="pop">'
       +'<span class="pnm"><img class="plg" alt="" hidden>'+esc(v.n)
       +(v.cat?'<span class="pcat '+v.cat+'">'+CATLAB[v.cat]+'</span>':'')+'</span>'
-      +'<span class="mlvl">AI maturity: '+esc(v.lvl)+(v.e?' <small>&middot; '+esc(v.e)+'</small>':'')+'</span>'
+      +scale
       +'<span class="pev">'+esc(v.t)+'</span>'
       +'<span class="pmh">Coverage vs Blue Currency\u2019s 6 capabilities</span>'+rows
       +'<span class="pcols"><span><span class="pmh">Strongest capabilities</span><ul>'+li(v.does)+'</ul></span>'
