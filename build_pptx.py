@@ -226,7 +226,7 @@ def build_slide1(prs):
                    14, True, WHITE, PP_ALIGN.CENTER)
 
     add_text(slide, Inches(0.62), Inches(4.80), Inches(6.75), Inches(0.26),
-             "BUILT ON EXISTING MCKINSEY ASSETS", 12, True, GREY, PP_ALIGN.CENTER)
+             "MODULAR, EASY INTEGRATION WITH MCK ASSETS", 12, True, GREY, PP_ALIGN.CENTER)
     add_rect(slide, Inches(1.4), Inches(5.08), Inches(5.2), Inches(0.015), TEAL)
 
     assets = [
@@ -289,7 +289,7 @@ def build_slide1(prs):
         add_text(slide, x + Inches(0.14), yy + Inches(0.08), vw - Inches(0.22), vh - Inches(0.12),
                  vp, 14, True, TEAL_D)
 
-    add_notes(slide, "Page 1. Introduction. The solution covers the end-to-end real estate development lifecycle with different modules, powered by an agentic AI core. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Built on existing McKinsey assets.")
+    add_notes(slide, "Page 1. Introduction. The solution covers the end-to-end real estate development lifecycle with different modules, powered by an agentic AI core. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Modular, easy integration with McK assets.")
 
 
 def build_slide2(prs):
