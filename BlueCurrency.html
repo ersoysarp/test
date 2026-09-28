@@ -10,7 +10,7 @@
     --rule:#E3E8E9; --soft:#F7F9F9;
     --teal:#0B7F77; --teal-d:#0A5F59; --teal-soft:#E4F1EF;
     --amber:#B97D1E; --amber-soft:#FAF1DF; --white:#fff;
-    --green:#2E9E5B; --red:#C0453B;
+    --green:#2E9E5B; --red:#C0453B; --red-soft:#F5E4E1;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{height:100%;}
@@ -18,19 +18,18 @@
     -webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;}
   #stageWrap{position:relative;}
   .stage{width:1280px;min-height:720px;background:var(--white);box-shadow:0 20px 60px rgba(0,0,0,.45);
-    padding:28px 42px 26px;display:none;flex-direction:column;}
+    padding:26px 40px 24px;display:none;flex-direction:column;}
   .stage.active{display:flex;}
-  .kicker{font-size:13px;letter-spacing:.10em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:7px;}
-  h1{font-size:24px;line-height:1.2;font-weight:700;color:var(--ink);max-width:1190px;}
+  .kicker{font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:6px;}
+  h1{font-size:25px;line-height:1.2;font-weight:700;color:var(--ink);max-width:1190px;}
   h1 b{color:var(--teal-d);font-weight:700;}
   .nev{color:var(--amber);font-weight:700;}
-  .ico{width:18px;height:18px;flex-shrink:0;display:block;}
-  .ico path,.ico circle,.ico rect,.ico line,.ico polyline{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .ico{width:19px;height:19px;flex-shrink:0;display:block;}
 
   /* ============ PAGE 1 ============ */
-  .p1{flex:1;display:grid;grid-template-columns:1.32fr 0.9fr;gap:28px;margin-top:16px;}
+  .p1{flex:1;display:grid;grid-template-columns:1.3fr 0.92fr;gap:26px;margin-top:14px;}
 
-  .diagram{flex:1;position:relative;border-radius:20px;padding:24px 24px 22px;overflow:hidden;
+  .diagram{flex:1;position:relative;border-radius:20px;padding:22px;overflow:hidden;
     background:linear-gradient(160deg,#F3FAF9 0%,#E7F3F1 55%,#F7F9F9 100%);border:1px solid var(--rule);
     display:flex;flex-direction:column;justify-content:space-between;}
   .diagram::before{content:"";position:absolute;top:-90px;right:-70px;width:300px;height:300px;
@@ -38,170 +37,185 @@
   .diagram::after{content:"";position:absolute;bottom:-110px;left:-80px;width:320px;height:320px;
     background:radial-gradient(circle,rgba(10,42,49,.08),transparent 70%);pointer-events:none;}
   .diagram > *{position:relative;z-index:1;}
-  .lnk{width:2px;height:16px;background:var(--teal);opacity:.35;margin:0 auto;}
+  .lnk{width:2px;height:14px;background:var(--teal);opacity:.35;margin:0 auto;}
 
-  .orch{border-radius:14px;padding:16px 18px;text-align:center;color:#fff;
+  .orch{border-radius:14px;padding:15px 18px;text-align:center;color:#fff;
     background:linear-gradient(135deg,var(--teal-d),var(--teal));box-shadow:0 10px 24px rgba(10,95,89,.28);}
   .orch .lbl{font-size:16px;font-weight:700;letter-spacing:.02em;line-height:1.3;}
 
-  .mods4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .modbox{background:#fff;border-radius:14px;padding:16px 10px;text-align:center;border:1px solid var(--rule);
+  .mods4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .modbox{background:#fff;border-radius:14px;padding:14px 9px;text-align:center;border:1px solid var(--rule);
     border-top:3px solid var(--teal);box-shadow:0 6px 16px rgba(38,48,58,.07);
-    display:flex;flex-direction:column;align-items:center;gap:9px;min-height:118px;justify-content:center;}
-  .modbox .mn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px;
+    display:flex;flex-direction:column;align-items:center;gap:8px;min-height:112px;justify-content:center;}
+  .modbox .mn{width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px;
     font-weight:700;display:flex;align-items:center;justify-content:center;}
   .modbox .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;}
 
-  .valopt{border-radius:14px;padding:14px;text-align:center;font-weight:700;font-size:15px;color:var(--amber);
+  .valopt{border-radius:14px;padding:13px;text-align:center;font-weight:700;font-size:15px;color:var(--amber);
     background:#fff;border:1px solid var(--amber);border-top:3px solid var(--amber);box-shadow:0 6px 16px rgba(185,125,30,.10);
     display:flex;align-items:center;justify-content:center;gap:11px;}
-  .valopt .mn{width:28px;height:28px;border-radius:50%;background:var(--amber);color:#fff;font-size:14px;
+  .valopt .mn{width:27px;height:27px;border-radius:50%;background:var(--amber);color:#fff;font-size:14px;
     font-weight:700;display:flex;align-items:center;justify-content:center;}
 
-  .core{border-radius:14px;padding:16px 18px;color:#fff;text-align:center;position:relative;
+  .core{border-radius:14px;padding:14px 18px;color:#fff;text-align:center;position:relative;
     background:linear-gradient(135deg,#0E2A31 0%,#0A5F59 100%);box-shadow:0 10px 26px rgba(10,42,49,.32);}
   .core .t{font-size:16px;font-weight:700;letter-spacing:.04em;}
-  .core .s{font-size:14px;opacity:.85;margin-top:3px;font-weight:600;}
+  .core .s{font-size:14px;opacity:.85;margin-top:2px;font-weight:600;}
 
-  .assets-hd{text-align:center;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey);}
+  .assets-hd{text-align:center;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);}
   .bus{height:2px;background:var(--teal);opacity:.35;margin:0 6%;}
-  .bubbles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
-  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:32px;min-height:58px;
-    display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 6px;
+  .bubbles{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;}
+  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:32px;min-height:56px;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:7px 5px;
     font-size:14px;font-weight:600;color:var(--teal-d);line-height:1.2;box-shadow:0 3px 9px rgba(10,95,89,.07);}
-  .bubble::before{content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:2px;height:12px;background:var(--teal);opacity:.35;}
+  .bubble::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--teal);opacity:.35;}
 
-  .p1r{display:flex;flex-direction:column;justify-content:space-between;min-height:0;}
-  .rhd{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
-    padding-bottom:7px;border-bottom:2px solid var(--ink);margin-bottom:6px;}
+  .p1r{display:flex;flex-direction:column;min-height:0;}
+  .rhd{font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+    padding-bottom:6px;border-bottom:2px solid var(--ink);margin-bottom:4px;}
   .modsum{list-style:none;margin:0;padding:0;}
   .modsum li{display:flex;gap:11px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--rule);}
   .modsum li:last-child{border-bottom:none;}
   .modsum .mn{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;
-    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
   .modsum li.opt .mn{background:var(--amber);}
   .modsum li.star .mn{background:var(--teal-d);}
-  .modsum .nm{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.2;}
-  .modsum .sb{font-size:13px;color:var(--grey);line-height:1.3;display:block;margin-top:2px;}
+  .modsum .nm{font-size:15px;font-weight:700;color:var(--ink);line-height:1.22;}
+  .modsum .sb{font-size:14px;color:var(--grey);line-height:1.3;display:block;margin-top:2px;}
 
-  .vpgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
-  .vp{background:var(--teal-soft);border-radius:11px;padding:12px 13px;border-left:4px solid var(--teal);}
-  .vp .vt{font-size:13.5px;font-weight:700;color:var(--teal-d);line-height:1.32;}
+  .vpgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px;}
+  .vp{background:var(--teal-soft);border-radius:10px;padding:11px 12px;border-left:4px solid var(--teal);}
+  .vp .vt{font-size:14px;font-weight:700;color:var(--teal-d);line-height:1.3;}
 
   /* ============ MARVIN BOX TABLES ============ */
-  .mv{display:flex;flex-direction:column;gap:7px;flex:1;margin-top:14px;min-height:0;}
-  .mv-head,.mv-row{display:grid;gap:7px;}
-  .mv-4{grid-template-columns:1.12fr 1fr 1fr 1.45fr;}
-  .mv-3{grid-template-columns:1.15fr 1.2fr 1.2fr;}
-  .mh{color:#fff;font-size:13px;font-weight:700;padding:9px 12px;border-radius:3px;letter-spacing:.01em;}
+  .mv{display:flex;flex-direction:column;gap:6px;flex:1;margin-top:12px;min-height:0;}
+  .mv-head,.mv-row{display:grid;gap:6px;}
+  .mv-row{flex:1;}
+  .mv-5{grid-template-columns:1.08fr 0.94fr 0.94fr 1.12fr 1.3fr;}
+  .mv-3{grid-template-columns:1.12fr 1.24fr 1.24fr;}
+  .mh{color:#fff;font-size:15px;font-weight:700;padding:9px 12px;border-radius:3px;letter-spacing:.01em;}
   .mh.ink{background:var(--ink);}
   .mh.grey{background:var(--ink2);}
+  .mh.grey2{background:#4C5866;}
   .mh.teal{background:var(--teal);}
   .mh.deep{background:var(--teal-d);}
-  .mc{border-radius:3px;padding:10px 12px;font-size:13px;line-height:1.32;color:var(--ink2);
+  .mh .sub{display:block;font-size:14px;font-weight:600;opacity:.82;margin-top:1px;}
+  .mc{border-radius:3px;padding:8px 11px;font-size:14px;line-height:1.32;color:var(--ink2);
     display:flex;align-items:flex-start;background:var(--soft);}
-  .mc.mod{background:#EEF1F3;flex-direction:column;justify-content:center;gap:8px;}
+  .mc.mod{background:#EDF0F2;flex-direction:column;justify-content:center;gap:8px;}
   .mc.muted{background:#F2F4F5;}
-  .mc.sol{background:var(--teal-soft);color:var(--teal-d);font-weight:600;}
+  .mc.pain{background:#FBF4F2;flex-direction:column;justify-content:center;gap:7px;color:var(--ink2);}
+  .mc.sol{background:var(--teal-soft);color:var(--teal-d);font-weight:600;align-items:center;}
   .modcap{display:flex;align-items:center;gap:9px;}
-  .modcap .mn{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;
-    font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .modcap .mn{flex-shrink:0;width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;}
   .modcap.opt .mn{background:var(--amber);}
   .modcap.star .mn{background:var(--teal-d);}
-  .modcap b{color:var(--ink);font-size:13.5px;line-height:1.2;}
+  .modcap b{color:var(--ink);font-size:14.5px;line-height:1.2;}
   .modcap .ico{color:var(--teal-d);}
   .modcap.opt .ico{color:var(--amber);}
 
-  /* ============ PAGE 3 ============ */
-  .mlegend{display:flex;gap:18px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink2);flex-wrap:wrap;}
-  .mlegend .mi{display:flex;align-items:center;gap:7px;}
-  .mdot{display:inline-block;width:14px;height:14px;border-radius:50%;background:#fff;}
-  .mdot.emerging{border:1.5px solid var(--teal);}
-  .mdot.legacy{border:1.5px solid var(--ink2);}
-  .mdot.own{background:linear-gradient(135deg,var(--teal-d),var(--teal));border:none;}
-  .mhint{margin-left:auto;color:var(--grey);font-size:12px;}
+  /* severity of the problem (page 2) */
+  .sev{display:inline-flex;align-items:center;gap:7px;padding:3px 9px;border-radius:3px;
+    font-size:14px;font-weight:800;letter-spacing:.06em;}
+  .sev.crit{background:var(--red-soft);color:#A8392C;}
+  .sev.high{background:var(--amber-soft);color:#96641A;}
+  .sev.med{background:#E9EDEF;color:#5C6670;}
+  .sevbar{display:inline-flex;gap:2px;}
+  .sevbar i{width:7px;height:12px;border-radius:1px;background:currentColor;opacity:.25;}
+  .sevbar i.on{opacity:1;}
+  .sevlegend{display:flex;gap:16px;align-items:center;margin-top:9px;font-size:14px;color:var(--ink2);flex-wrap:wrap;}
+  .sevlegend .lgt{font-weight:700;color:var(--ink);}
 
-  .p3grid{flex:1;display:grid;grid-template-columns:1.85fr 1fr;gap:28px;margin-top:12px;min-height:0;}
-  .matrixwrap{display:flex;flex-direction:column;min-height:0;}
-  .mtx{flex:1;display:grid;grid-template-columns:24px 1fr;gap:8px;min-height:430px;}
-  .yaxis{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;
-    font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.03em;}
-  .plot{position:relative;border:1px solid var(--rule);border-radius:14px;overflow:visible;
-    background:linear-gradient(160deg,#F7FAFA,#EFF5F4);}
-  .plot-clip{position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none;}
-  .vline{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--rule);}
-  .hline{position:absolute;top:50%;left:0;right:0;height:1px;background:var(--rule);}
-  .qcap{position:absolute;font-size:12px;font-weight:700;color:var(--grey-l);text-transform:uppercase;letter-spacing:.04em;max-width:42%;}
-  .qcap.tl{top:12px;left:14px;}
-  .qcap.tr{top:12px;right:14px;text-align:right;}
-  .qcap.bl{bottom:12px;left:14px;}
-  .qcap.br{bottom:12px;right:14px;text-align:right;}
-  .gapzone{position:absolute;top:50%;left:50%;width:34%;height:34%;transform:translate(-50%,-50%);
-    border:1.5px dashed rgba(11,127,119,.38);border-radius:50%;pointer-events:none;}
-  button.node,button.vchip{-webkit-appearance:none;appearance:none;}
-  .node{position:absolute;transform:translate(-50%,-50%);background:#fff;border:1.5px solid var(--grey-l);
-    border-radius:20px;padding:6px 11px;font-size:13px;font-weight:600;color:var(--ink2);white-space:nowrap;
-    box-shadow:0 2px 7px rgba(0,0,0,.08);z-index:2;cursor:pointer;font-family:inherit;line-height:1.2;}
-  .node.legacy{border-color:var(--ink2);color:var(--ink2);}
-  .node.emerging{border-color:var(--teal);color:var(--teal-d);}
-  .node.own{background:linear-gradient(135deg,var(--teal-d),var(--teal));color:#fff;border:none;font-weight:700;
-    font-size:14px;padding:8px 13px;box-shadow:0 10px 22px rgba(10,95,89,.38);z-index:6;}
-  .node:hover,.node.open,.vchip:hover,.vchip.open{z-index:12;}
-  .xaxis{display:flex;justify-content:space-between;align-items:center;margin-left:32px;margin-top:9px;
-    font-size:13px;font-weight:700;color:var(--grey);}
-  .xaxis .axname{color:var(--ink);letter-spacing:.03em;}
+  /* ============ PAGE 3 — CATEGORY BOXES ============ */
+  .p3{flex:1;display:flex;flex-direction:column;gap:14px;margin-top:14px;min-height:0;}
+  .p3top{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:0 0 auto;}
+  .cat{border:1px solid var(--rule);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;
+    background:var(--soft);min-height:0;}
+  .cat.emerging{border-top:4px solid var(--teal);}
+  .cat.legacy{border-top:4px solid var(--ink2);}
+  .cat .ch{font-size:17px;font-weight:700;color:var(--ink);}
+  .cat .cs{font-size:14px;color:var(--grey);font-weight:600;margin-top:2px;}
+  .cat .cov{font-size:14px;line-height:1.38;color:var(--ink2);margin-top:10px;
+    padding:10px 12px;background:#fff;border-radius:8px;border-left:3px solid var(--grey-l);}
+  .cat.emerging .cov{border-left-color:var(--teal);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px;}
+  .chip{background:#fff;border:1px solid var(--rule);border-radius:20px;padding:8px 14px;
+    font-size:15px;font-weight:700;color:var(--ink2);line-height:1.2;box-shadow:0 2px 6px rgba(38,48,58,.05);}
+  .cat.emerging .chip{border-color:#BBD9D5;color:var(--teal-d);}
+  .cat.legacy .chip{border-color:#C8CFD6;color:var(--ink2);}
 
-  .takeaways{display:flex;flex-direction:column;justify-content:center;}
-  .tklist{list-style:none;margin:0;padding:0;}
-  .tklist li{position:relative;padding-left:16px;margin-bottom:13px;font-size:14.5px;line-height:1.36;color:var(--ink2);}
-  .tklist li:before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
-  .tkcall{margin-top:6px;background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:9px;
-    padding:13px 14px;font-size:14.5px;font-weight:700;color:var(--teal-d);line-height:1.34;}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:auto;padding-top:14px;}
+  .split .sh{font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);
+    padding-bottom:5px;border-bottom:1px solid var(--rule);margin-bottom:7px;}
+  .split ul{list-style:none;}
+  .split li{font-size:14px;line-height:1.3;color:var(--ink2);padding:4px 0 4px 14px;position:relative;}
+  .split li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--grey-l);}
+  .split .limits li.key{color:var(--red);font-weight:700;}
+  .split .limits li.key::before{background:var(--red);}
+  .cat.emerging .split .sh{color:var(--teal-d);}
+
+  .bcband{border-radius:14px;padding:18px 20px;color:#fff;flex:1;min-height:0;
+    background:linear-gradient(135deg,#0E2A31 0%,var(--teal-d) 60%,var(--teal) 100%);
+    box-shadow:0 12px 28px rgba(10,42,49,.28);display:flex;flex-direction:column;justify-content:center;gap:16px;}
+  .bcgrid{display:grid;grid-template-columns:1fr 1.35fr;gap:22px;align-items:center;}
+  .bcpills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .bcpills div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);border-radius:22px;
+    padding:9px 14px;font-size:14px;font-weight:700;color:#EAF5F3;text-align:center;line-height:1.25;}
+  .bcband .bt{font-size:19px;font-weight:700;line-height:1.2;}
+  .bcband .bs{font-size:14px;line-height:1.4;color:#CFE4E0;margin-top:5px;}
+  .bcvs{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .bcvs > div{background:rgba(255,255,255,.1);border-radius:9px;padding:11px 13px;border-left:3px solid rgba(255,255,255,.55);}
+  .bcvs .vh{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9FD8D0;}
+  .bcvs .vd{font-size:14px;line-height:1.35;color:#fff;margin-top:3px;font-weight:600;}
 
   /* ============ PAGE 4 ============ */
-  .legend{display:flex;gap:18px;align-items:center;margin-top:10px;font-size:13px;color:var(--ink2);flex-wrap:wrap;}
+  .legend{display:flex;gap:16px;align-items:center;margin-top:6px;font-size:14px;color:var(--ink2);flex-wrap:wrap;}
   .legend .lgt{font-weight:700;color:var(--ink);}
   .legend .lg{display:flex;align-items:center;gap:6px;}
-  .hb{display:inline-block;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--teal-d);
+  .mhint{margin-left:auto;color:var(--grey);font-size:14px;}
+  .hb{display:inline-block;width:15px;height:15px;border-radius:50%;border:1.5px solid var(--teal-d);
     background:#fff;flex-shrink:0;}
   .hb.half{background:linear-gradient(90deg,var(--teal-d) 50%,#fff 50%);}
   .hb.full{background:var(--teal-d);}
-  .hb.lg{width:22px;height:22px;border-width:2px;}
+  .hb.lg{width:21px;height:21px;border-width:2px;}
 
-  .verdict{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:3px;width:100%;}
-  .verdict .vl{font-size:12px;font-weight:800;letter-spacing:.08em;}
-  .verdict.low{background:#F4E8E6;}
-  .verdict.low .vl{color:var(--red);}
+  .verdict{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:3px;width:100%;}
+  .verdict .vl{font-size:14px;font-weight:800;letter-spacing:.07em;}
+  .verdict.low{background:var(--red-soft);}
+  .verdict.low .vl{color:#A8392C;}
   .verdict.med{background:var(--amber-soft);}
-  .verdict.med .vl{color:var(--amber);}
+  .verdict.med .vl{color:#96641A;}
   .verdict.high{background:#E5F3EA;}
-  .verdict.high .vl{color:var(--green);}
-  .verdict .vs{font-size:11px;color:var(--grey);font-weight:600;}
+  .verdict.high .vl{color:#227A46;}
+  .verdict .vs{font-size:14px;color:var(--grey);font-weight:600;}
 
-  .vcol{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start;}
-  .vchip{position:relative;display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--rule);
-    border-radius:20px;padding:6px 10px;font-size:12.5px;color:var(--ink2);cursor:pointer;font-family:inherit;
+  .pcell{flex-direction:column;align-items:stretch;justify-content:center;gap:8px;}
+  .pov{font-size:14px;line-height:1.3;color:var(--ink);font-weight:700;}
+  .vcol{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;}
+  .vchip{position:relative;display:inline-flex;align-items:center;background:#fff;border:1px solid var(--rule);
+    border-radius:18px;padding:3px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;
     line-height:1.25;text-align:left;max-width:100%;}
-  .vchip b{color:var(--ink);font-weight:700;}
   .vchip:hover,.vchip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
-  .vnote{font-size:12.5px;color:var(--grey);padding:6px 2px;}
+  .vnote{font-size:14px;color:var(--grey);padding:4px 2px;}
 
   .pop{
     display:none;position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
-    width:230px;background:var(--ink);color:#fff;font-size:12px;line-height:1.38;font-weight:500;
-    padding:10px 11px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
+    width:250px;background:var(--ink);color:#fff;font-size:14px;line-height:1.38;font-weight:500;
+    padding:11px 12px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
     box-shadow:0 10px 24px rgba(0,0,0,.28);
   }
   .pop:after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
     border:6px solid transparent;border-top-color:var(--ink);}
-  .node:hover > .pop,.node.open > .pop,.vchip:hover > .pop,.vchip.open > .pop{display:block;}
-  .node.tip-down > .pop,.vchip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
-  .node.tip-down > .pop:after,.vchip.tip-down > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
+  .vchip:hover > .pop,.vchip.open > .pop{display:block;}
+  .vchip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
+  .vchip.tip-down > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
 
-  .hint{position:fixed;top:12px;right:16px;color:#9AA3AD;font-size:11px;z-index:50;}
+  .hint{position:fixed;top:12px;right:16px;color:#9AA3AD;font-size:12px;z-index:50;}
   .nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:50;}
-  .nav button{background:#3A424C;color:#fff;border:none;border-radius:4px;padding:10px 18px;font-size:12px;cursor:pointer;font-family:inherit;min-height:44px;min-width:44px;}
+  .nav button{background:#3A424C;color:#fff;border:none;border-radius:4px;padding:10px 18px;font-size:14px;cursor:pointer;font-family:inherit;min-height:44px;min-width:44px;}
   .nav button:hover{background:var(--teal);}
+  button.vchip{-webkit-appearance:none;appearance:none;}
 
   .rotate-hint{
     display:none;position:fixed;inset:0;z-index:200;background:rgba(24,29,35,.94);
@@ -214,28 +228,29 @@
   .rotate-hint p{font-size:15px;line-height:1.45;max-width:280px;color:#D7DEE0;margin:0;}
   .rotate-hint p b{color:#fff;display:block;font-size:16px;margin-bottom:6px;}
   .rotate-hint button{margin-top:4px;background:transparent;border:1px solid rgba(255,255,255,.42);
-    color:#fff;border-radius:20px;padding:9px 20px;font-size:13px;cursor:pointer;font-family:inherit;min-height:40px;}
+    color:#fff;border-radius:20px;padding:9px 20px;font-size:14px;cursor:pointer;font-family:inherit;min-height:40px;}
   .rotate-hint button:hover{background:rgba(255,255,255,.1);}
 
   @media print{
     @page{size:1280px 760px;margin:0;}
     body{background:#fff;display:block;overflow:visible;}
     .stage{display:flex!important;box-shadow:none;page-break-after:always;}
-    .nav,.hint,.pop{display:none!important;}
+    .nav,.hint,.pop,.rotate-hint{display:none!important;}
   }
 </style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
-  <symbol id="i-orbit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(-25 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(25 12 12)"/></symbol>
-  <symbol id="i-list" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12.5" x2="16" y2="12.5"/><line x1="8" y1="16" x2="13" y2="16"/></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><polyline points="4 16 9 11 13 14 20 7"/><line x1="4" y1="20" x2="20" y2="20"/></symbol>
-  <symbol id="i-gavel" viewBox="0 0 24 24"><rect x="3" y="17" width="18" height="3" rx="1"/><line x1="8" y1="8" x2="16" y2="16"/><rect x="5.5" y="5.5" width="6" height="4" rx="1" transform="rotate(-45 8.5 7.5)"/></symbol>
-  <symbol id="i-track" viewBox="0 0 24 24"><circle cx="6" cy="7" r="2"/><circle cx="6" cy="17" r="2"/><path d="M10 7h8M10 17h8M8 9v6"/></symbol>
-  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.6 6.2L20 11l-6.4 1.8L12 19l-1.6-6.2L4 11l6.4-1.8z"/></symbol>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden"
+     fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="i-orbit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(-25 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(25 12 12)"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12.5" x2="16" y2="12.5"/><line x1="8" y1="16" x2="13" y2="16"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9 11 13 14 20 7"/><line x1="4" y1="20" x2="20" y2="20"/></symbol>
+  <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="17" width="18" height="3" rx="1"/><line x1="8" y1="8" x2="16" y2="16"/><rect x="5.5" y="5.5" width="6" height="4" rx="1" transform="rotate(-45 8.5 7.5)"/></symbol>
+  <symbol id="i-track" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="6" cy="17" r="2"/><path d="M10 7h8M10 17h8M8 9v6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 6.2L20 11l-6.4 1.8L12 19l-1.6-6.2L4 11l6.4-1.8z"/></symbol>
 </svg>
 
-<div class="hint">arrow keys, swipe or Prev/Next · hover or tap a name for evidence · Ctrl/Cmd+P to export</div>
+<div class="hint">arrow keys, swipe or Prev/Next · hover or tap a vendor for evidence · Ctrl/Cmd+P to export</div>
 
 <div class="rotate-hint" id="rotateHint">
   <svg class="ricon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.2"/><line x1="9.5" y1="19" x2="14.5" y2="19"/></svg>
@@ -282,26 +297,22 @@
       </div>
 
       <div class="p1r">
-        <div>
-          <div class="rhd">What each module does</div>
-          <ul class="modsum">
-            <li class="star"><span class="mn">&#9733;</span><span><span class="nm">End to End Agentic Orchestration</span><span class="sb">One governed layer that connects every stage and learns from each project</span></span></li>
-            <li><span class="mn">1</span><span><span class="nm">AI Generated Unified BoQ</span><span class="sb">Unique item codes, with any incoming format mapped into one standard BoQ</span></span></li>
-            <li><span class="mn">2</span><span><span class="nm">Dynamic Bottom Up CAPEX</span><span class="sb">Item-level forecasts kept current with live commodity, labor and FX</span></span></li>
-            <li><span class="mn">3</span><span><span class="nm">Smart Tender Bid Evaluation</span><span class="sb">Bids normalized to one structure, outliers flagged and ranked in minutes</span></span></li>
-            <li><span class="mn">4</span><span><span class="nm">Procurement and Progress Tracking</span><span class="sb">AI checks quantities and progress, and flags overruns before they lock in</span></span></li>
-            <li class="opt"><span class="mn">5</span><span><span class="nm">Value Optimizer</span><span class="sb">Always-on value engineering that mines savings from past project patterns</span></span></li>
-          </ul>
-        </div>
+        <div class="rhd">What each module does</div>
+        <ul class="modsum">
+          <li class="star"><span class="mn">&#9733;</span><span><span class="nm">End to End Agentic Orchestration</span><span class="sb">One governed layer across every stage, learning from each project</span></span></li>
+          <li><span class="mn">1</span><span><span class="nm">AI Generated Unified BoQ</span><span class="sb">Unique item codes, any format mapped into one standard</span></span></li>
+          <li><span class="mn">2</span><span><span class="nm">Dynamic Bottom Up CAPEX</span><span class="sb">Item-level forecasts live with commodity, labor and FX</span></span></li>
+          <li><span class="mn">3</span><span><span class="nm">Smart Tender Bid Evaluation</span><span class="sb">Bids normalized, outliers flagged, ranked in minutes</span></span></li>
+          <li><span class="mn">4</span><span><span class="nm">Procurement and Progress Tracking</span><span class="sb">Quantities and progress checked, overruns flagged early</span></span></li>
+          <li class="opt"><span class="mn">5</span><span><span class="nm">Value Optimizer</span><span class="sb">Always-on value engineering mined from past projects</span></span></li>
+        </ul>
 
-        <div>
-          <div class="rhd">Key value propositions</div>
-          <div class="vpgrid">
-            <div class="vp"><div class="vt">More complete than AI point tools, more AI-native than the legacy suites</div></div>
-            <div class="vp"><div class="vt">Easy to use, covering the fundamentals clients need — more features would only add complexity</div></div>
-            <div class="vp"><div class="vt">Plug and play setup, with near zero data prep</div></div>
-            <div class="vp"><div class="vt">Modular by design, and works with other McKinsey assets</div></div>
-          </div>
+        <div class="rhd" style="margin-top:12px">Key value propositions</div>
+        <div class="vpgrid">
+          <div class="vp"><div class="vt">More complete than AI point tools, more AI-native than legacy suites</div></div>
+          <div class="vp"><div class="vt">Easy to use — the fundamentals, without suite complexity</div></div>
+          <div class="vp"><div class="vt">Plug and play, with near zero data prep</div></div>
+          <div class="vp"><div class="vt">Modular, and works with other McKinsey assets</div></div>
         </div>
       </div>
     </div>
@@ -310,134 +321,186 @@
   <!-- ===================== PAGE 2 — PROBLEM / SOLUTION ===================== -->
   <section class="stage" id="p2">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; The problem we solve</div>
-    <h1>Today's manual, disconnected workflows create real pain that our <b>agentic AI removes</b></h1>
+    <h1>Even the market leaders still run these workflows manually — at <b>severe and compounding cost</b></h1>
+
+    <div class="sevlegend">
+      <span class="lgt">Severity of the problem today</span>
+      <span class="sev crit"><span class="sevbar"><i class="on"></i><i class="on"></i><i class="on"></i></span>CRITICAL</span>
+      <span class="sev high"><span class="sevbar"><i class="on"></i><i class="on"></i><i></i></span>HIGH</span>
+      <span class="sev med"><span class="sevbar"><i class="on"></i><i></i><i></i></span>MEDIUM</span>
+    </div>
 
     <div class="mv">
-      <div class="mv-head mv-4">
+      <div class="mv-head mv-5">
         <div class="mh ink">Module</div>
-        <div class="mh grey">How companies do it today</div>
-        <div class="mh grey">Pain points</div>
+        <div class="mh grey">Market leaders<span class="sub">how they do it today</span></div>
+        <div class="mh grey2">Developing players<span class="sub">how they do it today</span></div>
+        <div class="mh ink">What it costs them</div>
         <div class="mh teal">What Blue Currency does</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap star"><svg class="ico"><use href="#i-orbit"/></svg><span class="mn">&#9733;</span><b>End to End Agentic Orchestration</b></span></div>
-        <div class="mc muted">Point tools each cover one isolated stage.</div>
-        <div class="mc muted">No single model connects the work across stages.</div>
-        <div class="mc sol">One governed agentic layer that connects every stage and gets smarter with each project.</div>
+        <div class="mc muted">Point tools per stage, stitched by IT.</div>
+        <div class="mc muted">Stages run in isolation, handovers by email.</div>
+        <div class="mc pain">
+          <span class="sev crit"><span class="sevbar"><i class="on"></i><i class="on"></i><i class="on"></i></span>CRITICAL</span>
+          <span>Nothing learns from the last project.</span>
+        </div>
+        <div class="mc sol">One governed agentic layer across every stage, smarter with each project.</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap"><svg class="ico"><use href="#i-list"/></svg><span class="mn">1</span><b>AI Generated Unified BoQ</b></span></div>
-        <div class="mc muted">Cost items live as free text with no shared identity.</div>
-        <div class="mc muted">Hard to compare across projects, bidders or years.</div>
-        <div class="mc sol">AI codes every line item and maps any format into one standard BoQ.</div>
+        <div class="mc muted">In-house coding standards, kept by hand.</div>
+        <div class="mc muted">Cost items as free text in spreadsheets.</div>
+        <div class="mc pain">
+          <span class="sev crit"><span class="sevbar"><i class="on"></i><i class="on"></i><i class="on"></i></span>CRITICAL</span>
+          <span>No comparison across projects or bidders.</span>
+        </div>
+        <div class="mc sol">AI codes every item and maps any format into one standard BoQ.</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap"><svg class="ico"><use href="#i-chart"/></svg><span class="mn">2</span><b>Dynamic Bottom Up CAPEX</b></span></div>
-        <div class="mc muted">Estimates rely on simple inflation multipliers.</div>
-        <div class="mc muted">Prices go stale and benchmarking stays manual.</div>
-        <div class="mc sol">Bottom-up item forecasts that stay current with live commodity, labor and FX.</div>
+        <div class="mc muted">Estimating tools on historical rates.</div>
+        <div class="mc muted">Last project's cost plus inflation.</div>
+        <div class="mc pain">
+          <span class="sev high"><span class="sevbar"><i class="on"></i><i class="on"></i><i></i></span>HIGH</span>
+          <span>Budgets set on prices already stale.</span>
+        </div>
+        <div class="mc sol">Item-level forecasts kept live with commodity, labor and FX.</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap"><svg class="ico"><use href="#i-gavel"/></svg><span class="mn">3</span><b>Smart Tender Bid Evaluation</b></span></div>
-        <div class="mc muted">Each bidder submits prices in their own format.</div>
-        <div class="mc muted">Comparison takes weeks; scope gaps go unnoticed.</div>
-        <div class="mc sol">Bids mapped to one structure, then scored, flagged and ranked in minutes.</div>
+        <div class="mc muted">Sourcing platforms, leveling by hand.</div>
+        <div class="mc muted">Every bidder in their own format.</div>
+        <div class="mc pain">
+          <span class="sev high"><span class="sevbar"><i class="on"></i><i class="on"></i><i></i></span>HIGH</span>
+          <span>Weeks per tender, and scope gaps priced in.</span>
+        </div>
+        <div class="mc sol">Bids mapped to one structure, then scored and ranked in minutes.</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap"><svg class="ico"><use href="#i-track"/></svg><span class="mn">4</span><b>Procurement and Progress Tracking</b></span></div>
-        <div class="mc muted">Progress is reported through many manual channels.</div>
-        <div class="mc muted">Overruns surface only once they are irreversible.</div>
-        <div class="mc sol">AI checks quantities and progress, and flags mismatches early in plain language.</div>
+        <div class="mc muted">PM platforms fed by manual site reports.</div>
+        <div class="mc muted">Spreadsheets, site walks, messaging apps.</div>
+        <div class="mc pain">
+          <span class="sev crit"><span class="sevbar"><i class="on"></i><i class="on"></i><i class="on"></i></span>CRITICAL</span>
+          <span>Overruns surface once irreversible.</span>
+        </div>
+        <div class="mc sol">AI checks quantities and progress, and flags mismatches early.</div>
       </div>
 
-      <div class="mv-row mv-4">
+      <div class="mv-row mv-5">
         <div class="mc mod"><span class="modcap opt"><svg class="ico"><use href="#i-spark"/></svg><span class="mn">5</span><b>Value Optimizer</b></span></div>
-        <div class="mc muted">Value engineering happens in ad hoc workshops.</div>
-        <div class="mc muted">Savings are missed or found far too late.</div>
-        <div class="mc sol">An always-on loop that mines past patterns and surfaces savings as work proceeds.</div>
+        <div class="mc muted">Value engineering at stage gates only.</div>
+        <div class="mc muted">Cost cutting after the budget is breached.</div>
+        <div class="mc pain">
+          <span class="sev med"><span class="sevbar"><i class="on"></i><i></i><i></i></span>MEDIUM</span>
+          <span>Savings found too late to design in.</span>
+        </div>
+        <div class="mc sol">An always-on loop that surfaces savings as work proceeds.</div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PAGE 3 — UNIQUE POSITION ===================== -->
+  <!-- ===================== PAGE 3 — CATEGORY VIEW ===================== -->
   <section class="stage" id="p3">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>Blue Currency sits in the gap: <b>broader than the AI startups</b>, more AI-native than the legacy suites</h1>
+    <h1>The market splits into two camps — and <b>neither one covers what we do</b></h1>
 
-    <div class="mlegend">
-      <span class="mi"><span class="mdot emerging"></span>Emerging AI players</span>
-      <span class="mi"><span class="mdot legacy"></span>Legacy players</span>
-      <span class="mi"><span class="mdot own"></span>Blue Currency</span>
-      <span class="mhint">Hover or tap a name for the placement rationale</span>
-    </div>
-
-    <div class="p3grid">
-      <div class="matrixwrap">
-        <div class="mtx">
-          <div class="yaxis">How work gets done · rules / expert-driven to agentic AI</div>
-          <div class="plot">
-            <div class="plot-clip">
-              <div class="vline"></div><div class="hline"></div>
-              <div class="gapzone"></div>
-              <div class="qcap tl">Smart but narrow</div>
-              <div class="qcap tr">More features, more complexity</div>
-              <div class="qcap bl">Manual point tools</div>
-              <div class="qcap br">Broad suites, expert heavy</div>
+    <div class="p3">
+      <div class="p3top">
+        <div class="cat emerging">
+          <div>
+            <div class="ch">Emerging AI players</div>
+            <div class="cs">AI-native, one step of the lifecycle each</div>
+          </div>
+          <div class="cov">Genuinely AI-native and often excellent at their step — takeoff, cost classification, tendering or site progress. Each one solves a slice, and none carries work across stages.</div>
+          <div class="chips">
+            <span class="chip">Kreo</span><span class="chip">Buildots</span><span class="chip">Costify</span>
+            <span class="chip">Zebel</span><span class="chip">ConWize</span><span class="chip">Ediphi</span>
+            <span class="chip">Doxel</span><span class="chip">OpenSpace</span><span class="chip">ALICE Technologies</span>
+            <span class="chip">nPlan</span>
+          </div>
+          <div class="split">
+            <div>
+              <div class="sh">Strengths</div>
+              <ul>
+                <li>AI-native from the ground up</li>
+                <li>Fast to value on their one step</li>
+                <li>Little setup before first use</li>
+              </ul>
             </div>
-
-            <button type="button" class="node own" style="top:50%;left:50%;">Blue Currency
-              <span class="pop">Less AI-native than the startups, broader than they are. Less broad than the legacy suites, more AI-native than they are.</span>
-            </button>
-
-            <button type="button" class="node emerging tip-down" style="top:16%;left:16%;">Kreo
-              <span class="pop">AI takeoff and estimating from drawings. Stops at quantities and cost, not the rest of the lifecycle.</span>
-            </button>
-            <button type="button" class="node emerging tip-down" style="top:22%;left:24%;">Buildots
-              <span class="pop">AI compares site captures to BIM and schedule. Strong on progress, only that step.</span>
-            </button>
-            <button type="button" class="node emerging" style="top:34%;left:14%;">Costify
-              <span class="pop">Classifies BoQs and cost documents into a private database. Not a live estimating or delivery platform.</span>
-            </button>
-            <button type="button" class="node emerging" style="top:40%;left:30%;">Zebel
-              <span class="pop">Precon cost database, conceptual estimates, some bid leveling. Preconstruction, not agentic across stages.</span>
-            </button>
-            <button type="button" class="node emerging" style="top:30%;left:38%;">ConWize
-              <span class="pop">Tender, estimating and bid comparison. Strong on bidding, not an agentic lifecycle layer.</span>
-            </button>
-
-            <button type="button" class="node legacy" style="top:66%;left:61%;">Cleopatra
-              <span class="pop">Enterprise cost estimating and controls, configured by experts. Rules-based, not agentic.</span>
-            </button>
-            <button type="button" class="node legacy" style="top:73%;left:70%;">RIB iTWO
-              <span class="pop">Connected estimating, bidding and project controls. A broad suite, expert-configured.</span>
-            </button>
-            <button type="button" class="node legacy" style="top:84%;left:82%;">Oracle
-              <span class="pop">Scheduling, controls and capital-planning suite. Broad coverage, not an agentic construction model.</span>
-            </button>
-            <button type="button" class="node legacy" style="top:80%;left:58%;">Procore
-              <span class="pop">Project and field management cloud. Wide PM coverage, not AI-native orchestration.</span>
-            </button>
-            <button type="button" class="node legacy" style="top:86%;left:40%;">SAP Ariba
-              <span class="pop">Sourcing and procurement workflow. One commercial step, rules-based.</span>
-            </button>
+            <div class="limits">
+              <div class="sh">Limits</div>
+              <ul>
+                <li class="key">No coverage of the full lifecycle</li>
+                <li>Nothing carries across a handover</li>
+                <li>Clients still buy five vendors</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="xaxis"><span>Single step</span><span class="axname">Scope</span><span>Feature-heavy suite</span></div>
+
+        <div class="cat legacy">
+          <div>
+            <div class="ch">Legacy players</div>
+            <div class="cs">Broad suites, rules-based and expert-driven</div>
+          </div>
+          <div class="cov">Span more stages and are entrenched in the enterprise — estimating, controls, scheduling and procurement. Coverage comes from modules and configuration, not from reasoning.</div>
+          <div class="chips">
+            <span class="chip">Oracle</span><span class="chip">Procore</span><span class="chip">RIB iTWO</span>
+            <span class="chip">RIB CostX</span><span class="chip">Cleopatra</span><span class="chip">SAP Ariba</span>
+            <span class="chip">Autodesk ACC</span><span class="chip">InEight</span><span class="chip">Trimble</span>
+            <span class="chip">Jaggaer</span>
+          </div>
+          <div class="split">
+            <div>
+              <div class="sh">Strengths</div>
+              <ul>
+                <li>Breadth across cost, schedule and procurement</li>
+                <li>Entrenched as the system of record</li>
+                <li>Enterprise-grade governance</li>
+              </ul>
+            </div>
+            <div class="limits">
+              <div class="sh">Limits</div>
+              <ul>
+                <li class="key">Rules and configuration, not reasoning</li>
+                <li>Long implementations, expert-heavy</li>
+                <li>More features, so harder to use</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="takeaways">
-        <div class="rhd">Key takeaways</div>
-        <ul class="tklist">
-          <li>Emerging AI players are more AI-native than we are, but each one covers only a single step.</li>
-          <li>Legacy suites are broader than we are, and stay rules-based rather than AI-native.</li>
-          <li>That leaves a gap in the middle — more complete than a point tool, more AI-native than a suite.</li>
-        </ul>
-        <div class="tkcall">Unique position: less AI-native than the startups, less broad than the suites — and that is the point.</div>
+      <div class="bcband">
+        <div class="bcgrid">
+          <div>
+            <div class="bt">Blue Currency</div>
+            <div class="bs">Agentic across the fundamentals of the construction lifecycle — deliberately not a feature suite.</div>
+          </div>
+          <div class="bcvs">
+            <div>
+              <div class="vh">Versus emerging AI</div>
+              <div class="vd">Broader — one platform covers the fundamentals instead of a single step.</div>
+            </div>
+            <div>
+              <div class="vh">Versus legacy suites</div>
+              <div class="vd">More AI-native — agents do the work, rather than experts configuring rules.</div>
+            </div>
+          </div>
+        </div>
+        <div class="bcpills">
+          <div>Agentic, not rules-based</div>
+          <div>The fundamentals end to end, not every feature</div>
+          <div>Plug and play, with near zero data prep</div>
+        </div>
       </div>
     </div>
   </section>
@@ -445,14 +508,14 @@
   <!-- ===================== PAGE 4 — PLAYER DEEP DIVE ===================== -->
   <section class="stage" id="p4">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive deep dive</div>
-    <h1>Legacy suites are feature-heavy. Emerging AI tools are <b>smart but narrow</b></h1>
+    <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
 
     <div class="legend">
       <span class="lgt">Verdict = how much of this module the market already delivers</span>
       <span class="lg"><span class="hb"></span>Low</span>
       <span class="lg"><span class="hb half"></span>Medium</span>
       <span class="lg"><span class="hb full"></span>High</span>
-      <span class="mhint">Hover or tap a vendor for evidence</span>
+      <span class="mhint">Hover or tap a vendor for the evidence</span>
     </div>
 
     <div class="mv">
@@ -467,17 +530,28 @@
           <span class="modcap star"><svg class="ico"><use href="#i-orbit"/></svg><span class="mn">&#9733;</span><b>End to End Agentic Orchestration</b></span>
           <div class="verdict low"><span class="hb lg"></span><span class="vl">LOW</span><span class="vs">white space</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip tip-down"><span class="hb half"></span><span><b>RIB iTWO</b></span>
-            <span class="pop">Connects estimating and controls in one suite. Workflow integration, not an agentic learning model.</span></button>
-          <button type="button" class="vchip tip-down"><span class="hb half"></span><span><b>Oracle</b></span>
-            <span class="pop">Spans schedule, cost and capital stages. Broad, configured by experts, not agentic.</span></button>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip tip-down"><span class="hb"></span><span><b>Point solutions</b></span>
-            <span class="pop">Each emerging tool owns one stage. None carries a governed model across the fundamentals.</span></button>
-          <span class="vnote"><span class="nev">Uncontested</span> — no agentic learning layer today</span>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Suites link stages through integration projects — workflow, not a model that learns.</div>
+          <div class="vcol">
+            <button type="button" class="vchip tip-down">RIB iTWO
+              <span class="pop">Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.</span></button>
+            <button type="button" class="vchip tip-down">Oracle
+              <span class="pop">Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.</span></button>
+            <button type="button" class="vchip tip-down">InEight
+              <span class="pop">Estimating through to field execution in one platform, driven by workflow and rules rather than agents.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Each tool owns a single stage; nobody governs the whole lifecycle.</div>
+          <div class="vcol">
+            <button type="button" class="vchip tip-down">Kreo
+              <span class="pop">Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.</span></button>
+            <button type="button" class="vchip tip-down">Buildots
+              <span class="pop">Site progress only. No link back to the BoQ, the budget or the procurement pipeline.</span></button>
+            <button type="button" class="vchip tip-down">ConWize
+              <span class="pop">Tendering only. The model stops once the contract is awarded.</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="mv-row mv-3">
@@ -485,22 +559,28 @@
           <span class="modcap"><svg class="ico"><use href="#i-list"/></svg><span class="mn">1</span><b>AI Generated Unified BoQ</b></span>
           <div class="verdict med"><span class="hb lg half"></span><span class="vl">MEDIUM</span><span class="vs">partial coverage</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Cleopatra</b></span>
-            <span class="pop">Configurable cost-breakdown structures. Mapping and coding stay expert-led.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>RIB CostX</b></span>
-            <span class="pop">Measured takeoff and BoQs from drawings. Strong measure, not automatic coding of any format.</span></button>
-          <button type="button" class="vchip"><span class="hb"></span><span><b>Trimble</b></span>
-            <span class="pop">Cost libraries exist; mapping incoming formats into one code stays manual.</span></button>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Costify</b></span>
-            <span class="pop">Cleans and classifies cost documents into a private database. Stops at structured data.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Zebel</b></span>
-            <span class="pop">Turns historical spreadsheets into a cost database. Standardization, not a live unified BoQ engine.</span></button>
-          <button type="button" class="vchip"><span class="hb"></span><span><b>ConWize</b></span>
-            <span class="pop">Imports and manages BoQs for tendering. Limited automatic standardization.</span></button>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Cost structures exist, but coding items and mapping formats stays manual.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Cleopatra
+              <span class="pop">Configurable cost-breakdown structures. The structure is there; mapping items into it stays expert-led.</span></button>
+            <button type="button" class="vchip">RIB CostX
+              <span class="pop">Measured takeoff and BoQs from drawings. Strong measurement, no automatic coding of any incoming format.</span></button>
+            <button type="button" class="vchip">Trimble
+              <span class="pop">Maintains cost libraries. Mapping third-party formats into one code remains a manual exercise.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Good at classifying documents into data; they stop short of a live BoQ.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Costify
+              <span class="pop">Turns BoQs and pricing documents into a classified private database. Delivers data, not a live BoQ engine.</span></button>
+            <button type="button" class="vchip">Zebel
+              <span class="pop">Standardizes historical spreadsheets into a cost database. Standardization for estimating, not one unified BoQ.</span></button>
+            <button type="button" class="vchip">ConWize
+              <span class="pop">Imports and manages BoQs for tendering, with limited automatic standardization across formats.</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="mv-row mv-3">
@@ -508,22 +588,28 @@
           <span class="modcap"><svg class="ico"><use href="#i-chart"/></svg><span class="mn">2</span><b>Dynamic Bottom Up CAPEX</b></span>
           <div class="verdict high"><span class="hb lg full"></span><span class="vl">HIGH</span><span class="vs">crowded step</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>RIB CostX</b></span>
-            <span class="pop">Detailed bottom-up estimating from measured quantities. Expert rates, not live market drivers.</span></button>
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Cleopatra</b></span>
-            <span class="pop">Estimating and benchmarking for capital projects. Rules and libraries, not live FX and commodities.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>InEight</b></span>
-            <span class="pop">Cost estimating and project controls. Solid engine, still planner-driven.</span></button>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Zebel</b></span>
-            <span class="pop">Conceptual estimates from a firm's own history, location and escalation. Precon focus.</span></button>
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Kreo</b></span>
-            <span class="pop">AI takeoff to quantities and estimates from drawings. One step, done well.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Ediphi</b></span>
-            <span class="pop">Preconstruction estimating and early bid leveling. Not live bottom-up CAPEX across stages.</span></button>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Mature estimating engines, priced off libraries rather than live markets.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">RIB CostX
+              <span class="pop">Detailed bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.</span></button>
+            <button type="button" class="vchip">Cleopatra
+              <span class="pop">Estimating and benchmarking for capital projects, driven by rules and cost libraries.</span></button>
+            <button type="button" class="vchip">InEight
+              <span class="pop">Cost estimating and project controls. Capable engine, still planner-driven.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Genuinely strong AI estimating, but preconstruction only.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Zebel
+              <span class="pop">Conceptual estimates from a firm's own history, adjusted for location and escalation. Preconstruction focus.</span></button>
+            <button type="button" class="vchip">Kreo
+              <span class="pop">AI takeoff from drawings through to quantities and estimates. One step, done well.</span></button>
+            <button type="button" class="vchip">Ediphi
+              <span class="pop">Preconstruction estimating and early bid leveling, not live bottom-up CAPEX across stages.</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="mv-row mv-3">
@@ -531,22 +617,28 @@
           <span class="modcap"><svg class="ico"><use href="#i-gavel"/></svg><span class="mn">3</span><b>Smart Tender Bid Evaluation</b></span>
           <div class="verdict med"><span class="hb lg half"></span><span class="vl">MEDIUM</span><span class="vs">partial coverage</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Cleopatra</b></span>
-            <span class="pop">Standardized bid comparison once data is structured. Setup is expert-heavy.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>SAP Ariba</b></span>
-            <span class="pop">Sourcing and bid workflow for procurement teams. Generic, not construction-BoQ native.</span></button>
-          <button type="button" class="vchip"><span class="hb"></span><span><b>Jaggaer</b></span>
-            <span class="pop">Generic sourcing and scoring. Not built to normalize construction BoQs.</span></button>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>ConWize</b></span>
-            <span class="pop">Line-by-line BoQ bid comparison, anomalies and missing prices. Tender step, not the lifecycle.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Zebel</b></span>
-            <span class="pop">Bid leveling against historical unit prices. Useful, still a precon worksheet.</span></button>
-          <button type="button" class="vchip"><span class="hb"></span><span><b>Ediphi</b></span>
-            <span class="pop">Early-stage bid leveling. Not full tender evaluation at award.</span></button>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Sourcing workflow is solved; leveling construction BoQs is not.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Cleopatra
+              <span class="pop">Standardized bid comparison once data is already structured. Setup is expert-heavy.</span></button>
+            <button type="button" class="vchip">SAP Ariba
+              <span class="pop">Sourcing and bid workflow for procurement teams. Generic, not construction-BoQ native.</span></button>
+            <button type="button" class="vchip">Jaggaer
+              <span class="pop">Generic sourcing and scoring. Not built to normalize construction BoQs line by line.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Real line-by-line bid comparison exists — and it ends at the tender.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">ConWize
+              <span class="pop">Line-by-line BoQ bid comparison that flags anomalies and missing prices. Strong at tendering only.</span></button>
+            <button type="button" class="vchip">Zebel
+              <span class="pop">Bid leveling against historical unit prices. Useful, but a preconstruction worksheet.</span></button>
+            <button type="button" class="vchip">Ediphi
+              <span class="pop">Early-stage bid leveling, not full tender evaluation through to award.</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="mv-row mv-3">
@@ -554,22 +646,28 @@
           <span class="modcap"><svg class="ico"><use href="#i-track"/></svg><span class="mn">4</span><b>Procurement and Progress Tracking</b></span>
           <div class="verdict high"><span class="hb lg full"></span><span class="vl">HIGH</span><span class="vs">crowded step</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Procore</b></span>
-            <span class="pop">Project and field progress, documents and collaboration. Manual reporting still sits underneath.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Oracle Primavera</b></span>
-            <span class="pop">Schedule and earned-value controls. Strong on plan, weaker as an AI gatekeeper on quantities.</span></button>
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Autodesk ACC</b></span>
-            <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>Buildots</b></span>
-            <span class="pop">AI site progress versus BIM and schedule. Best-in-class for that step only.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>Doxel</b></span>
-            <span class="pop">Reality capture versus plan for installed work. Progress evidence, not procurement.</span></button>
-          <button type="button" class="vchip"><span class="hb full"></span><span><b>OpenSpace</b></span>
-            <span class="pop">360 capture and visual progress. Documentation, not an agentic quantity check.</span></button>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Entrenched systems of record, still fed by manual site reporting.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Procore
+              <span class="pop">Project and field management across documents and progress. Manual site reporting still feeds it.</span></button>
+            <button type="button" class="vchip">Oracle Primavera
+              <span class="pop">Schedule and earned-value controls. Strong on plan, weak as a gatekeeper on quantities.</span></button>
+            <button type="button" class="vchip">Autodesk ACC
+              <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Best-in-class AI progress capture, with no link to procurement.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Buildots
+              <span class="pop">AI compares site captures against BIM and schedule to track progress. Best-in-class for that step alone.</span></button>
+            <button type="button" class="vchip">Doxel
+              <span class="pop">Reality capture versus plan for installed work. Progress evidence, not procurement control.</span></button>
+            <button type="button" class="vchip">OpenSpace
+              <span class="pop">360 capture and visual progress documentation. No agentic check on quantities.</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="mv-row mv-3">
@@ -577,20 +675,26 @@
           <span class="modcap opt"><svg class="ico"><use href="#i-spark"/></svg><span class="mn">5</span><b>Value Optimizer</b></span>
           <div class="verdict low"><span class="hb lg"></span><span class="vl">LOW</span><span class="vs">white space</span></div>
         </div>
-        <div class="mc muted"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb"></span><span><b>Cleopatra</b></span>
-            <span class="pop">Static what-if on an estimate. Not a continuous savings loop.</span></button>
-          <button type="button" class="vchip"><span class="hb"></span><span><b>RIB</b></span>
-            <span class="pop">No always-on value-engineering loop across projects.</span></button>
-          <span class="vnote">No dedicated legacy tool for continuous value engineering</span>
-        </div></div>
-        <div class="mc"><div class="vcol">
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>ALICE Technologies</b></span>
-            <span class="pop">Schedule optioneering — many build sequences, not a cost-value loop.</span></button>
-          <button type="button" class="vchip"><span class="hb half"></span><span><b>nPlan</b></span>
-            <span class="pop">AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.</span></button>
-          <span class="vnote">No player closes the continuous cost-value loop</span>
-        </div></div>
+        <div class="mc muted pcell">
+          <div class="pov">Static what-if analysis at gates; no continuous savings loop anywhere.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">Cleopatra
+              <span class="pop">Static what-if analysis on an estimate. Not a continuous, always-on savings loop.</span></button>
+            <button type="button" class="vchip">RIB iTWO
+              <span class="pop">Scenario comparison inside the estimate. No always-on value-engineering loop across projects.</span></button>
+            <button type="button" class="vchip">Oracle
+              <span class="pop">Capital planning and portfolio what-ifs, run by analysts at decision points rather than continuously.</span></button>
+          </div>
+        </div>
+        <div class="mc pcell">
+          <div class="pov">Optimization exists for schedule; cost value is left untouched.</div>
+          <div class="vcol">
+            <button type="button" class="vchip">ALICE Technologies
+              <span class="pop">Schedule optioneering across many build sequences. Time, not a cost-value loop.</span></button>
+            <button type="button" class="vchip">nPlan
+              <span class="pop">AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -620,20 +724,20 @@
   });
   let touchStartX=0;
   document.addEventListener('touchstart',e=>{
-    if(e.target.closest('.node,.vchip,.nav'))return;
+    if(e.target.closest('.vchip,.nav'))return;
     if(e.changedTouches&&e.changedTouches[0])touchStartX=e.changedTouches[0].clientX;
   },{passive:true});
   document.addEventListener('touchend',e=>{
-    if(e.target.closest('.node,.vchip,.nav'))return;
+    if(e.target.closest('.vchip,.nav'))return;
     if(!e.changedTouches||!e.changedTouches[0])return;
     const dx=e.changedTouches[0].clientX-touchStartX;
     if(dx<=-50)go(1);
     else if(dx>=50)go(-1);
   },{passive:true});
 
-  function closeTips(){document.querySelectorAll('.node.open,.vchip.open').forEach(n=>n.classList.remove('open'));}
+  function closeTips(){document.querySelectorAll('.vchip.open').forEach(n=>n.classList.remove('open'));}
   document.addEventListener('click',e=>{
-    const tip=e.target.closest('.node,.vchip');
+    const tip=e.target.closest('.vchip');
     if(!tip){closeTips();return;}
     const was=tip.classList.contains('open');
     closeTips();
@@ -668,7 +772,7 @@
     const tip=(new URLSearchParams(location.search)).get('tip');
     if(tip){
       const scope=pages[i]||document;
-      const el=[...scope.querySelectorAll('.node,.vchip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
+      const el=[...scope.querySelectorAll('.vchip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
       if(el){closeTips();el.classList.add('open');}
     }
   }
