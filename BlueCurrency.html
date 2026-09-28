@@ -796,11 +796,14 @@
     if(!st||!pop)return;
     const b=st.getBoundingClientRect(),r=el.getBoundingClientRect();
     el.classList.toggle('tip-down',(b.bottom-r.bottom)>(r.top-b.top));
-    const w=parseFloat(getComputedStyle(pop).width)||0,c=r.left+r.width/2,edge=12;
+    // the page is drawn through a scale() transform, so measure in page pixels
+    const k=(b.width/st.offsetWidth)||1,sw=st.offsetWidth,edge=12;
+    const w=parseFloat(getComputedStyle(pop).width)||0;
+    const c=(r.left+r.width/2-b.left)/k;
     let sx=0;
-    if(c-w/2<b.left+edge) sx=(b.left+edge)-(c-w/2);
-    else if(c+w/2>b.right-edge) sx=(b.right-edge)-(c+w/2);
-    el.style.setProperty('--sx',Math.round(Math.max(-w/2+22,Math.min(w/2-22,sx)))+'px');
+    if(c-w/2<edge) sx=edge-(c-w/2);
+    else if(c+w/2>sw-edge) sx=(sw-edge)-(c+w/2);
+    el.style.setProperty('--sx',Math.round(Math.max(22-w/2,Math.min(w/2-22,sx)))+'px');
   }
 
   document.querySelectorAll('[data-v]').forEach(el=>{
