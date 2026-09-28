@@ -69,7 +69,7 @@
   .assets-hd{text-align:center;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);}
   .bus{height:2px;background:var(--teal);opacity:.35;margin:0 6%;}
   .bubbles{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
-  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:32px;min-height:56px;
+  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:5px;min-height:56px;
     display:flex;align-items:center;justify-content:center;text-align:center;padding:7px 3px;
     font-size:14px;font-weight:600;color:var(--teal-d);line-height:1.2;box-shadow:0 3px 9px rgba(10,95,89,.07);}
   .bubble::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--teal);opacity:.35;}
@@ -167,14 +167,15 @@
   .q .qn{font-size:19px;font-weight:700;color:var(--ink);display:block;}
   .q .qd{font-size:15px;line-height:1.35;color:var(--ink2);}
   .q .vhd{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--grey);
-    margin-top:auto;}
-  .q .qf{padding-top:10px;border-top:1px solid #D7DEE2;font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
+    margin-top:auto;padding-top:10px;border-top:1px solid #D7DEE2;}
+  .q .qf{font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
   .q .qf span{color:var(--red);}
   .chips{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
   .chip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
-    border-radius:18px;padding:5px 12px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.25;
+    border-radius:18px;padding:5px 12px;font-size:15px;font-weight:500;color:var(--ink2);line-height:1.25;
     cursor:pointer;font-family:inherit;text-align:left;}
-  .q.ai .chip{background:var(--teal-soft);border-color:#CFE4E0;color:var(--teal-d);}
+  .chip.pf-startup,.vchip.pf-startup{background:var(--teal-soft);border-color:#CFE4E0;color:var(--teal-d);}
+  .chip.pf-legacy,.vchip.pf-legacy{background:#F2F5F6;border-color:#DCE2E6;color:var(--ink2);}
   .chip:hover,.chip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
   .chip:hover > .pop,.chip.open > .pop{display:block;}
   .chip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
@@ -204,6 +205,9 @@
   .legend .lg{display:flex;align-items:center;gap:6px;}
   .mhint{margin-left:auto;color:var(--grey);font-size:14px;}
   .sw{display:inline-block;width:26px;height:13px;border-radius:3px;margin-right:7px;vertical-align:middle;}
+  .psw{display:inline-block;width:24px;height:14px;border-radius:7px;margin-right:7px;vertical-align:middle;}
+  .psw.leg{background:#F2F5F6;border:1px solid #DCE2E6;}
+  .psw.sta{background:var(--teal-soft);border:1px solid #CFE4E0;}
   .sw.h{background:#CFE8D8;border:1px solid #2E9E5B;}
   .sw.m{background:#F5E3BF;border:1px solid #D9982F;}
   .sw.l{background:#F0D4CF;border:1px solid var(--red);}
@@ -221,7 +225,7 @@
   .pov{font-size:14px;line-height:1.35;color:var(--ink);font-weight:700;}
   .vcol{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start;}
   .vchip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
-    border-radius:18px;padding:3px 9px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
+    border-radius:18px;padding:3px 9px;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;font-family:inherit;
     line-height:1.25;text-align:left;max-width:100%;}
   .vchip:hover,.vchip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
   .pop{
@@ -232,17 +236,17 @@
     box-shadow:0 10px 24px rgba(0,0,0,.28);
   }
   /* the bubble is a scan card: name, AI maturity, modules covered, one line */
-  .pop .pnm{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff;letter-spacing:.01em;}
-  .pop .dots{display:flex;gap:4px;margin-left:auto;}
-  .pop .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22);}
+  .pop .pnm{display:block;font-size:15px;font-weight:800;color:#fff;letter-spacing:.01em;}
+  .pop .prow{display:flex;align-items:center;gap:9px;margin-top:8px;}
+  .pop .plab{font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
+  .pop .dots{display:flex;gap:5px;margin-left:auto;}
+  .pop .dots i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22);}
   .pop .dots i.on{background:#43C6B0;}
-  .pop .mlvl{display:block;margin-top:6px;font-size:14px;font-weight:700;color:#43C6B0;}
-  .pop .pev{display:block;margin-top:2px;font-size:14px;line-height:1.3;color:#DCEDEA;font-weight:500;}
   .pop .pmh{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.18);
     font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
   .pop .mrow{display:flex;align-items:center;gap:8px;margin-top:5px;font-size:14px;font-weight:600;
     line-height:1.2;color:#7F9096;}
-  .pop .mrow i{flex:0 0 20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+  .pop .mrow i{flex:0 0 18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.10);color:#8D9EA2;}
   .pop .mrow.on{color:#fff;font-weight:700;}
   .pop .mrow.on i{background:#43C6B0;color:#06342F;}
@@ -275,7 +279,10 @@
   @media print{
     @page{size:1280px 760px;margin:0;}
     body{background:#fff;display:block;overflow:visible;}
+    /* the on-screen fit() scaling must not follow the deck onto paper */
+    #stageWrap{transform:none!important;}
     .stage{display:flex!important;box-shadow:none;page-break-after:always;}
+    .stage:last-of-type{page-break-after:auto;}
     .nav,.hint,.pop,.rotate-hint{display:none!important;}
   }
 </style>
@@ -291,7 +298,7 @@
   <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 6.2L20 11l-6.4 1.8L12 19l-1.6-6.2L4 11l6.4-1.8z"/></symbol>
 </svg>
 
-<div class="hint">arrow keys, swipe or Prev/Next · hover or tap a vendor for evidence · Ctrl/Cmd+P to export</div>
+<div class="hint">arrow keys, swipe or Prev/Next · Ctrl/Cmd+P to export</div>
 
 <div class="rotate-hint" id="rotateHint">
   <svg class="ricon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.2"/><line x1="9.5" y1="19" x2="14.5" y2="19"/></svg>
@@ -440,7 +447,13 @@
   <section class="stage" id="p3">
     <div class="pgno">3</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them</h1>
+    <h1>Our solution can target the middle ground: <b>more AI than ERPs and more coverage than AI specialists</b></h1>
+
+    <div class="legend">
+      <span class="lgt">Company profile</span>
+      <span class="lg"><span class="psw leg"></span>Legacy vendor</span>
+      <span class="lg"><span class="psw sta"></span>Startup</span>
+    </div>
 
     <div class="p3">
       <div class="matrix">
@@ -454,6 +467,8 @@
           <div class="q ai">
             <span class="qn">AI specialists</span>
             <div class="qd">Model-driven products that own a single step of the lifecycle</div>
+
+            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
               <button type="button" class="chip" data-v="kreo">Kreo</button>
@@ -466,20 +481,20 @@
               <button type="button" class="chip" data-v="openspace">OpenSpace</button>
               <button type="button" class="chip" data-v="alice">ALICE</button>
               <button type="button" class="chip" data-v="nplan">nPlan</button>
-            </div>
-            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
-          </div>
+            </div>          </div>
 
           <div class="q empty">
             <span class="qn">Agentic platforms</span>
             <div class="qd">One platform whose agents reason across every stage as one thread</div>
-            <div class="emptytag">No one is here yet</div>
+
             <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
-          </div>
+            <div class="emptytag">No one is here yet</div>          </div>
 
           <div class="q">
             <span class="qn">Point tools</span>
             <div class="qd">Single-task software where the operator makes every judgement</div>
+
+            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
               <button type="button" class="chip" data-v="bluebeam">Bluebeam Revu</button>
@@ -489,13 +504,13 @@
               <button type="button" class="chip" data-v="sage">Sage Estimating</button>
               <button type="button" class="chip" data-v="causeway">Causeway</button>
               <button type="button" class="chip" data-v="excel">Excel templates</button>
-            </div>
-            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
-          </div>
+            </div>          </div>
 
           <div class="q">
             <span class="qn">Enterprise suites</span>
             <div class="qd">Systems of record that span stages through configuration, not reasoning</div>
+
+            <div class="qf">Broad but rules-based, <span>more features and harder to use</span>.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
               <button type="button" class="chip" data-v="oracle">Oracle</button>
@@ -507,9 +522,7 @@
               <button type="button" class="chip" data-v="ineight">InEight</button>
               <button type="button" class="chip" data-v="trimble">Trimble</button>
               <button type="button" class="chip" data-v="jaggaer">Jaggaer</button>
-            </div>
-            <div class="qf">Broad but rules-based, <span>more features and harder to use</span>.</div>
-          </div>
+            </div>          </div>
 
           <div class="bcmark">
             <svg class="ico"><use href="#i-orbit"/></svg>
@@ -534,10 +547,9 @@
     <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
 
     <div class="legend">
-      <span class="lgt">Badge = how much of the module that group already covers</span>
-      <span class="lg"><span class="sw h"></span>Covers most</span>
-      <span class="lg"><span class="sw m"></span>Partial</span>
-      <span class="lg"><span class="sw l"></span>Barely</span>
+      <span class="lgt">Company profile</span>
+      <span class="lg"><span class="psw leg"></span>Legacy vendor</span>
+      <span class="lg"><span class="psw sta"></span>Startup</span>
     </div>
 
     <div class="mv plain">
@@ -756,49 +768,49 @@
   // m = modules covered (1 orchestration, 2 BoQ, 3 CAPEX, 4 tender, 5 cost realization, 6 value)
   // ai = how AI-native the product is, 1 to 5
   const VENDORS={
-    ribitwo:{n:'RIB iTWO',m:[2,3,5],ai:2,t:'Estimating and controls inside one suite',e:'Integrated modules, but the logic is configured by hand'},
-    oracle:{n:'Oracle',m:[3,5],ai:2,t:'Capital planning, schedule and cost',e:'Deep functionality driven by configuration, not by models'},
-    ineight:{n:'InEight',m:[3,5],ai:2,t:'Estimating through to field execution',e:'Workflow automation on rules, nothing learned between projects'},
-    cleopatra:{n:'Cleopatra',m:[2,3,4,6],ai:2,t:'Cost estimating and project controls',e:'Benchmarks against its own database, no generative reasoning'},
-    ribcostx:{n:'RIB CostX',m:[2,3],ai:2,t:'Measurement and estimating workbench',e:'Automated measurement from drawings, pricing stays manual'},
-    trimble:{n:'Trimble',m:[2,3],ai:2,t:'Measurement, estimating and field tools',e:'Model-based measurement, driven by rules rather than learning'},
-    sapariba:{n:'SAP Ariba',m:[4],ai:2,t:'Sourcing and supplier management',e:'Scoring and workflow rules, limited AI inside evaluation'},
-    jaggaer:{n:'Jaggaer',m:[4],ai:2,t:'Sourcing, tendering and supplier data',e:'Supplier analytics and rules, early AI in sourcing only'},
-    procore:{n:'Procore',m:[5],ai:1,t:'Construction management system of record',e:'A system of record: people enter, the platform stores'},
-    primavera:{n:'Primavera',m:[5],ai:1,t:'Oracle Primavera: schedule and earned value',e:'Critical path mathematics, not learned prediction'},
-    autodeskacc:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope'},
-    autodesk:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope'},
-    bluebeam:{n:'Bluebeam Revu',m:[2],ai:1,t:'Drawing markup and manual takeoff',e:'Measurement tools driven entirely by the user'},
-    planswift:{n:'PlanSwift',m:[2,3],ai:1,t:'On-screen takeoff with manual pricing',e:'On-screen takeoff with every quantity confirmed by hand'},
-    ribcandy:{n:'RIB Candy',m:[3],ai:1,t:'Bottom-up estimating and cash flow',e:'Deterministic estimating spreadsheets at heart'},
-    sage:{n:'Sage Estimating',m:[3],ai:1,t:'Spreadsheet-style estimating database',e:'A priced database assembled manually'},
-    causeway:{n:'Causeway',m:[3],ai:1,t:'Estimating and supply chain tools',e:'Rules and catalogues, no model in the loop'},
-    excel:{n:'Excel templates',m:[2,3,4],ai:1,t:'Whatever each team builds by hand',e:'Only as clever as the person who built the sheet'},
-    kreo:{n:'Kreo',m:[2,3],ai:4,t:'Takeoff and estimating from drawings',e:'Vision models read drawings and output quantities'},
-    buildots:{n:'Buildots',m:[5],ai:4,t:'Site progress from camera walks',e:'Vision models compare site images against the plan'},
-    costify:{n:'Costify',m:[2],ai:4,t:'Documents turned into structured cost data',e:'Language models turn documents into structured cost data'},
-    zebel:{n:'Zebel',m:[2,3,4],ai:4,t:'Early-stage estimating from past projects',e:'Learns cost patterns from a library of past projects'},
-    conwize:{n:'ConWize',m:[4],ai:4,t:'Tender collection and bid comparison',e:'AI parses and normalizes incoming bids for comparison'},
-    ediphi:{n:'Ediphi',m:[3,4],ai:4,t:'Conceptual estimating for preconstruction',e:'Learns from historical estimates to price early concepts'},
-    doxel:{n:'Doxel',m:[5],ai:4,t:'Site progress and earned value from scans',e:'Lidar and vision models measure work actually installed'},
-    openspace:{n:'OpenSpace',m:[5],ai:4,t:'Photo capture of site progress',e:'Vision models pin site photography onto the plan'},
-    alice:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options'},
-    alicetechnologies:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options'},
-    nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects',e:'Forecasts risk from a corpus of past project schedules'}
+    ribitwo:{n:'RIB iTWO',m:[2,3,5],ai:2,t:'Estimating and controls inside one suite',e:'Integrated modules, but the logic is configured by hand',p:'legacy'},
+    oracle:{n:'Oracle',m:[3,5],ai:2,t:'Capital planning, schedule and cost',e:'Deep functionality driven by configuration, not by models',p:'legacy'},
+    ineight:{n:'InEight',m:[3,5],ai:2,t:'Estimating through to field execution',e:'Workflow automation on rules, nothing learned between projects',p:'legacy'},
+    cleopatra:{n:'Cleopatra',m:[2,3,4,6],ai:2,t:'Cost estimating and project controls',e:'Benchmarks against its own database, no generative reasoning',p:'legacy'},
+    ribcostx:{n:'RIB CostX',m:[2,3],ai:2,t:'Measurement and estimating workbench',e:'Automated measurement from drawings, pricing stays manual',p:'legacy'},
+    trimble:{n:'Trimble',m:[2,3],ai:2,t:'Measurement, estimating and field tools',e:'Model-based measurement, driven by rules rather than learning',p:'legacy'},
+    sapariba:{n:'SAP Ariba',m:[4],ai:2,t:'Sourcing and supplier management',e:'Scoring and workflow rules, limited AI inside evaluation',p:'legacy'},
+    jaggaer:{n:'Jaggaer',m:[4],ai:2,t:'Sourcing, tendering and supplier data',e:'Supplier analytics and rules, early AI in sourcing only',p:'legacy'},
+    procore:{n:'Procore',m:[5],ai:1,t:'Construction management system of record',e:'A system of record: people enter, the platform stores',p:'legacy'},
+    primavera:{n:'Primavera',m:[5],ai:1,t:'Oracle Primavera: schedule and earned value',e:'Critical path mathematics, not learned prediction',p:'legacy'},
+    autodeskacc:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy'},
+    autodesk:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy'},
+    bluebeam:{n:'Bluebeam Revu',m:[2],ai:1,t:'Drawing markup and manual takeoff',e:'Measurement tools driven entirely by the user',p:'legacy'},
+    planswift:{n:'PlanSwift',m:[2,3],ai:1,t:'On-screen takeoff with manual pricing',e:'On-screen takeoff with every quantity confirmed by hand',p:'legacy'},
+    ribcandy:{n:'RIB Candy',m:[3],ai:1,t:'Bottom-up estimating and cash flow',e:'Deterministic estimating spreadsheets at heart',p:'legacy'},
+    sage:{n:'Sage Estimating',m:[3],ai:1,t:'Spreadsheet-style estimating database',e:'A priced database assembled manually',p:'legacy'},
+    causeway:{n:'Causeway',m:[3],ai:1,t:'Estimating and supply chain tools',e:'Rules and catalogues, no model in the loop',p:'legacy'},
+    excel:{n:'Excel templates',m:[2,3,4],ai:1,t:'Whatever each team builds by hand',e:'Only as clever as the person who built the sheet',p:'legacy'},
+    kreo:{n:'Kreo',m:[2,3],ai:4,t:'Takeoff and estimating from drawings',e:'Vision models read drawings and output quantities',p:'startup'},
+    buildots:{n:'Buildots',m:[5],ai:4,t:'Site progress from camera walks',e:'Vision models compare site images against the plan',p:'startup'},
+    costify:{n:'Costify',m:[2],ai:4,t:'Documents turned into structured cost data',e:'Language models turn documents into structured cost data',p:'startup'},
+    zebel:{n:'Zebel',m:[2,3,4],ai:4,t:'Early-stage estimating from past projects',e:'Learns cost patterns from a library of past projects',p:'startup'},
+    conwize:{n:'ConWize',m:[4],ai:4,t:'Tender collection and bid comparison',e:'AI parses and normalizes incoming bids for comparison',p:'startup'},
+    ediphi:{n:'Ediphi',m:[3,4],ai:4,t:'Conceptual estimating for preconstruction',e:'Learns from historical estimates to price early concepts',p:'startup'},
+    doxel:{n:'Doxel',m:[5],ai:4,t:'Site progress and earned value from scans',e:'Lidar and vision models measure work actually installed',p:'startup'},
+    openspace:{n:'OpenSpace',m:[5],ai:4,t:'Photo capture of site progress',e:'Vision models pin site photography onto the plan',p:'startup'},
+    alice:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup'},
+    alicetechnologies:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup'},
+    nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects',e:'Forecasts risk from a corpus of past project schedules',p:'startup'}
   };
-  const AILAB=['','rules only','rules only','some AI','AI-native','AI-native'];
 
   const MODS=['End to end orchestration','AI generated unified BoQ','Dynamic bottom up CAPEX',
               'Smart tender bid evaluation','Agentic cost realization','AI-based value optimizer'];
 
   function bubble(v){
     const dots=[1,2,3,4,5].map(i=>'<i class="'+(i<=v.ai?'on':'')+'"></i>').join('');
-    const rows=MODS.map((nm,k)=>'<span class="mrow '+(v.m.includes(k+1)?'on':'')+'">'
-      +'<i>'+(k+1)+'</i>'+nm+'</span>').join('');
+    const rows=MODS.map((nm,k)=>{
+      const on=v.m.includes(k+1);
+      return '<span class="mrow '+(on?'on':'')+'"><i>'+(on?'\u2713':'\u2013')+'</i>'+nm+'</span>';
+    }).join('');
     return '<span class="pop">'
-      +'<span class="pnm">'+v.n+'<span class="dots">'+dots+'</span></span>'
-      +'<span class="mlvl">AI maturity: '+AILAB[v.ai]+'</span>'
-      +'<span class="pev">'+v.e+'</span>'
+      +'<span class="pnm">'+v.n+'</span>'
+      +'<span class="prow"><span class="plab">AI native</span><span class="dots">'+dots+'</span></span>'
       +'<span class="pmh">Modules it covers</span>'+rows
       +'</span>';
   }
@@ -824,7 +836,14 @@
     const v=VENDORS[el.dataset.v];
     if(!v){console.warn('no vendor record for',el.dataset.v);return;}
     el.insertAdjacentHTML('beforeend',bubble(v));
+    el.classList.add('pf-'+v.p);
     el.addEventListener('mouseenter',()=>orient(el));
+  });
+
+  document.querySelectorAll('.chips,.vcol').forEach(box=>{
+    [...box.children]
+      .sort((a,b)=>(VENDORS[a.dataset.v].p==='legacy'?0:1)-(VENDORS[b.dataset.v].p==='legacy'?0:1))
+      .forEach(el=>box.appendChild(el));
   });
 
   // drop kreo.svg, oracle.png etc into /logos and it appears in front of the name
