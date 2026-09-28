@@ -144,45 +144,36 @@
   .quads{grid-area:1/2;position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
     column-gap:14px;row-gap:72px;min-height:0;}
 
-  .q{border:1px solid var(--rule);border-radius:12px;padding:11px 16px;background:var(--soft);
-    display:flex;flex-direction:column;justify-content:space-between;min-height:0;}
-  .qs{font-size:15px;font-weight:600;color:var(--grey);padding-bottom:9px;}
-  .qs b{color:var(--ink2);font-weight:700;}
+  /* one header, the players, one takeaway: nothing else in a quadrant */
+  .q{border:1px solid var(--rule);border-radius:6px;padding:15px 17px;background:#fff;
+    display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:0;}
   .q .qh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-  .q .qn{font-size:18px;font-weight:700;color:var(--ink);}
+  .q .qn{font-size:19px;font-weight:700;color:var(--ink);}
   .q .qt{font-size:15px;font-weight:700;color:var(--grey);}
-  .q .qd{font-size:15px;line-height:1.35;color:var(--ink2);margin-top:5px;}
-  .q .qf{padding-top:10px;border-top:1px solid var(--rule);font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
+  .q .qf{padding-top:12px;border-top:1px solid var(--rule);font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
   .q .qf span{color:var(--red);}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px;}
-  .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--rule);
-    border-radius:22px;padding:5px 13px 5px 6px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.2;
-    box-shadow:0 2px 6px rgba(38,48,58,.05);}
-  .q.ai .chip{border-color:#BBD9D5;color:var(--teal-d);}
-  /* monogram stands in until a real logo file is dropped into /logos */
-  .mono{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 6px;
-    border-radius:7px;background:#E7ECEF;color:#4C5866;font-size:14px;font-weight:800;}
-  .q.ai .mono{background:var(--teal-soft);color:var(--teal-d);}
-  .lgo{height:22px;max-width:96px;border-radius:4px;}
-  .chip.haslogo .mono{display:none;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
+  .chip{display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
+    border-radius:18px;padding:5px 12px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.25;}
+  .q.ai .chip{background:var(--teal-soft);border-color:#CFE4E0;color:var(--teal-d);}
+  /* drop kreo.svg or oracle.png into /logos and it appears in front of the name */
+  .lgo{height:21px;max-width:88px;margin-right:8px;border-radius:3px;}
 
-  .q.empty{background:linear-gradient(150deg,#EEF8F6,#F7FBFA);border:2px dashed #9CCBC5;}
+  .q.empty{background:#F4FAF9;border:1px dashed #9CCBC5;}
   .q.empty .qn{color:var(--teal-d);}
   .q.empty .qf{border-top-color:#CFE4E0;color:var(--teal-d);}
   .q.empty .qf span{color:var(--teal-d);}
-  .emptytag{font-size:16px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);
-    text-align:center;padding:11px;border-radius:10px;background:rgba(11,127,119,.08);}
+  .emptytag{flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);
+    text-align:center;border-radius:6px;background:rgba(11,127,119,.08);}
 
   .bcmark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
-    display:flex;align-items:center;gap:18px;width:min(780px,96%);
-    background:linear-gradient(135deg,#0E2A31 0%,var(--teal-d) 62%,var(--teal) 100%);
-    border:2px solid #fff;border-radius:36px;padding:11px 22px;
-    box-shadow:0 14px 30px rgba(10,42,49,.34);}
-  .bcmark .bmn{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:#fff;white-space:nowrap;}
-  .bcmark .bmn .ico{width:23px;height:23px;}
-  .bcmark .bmd{font-size:15px;line-height:1.32;color:#DCEDEA;font-weight:600;
-    border-left:1px solid rgba(255,255,255,.35);padding-left:18px;}
-  .bcmark .bmd b{color:#fff;}
+    display:flex;align-items:center;justify-content:center;gap:13px;width:min(740px,96%);
+    background:var(--teal-d);border:2px solid #fff;border-radius:30px;padding:12px 22px;
+    box-shadow:0 10px 24px rgba(10,42,49,.28);}
+  .bcmark .ico{width:22px;height:22px;color:#fff;}
+  .bcmark b{font-size:18px;font-weight:700;color:#fff;white-space:nowrap;}
+  .bcmark i{font-style:normal;font-size:15px;font-weight:600;color:#DCEDEA;}
 
   /* ============ PAGE 4 ============ */
   .legend{display:flex;gap:16px;align-items:center;margin-top:6px;font-size:14px;color:var(--ink2);flex-wrap:wrap;}
@@ -409,7 +400,7 @@
   <!-- ===================== PAGE 3 — CATEGORY VIEW ===================== -->
   <section class="stage" id="p3">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them, not at the far corner</h1>
+    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them</h1>
 
     <div class="p3">
       <div class="matrix">
@@ -417,82 +408,62 @@
 
         <div class="quads">
           <div class="q ai">
-            <div>
-              <div class="qh"><span class="qn">AI specialists</span><span class="qt">AI-native, one step</span></div>
-              <div class="qd">Built on models from day one, excellent at the one step they own.</div>
-            </div>
+            <div class="qh"><span class="qn">AI specialists</span><span class="qt">AI-native, one step</span></div>
             <div class="chips">
-              <span class="chip" data-logo="kreo"><span class="mono">K</span>Kreo</span>
-              <span class="chip" data-logo="buildots"><span class="mono">B</span>Buildots</span>
-              <span class="chip" data-logo="costify"><span class="mono">Co</span>Costify</span>
-              <span class="chip" data-logo="zebel"><span class="mono">Z</span>Zebel</span>
-              <span class="chip" data-logo="conwize"><span class="mono">CW</span>ConWize</span>
-              <span class="chip" data-logo="ediphi"><span class="mono">E</span>Ediphi</span>
-              <span class="chip" data-logo="doxel"><span class="mono">D</span>Doxel</span>
-              <span class="chip" data-logo="openspace"><span class="mono">OS</span>OpenSpace</span>
-              <span class="chip" data-logo="alice"><span class="mono">A</span>ALICE</span>
-              <span class="chip" data-logo="nplan"><span class="mono">nP</span>nPlan</span>
+              <span class="chip" data-logo="kreo">Kreo</span>
+              <span class="chip" data-logo="buildots">Buildots</span>
+              <span class="chip" data-logo="costify">Costify</span>
+              <span class="chip" data-logo="zebel">Zebel</span>
+              <span class="chip" data-logo="conwize">ConWize</span>
+              <span class="chip" data-logo="ediphi">Ediphi</span>
+              <span class="chip" data-logo="doxel">Doxel</span>
+              <span class="chip" data-logo="openspace">OpenSpace</span>
+              <span class="chip" data-logo="alice">ALICE</span>
+              <span class="chip" data-logo="nplan">nPlan</span>
             </div>
-            <div>
-              <div class="qs"><b>Strong in</b> takeoff, cost classification, tendering, site progress</div>
-              <div class="qf">Each solves a slice, and <span>nothing carries across a handover</span>.</div>
-            </div>
+            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
           </div>
 
           <div class="q empty">
-            <div>
-              <div class="qh"><span class="qn">Agentic platforms</span><span class="qt">AI-native, across the lifecycle</span></div>
-              <div class="qd">One platform that reasons across every stage, from BoQ through to site.</div>
-            </div>
+            <div class="qh"><span class="qn">Agentic platforms</span><span class="qt">AI-native, across the lifecycle</span></div>
             <div class="emptytag">No one is here yet</div>
             <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
           </div>
 
           <div class="q">
-            <div>
-              <div class="qh"><span class="qn">Point tools</span><span class="qt">Rules-based, one step</span></div>
-              <div class="qd">Built around a single task and driven entirely by the operator.</div>
-            </div>
+            <div class="qh"><span class="qn">Point tools</span><span class="qt">Rules-based, one step</span></div>
             <div class="chips">
-              <span class="chip" data-logo="bluebeam"><span class="mono">BB</span>Bluebeam Revu</span>
-              <span class="chip" data-logo="planswift"><span class="mono">PS</span>PlanSwift</span>
-              <span class="chip" data-logo="ribcostx"><span class="mono">RIB</span>CostX</span>
-              <span class="chip" data-logo="ribcandy"><span class="mono">RIB</span>Candy</span>
-              <span class="chip" data-logo="sage"><span class="mono">SG</span>Sage Estimating</span>
-              <span class="chip" data-logo="causeway"><span class="mono">Cw</span>Causeway</span>
-              <span class="chip" data-logo="excel"><span class="mono">XL</span>Excel templates</span>
+              <span class="chip" data-logo="bluebeam">Bluebeam Revu</span>
+              <span class="chip" data-logo="planswift">PlanSwift</span>
+              <span class="chip" data-logo="ribcostx">RIB CostX</span>
+              <span class="chip" data-logo="ribcandy">RIB Candy</span>
+              <span class="chip" data-logo="sage">Sage Estimating</span>
+              <span class="chip" data-logo="causeway">Causeway</span>
+              <span class="chip" data-logo="excel">Excel templates</span>
             </div>
-            <div>
-              <div class="qs"><b>Strong in</b> measurement, pricing, drawing markup</div>
-              <div class="qf">Where most of the market still sits, with <span>no automation and no memory</span>.</div>
-            </div>
+            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
           </div>
 
           <div class="q">
-            <div>
-              <div class="qh"><span class="qn">Enterprise suites</span><span class="qt">Rules-based, broad</span></div>
-              <div class="qd">Systems of record spanning stages through modules and configuration.</div>
-            </div>
+            <div class="qh"><span class="qn">Enterprise suites</span><span class="qt">Rules-based, broad</span></div>
             <div class="chips">
-              <span class="chip" data-logo="oracle"><span class="mono">O</span>Oracle</span>
-              <span class="chip" data-logo="procore"><span class="mono">P</span>Procore</span>
-              <span class="chip" data-logo="ribitwo"><span class="mono">RIB</span>iTWO</span>
-              <span class="chip" data-logo="cleopatra"><span class="mono">Cl</span>Cleopatra</span>
-              <span class="chip" data-logo="sapariba"><span class="mono">SAP</span>Ariba</span>
-              <span class="chip" data-logo="autodesk"><span class="mono">AU</span>Autodesk ACC</span>
-              <span class="chip" data-logo="ineight"><span class="mono">IE</span>InEight</span>
-              <span class="chip" data-logo="trimble"><span class="mono">T</span>Trimble</span>
-              <span class="chip" data-logo="jaggaer"><span class="mono">J</span>Jaggaer</span>
+              <span class="chip" data-logo="oracle">Oracle</span>
+              <span class="chip" data-logo="procore">Procore</span>
+              <span class="chip" data-logo="ribitwo">RIB iTWO</span>
+              <span class="chip" data-logo="cleopatra">Cleopatra</span>
+              <span class="chip" data-logo="sapariba">SAP Ariba</span>
+              <span class="chip" data-logo="autodesk">Autodesk ACC</span>
+              <span class="chip" data-logo="ineight">InEight</span>
+              <span class="chip" data-logo="trimble">Trimble</span>
+              <span class="chip" data-logo="jaggaer">Jaggaer</span>
             </div>
-            <div>
-              <div class="qs"><b>Strong in</b> cost control, scheduling, procurement, documents</div>
-              <div class="qf">Breadth without intelligence: <span>more features, and harder to use</span>.</div>
-            </div>
+            <div class="qf">Broad but rules-based, <span>more features and harder to use</span>.</div>
           </div>
 
           <div class="bcmark">
-            <div class="bmn"><svg class="ico"><use href="#i-orbit"/></svg>Blue Currency</div>
-            <div class="bmd"><b>Deliberately in the middle.</b> Broader than the AI specialists, more AI-native than the enterprise suites.</div>
+            <svg class="ico"><use href="#i-orbit"/></svg>
+            <b>Blue Currency</b>
+            <i>broader than the AI specialists, more AI-native than the enterprise suites</i>
           </div>
         </div>
 
@@ -766,7 +737,7 @@
     else if(dx>=50)go(-1);
   },{passive:true});
 
-  // drop kreo.svg, oracle.png etc into /logos and the monogram is replaced automatically
+  // drop kreo.svg, oracle.png etc into /logos and it appears in front of the name
   document.querySelectorAll('.chip[data-logo]').forEach(chip=>{
     const exts=['svg','png'];
     let n=0;

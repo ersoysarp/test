@@ -385,7 +385,7 @@ def build_slide3(prs):
         [
             ("The market falls into ", True, INK),
             ("four archetypes", True, TEAL_D),
-            (", and we sit deliberately between them, not at the far corner", True, INK),
+            (", and we sit deliberately between them", True, INK),
         ],
     )
 
@@ -404,93 +404,66 @@ def build_slide3(prs):
         xfrm = etree.SubElement(spPr, qn("a:xfrm"))
     xfrm.set("rot", str(int(-5400000)))  # -90 degrees in 1/60000 deg
 
-    # four quadrants
+    # four quadrants: header, the players, one takeaway line
     q_w, q_h = Inches(5.95), Inches(2.28)
     qx1, qx2 = Inches(0.52), Inches(6.64)
     qy1, qy2 = Inches(1.10), Inches(4.28)
 
-    # AI specialists
-    add_rect(slide, qx1, qy1, q_w, q_h, SOFT, RULE, 0.75, radius=0.08)
-    add_rich(slide, qx1 + Inches(0.14), qy1 + Inches(0.08), Inches(5.6), Inches(0.30),
-             [("AI specialists  ", True, INK), ("AI-native, one step", True, GREY)])
-    add_text(slide, qx1 + Inches(0.14), qy1 + Inches(0.36), Inches(5.6), Inches(0.28),
-             "Built on models from day one, excellent at the one step they own.", 14, False, INK2)
-    ai = ["Kreo", "Buildots", "Costify", "Zebel", "ConWize",
-          "Ediphi", "Doxel", "OpenSpace", "ALICE", "nPlan"]
-    cw = Inches(1.10)
-    for i, name in enumerate(ai):
-        chip(slide, qx1 + Inches(0.14) + (i % 5) * (cw + Inches(0.06)),
-             qy1 + Inches(0.70) + (i // 5) * Inches(0.36),
-             cw, Inches(0.30), name, WHITE, RGBColor(0xBB, 0xD9, 0xD5), TEAL_D)
-    add_text(slide, qx1 + Inches(0.14), qy1 + Inches(1.50), Inches(5.6), Inches(0.24),
-             "Strong in  takeoff, cost classification, tendering, site progress", 14, False, GREY)
-    add_rich(slide, qx1 + Inches(0.14), qy1 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Each solves a slice, and ", True, INK),
-              ("nothing carries across a handover.", True, RED)])
+    def quad(x, y, title, tcol, sub, names, tail, cols, cw,
+             chip_fill=WHITE, chip_line=RULE, chip_col=INK2,
+             box_fill=WHITE, box_line=RULE, box_pt=0.75, empty=False):
+        add_rect(slide, x, y, q_w, q_h, box_fill, box_line, box_pt, radius=0.04)
+        add_rich(slide, x + Inches(0.16), y + Inches(0.10), Inches(5.6), Inches(0.30),
+                 [(title + "  ", True, tcol), (sub, True, GREY)])
+        if empty:
+            tag = add_rect(slide, x + Inches(0.16), y + Inches(0.54), q_w - Inches(0.32),
+                           Inches(1.10), RGBColor(0xDC, 0xEE, 0xEA), radius=0.04)
+            add_shape_text(tag, "NO ONE IS HERE YET", 14, True, TEAL_D, PP_ALIGN.CENTER, "ctr")
+        else:
+            for i, name in enumerate(names):
+                chip(slide, x + Inches(0.16) + (i % cols) * (cw + Inches(0.06)),
+                     y + Inches(0.56) + (i // cols) * Inches(0.36),
+                     cw, Inches(0.30), name, chip_fill, chip_line, chip_col)
+        add_rect(slide, x + Inches(0.16), y + q_h - Inches(0.52), q_w - Inches(0.32), Inches(0.01), box_line)
+        add_rich(slide, x + Inches(0.16), y + q_h - Inches(0.46), Inches(5.6), Inches(0.34), tail)
 
-    # empty / agentic platforms
-    add_rect(slide, qx2, qy1, q_w, q_h, RGBColor(0xEE, 0xF8, 0xF6),
-             RGBColor(0x9C, 0xCB, 0xC5), 1.5, radius=0.08)
-    add_rich(slide, qx2 + Inches(0.14), qy1 + Inches(0.08), Inches(5.6), Inches(0.30),
-             [("Agentic platforms  ", True, TEAL_D), ("AI-native, across the lifecycle", True, GREY)])
-    add_text(slide, qx2 + Inches(0.14), qy1 + Inches(0.40), Inches(5.6), Inches(0.36),
-             "One platform that reasons across every stage, from BoQ through to site.", 14, False, INK2)
-    empty = add_rect(slide, qx2 + Inches(1.35), qy1 + Inches(0.90), Inches(3.25), Inches(0.46),
-                     RGBColor(0xDC, 0xEE, 0xEA), radius=0.08)
-    add_shape_text(empty, "NO ONE IS HERE YET", 14, True, TEAL_D, PP_ALIGN.CENTER)
-    add_rich(slide, qx2 + Inches(0.14), qy1 + Inches(1.60), Inches(5.6), Inches(0.50),
-             [("Where the market is heading, ", True, TEAL_D),
-              ("and what Blue Currency is built for.", True, TEAL_D)])
+    quad(qx1, qy1, "AI specialists", INK, "AI-native, one step",
+         ["Kreo", "Buildots", "Costify", "Zebel", "ConWize",
+          "Ediphi", "Doxel", "OpenSpace", "ALICE", "nPlan"],
+         [("Sharp on the one step they own, ", True, INK),
+          ("nothing carries across a handover.", True, RED)],
+         5, Inches(1.08),
+         chip_fill=TEAL_SOFT, chip_line=RGBColor(0xCF, 0xE4, 0xE0), chip_col=TEAL_D)
 
-    # point tools
-    add_rect(slide, qx1, qy2, q_w, q_h, SOFT, RULE, 0.75, radius=0.08)
-    add_rich(slide, qx1 + Inches(0.14), qy2 + Inches(0.08), Inches(5.6), Inches(0.30),
-             [("Point tools  ", True, INK), ("Rules-based, one step", True, GREY)])
-    add_text(slide, qx1 + Inches(0.14), qy2 + Inches(0.36), Inches(5.6), Inches(0.28),
-             "Built around a single task and driven entirely by the operator.", 14, False, INK2)
-    pts = ["Bluebeam Revu", "PlanSwift", "RIB CostX", "RIB Candy",
-           "Sage Estimating", "Causeway", "Excel templates"]
-    cw2 = Inches(1.55)
-    for i, name in enumerate(pts):
-        chip(slide, qx1 + Inches(0.14) + (i % 4) * (cw2 + Inches(0.06)),
-             qy2 + Inches(0.70) + (i // 4) * Inches(0.36),
-             cw2, Inches(0.30), name)
-    add_text(slide, qx1 + Inches(0.14), qy2 + Inches(1.50), Inches(5.6), Inches(0.24),
-             "Strong in  measurement, pricing, drawing markup", 14, False, GREY)
-    add_rich(slide, qx1 + Inches(0.14), qy2 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Where most of the market still sits, with ", True, INK),
-              ("no automation and no memory.", True, RED)])
+    quad(qx2, qy1, "Agentic platforms", TEAL_D, "AI-native, across the lifecycle", [],
+         [("Where the market is heading, ", True, TEAL_D),
+          ("and what Blue Currency is built for.", True, TEAL_D)],
+         5, Inches(1.08),
+         box_fill=RGBColor(0xF4, 0xFA, 0xF9), box_line=RGBColor(0x9C, 0xCB, 0xC5), box_pt=1.25,
+         empty=True)
 
-    # enterprise
-    add_rect(slide, qx2, qy2, q_w, q_h, SOFT, RULE, 0.75, radius=0.08)
-    add_rich(slide, qx2 + Inches(0.14), qy2 + Inches(0.08), Inches(5.6), Inches(0.30),
-             [("Enterprise suites  ", True, INK), ("Rules-based, broad", True, GREY)])
-    add_text(slide, qx2 + Inches(0.14), qy2 + Inches(0.36), Inches(5.6), Inches(0.28),
-             "Systems of record spanning stages through modules and configuration.", 14, False, INK2)
-    ents = ["Oracle", "Procore", "RIB iTWO", "Cleopatra", "SAP Ariba",
-            "Autodesk ACC", "InEight", "Trimble", "Jaggaer"]
-    cw3 = Inches(1.22)
-    for i, name in enumerate(ents):
-        chip(slide, qx2 + Inches(0.14) + (i % 5) * (cw3 + Inches(0.06)),
-             qy2 + Inches(0.70) + (i // 5) * Inches(0.36),
-             cw3, Inches(0.30), name)
-    add_text(slide, qx2 + Inches(0.14), qy2 + Inches(1.50), Inches(5.6), Inches(0.24),
-             "Strong in  cost control, scheduling, procurement, documents", 14, False, GREY)
-    add_rich(slide, qx2 + Inches(0.14), qy2 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Breadth without intelligence: ", True, INK),
-              ("more features, and harder to use.", True, RED)])
+    quad(qx1, qy2, "Point tools", INK, "Rules-based, one step",
+         ["Bluebeam Revu", "PlanSwift", "RIB CostX", "RIB Candy",
+          "Sage Estimating", "Causeway", "Excel templates"],
+         [("Most of the market still sits here, ", True, INK),
+          ("no automation and no memory.", True, RED)],
+         4, Inches(1.36))
 
-    # Blue Currency centre band
-    band = add_rect(slide, Inches(2.15), Inches(3.30), Inches(8.95), Inches(0.88),
-                    DARK, WHITE, 1.5, radius=0.5)
-    add_shape_text(band, "", 14)
-    add_text(slide, Inches(2.32), Inches(3.40), Inches(2.35), Inches(0.68),
-             "Blue Currency", 16, True, WHITE, PP_ALIGN.LEFT, anchor=MSO_ANCHOR.MIDDLE)
-    add_rect(slide, Inches(4.70), Inches(3.48), Inches(0.015), Inches(0.52), WHITE)
-    add_rich(slide, Inches(4.86), Inches(3.42), Inches(6.05), Inches(0.68),
-             [("Deliberately in the middle.  ", True, WHITE),
-              ("Broader than the AI specialists, more AI-native than the enterprise suites.", False, RGBColor(0xDC, 0xED, 0xEA))],
-             anchor="ctr")
+    quad(qx2, qy2, "Enterprise suites", INK, "Rules-based, broad",
+         ["Oracle", "Procore", "RIB iTWO", "Cleopatra", "SAP Ariba",
+          "Autodesk ACC", "InEight", "Trimble", "Jaggaer"],
+         [("Broad but rules-based, ", True, INK),
+          ("more features and harder to use.", True, RED)],
+         4, Inches(1.38))
+
+    # Blue Currency sits in the band between the two rows
+    band = add_rect(slide, Inches(2.35), Inches(3.45), Inches(8.55), Inches(0.76),
+                    TEAL_D, WHITE, 1.5, radius=0.5)
+    add_rich(slide, Inches(2.60), Inches(3.51), Inches(8.10), Inches(0.64),
+             [("Blue Currency   ", True, WHITE),
+              ("broader than the AI specialists, more AI-native than the enterprise suites",
+               False, RGBColor(0xDC, 0xED, 0xEA))],
+             anchor="ctr", align=PP_ALIGN.CENTER)
 
     add_text(slide, Inches(0.52), Inches(6.68), Inches(12.1), Inches(0.28),
              "BREADTH OF LIFECYCLE COVERAGE  →", 12, True, GREY, PP_ALIGN.CENTER)
