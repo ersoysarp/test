@@ -181,9 +181,9 @@ def build_slide1(prs):
         slide,
         "BLUE CURRENCY  |  AGENTIC AI FOR REAL ESTATE DEVELOPMENT AND CONSTRUCTION",
         [
-            ("Blue Currency is the ", True, INK),
-            ("first agentic AI platform", True, TEAL_D),
-            (" that runs the entire construction lifecycle, end to end", True, INK),
+            ("The solution covers the end-to-end real estate development lifecycle "
+             "with different modules, ", True, INK),
+            ("powered by an agentic AI core", True, TEAL_D),
         ],
     )
 
@@ -289,7 +289,7 @@ def build_slide1(prs):
         add_text(slide, x + Inches(0.14), yy + Inches(0.08), vw - Inches(0.22), vh - Inches(0.12),
                  vp, 14, True, TEAL_D)
 
-    add_notes(slide, "Page 1. Introduction. Blue Currency is the first agentic AI platform that runs the entire construction lifecycle, end to end. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Built on existing McKinsey assets.")
+    add_notes(slide, "Page 1. Introduction. The solution covers the end-to-end real estate development lifecycle with different modules, powered by an agentic AI core. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Built on existing McKinsey assets.")
 
 
 def build_slide2(prs):
