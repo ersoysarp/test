@@ -192,7 +192,10 @@
   /* 8px of air on both sides of each divider keeps the section labels off the card above */
   .whysec{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:8px 0;min-height:0;}
   .whysec + .whysec{border-top:1px solid #B9D6D1;}
-  .wlab{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);}
+  .wlab{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+    display:flex;align-items:center;gap:8px;}
+  .tnum{background:var(--teal);color:#fff;border-radius:3px;padding:1px 7px;font-size:14px;font-weight:800;
+    letter-spacing:.05em;flex-shrink:0;}
   .wdesc{font-size:15px;font-weight:700;color:var(--teal-d);line-height:1.22;margin-bottom:1px;}
   /* COST / TIME / CAPABILITY sit in small white cards, keyword cell fixed so the two sections mirror each other */
   .anchor{display:grid;grid-template-columns:104px 1fr;column-gap:8px;align-items:center;
@@ -468,7 +471,7 @@
         <span style="flex:1;">How it is done today<span class="sub">leaders and developing players</span></span>
         <span class="sevhd">Severity of<br>the problem</span>
       </div>
-      <div class="mh teal">Barriers to replicating the market-leader model</div>
+      <div class="mh teal">Our two target segments</div>
 
       <div class="mc mod"><span class="modcap star"><span class="mn">1</span><b>End-to-End Agentic Orchestration</b></span></div>
       <div class="mc today">
@@ -477,20 +480,19 @@
       </div>
 
       <div class="why">
-        <div class="whyintro">The leader model requires structural advantages that many developing players do not have</div>
+        <div class="whyintro">Each segment buys Blue Currency for a different reason</div>
         <div class="whysec">
-          <div class="wlab">Market leaders</div>
-          <div class="wdesc">Can sustain the enterprise model</div>
-          <div class="anchor"><span class="ak">Cost</span><span class="at">Can absorb significant technology, integration and customization spend</span></div>
-          <div class="anchor"><span class="ak">Time</span><span class="at">Can sustain lengthy implementation and tailoring cycles</span></div>
-          <div class="anchor"><span class="ak">Capability</span><span class="at">Have dedicated digital, IT and specialist teams to build and maintain the stack</span></div>
-        </div>
-        <div class="whysec">
-          <div class="wlab">Developing players</div>
-          <div class="wdesc">Need the capability without replicating the stack</div>
+          <div class="wlab"><span class="tnum">Target 1</span>Developing players</div>
+          <div class="wdesc">Cannot jump to leader maturity, and need a solution built for their needs</div>
           <div class="anchor"><span class="ak">Cost</span><span class="at">Cannot justify the economics of a full enterprise stack</span></div>
           <div class="anchor"><span class="ak">Time</span><span class="at">Need faster time-to-value with limited customization</span></div>
           <div class="anchor"><span class="ak">Capability</span><span class="at">Have fewer specialist resources to build, integrate and maintain complex systems</span></div>
+        </div>
+        <div class="whysec">
+          <div class="wlab"><span class="tnum">Target 2</span>Market leaders</div>
+          <div class="wdesc">Already sustain the enterprise stack, but two modules stay unsolved for them</div>
+          <div class="anchor"><span class="ak">Module 1</span><span class="at">End-to-end agentic orchestration: their ERP and point solutions still do not reason across stages</span></div>
+          <div class="anchor"><span class="ak">Module 6</span><span class="at">AI value intelligence: value engineering stays expert-led, with no continuous savings loop</span></div>
         </div>
       </div>
 
