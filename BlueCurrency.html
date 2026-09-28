@@ -244,8 +244,8 @@
   .pop .dots i.on{background:#43C6B0;}
   .pop .pmh{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.18);
     font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
-  .pop .mrow{display:flex;align-items:center;gap:8px;margin-top:5px;font-size:14px;font-weight:600;
-    line-height:1.2;color:#7F9096;}
+  .pop .mrow{display:flex;align-items:flex-start;gap:8px;margin-top:5px;font-size:14px;font-weight:600;
+    line-height:1.25;color:#7F9096;}
   .pop .mrow i{flex:0 0 18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.10);color:#8D9EA2;}
   .pop .mrow.on{color:#fff;font-weight:700;}
@@ -768,55 +768,46 @@
   // m = modules covered (1 orchestration, 2 BoQ, 3 CAPEX, 4 tender, 5 cost realization, 6 value)
   // ai = how AI-native the product is, 1 to 5
   const VENDORS={
-    ribitwo:{n:'RIB iTWO',m:[2,3,5],ai:2,t:'Estimating and controls inside one suite',e:'Integrated modules, but the logic is configured by hand',p:'legacy'},
-    oracle:{n:'Oracle',m:[3,5],ai:2,t:'Capital planning, schedule and cost',e:'Deep functionality driven by configuration, not by models',p:'legacy'},
-    ineight:{n:'InEight',m:[3,5],ai:2,t:'Estimating through to field execution',e:'Workflow automation on rules, nothing learned between projects',p:'legacy'},
-    cleopatra:{n:'Cleopatra',m:[2,3,4,6],ai:2,t:'Cost estimating and project controls',e:'Benchmarks against its own database, no generative reasoning',p:'legacy'},
-    ribcostx:{n:'RIB CostX',m:[2,3],ai:2,t:'Measurement and estimating workbench',e:'Automated measurement from drawings, pricing stays manual',p:'legacy'},
-    trimble:{n:'Trimble',m:[2,3],ai:2,t:'Measurement, estimating and field tools',e:'Model-based measurement, driven by rules rather than learning',p:'legacy'},
-    sapariba:{n:'SAP Ariba',m:[4],ai:2,t:'Sourcing and supplier management',e:'Scoring and workflow rules, limited AI inside evaluation',p:'legacy'},
-    jaggaer:{n:'Jaggaer',m:[4],ai:2,t:'Sourcing, tendering and supplier data',e:'Supplier analytics and rules, early AI in sourcing only',p:'legacy'},
-    procore:{n:'Procore',m:[5],ai:1,t:'Construction management system of record',e:'A system of record: people enter, the platform stores',p:'legacy'},
-    primavera:{n:'Primavera',m:[5],ai:1,t:'Oracle Primavera: schedule and earned value',e:'Critical path mathematics, not learned prediction',p:'legacy'},
-    autodeskacc:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy'},
-    autodesk:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy'},
-    bluebeam:{n:'Bluebeam Revu',m:[2],ai:1,t:'Drawing markup and manual takeoff',e:'Measurement tools driven entirely by the user',p:'legacy'},
-    planswift:{n:'PlanSwift',m:[2,3],ai:1,t:'On-screen takeoff with manual pricing',e:'On-screen takeoff with every quantity confirmed by hand',p:'legacy'},
-    ribcandy:{n:'RIB Candy',m:[3],ai:1,t:'Bottom-up estimating and cash flow',e:'Deterministic estimating spreadsheets at heart',p:'legacy'},
-    sage:{n:'Sage Estimating',m:[3],ai:1,t:'Spreadsheet-style estimating database',e:'A priced database assembled manually',p:'legacy'},
-    causeway:{n:'Causeway',m:[3],ai:1,t:'Estimating and supply chain tools',e:'Rules and catalogues, no model in the loop',p:'legacy'},
-    excel:{n:'Excel templates',m:[2,3,4],ai:1,t:'Whatever each team builds by hand',e:'Only as clever as the person who built the sheet',p:'legacy'},
-    kreo:{n:'Kreo',m:[2,3],ai:4,t:'Takeoff and estimating from drawings',e:'Vision models read drawings and output quantities',p:'startup'},
-    buildots:{n:'Buildots',m:[5],ai:4,t:'Site progress from camera walks',e:'Vision models compare site images against the plan',p:'startup'},
-    costify:{n:'Costify',m:[2],ai:4,t:'Documents turned into structured cost data',e:'Language models turn documents into structured cost data',p:'startup'},
-    zebel:{n:'Zebel',m:[2,3,4],ai:4,t:'Early-stage estimating from past projects',e:'Learns cost patterns from a library of past projects',p:'startup'},
-    conwize:{n:'ConWize',m:[4],ai:4,t:'Tender collection and bid comparison',e:'AI parses and normalizes incoming bids for comparison',p:'startup'},
-    ediphi:{n:'Ediphi',m:[3,4],ai:4,t:'Conceptual estimating for preconstruction',e:'Learns from historical estimates to price early concepts',p:'startup'},
-    doxel:{n:'Doxel',m:[5],ai:4,t:'Site progress and earned value from scans',e:'Lidar and vision models measure work actually installed',p:'startup'},
-    openspace:{n:'OpenSpace',m:[5],ai:4,t:'Photo capture of site progress',e:'Vision models pin site photography onto the plan',p:'startup'},
-    alice:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup'},
-    alicetechnologies:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup'},
-    nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects',e:'Forecasts risk from a corpus of past project schedules',p:'startup'}
+    ribitwo:{n:'RIB iTWO',m:[2,3,5],ai:2,t:'Estimating and controls inside one suite',e:'Integrated modules, but the logic is configured by hand',p:'legacy',s:['Estimating, cost control and site in one suite','Deep model-based 5D workflows'],w:['Every rule configured by hand','No reasoning across the lifecycle']},
+    oracle:{n:'Oracle',m:[3,5],ai:2,t:'Capital planning, schedule and cost',e:'Deep functionality driven by configuration, not by models',p:'legacy',s:['Capital planning, schedule and cost at scale','Enterprise-grade controls and audit'],w:['Expert configuration, not models','Heavy to deploy and to change']},
+    ineight:{n:'InEight',m:[3,5],ai:2,t:'Estimating through to field execution',e:'Workflow automation on rules, nothing learned between projects',p:'legacy',s:['Estimating through to field execution','Strong cost and change control'],w:['Workflow rules, nothing learned','No BoQ catalog intelligence']},
+    cleopatra:{n:'Cleopatra',m:[2,3,4,6],ai:2,t:'Cost estimating and project controls',e:'Benchmarks against its own database, no generative reasoning',p:'legacy',s:['Estimating, controls and benchmarking in one','Its own historical cost database'],w:['No generative reasoning','Value work is manual what-if']},
+    ribcostx:{n:'RIB CostX',m:[2,3],ai:2,t:'Measurement and estimating workbench',e:'Automated measurement from drawings, pricing stays manual',p:'legacy',s:['Fast measurement straight from drawings','Solid estimating workbench'],w:['Pricing judgement stays manual','Stops at the estimate']},
+    trimble:{n:'Trimble',m:[2,3],ai:2,t:'Measurement, estimating and field tools',e:'Model-based measurement, driven by rules rather than learning',p:'legacy',s:['Measurement tied to the model','Broad field and survey tooling'],w:['Rules rather than learning','No tender or value layer']},
+    sapariba:{n:'SAP Ariba',m:[4],ai:2,t:'Sourcing and supplier management',e:'Scoring and workflow rules, limited AI inside evaluation',p:'legacy',s:['Sourcing and supplier management at scale','Strong compliance and workflow'],w:['Generic, not BoQ aware','Limited AI inside evaluation']},
+    jaggaer:{n:'Jaggaer',m:[4],ai:2,t:'Sourcing, tendering and supplier data',e:'Supplier analytics and rules, early AI in sourcing only',p:'legacy',s:['Sourcing and supplier analytics','Clean bid workflow'],w:['Little construction spec depth','Early-stage AI only']},
+    procore:{n:'Procore',m:[5],ai:1,t:'Construction management system of record',e:'A system of record: people enter, the platform stores',p:'legacy',s:['The site system of record','Wide contractor adoption'],w:['Everything entered by hand','No estimating or tender depth']},
+    primavera:{n:'Primavera',m:[5],ai:1,t:'Oracle Primavera: schedule and earned value',e:'Critical path mathematics, not learned prediction',p:'legacy',s:['Schedule and earned value control','Proven on mega projects'],w:['Critical path maths, no prediction','Cost realization stays manual']},
+    autodeskacc:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy',s:['Models, documents and site coordination','Strong design to site link'],w:['Thin on cost and tendering','ML confined to documents']},
+    autodesk:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination',e:'Some ML in document and clash workflows, narrow scope',p:'legacy',s:['Models, documents and site coordination','Strong design to site link'],w:['Thin on cost and tendering','ML confined to documents']},
+    bluebeam:{n:'Bluebeam Revu',m:[2],ai:1,t:'Drawing markup and manual takeoff',e:'Measurement tools driven entirely by the user',p:'legacy',s:['Fast drawing markup and takeoff','Universal in the field'],w:['Purely manual measurement','No cost or data structure']},
+    planswift:{n:'PlanSwift',m:[2,3],ai:1,t:'On-screen takeoff with manual pricing',e:'On-screen takeoff with every quantity confirmed by hand',p:'legacy',s:['Quick on-screen takeoff','Cheap and simple to run'],w:['Every quantity confirmed by hand','No memory between projects']},
+    ribcandy:{n:'RIB Candy',m:[3],ai:1,t:'Bottom-up estimating and cash flow',e:'Deterministic estimating spreadsheets at heart',p:'legacy',s:['Bottom-up estimating with cash flow','Strong for contractors'],w:['Deterministic spreadsheets at heart','No learning or benchmarking']},
+    sage:{n:'Sage Estimating',m:[3],ai:1,t:'Spreadsheet-style estimating database',e:'A priced database assembled manually',p:'legacy',s:['Priced estimating database','Integrates with accounting'],w:['Assembled manually','No AI anywhere in the flow']},
+    causeway:{n:'Causeway',m:[3],ai:1,t:'Estimating and supply chain tools',e:'Rules and catalogues, no model in the loop',p:'legacy',s:['Estimating with supply chain links','Good depth for civils'],w:['Rules and catalogues only','Narrow lifecycle span']},
+    excel:{n:'Excel templates',m:[2,3,4],ai:1,t:'Whatever each team builds by hand',e:'Only as clever as the person who built the sheet',p:'legacy',s:['Infinitely flexible','Everyone already has it'],w:['No control, version chaos','Only as good as its author']},
+    kreo:{n:'Kreo',m:[2,3],ai:4,t:'Takeoff and estimating from drawings',e:'Vision models read drawings and output quantities',p:'startup',s:['Vision models read the drawings','Takeoff to estimate in minutes'],w:['Stops at the estimate','Nothing carries to tender or site']},
+    buildots:{n:'Buildots',m:[5],ai:4,t:'Site progress from camera walks',e:'Vision models compare site images against the plan',p:'startup',s:['Site progress from camera walks','Objective and near real time'],w:['No link to BoQ or budget','Progress only, not cost']},
+    costify:{n:'Costify',m:[2],ai:4,t:'Documents turned into structured cost data',e:'Language models turn documents into structured cost data',p:'startup',s:['Documents into structured cost data','Cleans messy inputs well'],w:['Limited BoQ hierarchy depth','A single step of the chain']},
+    zebel:{n:'Zebel',m:[2,3,4],ai:4,t:'Early-stage estimating from past projects',e:'Learns cost patterns from a library of past projects',p:'startup',s:['Early estimates from past projects','Learns your own cost history'],w:['Preconstruction only','No site or realization view']},
+    conwize:{n:'ConWize',m:[4],ai:4,t:'Tender collection and bid comparison',e:'AI parses and normalizes incoming bids for comparison',p:'startup',s:['Tender collection and bid comparison','Normalizes messy bids'],w:['Stops once the contract is awarded','No estimating depth']},
+    ediphi:{n:'Ediphi',m:[3,4],ai:4,t:'Conceptual estimating for preconstruction',e:'Learns from historical estimates to price early concepts',p:'startup',s:['Conceptual estimating at speed','Learns from historical estimates'],w:['Preconstruction only','No procurement or site link']},
+    doxel:{n:'Doxel',m:[5],ai:4,t:'Site progress and earned value from scans',e:'Lidar and vision models measure work actually installed',p:'startup',s:['Lidar measures work actually installed','Earned value from reality'],w:['Capture only, no contract view','Needs hardware on site']},
+    openspace:{n:'OpenSpace',m:[5],ai:4,t:'Photo capture of site progress',e:'Vision models pin site photography onto the plan',p:'startup',s:['Photo capture pinned to the plan','Very easy to adopt'],w:['Documentation, not cost','No budget or BoQ link']},
+    alice:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup',s:['Generative scheduling across options','Finds faster build sequences'],w:['Schedule only, not cost value','Needs heavy setup']},
+    alicetechnologies:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search',e:'Generative scheduling searches millions of build options',p:'startup',s:['Generative scheduling across options','Finds faster build sequences'],w:['Schedule only, not cost value','Needs heavy setup']},
+    nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects',e:'Forecasts risk from a corpus of past project schedules',p:'startup',s:['Schedule risk learned from past projects','Strong forecasting'],w:['Risk only, no cost optimization','No execution workflow']}
   };
-
-  const MODS=['End to end orchestration','AI generated unified BoQ','Dynamic bottom up CAPEX',
-              'Smart tender bid evaluation','Agentic cost realization','AI-based value optimizer'];
 
   function bubble(v){
     const dots=[1,2,3,4,5].map(i=>'<i class="'+(i<=v.ai?'on':'')+'"></i>').join('');
-    const group=(has)=>MODS
-      .filter((nm,k)=>v.m.includes(k+1)===has)
-      .map(nm=>'<span class="mrow '+(has?'on':'')+'"><i>'+(has?'\u2713':'\u2013')+'</i>'+nm+'</span>')
-      .join('');
-    const section=(label,has)=>{
-      const rows=group(has);
-      return rows?'<span class="pmh">'+label+'</span>'+rows:'';
-    };
+    const section=(label,items,good)=>'<span class="pmh">'+label+'</span>'
+      +items.map(t=>'<span class="mrow '+(good?'on':'')+'"><i>'+(good?'\u2713':'\u2013')+'</i>'+t+'</span>').join('');
     return '<span class="pop">'
       +'<span class="pnm">'+v.n+'</span>'
       +'<span class="prow"><span class="plab">AI native</span><span class="dots">'+dots+'</span></span>'
-      +section('What they have',true)
-      +section('What is missing',false)
+      +section('Strengths',v.s,true)
+      +section('Weaknesses',v.w,false)
       +'</span>';
   }
 
