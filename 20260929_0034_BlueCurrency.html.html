@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blue Currency investment pitch</title>
+<style>
+  :root{
+    --ink:#26303A; --ink2:#3A454F; --grey:#6B7580; --grey-l:#9AA3AC;
+    --rule:#E3E8E9; --soft:#F7F9F9;
+    --teal:#0B7F77; --teal-d:#0A5F59; --teal-soft:#E4F1EF;
+    --amber:#B97D1E; --amber-soft:#FAF1DF; --white:#fff;
+    --green:#2E9E5B; --red:#C0453B; --red-soft:#F5E4E1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{background:#20262E;font-family:"Helvetica Neue",Arial,"Segoe UI",sans-serif;color:var(--ink);
+    -webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;}
+  #stageWrap{position:relative;}
+  .stage{width:1280px;height:720px;overflow:hidden;background:var(--white);box-shadow:0 20px 60px rgba(0,0,0,.45);
+    padding:26px 40px 24px;display:none;flex-direction:column;position:relative;}
+  .pgno{position:absolute;right:20px;bottom:5px;font-size:14px;font-weight:700;color:var(--grey-l);}
+  .stage.active{display:flex;}
+  .kicker{font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:4px;}
+  h1{font-size:25px;line-height:1.2;font-weight:700;color:var(--ink);max-width:1190px;}
+  /* titles are solid ink on every page; only the kicker above them stays teal */
+  h1 b{color:var(--ink);font-weight:700;}
+  .ico{width:19px;height:19px;flex-shrink:0;display:block;}
+
+  /* ============ PAGE 1 ============ */
+  .p1{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
+  .p1l{display:flex;flex-direction:column;gap:9px;min-height:0;}
+
+  .diagram{flex:1;position:relative;border-radius:20px;padding:12px;overflow:hidden;
+    background:linear-gradient(160deg,#F3FAF9 0%,#E7F3F1 55%,#F7F9F9 100%);border:1px solid var(--rule);
+    display:flex;flex-direction:column;justify-content:space-between;}
+  .diagram::before{content:"";position:absolute;top:-90px;right:-70px;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(11,127,119,.16),transparent 70%);pointer-events:none;}
+  .diagram::after{content:"";position:absolute;bottom:-110px;left:-80px;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(10,42,49,.08),transparent 70%);pointer-events:none;}
+  .diagram > *{position:relative;z-index:1;}
+  .lnk{width:2px;height:9px;background:var(--teal);opacity:.35;margin:0 auto;}
+
+  .orch{border-radius:14px;padding:9px 14px 10px;color:#fff;display:flex;flex-direction:column;gap:7px;
+    background:linear-gradient(135deg,var(--teal-d),var(--teal));box-shadow:0 10px 24px rgba(10,95,89,.28);}
+  .orch .row{display:flex;align-items:center;gap:12px;}
+  .orch .mn{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.55);color:#fff;font-size:14px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;}
+  .orch .lbl{font-size:16px;font-weight:700;letter-spacing:.02em;line-height:1.3;}
+  /* the lifecycle the orchestration layer governs, drawn as a chevron process flow inside the box */
+  .flow{display:flex;gap:0;}
+  .flow span{position:relative;flex:1;min-height:30px;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:4px 10px 4px 14px;font-size:14px;font-weight:700;line-height:1.15;color:#fff;
+    background:rgba(255,255,255,.2);
+    clip-path:polygon(0 0,calc(100% - 11px) 0,100% 50%,calc(100% - 11px) 100%,0 100%,11px 50%);
+    margin-right:-7px;}
+  .flow span:first-child{clip-path:polygon(0 0,calc(100% - 11px) 0,100% 50%,calc(100% - 11px) 100%,0 100%);
+    padding-left:10px;border-radius:5px 0 0 5px;}
+  .flow span:last-child{margin-right:0;}
+  /* six stages share the bar: the short labels give their slack to the long two-word ones */
+  .flow span:nth-child(4){flex:.72;}
+  .flow span:nth-child(5){flex:1.06;}
+  .flow span:nth-child(6){flex:.6;}
+
+  .mods4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .modbox{background:#fff;border-radius:14px;padding:10px 5px;text-align:center;border:1px solid var(--rule);
+    border-top:3px solid var(--teal);box-shadow:0 6px 16px rgba(38,48,58,.07);
+    display:flex;flex-direction:column;align-items:center;gap:6px;min-height:94px;justify-content:flex-start;}
+  /* circle pinned to the top of every box so all four numbers share one baseline, title centres below it */
+  .modbox .t{flex:1;display:flex;align-items:center;justify-content:center;}
+  .modbox .mn{width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px;
+    font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .modbox .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.22;}
+
+  /* module 6 wears the same teal as modules 2 to 5: it is one of the AI modules, not a different class of thing */
+  .valopt{border-radius:14px;padding:9px;text-align:center;font-weight:700;font-size:15px;color:var(--ink);
+    background:#fff;border:1px solid var(--rule);border-top:3px solid var(--teal);box-shadow:0 6px 16px rgba(38,48,58,.07);
+    display:flex;align-items:center;justify-content:center;gap:11px;}
+  .valopt .mn{width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;font-size:14px;
+    font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+  .core{border-radius:14px;padding:10px 18px;color:#fff;text-align:center;position:relative;
+    background:linear-gradient(135deg,#0E2A31 0%,#0A5F59 100%);box-shadow:0 10px 26px rgba(10,42,49,.32);}
+  .core .t{font-size:16px;font-weight:700;letter-spacing:.04em;}
+  .core .s{font-size:14px;opacity:.85;margin-top:2px;font-weight:600;}
+
+  .assets-hd{text-align:center;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);}
+  .bus{height:2px;background:var(--teal);opacity:.35;margin:0 6%;}
+  /* auto tracks: each bubble gets at least its longest word, then the slack is shared out equally */
+  .bubbles{display:grid;grid-template-columns:repeat(7,auto);justify-content:stretch;gap:5px;}
+  .bubble{position:relative;background:#fff;border:1px solid var(--teal-d);border-radius:32px;min-height:46px;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:5px 4px;
+    font-size:12.5px;font-weight:600;color:var(--teal-d);line-height:1.2;box-shadow:0 3px 9px rgba(10,95,89,.07);}
+  .bubble::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--teal);opacity:.35;}
+
+  /* sits outside the panel on purpose: these are integrations, not McKinsey assets */
+  .extvend{position:relative;flex-shrink:0;background:#fff;border:1px solid var(--rule);border-radius:12px;
+    padding:6px 14px;display:flex;align-items:baseline;justify-content:center;gap:7px;flex-wrap:wrap;
+    box-shadow:0 3px 9px rgba(38,48,58,.06);}
+  .extvend::before{content:"";position:absolute;top:-12px;left:50%;margin-left:-1px;height:12px;
+    border-left:2px dashed var(--grey-l);}
+  .extvend .t{font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;}
+  .extvend .e{font-size:14px;font-weight:600;color:var(--grey);line-height:1.25;}
+
+  .p1r{display:flex;flex-direction:column;min-height:0;}
+  .rhd{font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+    padding-bottom:4px;border-bottom:2px solid var(--ink);margin-bottom:2px;}
+  .modsum{list-style:none;margin:0;padding:0;}
+  .modsum li{display:flex;gap:11px;align-items:flex-start;padding:1px 0;border-bottom:1px solid var(--rule);}
+  .modsum li:last-child{border-bottom:none;}
+  .modsum .mn{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .modsum li.star .mn{background:var(--teal-d);}
+  .modsum .nm{font-size:15px;font-weight:700;color:var(--ink);line-height:1.18;}
+  .modsum .sb{font-size:14px;color:var(--grey);line-height:1.26;display:block;margin-top:1px;}
+
+  .vpgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:3px;}
+  .vp{background:var(--teal-soft);border-radius:10px;padding:7px 10px;border-left:4px solid var(--teal);}
+  .vp .vt{font-size:14px;font-weight:700;color:var(--teal-d);line-height:1.26;}
+
+  /* ============ MARVIN BOX TABLES ============ */
+  .mv{display:flex;flex-direction:column;gap:3px;flex:1;margin-top:6px;min-height:0;}
+  .mv-head,.mv-row{display:grid;gap:6px;}
+  .mv-row{flex:1;}
+  .mv-3a{grid-template-columns:0.9fr 2.15fr 2.05fr;}
+  .mv.plain .mv-row > .mc + .mc{border-left:1px solid #DDE4E8;}
+  .mv.plain .mv-row > .mc.sol{border-left:none;}
+  .mv-3{grid-template-columns:1fr 1.33fr 1.33fr;}
+  .mh{color:#fff;font-size:15px;font-weight:700;padding:7px 12px;border-radius:3px;letter-spacing:.01em;}
+  .mh.ink{background:var(--ink);}
+  .mh.grey{background:var(--ink2);}
+  .mh.grey2{background:#4C5866;}
+  .mh.teal{background:var(--teal);}
+  .mh.deep{background:var(--teal-d);}
+  .mh .sub{display:block;font-size:14px;font-weight:600;opacity:.82;margin-top:1px;}
+  .mc{border-radius:3px;padding:4px 11px;font-size:14px;line-height:1.32;color:var(--ink2);
+    display:flex;align-items:flex-start;background:var(--soft);}
+  .mc.mod{background:#EDF0F2;flex-direction:column;justify-content:center;gap:8px;}
+  .mv.plain .mc.mod{justify-content:center;}
+  .mc.sol{background:var(--teal-soft);color:var(--ink);font-weight:600;align-items:center;}
+  /* page 2 runs open rather than as a grid of coloured boxes */
+  .mv.plain .mc{background:#fff;border-radius:0;border-bottom:1px solid #C3CCD2;}
+  .mv.plain .mc.sol{background:var(--teal-soft);border-radius:3px;border-bottom:none;}
+  .modcap{display:flex;align-items:center;gap:9px;}
+  .modcap .mn{flex-shrink:0;width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;
+    font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .modcap.star .mn{background:var(--teal-d);}
+  .modcap b{color:var(--ink);font-size:15px;line-height:1.2;}
+  .modcap .ico{color:var(--teal-d);}
+
+  /* page 2 — how leaders and developing players work today, each with its own severity */
+  .today{flex-direction:column;justify-content:center;align-items:stretch;}
+  .trow{display:flex;gap:11px;align-items:center;padding:2px 0;}
+  .trow + .trow{border-top:1px solid #E1E7EA;}
+  /* fixed label column so every statement starts at the same x; DEVELOPING measures 107px and must not collide */
+  .tlab{flex:0 0 112px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);}
+  .trow.dev .tlab{color:var(--grey-l);}
+  .ttxt{flex:1;font-size:14px;line-height:1.3;color:var(--ink2);}
+  /* severity reads as one equal-sized coloured box per row */
+  .slv{flex:0 0 96px;height:26px;display:flex;align-items:center;justify-content:center;
+    border-radius:3px;font-size:14px;font-weight:800;letter-spacing:.05em;}
+  .s-high .slv{background:#F2DAD6;color:#9B3328;}
+  .s-med .slv{background:#F7E7C6;color:#8A5B14;}
+  .s-low .slv{background:#E3E8EB;color:#5A6671;}
+  .sevhd{flex:0 0 96px;text-align:center;font-size:14px;font-weight:700;opacity:.9;}
+  .mv.plain .mc.sol{font-size:14px;}
+  /* page 2 right-hand cell: where the value lands for leaders vs developing players, split by a thin rule */
+  .mc.sol.val{flex-direction:column;align-items:stretch;justify-content:center;padding:4px 11px;}
+  .vsec{display:flex;gap:9px;align-items:flex-start;padding:5px 0;}
+  .vsec + .vsec{border-top:1px solid #B9D6D1;}
+  .vsec .tlab{flex:0 0 94px;color:var(--teal-d);line-height:1.3;padding-top:1px;}
+  .vsec.dev .tlab{color:var(--grey);}
+  .vb{list-style:none;flex:1;min-width:0;}
+  .vb li{position:relative;padding-left:11px;font-size:14px;line-height:1.3;font-weight:600;color:var(--ink);}
+  .vb li + li{margin-top:1px;}
+  .vb li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+
+  /* page 2 exhibit: six module rows on the left, one "why not follow the leaders" panel spanning them on the right */
+  .p2grid{flex:1;display:grid;grid-template-columns:20fr 50fr 30fr;grid-template-rows:auto repeat(6,minmax(0,1fr));
+    column-gap:6px;row-gap:0;margin-top:8px;min-height:0;}
+  .p2grid .mh{margin-bottom:4px;}
+  .p2grid .mc{background:#fff;border-radius:0;border-bottom:1px solid #C3CCD2;}
+  .p2grid .mc.mod{justify-content:center;}
+  .p2grid .mc.today{border-left:1px solid #DDE4E8;}
+  .why{grid-column:3;grid-row:2 / span 6;background:#F3F8F7;border-radius:3px;padding:9px 12px;
+    display:flex;flex-direction:column;justify-content:flex-start;gap:0;min-height:0;}
+  .whyintro{font-size:14px;line-height:1.3;color:var(--grey);font-weight:600;padding-bottom:8px;border-bottom:1px solid #B9D6D1;}
+  /* the two sections split whatever height is left evenly, so the panel never shows a dead band */
+  /* 8px of air on both sides of each divider keeps the section labels off the card above */
+  .whysec{flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:8px 0;min-height:0;}
+  .whysec + .whysec{border-top:1px solid #B9D6D1;}
+  .wlab{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);}
+  .wdesc{font-size:15px;font-weight:700;color:var(--teal-d);line-height:1.22;margin-bottom:1px;}
+  /* COST / TIME / CAPABILITY sit in small white cards, keyword cell fixed so the two sections mirror each other */
+  .anchor{display:grid;grid-template-columns:104px 1fr;column-gap:8px;align-items:center;
+    background:#fff;border:1px solid #DCE7E5;border-radius:3px;padding:4px 9px;}
+  .ak{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-d);line-height:1.2;}
+  .at{font-size:14px;line-height:1.24;color:var(--ink2);}
+  /* ============ PAGE 3 — FOUR ARCHETYPES ON A 2x2 ============ */
+  .p3{flex:1;display:flex;flex-direction:column;margin-top:8px;min-height:0;}
+  .matrix{flex:1;display:grid;grid-template-columns:34px 1fr;grid-template-rows:minmax(0,1fr) 24px;gap:6px;min-height:0;}
+  .yax{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    border-left:2px solid var(--ink2);padding:2px 0;}
+  .yax span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:14px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap;}
+  .axend{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);}
+  .xax{grid-area:2/2;display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border-top:2px solid var(--ink2);padding-top:3px;}
+  .quads{grid-area:1/2;position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);
+    column-gap:12px;row-gap:42px;min-height:0;}
+
+  /* one sentence, the example vendors, one takeaway */
+  .q{border:2px solid #C3CCD2;border-radius:4px;padding:7px 12px 9px;background:#fff;
+    display:flex;flex-direction:column;gap:3px;min-height:0;}
+  .q .qn{font-size:16px;font-weight:700;color:var(--ink);display:block;line-height:1.2;}
+  .q .qd{font-size:14px;line-height:1.28;color:var(--ink2);}
+  .q .vhd{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--grey);
+    margin-top:auto;}
+  .q .qf{margin-top:3px;padding-top:6px;border-top:1px solid #D7DEE2;font-size:14px;line-height:1.28;font-weight:700;color:var(--ink);}
+  .q .qf span{color:var(--red);}
+  .chips{display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;}
+  .chip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
+    border-radius:18px;padding:2px 8px;font-size:14px;font-weight:700;color:var(--ink2);line-height:1.25;
+    cursor:pointer;font-family:inherit;text-align:left;}
+  .q.ai .chip{background:var(--teal-soft);color:var(--teal-d);}
+  .chip:hover,.chip.open{box-shadow:0 3px 10px rgba(10,95,89,.18);}
+  .chip:hover > .pop,.chip.open > .pop{display:block;}
+  .chip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
+  .chip.tip-down > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
+  /* pages 3 and 4: the whole pill (fill + border + text) says what kind of company it is; capability strength lives inside the tooltip */
+  .chip,.vchip{border-width:1.5px;}
+  .q .chip.cat-established,.chip.cat-established,.vchip.cat-established{background:#E6EAEF;border-color:#4C5866;color:#26303A;}
+  .q .chip.cat-startup,.chip.cat-startup,.vchip.cat-startup{background:#DDF3E4;border-color:#5FB283;color:#1E6B3D;}
+  .vchip .lgo{width:18px;height:18px;flex:0 0 18px;margin-right:6px;}
+  /* official favicon (or a file dropped into /logos) sits as a small round mark before the name */
+  .lgo{width:17px;height:17px;flex:0 0 17px;margin-right:5px;border-radius:50%;background:#fff;object-fit:contain;}
+  .catleg{display:flex;gap:14px;align-items:center;justify-content:flex-end;margin-top:4px;font-size:14px;color:var(--ink2);flex-wrap:wrap;}
+  .catleg .lgt{font-weight:700;color:var(--ink);}
+  .catleg .lg{display:flex;align-items:center;gap:6px;}
+  .cdot{display:inline-block;width:26px;height:14px;border-radius:8px;border:1.5px solid;}
+  .cdot.est{background:#E6EAEF;border-color:#4C5866;} .cdot.stp{background:#DDF3E4;border-color:#5FB283;}
+  .catleg .lg.est{color:#26303A;} .catleg .lg.stp{color:#1E6B3D;}
+
+  .q.empty{background:#F4FAF9;border:2px dashed #79B8B1;}
+  .q.empty .qn{color:var(--teal-d);}
+  .q.empty .qf{border-top-color:#CFE4E0;color:var(--teal-d);}
+  .q.empty .qf span{color:var(--teal-d);}
+  .emptytag{flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);
+    text-align:center;border-radius:6px;background:rgba(11,127,119,.08);}
+
+  .bcmark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
+    display:flex;align-items:center;justify-content:center;gap:13px;width:min(740px,96%);
+    background:var(--teal-d);border:2px solid #fff;border-radius:30px;padding:6px 22px;
+    box-shadow:0 10px 24px rgba(10,42,49,.28);}
+  .bcmark .ico{width:22px;height:22px;color:#fff;}
+  .bcmark b{font-size:18px;font-weight:700;color:#fff;white-space:nowrap;}
+  .bcmark i{font-style:normal;font-size:15px;font-weight:600;color:#DCEDEA;}
+
+  /* ============ PAGE 4 ============ */
+  .legend{display:flex;gap:14px;align-items:center;justify-content:flex-end;
+    margin:7px 0 7px;font-size:14px;line-height:1.2;color:var(--ink2);flex-wrap:nowrap;white-space:nowrap;}
+  .legend .lgt{font-weight:700;color:var(--ink);}
+  .legend .lg{display:flex;align-items:center;gap:6px;}
+  /* page 3: sits as a sub-line directly under the maturity legend */
+  .mhint{margin-top:2px;text-align:right;color:var(--grey);font-size:14px;line-height:1.2;}
+  .sw{display:inline-block;width:28px;height:14px;border-radius:3px;margin-right:4px;vertical-align:middle;flex:0 0 28px;}
+  .sw.h{background:#CFE8D8;border:1.5px solid #2E9E5B;}
+  .sw.m{background:#F5E3BF;border:1.5px solid #D9982F;}
+  .sw.l{background:#F0D4CF;border:1.5px solid var(--red);}
+
+  /* how much of the module each group already covers: colour sits in the badge, not the box */
+  .cbadge{flex:0 0 78px;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:14px;font-weight:800;letter-spacing:.04em;line-height:1.15;padding:4px;border-radius:3px;}
+  .cvhigh .cbadge{background:#CFE8D8;color:#1E6B3D;}
+  .cvmid .cbadge{background:#F5E3BF;color:#8A5B14;}
+  .cvlow .cbadge{background:#F0D4CF;color:#9B3328;}
+
+
+  .pcell{flex-direction:row;align-items:stretch;gap:9px;}
+  .pbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;}
+  .pov{font-size:14px;line-height:1.3;color:var(--ink);font-weight:700;}
+  .vcol{display:flex;flex-wrap:wrap;gap:5px;align-content:flex-start;}
+  .vchip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
+    border-radius:18px;padding:2px 8px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
+    line-height:1.25;text-align:left;max-width:100%;}
+  .vchip:hover,.vchip.open{box-shadow:0 3px 10px rgba(10,95,89,.18);}
+  .pop{
+    display:none;position:absolute;left:50%;bottom:calc(100% + 9px);
+    transform:translateX(calc(-50% + var(--sx,0px)));
+    width:372px;background:var(--ink);color:#fff;font-size:14px;line-height:1.35;font-weight:500;
+    padding:11px 13px 12px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
+    box-shadow:0 10px 24px rgba(0,0,0,.28);cursor:default;
+  }
+  /* the card: who they are, how AI-native, then the same six capabilities for every vendor */
+  .pop .pnm{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;color:#fff;letter-spacing:.01em;}
+  .pop .plg{width:24px;height:24px;flex:0 0 24px;border-radius:50%;background:#fff;object-fit:contain;padding:2px;}
+  .pop .plg[hidden]{display:none;}
+  .pop .pcat{margin-left:auto;font-size:13px;font-weight:700;padding:2px 8px;border-radius:10px;border:none;white-space:nowrap;}
+  .pop .pcat.established{background:#C9D2DB;color:#26303A;}
+  .pop .pcat.startup{background:#9FD9B4;color:#14472A;}
+  .pop .mlvl{display:block;margin-top:7px;font-size:14px;font-weight:700;color:#43C6B0;}
+  .pop .mlvl small{font-size:14px;font-weight:500;color:#B8CBC8;}
+  .pop .pev{display:block;margin-top:3px;font-size:14px;line-height:1.3;color:#DCEDEA;font-weight:500;}
+  .pop .pmh{display:block;margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.18);
+    font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
+  .pop .mrow{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:14px;font-weight:600;
+    line-height:1.2;color:#AEBDC2;}
+  .pop .mrow i{flex:0 0 18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.10);color:#8D9EA2;}
+  .pop .mrow em{margin-left:auto;font-style:normal;font-size:14px;font-weight:700;color:#8D9EA2;white-space:nowrap;}
+  /* green / amber / grey squares = full / partial / no evidence */
+  .pop .mrow.full{color:#fff;font-weight:700;}
+  .pop .mrow.full i{background:#43C6B0;color:#06342F;}
+  .pop .mrow.full em{color:#43C6B0;}
+  .pop .mrow.partial{color:#fff;}
+  .pop .mrow.partial i{background:#E0B25A;color:#3A2A05;}
+  .pop .mrow.partial em{color:#E0B25A;}
+  .pop .pcols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .pop .pcols ul{list-style:none;margin:5px 0 0;padding:0;}
+  .pop .pcols li{position:relative;padding-left:10px;font-size:14px;line-height:1.25;color:#DCEDEA;margin-top:3px;}
+  .pop .pcols li::before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#93A7A5;}
+  .pop .gaps li{color:#F1D6D2;}
+  .pop .gaps li::before{background:#E08A80;}
+  .pop:after{content:"";position:absolute;top:100%;left:50%;transform:translateX(calc(-50% - var(--sx,0px)));
+    border:6px solid transparent;border-top-color:var(--ink);}
+  .vchip:hover > .pop,.vchip.open > .pop{display:block;}
+  .vchip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
+  .vchip.tip-down > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
+
+  .hint{position:fixed;top:12px;right:16px;color:#9AA3AD;font-size:14px;z-index:50;}
+  .nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:50;}
+  .nav button{background:#3A424C;color:#fff;border:none;border-radius:4px;padding:10px 18px;font-size:14px;cursor:pointer;font-family:inherit;min-height:44px;min-width:44px;}
+  .nav button:hover{background:var(--teal);}
+  button.vchip{-webkit-appearance:none;appearance:none;}
+
+  .rotate-hint{
+    display:none;position:fixed;inset:0;z-index:200;background:rgba(24,29,35,.94);
+    flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    text-align:center;padding:28px;font-family:inherit;
+  }
+  .rotate-hint.show{display:flex;}
+  .rotate-hint .ricon{width:52px;height:52px;color:#fff;animation:rot-hint 1.7s ease-in-out infinite;}
+  @keyframes rot-hint{0%,100%{transform:rotate(0deg);}50%{transform:rotate(90deg);}}
+  .rotate-hint p{font-size:15px;line-height:1.45;max-width:280px;color:#D7DEE0;margin:0;}
+  .rotate-hint p b{color:#fff;display:block;font-size:16px;margin-bottom:6px;}
+  .rotate-hint button{margin-top:4px;background:transparent;border:1px solid rgba(255,255,255,.42);
+    color:#fff;border-radius:20px;padding:9px 20px;font-size:14px;cursor:pointer;font-family:inherit;min-height:40px;}
+  .rotate-hint button:hover{background:rgba(255,255,255,.1);}
+
+  @media print{
+    @page{size:1280px 720px;margin:0;}
+    body{background:#fff;display:block;overflow:visible;}
+    .stage{display:flex!important;box-shadow:none;page-break-after:always;}
+    .nav,.hint,.pop,.rotate-hint{display:none!important;}
+  }
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">JNPFHS4YFQKA-662903222-32272</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">57b8714a-58aa-4e65-8a47-570e16ad9856</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mckinsey.sharepoint.com/sites/spe-int-1fkf7xb6xwq0rq/_layouts/15/DocIdRedir.aspx?ID=JNPFHS4YFQKA-662903222-32272, JNPFHS4YFQKA-662903222-32272</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden"
+     fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="i-orbit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(-25 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(25 12 12)"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12.5" x2="16" y2="12.5"/><line x1="8" y1="16" x2="13" y2="16"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9 11 13 14 20 7"/><line x1="4" y1="20" x2="20" y2="20"/></symbol>
+  <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="17" width="18" height="3" rx="1"/><line x1="8" y1="8" x2="16" y2="16"/><rect x="5.5" y="5.5" width="6" height="4" rx="1" transform="rotate(-45 8.5 7.5)"/></symbol>
+  <symbol id="i-track" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2"/><circle cx="6" cy="17" r="2"/><path d="M10 7h8M10 17h8M8 9v6"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 6.2L20 11l-6.4 1.8L12 19l-1.6-6.2L4 11l6.4-1.8z"/></symbol>
+</svg>
+
+<div class="hint">arrow keys, swipe or Prev/Next · hover or tap a vendor for evidence · Ctrl/Cmd+P to export</div>
+
+<div class="rotate-hint" id="rotateHint">
+  <svg class="ricon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.2"/><line x1="9.5" y1="19" x2="14.5" y2="19"/></svg>
+  <p><b>Turn your phone sideways</b>This deck is built for a wide screen. Rotate to landscape to read it comfortably.</p>
+  <button type="button" onclick="dismissRotateHint()">Continue in portrait</button>
+</div>
+
+<div id="stageWrap">
+
+  <!-- ===================== PAGE 1 — INTRODUCTION ===================== -->
+  <section class="stage active" id="p1">
+    <div class="pgno">1</div>
+    <div class="kicker">Blue Currency &nbsp;|&nbsp; Agentic AI for Real Estate Development and Construction</div>
+    <h1>The solution covers the end-to-end real estate development lifecycle with different modules, <b>powered by an agentic AI core</b></h1>
+
+    <div class="p1">
+      <div class="p1l">
+        <div class="diagram">
+          <div class="orch">
+            <div class="flow"><span>Project brief</span><span>Concept design</span><span>Technical design</span><span>Tender</span><span>Construction</span><span>Sales</span></div>
+            <div class="row"><span class="mn">1</span><div class="lbl">End to End Agentic Orchestration for Construction Lifecycle Management</div></div>
+          </div>
+          <div class="lnk"></div>
+
+          <div class="mods4">
+            <div class="modbox"><span class="mn">2</span><span class="t">AI Generated Unified BoQ</span></div>
+            <div class="modbox"><span class="mn">3</span><span class="t">Dynamic Bottom Up CAPEX Estimation</span></div>
+            <div class="modbox"><span class="mn">4</span><span class="t">Smart Tender Bid Evaluation</span></div>
+            <div class="modbox"><span class="mn">5</span><span class="t">Portfolio Performance Management</span></div>
+          </div>
+          <div class="lnk"></div>
+
+          <div class="valopt"><span class="mn">6</span>AI Value Intelligence</div>
+          <div class="lnk"></div>
+
+          <div class="core"><div class="t">AGENTIC AI CORE</div><div class="s">the reasoning engine that powers end to end orchestration</div></div>
+          <div class="lnk"></div>
+
+          <div class="assets-hd">Modular, easy integration with McK assets</div>
+          <div class="bus"></div>
+          <div class="bubbles">
+            <div class="bubble">SourceAI</div>
+            <div class="bubble">ContractAI</div>
+            <div class="bubble">CleanSheetAI</div>
+            <div class="bubble">Procurement Control Tower</div>
+            <div class="bubble">Construction Control Tower</div>
+            <div class="bubble">Agentic Value Generation AI</div>
+            <div class="bubble">Other assets</div>
+          </div>
+        </div>
+
+        <div class="extvend"><span class="t">External vendors</span><span class="e">(e.g., SAP, Coins, Oracle Aconex)</span></div>
+      </div>
+
+      <div class="p1r">
+        <div class="rhd">What each module does</div>
+        <ul class="modsum">
+          <li class="star"><span class="mn">1</span><span><span class="nm">End to End Agentic Orchestration</span><span class="sb">Single platform view to manage projects from project brief to end of construction</span></span></li>
+          <li><span class="mn">2</span><span><span class="nm">AI Generated Unified BoQ</span><span class="sb">AI-based unified BoQ catalog creator and data cleaner at spec level, using the client's dirty historical data</span></span></li>
+          <li><span class="mn">3</span><span><span class="nm">Dynamic Bottom Up CAPEX</span><span class="sb">Item-level cost breakdown structure creator, with live commodity and macro-economic price index integration for forecasting</span></span></li>
+          <li><span class="mn">4</span><span><span class="nm">Smart Tender Bid Evaluation</span><span class="sb">Automatically collects bids, flags outliers and generates an AI-recommended price range to score each bid</span></span></li>
+          <li><span class="mn">5</span><span><span class="nm">Portfolio Performance Management</span><span class="sb">Agentic contract and IPC collection to track cost realization and project progress in real time</span></span></li>
+          <li><span class="mn">6</span><span><span class="nm">AI Value Intelligence</span><span class="sb">Agentic workflow to predict risks and procurement value optimization opportunities by learning from historical data</span></span></li>
+        </ul>
+
+        <div class="rhd" style="margin-top:8px">Key value propositions</div>
+        <div class="vpgrid">
+          <div class="vp"><div class="vt">More complete than AI point tools, more AI-native than legacy suites</div></div>
+          <div class="vp"><div class="vt">Easy to use: covering all the fundamentals, without suite complexities</div></div>
+          <div class="vp"><div class="vt">Plug and play: limited data prep or integration need</div></div>
+          <div class="vp"><div class="vt">Modular, and works with other McKinsey assets</div></div>
+          <div class="vp"><div class="vt">Fits existing systems: complements the client's current technology landscape</div></div>
+          <div class="vp"><div class="vt">Management decision support: highlights risks, opportunities and actions</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PAGE 2 — PROBLEM / SOLUTION ===================== -->
+  <section class="stage" id="p2">
+    <div class="pgno">2</div>
+    <div class="kicker">Blue Currency &nbsp;|&nbsp; The problem we solve</div>
+    <h1>Developing players need market-leading capabilities <b>without market-leading complexity</b></h1>
+
+    <div class="p2grid">
+      <div class="mh ink">Module</div>
+      <div class="mh grey" style="display:flex;align-items:flex-start;gap:11px;">
+        <span style="flex:1;">How it is done today<span class="sub">leaders and developing players</span></span>
+        <span class="sevhd">Severity of<br>the problem</span>
+      </div>
+      <div class="mh teal">Barriers to replicating the market-leader model</div>
+
+      <div class="mc mod"><span class="modcap star"><span class="mn">1</span><b>End-to-End Agentic Orchestration</b></span></div>
+      <div class="mc today">
+        <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">Core ERP + point solutions, with limited integration</span><span class="slv">MEDIUM</span></div>
+        <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">E-mail, Excel and SharePoint-based workflows</span><span class="slv">HIGH</span></div>
+      </div>
+
+      <div class="why">
+        <div class="whyintro">The leader model requires structural advantages that many developing players do not have</div>
+        <div class="whysec">
+          <div class="wlab">Market leaders</div>
+          <div class="wdesc">Can sustain the enterprise model</div>
+          <div class="anchor"><span class="ak">Cost</span><span class="at">Can absorb significant technology, integration and customization spend</span></div>
+          <div class="anchor"><span class="ak">Time</span><span class="at">Can sustain lengthy implementation and tailoring cycles</span></div>
+          <div class="anchor"><span class="ak">Capability</span><span class="at">Have dedicated digital, IT and specialist teams to build and maintain the stack</span></div>
+        </div>
+        <div class="whysec">
+          <div class="wlab">Developing players</div>
+          <div class="wdesc">Need the capability without replicating the stack</div>
+          <div class="anchor"><span class="ak">Cost</span><span class="at">Cannot justify the economics of a full enterprise stack</span></div>
+          <div class="anchor"><span class="ak">Time</span><span class="at">Need faster time-to-value with limited customization</span></div>
+          <div class="anchor"><span class="ak">Capability</span><span class="at">Have fewer specialist resources to build, integrate and maintain complex systems</span></div>
+        </div>
+      </div>
+
+      <div class="mc mod"><span class="modcap"><span class="mn">2</span><b>AI-Generated Unified BoQ</b></span></div>
+      <div class="mc today">
+        <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">Unified BoQ exists, but remains manually maintained</span><span class="slv">LOW</span></div>
+        <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">WBS standardization, but limited BoQ structure</span><span class="slv">HIGH</span></div>
+      </div>
+
+      <div class="mc mod"><span class="modcap"><span class="mn">3</span><b>Dynamic Bottom-Up CAPEX</b></span></div>
+      <div class="mc today">
+        <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">Consultant-led or top-down estimation models</span><span class="slv">LOW</span></div>
+        <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Last cost + inflation, with limited accuracy tracking</span><span class="slv">MEDIUM</span></div>
+      </div>
+
+      <div class="mc mod"><span class="modcap"><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span></div>
+      <div class="mc today">
+        <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">E-tender platforms, with limited AI in comparison</span><span class="slv">LOW</span></div>
+        <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual bid consolidation and Excel comparison</span><span class="slv">MEDIUM</span></div>
+      </div>
+
+      <div class="mc mod"><span class="modcap"><span class="mn">5</span><b>Portfolio Performance Management</b></span></div>
+      <div class="mc today">
+        <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">PM and ERP systems, often not fully integrated</span><span class="slv">LOW</span></div>
+        <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual tracking through Excel and e-mail</span><span class="slv">MEDIUM</span></div>
+      </div>
+
+      <div class="mc mod"><span class="modcap"><span class="mn">6</span><b>AI Value Intelligence</b></span></div>
+      <div class="mc today">
+        <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Expert-led value engineering, with limited AI use</span><span class="slv">HIGH</span></div>
+        <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Value opportunities identified inconsistently</span><span class="slv">HIGH</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PAGE 3 — CATEGORY VIEW ===================== -->
+  <section class="stage" id="p3">
+    <div class="pgno">3</div>
+    <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
+    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them</h1>
+
+    <div class="catleg">
+      <span class="lgt">Pill colour = company maturity</span>
+      <span class="lg est"><span class="cdot est"></span>Established platform</span>
+      <span class="lg stp"><span class="cdot stp"></span>Startup</span>
+    </div>
+    <div class="mhint">hover or tap a vendor for its coverage of our six capabilities</div>
+
+    <div class="p3">
+      <div class="matrix">
+        <div class="yax">
+          <span class="axend">High</span>
+          <span>AI-native reasoning</span>
+          <span class="axend">Low</span>
+        </div>
+
+        <div class="quads">
+          <div class="q ai">
+            <span class="qn">AI specialists</span>
+            <div class="qd">Model-driven products that own a single step of the lifecycle</div>
+            <div class="vhd">Example vendors</div>
+            <div class="chips">
+              <button type="button" class="chip" data-v="kreo">Kreo</button>
+              <button type="button" class="chip" data-v="buildots">Buildots</button>
+              <button type="button" class="chip" data-v="costify">Costify</button>
+              <button type="button" class="chip" data-v="zebel">Zebel</button>
+              <button type="button" class="chip" data-v="conwize">ConWize</button>
+              <button type="button" class="chip" data-v="ediphi">Ediphi</button>
+              <button type="button" class="chip" data-v="doxel">Doxel</button>
+              <button type="button" class="chip" data-v="openspace">OpenSpace</button>
+              <button type="button" class="chip" data-v="alice">ALICE</button>
+              <button type="button" class="chip" data-v="nplan">nPlan</button>
+              <button type="button" class="chip" data-v="trunktools">Trunk Tools</button>
+              <button type="button" class="chip" data-v="documentcrunch">Document Crunch</button>
+            </div>
+            <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
+          </div>
+
+          <div class="q empty">
+            <span class="qn">Agentic platforms</span>
+            <div class="qd">One platform whose agents reason across every stage as one thread</div>
+            <div class="emptytag">No one is here yet</div>
+            <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
+          </div>
+
+          <div class="q">
+            <span class="qn">Point tools</span>
+            <div class="qd">Single-task software where the operator makes every judgement</div>
+            <div class="vhd">Example vendors</div>
+            <div class="chips">
+              <button type="button" class="chip" data-v="bluebeam">Bluebeam Revu</button>
+              <button type="button" class="chip" data-v="planswift">PlanSwift</button>
+              <button type="button" class="chip" data-v="ribcostx">RIB CostX</button>
+              <button type="button" class="chip" data-v="ribcandy">RIB Candy</button>
+              <button type="button" class="chip" data-v="sage">Sage Estimating</button>
+              <button type="button" class="chip" data-v="causeway">Causeway</button>
+              <button type="button" class="chip" data-v="excel">Excel templates</button>
+            </div>
+            <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
+          </div>
+
+          <div class="q">
+            <span class="qn">Enterprise suites</span>
+            <div class="qd">Systems of record that span stages through configuration, not reasoning</div>
+            <div class="vhd">Example vendors</div>
+            <div class="chips">
+              <button type="button" class="chip" data-v="oracle">Oracle</button>
+              <button type="button" class="chip" data-v="procore">Procore</button>
+              <button type="button" class="chip" data-v="ribitwo">RIB iTWO</button>
+              <button type="button" class="chip" data-v="cleopatra">Cleopatra</button>
+              <button type="button" class="chip" data-v="sapariba">SAP Ariba</button>
+              <button type="button" class="chip" data-v="autodesk">Autodesk ACC / Forma</button>
+              <button type="button" class="chip" data-v="ineight">InEight</button>
+              <button type="button" class="chip" data-v="trimble">Trimble</button>
+              <button type="button" class="chip" data-v="bentley">Bentley</button>
+              <button type="button" class="chip" data-v="hexagon">Hexagon</button>
+              <button type="button" class="chip" data-v="nemetschek">Nemetschek</button>
+              <button type="button" class="chip" data-v="jaggaer">Jaggaer</button>
+              <button type="button" class="chip" data-v="dalux">Dalux</button>
+              <button type="button" class="chip" data-v="revizto">Revizto</button>
+              <button type="button" class="chip" data-v="catenda">Catenda</button>
+              <button type="button" class="chip" data-v="usbim">usBIM</button>
+              <button type="button" class="chip" data-v="northspyre">Northspyre</button>
+              <button type="button" class="chip" data-v="mastt">Mastt</button>
+            </div>
+            <div class="qf">Broad, now adding copilots, <span>but still configured rather than reasoning across stages</span>.</div>
+          </div>
+
+          <div class="bcmark">
+            <svg class="ico"><use href="#i-orbit"/></svg>
+            <b>Blue Currency</b>
+            <i>broader than the AI specialists, more AI-native than the enterprise suites</i>
+          </div>
+        </div>
+
+        <div class="xax">
+          <span class="axend">Low</span>
+          <span>Breadth of lifecycle coverage</span>
+          <span class="axend">High</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PAGE 4 — PLAYER DEEP DIVE ===================== -->
+  <section class="stage" id="p4">
+    <div class="pgno">4</div>
+    <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive deep dive</div>
+    <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
+
+    <div class="legend">
+      <span class="lgt">Badge = how much of the module that group already covers</span>
+      <span class="lg"><span class="sw h"></span>Covers most</span>
+      <span class="lg"><span class="sw m"></span>Partial</span>
+      <span class="lg"><span class="sw l"></span>Barely</span>
+    </div>
+
+    <div class="mv plain">
+      <div class="mv-head mv-3">
+        <div class="mh ink">Module</div>
+        <div class="mh grey">Legacy players</div>
+        <div class="mh deep">Emerging AI players</div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap star"><span class="mn">1</span><b>End to End Agentic Orchestration</b></span>
+        </div>
+        <div class="mc cvlow pcell">
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Not agentic either: no automation and no learning across stages.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="ribitwo">RIB iTWO</button>
+                <button type="button" class="vchip" data-v="oracle">Oracle</button>
+                <button type="button" class="vchip" data-v="ineight">InEight</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvlow pcell">
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Each tool owns a single stage; nobody governs the whole lifecycle.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="kreo">Kreo</button>
+                <button type="button" class="vchip" data-v="buildots">Buildots</button>
+                <button type="button" class="vchip" data-v="conwize">ConWize</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap"><span class="mn">2</span><b>AI Generated Unified BoQ</b></span>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Provides structure, but no BoQ catalog creation from scratch out of historical data.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="ribcostx">RIB CostX</button>
+                <button type="button" class="vchip" data-v="trimble">Trimble</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Document to data translation, but limited BoQ hierarchy focus.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="costify">Costify</button>
+                <button type="button" class="vchip" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip" data-v="conwize">ConWize</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap"><span class="mn">3</span><b>Dynamic Bottom Up CAPEX</b></span>
+        </div>
+        <div class="mc cvhigh pcell">
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">Mature estimating engines; this step is already well served.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="ribcostx">RIB CostX</button>
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="ineight">InEight</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvhigh pcell">
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">Genuinely strong AI estimating; also well served.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip" data-v="kreo">Kreo</button>
+                <button type="button" class="vchip" data-v="ediphi">Ediphi</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap"><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Standard templates make it workable; the gap is AI recommendation and spec analysis.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="sapariba">SAP Ariba</button>
+                <button type="button" class="vchip" data-v="jaggaer">Jaggaer</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvhigh pcell">
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">They cover bid comparison well, so no real gap here.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="conwize">ConWize</button>
+                <button type="button" class="vchip" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip" data-v="ediphi">Ediphi</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap"><span class="mn">5</span><b>Portfolio Performance Management</b></span>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Systems of record are entrenched, but recording is fully manual.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="procore">Procore</button>
+                <button type="button" class="vchip" data-v="primavera">Primavera</button>
+                <button type="button" class="vchip" data-v="autodeskacc">Autodesk ACC / Forma</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Physical progress capture only, with no contract or IPC cost tracking.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="buildots">Buildots</button>
+                <button type="button" class="vchip" data-v="doxel">Doxel</button>
+                <button type="button" class="vchip" data-v="openspace">OpenSpace</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mv-row mv-3">
+        <div class="mc mod">
+          <span class="modcap"><span class="mn">6</span><b>AI Value Intelligence</b></span>
+        </div>
+        <div class="mc cvlow pcell">
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Static what-if analysis at gates; no continuous savings loop anywhere.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="ribitwo">RIB iTWO</button>
+                <button type="button" class="vchip" data-v="oracle">Oracle</button>
+              </div>
+          </div>
+        </div>
+        <div class="mc cvmid pcell">
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Optimization exists for schedule; cost value is left untouched.</div>
+            <div class="vcol">
+                <button type="button" class="vchip" data-v="alicetechnologies">ALICE Technologies</button>
+                <button type="button" class="vchip" data-v="nplan">nPlan</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button type="button" onclick="go(-1)">&larr; Prev</button>
+  <button type="button" onclick="go(1)">Next &rarr;</button>
+</div>
+
+<script>
+  const pages=[...document.querySelectorAll('.stage')];
+  let i=0;
+  function show(n){
+    i=Math.max(0,Math.min(pages.length-1,n));
+    pages.forEach((p,x)=>p.classList.toggle('active',x===i));
+    closeTips();
+    if(location.hash!=='#p'+(i+1)) history.replaceState(null,'','#p'+(i+1)+location.search);
+    fit();
+  }
+  function go(d){show(i+d);}
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight')go(1);
+    else if(e.key==='ArrowLeft')go(-1);
+    else if(e.key==='Escape')closeTips();
+  });
+  let touchStartX=0;
+  document.addEventListener('touchstart',e=>{
+    if(e.target.closest('.vchip,.chip,.nav'))return;
+    if(e.changedTouches&&e.changedTouches[0])touchStartX=e.changedTouches[0].clientX;
+  },{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(e.target.closest('.vchip,.chip,.nav'))return;
+    if(!e.changedTouches||!e.changedTouches[0])return;
+    const dx=e.changedTouches[0].clientX-touchStartX;
+    if(dx<=-50)go(1);
+    else if(dx>=50)go(-1);
+  },{passive:true});
+
+  // one vendor record drives every bubble on pages 3 and 4. Researched Sep 2026 from official vendor
+  // pages, help centers and release notes; conservative by design: "none" means no evidence found.
+  //   cat  = established | startup                   (pill border on page 3)
+  //   lvl  = Rules/manual | ML-assisted | AI assistant / copilot | AI-native workflow | Agentic / action-taking AI
+  //   c    = coverage of our six capabilities, full | partial | none
+  const VENDORS={
+    /* ---- established / scaled platforms ---- */
+    autodesk:{n:'Autodesk Forma / ACC',cat:'established',domain:'autodesk.com',
+      t:'AECO industry cloud spanning concept design to construction execution',
+      lvl:'AI assistant / copilot',e:'Autodesk Assistant automates tasks in ACC; bid and submittal agents previewed at AU 2026 with human review',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['Forma AI concept massing and site analysis','BuildingConnected bid leveling and contracting','Construction IQ risk prediction on RFIs, quality, safety'],
+      gaps:['No agent carries decisions across design, tender and construction','Bid leveling is manual; no AI-recommended price range','No commodity-index forecasting; no AI-built BoQ from client history'],
+      src:['https://adsknews.autodesk.com/en/news/the-3-biggest-autodesk-ai-takeaways-from-au-2025/','https://aps.autodesk.com/blog/au-2026-autodesk-building-ai-design-and-make','https://support.buildingconnected.com/hc/en-us/articles/47949854611219-Bid-Leveling-Overview','https://construction.autodesk.com/tools/construction-iq/']},
+    procore:{n:'Procore',cat:'established',domain:'procore.com',
+      t:'Construction management platform with embedded agentic Digital Coworkers',
+      lvl:'Agentic / action-taking AI',e:'Digital Coworker agents (GA July 2026) use Actions and Triggers to execute workflows natively inside Procore',
+      c:{orch:'partial',boq:'none',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['20+ native agents, Actions, Triggers, Agent Studio','Bid Leveling agents flag scope gaps and outliers','Financial Analyst agent flags budget overruns'],
+      gaps:['Agents act inside construction workflows, not brief-to-design','No AI-generated unified BoQ from historical data','No live index forecasting; no recommended target price range'],
+      src:['https://www.procore.com/press/procore-introduces-digital-coworker-packages-expands-ai-agent-library-and-previews-skills-to-help-construction-teams-put-ai-to-work','https://support.procore.com/faq/which-agents-are-included-in-my-procore-ai-plan','https://www.procore.com/ai/agents/financial-analyst']},
+    oracle:{n:'Oracle Aconex / Unifier',cat:'established',domain:'oracle.com',
+      t:'Owner-grade document, cost and project controls suite for capital programs',
+      lvl:'AI assistant / copilot',e:'Unifier adds AI-assisted payment application extraction and Task Assist; CIC Advisor adds ML predictions',
+      c:{orch:'partial',boq:'none',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['Contractual system of record with audit trail','AI-assisted invoice to payment application records','Predictive Advisor models for safety and schedule risk'],
+      gaps:['No agentic orchestration across design, tender and construction','Aconex Tenders collects bids but no AI outlier or price scoring','Cost sheets lack index-driven forecasting; no AI BoQ catalog'],
+      src:['https://docs.oracle.com/en/industries/construction-engineering/primavera-unifier/26/ai-features/index.html','https://www.oracle.com/news/announcement/oracle-ai-enables-more-connected-compliant-capital-projects-2026-04-14/','https://www.oracle.com/construction-engineering/aconex/']},
+    primavera:{n:'Oracle Primavera',cat:'established',domain:'oracle.com',
+      t:'Enterprise scheduling, portfolio and risk analysis for capital projects',
+      lvl:'ML-assisted',e:'CIC Advisor predicts delay probability from historical schedules; generative scheduling remained a prototype',
+      c:{orch:'partial',boq:'none',capex:'partial',tender:'none',cost:'partial',value:'partial'},
+      does:['CPM scheduling with cost loading and risk simulation','ML schedule-delay predictions via CIC Advisor','Schedule integration with Aconex packages'],
+      gaps:['Schedule-centric; no agents carrying decisions across stages','No BoQ, tender evaluation or payment-certificate collection','Cost forecasting without commodity or macro indices'],
+      src:['https://docs.oracle.com/cd/E80480_01/293955.htm','https://www.oracle.com/customer-hub/construction-engineering/primavera-cloud/roundups/march-2026/']},
+    ineight:{n:'InEight',cat:'established',domain:'ineight.com',
+      t:'Integrated project controls for capital construction owners and contractors',
+      lvl:'ML-assisted',e:'AI schedule generation from a Knowledge Library and historical benchmarking; InEight Intelligence is advisory, not action-taking',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['Estimate to schedule to control in one suite','Historical benchmarking flags estimate variances','Contract pay forms and accruals feed live forecasts'],
+      gaps:['No agentic orchestration; humans move data between modules','Benchmarks its own history; no AI-cleaned BoQ catalog','No live index feed; no AI bid scoring or price range'],
+      src:['https://ineight.com/news/ineight-launches-ineight-intelligence/','https://ineight.com/products/ineight-estimate/built-in-benchmarking/','https://ineight.com/products/ineight-contract/']},
+    trimble:{n:'Trimble',cat:'established',domain:'trimble.com',
+      t:'Connected construction ecosystem building towards an agentic AI platform',
+      lvl:'AI assistant / copilot',e:'ProjectSight Help Agent, Auto-Submittals and Accubid AI assistant are live; Agent Studio only piloted',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'none',cost:'partial',value:'none'},
+      does:['AI takeoff and estimating assistant for MEP','ProjectSight financials: contracts, AFPs, forecasts','Trimble Connect CDE with marketplace AI integrations'],
+      gaps:['Products remain siloed; no lifecycle-wide agent with state','No AI bid evaluation or unified BoQ from history','No predictive risk or procurement value intelligence'],
+      src:['https://investor.trimble.com/news/news-details/2025/Trimble-Highlights-AI-Strategy-and-Innovation-at-Dimensions-User-Conference/default.aspx','https://news.trimble.com/New-Trimble-AI-Takeoff-Capabilities-Cut-MEP-Estimating-Time-and-Increase-Accuracy','https://aecmag.com/news/trimble-builds-ai-strategy-around-agentic-ai-platform/']},
+    bentley:{n:'Bentley iTwin / SYNCHRO',cat:'established',domain:'bentley.com',
+      t:'Infrastructure engineering digital twins with AI-powered Plus applications',
+      lvl:'AI assistant / copilot',e:'Bentley Copilot edits models by natural language and suggests SYNCHRO+ activity mappings; users approve each step',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'none',cost:'partial',value:'none'},
+      does:['OpenSite+ generative design optimizing for cost','SYNCHRO 4D model-based quantities and sequencing','SYNCHRO Cost pay apps, change orders, retention'],
+      gaps:['Design and 4D focus; no owner orchestration from brief onward','No tender bid collection or AI bid scoring','No AI-generated BoQ or index-linked CAPEX'],
+      src:['https://www.bentley.com/news/bentley-systems-advances-infrastructure-ai-with-new-applications-and-industry-collaboration/','https://blog.bentley.com/software/bentley-unveils-synchro-at-yii-2025-ushering-in-a-new-era-of-ai-powered-4d-construction-planning/','https://www.bentley.com/en/infrastructure-ai/mcp-servers/']},
+    hexagon:{n:'Hexagon (now Octave)',cat:'established',domain:'octave.com',
+      t:'Design-build-operate software: BricsCAD, Sequence (EcoSys), Loop',
+      lvl:'AI assistant / copilot',e:'Sequence Enterprise Assistant answers data questions, starts tasks and runs scheduled prompts; agentic layer still roadmap',
+      c:{orch:'partial',boq:'none',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['Enterprise project controls and cost forecasting','Contract lifecycle and invoice validation (Loop)','Governed embedded assistant with scheduled agents'],
+      gaps:['No AI-built BoQ catalog from client history','Bid evaluation and cost tracking are workflow-based, not agentic','Lifecycle links are integrations, not agents carrying state'],
+      src:['https://www.octave.com/products/project-performance/sequence/sequence-enterprise','https://www.octave.com/products/construction-supply-chain-management/loop/contracts','https://www.enr.com/articles/63280-octave-unveils-its-connected-aec-operations-strategy']},
+    nemetschek:{n:'Nemetschek (Archicad / ALLPLAN)',cat:'established',domain:'nemetschek.com',
+      t:'BIM authoring group adding a cross-brand AI Assistant layer',
+      lvl:'AI assistant / copilot',e:'Archicad 29 / ALLPLAN AI Assistant (beta) answers how-to questions and filters BIM elements via chat',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['Best-in-class architectural and structural BIM authoring','In-app AI chatbot for product help and element selection','openBIM / IFC data usable by downstream tools'],
+      gaps:['Design stage only; no tender, procurement or cost tracking','No BoQ catalog, CAPEX forecasting or bid evaluation','AI is a Q&A assistant, not action-taking across stages'],
+      src:['https://www.nemetschek.com/en/news-media/ai-innovations-bau-2025','https://www.graphisoft.com/en-us/plans-and-products/ai-solutions/']},
+    ribitwo:{n:'RIB iTWO / RIB 4.0',cat:'established',domain:'rib-software.com',
+      t:'5D BIM platform linking BoQ, estimate, schedule, procurement and invoices',
+      lvl:'AI assistant / copilot',e:'RIB Omni assistant (search, document intelligence) ships in Unify; core iTWO remains rules-based',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'none'},
+      does:['Model-derived BoQ, estimate and procurement demand','TenderConnect e-tendering with price vs budget comparison','Integrated invoice verification and auto-posting'],
+      gaps:['Rule-based integration; no agents reasoning across stages','BoQ is model-driven, not AI-cleaned from messy client history','No AI outlier flags, price range or value prediction'],
+      src:['https://www.rib-software.com/en/rib-4-0','https://www.rib-software.com/de/news/rib-tender-connect','https://www.rib-software.com/en/rib-omni']},
+    ribcostx:{n:'RIB CostX',cat:'established',domain:'rib-software.com',
+      t:'2D / BIM takeoff and estimating for quantity surveyors',
+      lvl:'Rules/manual',e:'No shipped AI features; RIB stated in 2026 that AI for CostX is still being explored',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'none',value:'none'},
+      does:['Live-linked BIM / 2D takeoff to estimate workbooks','Rate libraries and auto-revisioning','Subcontractor quote comparison database'],
+      gaps:['Standalone estimating; no orchestration or cost realization','BoQ built manually from takeoff, not AI-generated','No index forecasting or AI bid scoring'],
+      src:['https://www.rib-software.com/en/rib-costx','https://www.softwareadvice.com/construction/itwo-costx-profile/']},
+    ribcandy:{n:'RIB Candy',cat:'established',domain:'rib-software.com',
+      t:'Contractor first-principles estimating, planning and cost control',
+      lvl:'Rules/manual',e:'Resource-based estimating, EVM and valuations are formula-driven; no AI or ML features documented',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'none'},
+      does:['BoQ linked to estimate and programme','First-principles resource-based pricing','Subcontract adjudication and EVM control'],
+      gaps:['Contractor desktop tool; no owner lifecycle orchestration','Adjudication is manual; no AI outlier or price range','No live indices or predictive value intelligence'],
+      src:['https://www.rib-software.com/en/rib-candy']},
+    bluebeam:{n:'Bluebeam Revu',cat:'established',domain:'bluebeam.com',
+      t:'PDF drawing markup, review and takeoff, now with Bluebeam Max AI',
+      lvl:'AI assistant / copilot',e:'Bluebeam Max (GA May 2026) connects Revu to an LLM via MCP to create markups; Smart Review uses computer vision',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['AI drawing review flagging scope gaps','Natural-language markup creation via MCP','Smart Overlay design-change detection'],
+      gaps:['Takeoff quantities only; no priced BoQ or CAPEX forecast','No tender, contract or payment-certificate workflows','AI acts on one PDF, not across lifecycle stages'],
+      src:['https://press.bluebeam.com/2026/05/bluebeam-max-launches-globally-bringing-ai-powered-productivity-to-aec-teams-everywhere/','https://www.bluebeam.com/bluebeam-max/']},
+    planswift:{n:'PlanSwift',cat:'established',domain:'planswift.com',
+      t:'Desktop takeoff and estimating with Takeoff Boost AI tools',
+      lvl:'ML-assisted',e:'Takeoff Boost (May 2026) uses computer vision for Auto Takeoff, Count and Scale; outputs need human review',
+      c:{orch:'none',boq:'partial',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['AI first-pass area, length and count takeoff','One-click symbol counting across plan sets','Assembly-based pricing of takeoff quantities'],
+      gaps:['Quantities only; no spec-level BoQ from historical data','No CAPEX forecasting, tender evaluation or cost tracking','Single-tool AI, no lifecycle orchestration'],
+      src:['https://help.constructconnect.com/planswift-historical-release-notes-52/planswift-with-takeoff-boost-ai-powered-tools-release-notes-2026-05-06-2752','https://www.planswift.com/estimating/']},
+    sage:{n:'Sage Estimating',cat:'established',domain:'sage.com',
+      t:'Contractor estimating with AI takeoff and Bid Insights bid leveling',
+      lvl:'ML-assisted',e:'Bid Insights plots sub bids against predictive ranges and flags outliers; eTakeoff uses computer vision',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'none'},
+      does:['AI-adjusted historical bid ranges and outlier detection','Trade cost databases and assemblies','Takeoff to estimate to finance data flow'],
+      gaps:['Contractor-side sub leveling, not owner-side tender governance','No AI-built BoQ or live index forecasting','No agentic IPC collection; relies on finance integration'],
+      src:['https://www.sage.com/en-us/blog/sage-estimating-a-proven-partner-for-every-generation-of-technology/','https://help.bidmatrix.intacct.com/Content/ReleaseNotes/Version3_8/Version3_8_April2026.htm']},
+    causeway:{n:'Causeway',cat:'established',domain:'causeway.com',
+      t:'UK contractor platform: CausewayOne pre-construction, finance and trading',
+      lvl:'AI assistant / copilot',e:'2026 CausewayOne embeds AI for tender classification, baseline estimates, return outliers and invoice risk',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['AI baseline estimates from rate libraries and history','AI standardization and outlier flags on sub returns','AI invoice processing and payment-risk detection'],
+      gaps:['Contractor-centric; no owner brief-to-construction orchestration','No commodity or macro index CAPEX forecasting','Invoice AI is AP automation, not IPC cost realization'],
+      src:['https://www.causeway.com/blog/ai-in-pre-construction-estimating-guide-and-faqs','https://www.causeway.com/blog/inside-causewayone-trading-construction-finance']},
+    cleopatra:{n:'Cleopatra Enterprise',cat:'startup',domain:'cleopatraenterprise.com',
+      t:'Total cost management: estimating, controls and benchmarking for capital projects',
+      lvl:'Rules/manual',e:'Structured cost models, regression analytics and CESK knowledgebase; no shipped AI feature evidenced',
+      c:{orch:'partial',boq:'partial',capex:'partial',tender:'none',cost:'partial',value:'partial'},
+      does:['Deep bottom-up estimating with CESK knowledgebase','Estimate-to-control-budget loop with EVM forecasting','Benchmarking and regression on historical projects'],
+      gaps:['Estimates built by cost engineers, not AI from messy data','No live index integration; actuals imported from ERP / Excel','Analytics are statistical, not AI risk or value prediction'],
+      src:['https://cleopatraenterprise.com/project-controls-software/','https://cleopatraenterprise.com/blog/4-cost-models/','https://careers.cleopatraenterprise.com/jobs/ai-developer/']},
+    sapariba:{n:'SAP Ariba',cat:'established',domain:'sap.com',
+      t:'Enterprise source-to-pay suite with Joule agents, rebuilt on SAP BTP',
+      lvl:'Agentic / action-taking AI',e:'Joule Sourcing Assistant orchestrates Event, Bid Analysis (GA Q1 2026) and Negotiation agents that recommend awards',
+      c:{orch:'none',boq:'none',capex:'none',tender:'full',cost:'partial',value:'partial'},
+      does:['Multidimensional AI bid analysis with award recommendations','Agent orchestration across the sourcing lifecycle','Automated counteroffer and negotiation generation'],
+      gaps:['Generic procurement; no design or construction lifecycle','No BoQ generation or item-level CAPEX with indices','Contract and invoice flows are not IPC progress tracking'],
+      src:['https://www.sap.com/use-cases/joule-assistant/sourcing-assistant','https://learning.sap.com/courses/introducing-next-gen-sap-ariba-sourcing/working-with-sourcing-agents-in-next-gen-sap-ariba-sourcing_ef257d90-adb9-49c8-8477-592125de11e5']},
+    jaggaer:{n:'JAGGAER',cat:'established',domain:'jaggaer.com',
+      t:'Source-to-pay suite (JAGGAER One) with JAI assistant and Agent OS',
+      lvl:'AI assistant / copilot',e:'JAI launched May 2026 as a grounded assistant with spend insights; autonomous bid evaluation stated as future',
+      c:{orch:'none',boq:'none',capex:'none',tender:'partial',cost:'partial',value:'partial'},
+      does:['RFx automation and supplier evaluation via JAI','Spend and supplier-risk insights','PO and invoice anomaly detection'],
+      gaps:['No construction lifecycle, BoQ or CAPEX capability','Bid scoring human-in-the-loop; no AI price range','Agentic platform announced, not evidenced in production'],
+      src:['https://www.jaggaer.com/press-release/jaggaer-launches-jai-ai-assistant','https://www.jaggaer.com/blog/agentic-ai-sourcing-supplier-management']},
+    excel:{n:'Excel templates',cat:'',domain:'',
+      t:'Whatever each team builds by hand',
+      lvl:'Rules/manual',e:'Only as clever as the person who built the sheet',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['Fully flexible','Zero licence cost'],gaps:['No automation, no memory, no governance'],src:[]},
+
+    /* ---- BIM / CDE collaboration platforms ---- */
+    revizto:{n:'Revizto',cat:'startup',domain:'revizto.com',
+      t:'Integrated BIM collaboration and issue tracking platform',
+      lvl:'AI assistant / copilot',e:'July 2026 MCP Server lets a customer\'s own LLM read issues and write updates; no native agents shipped',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['Model and issue coordination across design and site','BYO-LLM querying and issue triage via MCP','Object properties API exposing quantities'],
+      gaps:['No commercial modules: BoQ, CAPEX, tender or payments','AI depends on an external LLM, not built-in workflows','Coordination focus; no state carried into tender or cost'],
+      src:['https://revizto.com/resources/blog/introducing-mcp-server','https://revizto.com/product/mcp-server']},
+    dalux:{n:'Dalux',cat:'startup',domain:'dalux.com',
+      t:'BIM-based CDE, field and tender platform for construction',
+      lvl:'AI assistant / copilot',e:'2026 AI Assistant summarizes and searches a single document in Box Pro; SiteWalk Safety AI detects hazards',
+      c:{orch:'none',boq:'none',capex:'none',tender:'partial',cost:'none',value:'none'},
+      does:['Fast BIM viewer, CDE and field QA / QC','Tender module distributing packages and collecting bids','Single-document AI summaries with citations'],
+      gaps:['Tender collects bids but no AI scoring or price range','No BoQ generation, CAPEX or cost realization','AI limited to one document; no cross-stage reasoning'],
+      src:['https://support.dalux.com/hc/en-us/articles/19728327500060-AI-Assistant','https://www.dalux.com/products/dalux-tender/']},
+    catenda:{n:'Catenda',cat:'startup',domain:'catenda.com',
+      t:'openBIM ISO 19650 CDE with MCP-native AI connectivity',
+      lvl:'AI assistant / copilot',e:'Catenda AI (early access) exposes IFC, BCF and documents via MCP so external agents can query and draft topics',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['openBIM CDE with native IFC / BCF workflows','MCP server for customer-chosen AI agents','AI clash grouping and revision diffs'],
+      gaps:['Model QTO but no priced or unified BoQ catalog','No procurement, tender or payment-certificate features','AI still upcoming; explicitly avoids making decisions'],
+      src:['https://catenda.com/products/catenda-ai','https://catenda.com/solutions/bim-data-management']},
+    usbim:{n:'usBIM (ACCA)',cat:'established',domain:'accasoftware.com',
+      t:'Italian openBIM suite: usBIM platform, PriMus 5D estimating',
+      lvl:'ML-assisted',e:'PriMus IFC and usBIM.planAI auto-detect similar entities for QTO; no LLM assistant or agents',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'none',cost:'none',value:'none'},
+      does:['AI-assisted quantity takeoff from IFC and 2D plans','Dynamic BoQ updates on every model revision','Price-list based estimates in the cloud'],
+      gaps:['BoQ from model rules and price lists, not client history','No live commodity or macro index forecasting','No tender evaluation or agentic payment tracking'],
+      src:['https://www.accasoftware.com/en/5d-bim-software','https://www.accasoftware.com/en/construction-estimating-software']},
+
+    /* ---- AI-native specialists ---- */
+    buildots:{n:'Buildots',cat:'startup',domain:'buildots.com',
+      t:'Computer-vision progress tracking and delay prediction',
+      lvl:'AI-native workflow',e:'CV compares 360-degree captures to BIM and schedule; GenAI assistant Dot answers status queries',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'partial',value:'partial'},
+      does:['Element-level progress tracking vs BIM','AI delay forecasting weeks ahead','Portfolio-wide progress and workforce data'],
+      gaps:['No BoQ, CAPEX, tender or payment workflows','Construction phase only; no design or tender','Progress data, not cost realization or value'],
+      src:['https://buildots.com/product/','https://www.constructiondive.com/news/buildots-raises-130m-data-center-projects-surge/830222/','https://www.prnewswire.com/il/news-releases/buildots-launches-dot-first-genai-assistant-to-answer-real-construction-status-queries-302291616.html']},
+    openspace:{n:'OpenSpace',cat:'startup',domain:'openspace.ai',
+      t:'Visual intelligence: 360-degree capture, field tasks, progress tracking',
+      lvl:'AI-native workflow',e:'Spatial AI auto-maps captures to plans and BIM; agent ecosystem announced 2026, not yet action-taking at scale',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'partial',value:'none'},
+      does:['Labor-free 360-degree site documentation','AI Autolocation for field issues and punch lists','OpenSpace Track percent-complete vs milestones'],
+      gaps:['Visual progress only; no BoQ, CAPEX or tender','No contract or IPC collection','No procurement value or historical cost intelligence'],
+      src:['https://www.openspace.ai/platform/','https://www.openspace.ai/press-releases/openspace-unveils-the-next-generation-of-its-visual-intelligence-platform-at-waypoint-2026/','https://www.openspace.ai/press-releases/openspace-extends-leadership-with-102m-series-d-financing/']},
+    alice:{n:'ALICE Technologies',cat:'startup',domain:'alicetechnologies.com',
+      t:'Generative construction scheduling and schedule optioneering',
+      lvl:'AI-native workflow',e:'Simulation engine generates millions of schedule scenarios; Schedule Insights Agent (2025) adds recommendations',
+      c:{orch:'none',boq:'none',capex:'partial',tender:'none',cost:'none',value:'partial'},
+      does:['Generative schedule scenario optimization','Targeted Optimization for acceleration','Resource-loaded cost and time trade-offs'],
+      gaps:['Optimizes schedules, not procurement or BoQ','No tender evaluation or payment tracking','Cost is schedule-loaded labor, not item-level CAPEX'],
+      src:['https://www.alicetechnologies.com/home','https://blog.alicetechnologies.com/alices-2025-annual-review']},
+    nplan:{n:'nPlan',cat:'startup',domain:'nplan.io',
+      t:'AI schedule risk forecasting and project-controls agent',
+      lvl:'Agentic / action-taking AI',e:'Barry agent orchestrates up to 200 sub-agents on the Khaleesi engine; Barry Live still a research preview (2026)',
+      c:{orch:'partial',boq:'none',capex:'none',tender:'none',cost:'none',value:'partial'},
+      does:['Probabilistic activity-level delay forecasting','Generative schedule creation from scope docs','Decision intelligence for megaproject scenarios'],
+      gaps:['Schedule and risk only; no BoQ, CAPEX or tender','Agents cover project controls, not the lifecycle','No procurement value optimization or IPC tracking'],
+      src:['https://www.nplan.io/','https://www.nplan.io/press-releases/nplan-raises-16m-series-b-to-scale-its-ai-led-transformation-of-capital-project-delivery','https://www.nplan.io/blog-posts/three-wow-moments-from-summer-ai-day-2026']},
+    conwize:{n:'ConWize',cat:'startup',domain:'conwize.io',
+      t:'Cloud estimating, subcontractor bidding and tender management for contractors',
+      lvl:'Rules/manual',e:'Workflow automation and KPI dashboards; AI claims are generic with no verifiable AI-generated outputs',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'partial',value:'none'},
+      does:['Automated bid invites and response tracking','Line-by-line BoQ bid comparison with anomaly flags','Winning bids flow into the project BoQ'],
+      gaps:['BoQ built manually; no AI catalog from history','Comparison is min / max / avg, no AI price range','Contractor tool; no owner CAPEX indices or value AI'],
+      src:['https://conwize.io/estimating/','https://conwize.io/bidding/','https://conwize.io/procurement/']},
+    costify:{n:'costify.ai',cat:'startup',domain:'costify.ai',
+      t:'AI that structures messy cost documents into a private benchmarking database',
+      lvl:'ML-assisted',e:'Classifies BoQs and cost plans to NRM / ICMS taxonomies at ~88% accuracy with validation workflows; founded 2025',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'none',value:'none'},
+      does:['Auto-classifies historical BoQs and cost plans','Private rate database for benchmarking','Grounds bid evaluation in past paid rates'],
+      gaps:['Data layer only; no estimating, tender or execution','No commodity or macro index forecasting','No agentic actions; conversational AI still roadmap'],
+      src:['https://www.costify.ai/','https://iuk-business-connect.org.uk/casestudy/costify-ai-transforming-construction-cost-data-into-ai-powered-insights/']},
+    ediphi:{n:'Ediphi',cat:'startup',domain:'ediphi.com',
+      t:'Cloud-native preconstruction estimating and cost management for contractors',
+      lvl:'Rules/manual',e:'Modern cloud system of record; no verifiable native AI features, relies on Togal.AI integration for takeoff',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'none',cost:'none',value:'none'},
+      does:['Unified cost model to detailed estimate','Value engineering and cost trend tracking','Native Togal.AI takeoff integration'],
+      gaps:['No AI-generated BoQ or historical data cleaning','No live price-index CAPEX forecasting','Contractor precon only; no tender scoring or IPC'],
+      src:['https://www.ediphi.com/blog/ediphi-2025-record-growth-enterprise-cloud-preconstruction','https://www.ediphi.com/blog/ediphi-and-togal-ai-announce-native-integration']},
+    kreo:{n:'Kreo',cat:'startup',domain:'kreo.net',
+      t:'AI takeoff and estimating with an agent that builds BoQs from drawings',
+      lvl:'Agentic / action-taking AI',e:'Caddie agent runs Auto Measure, builds BoQs and exports Excel autonomously; scope limited to takeoff',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'none',cost:'none',value:'none'},
+      does:['Autonomous drawing-to-BoQ generation','Auto Measure and Auto Count on 2D drawings','Items and assemblies convert quantities to costs'],
+      gaps:['BoQ from drawings, not unified from client history','No indices, tender, IPC or value workflows','Thinly funded single-stage tool'],
+      src:['https://www.kreo.net/news-2d-takeoff/caddie-the-ai-agent-that-does-the-work-instead-of-just-talking-about-it','https://help-takeoff.kreo.net/en/articles/5723499-what-is-kreo-software']},
+    doxel:{n:'Doxel',cat:'startup',domain:'doxel.ai',
+      t:'Computer-vision progress tracking with automated earned value and forecasting',
+      lvl:'AI-native workflow',e:'CV quantifies work-in-place vs BIM; language models map schedule to progress; no action-taking agents',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'partial',value:'partial'},
+      does:['Automated work-in-place quantity tracking','Earned value and pay-app validation from site data','Production-rate forecasting of completion'],
+      gaps:['Validates pay apps, does not collect IPCs agentically','No BoQ, CAPEX or tender capabilities','Construction phase only'],
+      src:['https://doxel.ai/product','https://doxel.ai/stakeholder/project-executives']},
+    zebel:{n:'Zebel',cat:'startup',domain:'zebel.io',
+      t:'Historical-data-driven conceptual estimating with AI estimate review',
+      lvl:'AI assistant / copilot',e:'AI Oversight reviews estimates for gaps and anomalies; historical data is structured by a human concierge team',
+      c:{orch:'none',boq:'partial',capex:'partial',tender:'partial',cost:'none',value:'none'},
+      does:['Structured historical cost database','Parametric conceptual to detailed estimates','AI bid review and anomaly detection'],
+      gaps:['Data cleaning is a manual service, not AI BoQ','No live commodity or macro index integration','Precon tool; no execution or IPC tracking'],
+      src:['https://www.zebel.io/','https://www.zebel.io/ai-oversight']},
+    trunktools:{n:'Trunk Tools',cat:'startup',domain:'trunktools.com',
+      t:'Construction AI agents on a knowledge graph for field and PM workflows',
+      lvl:'Agentic / action-taking AI',e:'Pre-built agents draft RFIs, review submittals and monitor schedules, handing off to each other; $70M raised',
+      c:{orch:'partial',boq:'none',capex:'none',tender:'none',cost:'none',value:'none'},
+      does:['Cited document Q&A via SMS (TrunkText)','Agentic submittal and RFI review','Schedule agent linking P6 to documents'],
+      gaps:['Document and admin agents; no cost, BoQ or CAPEX','Execution focus; no design-to-tender orchestration','No payment certificate or value intelligence'],
+      src:['https://trunktools.com/','https://cortex.trunktools.com/','https://www.insightpartners.com/ideas/trunk-tools-closes-40m-series-b-to-lead-constructions-ai-transformation/']},
+    documentcrunch:{n:'Document Crunch (Trimble)',cat:'established',domain:'documentcrunch.com',
+      t:'AI contract and project-document risk intelligence, now part of Trimble',
+      lvl:'Agentic / action-taking AI',e:'Project Assist agentic layer generates redlines, notices, submittals and RFIs; acquired by Trimble April 2026',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'none',value:'partial'},
+      does:['Cited contract risk detection','Auto-redlining and playbook compliance','Cross-document scope gap identification'],
+      gaps:['Document risk only; no BoQ, CAPEX or tender scoring','No cost realization or IPC tracking','Contractor compliance, not owner value optimization'],
+      src:['https://www.documentcrunch.com/','https://news.trimble.com/2026-06-09-Document-Crunch-Launches-Constructions-First-Project-Level-AI-Risk-Intelligence-Platform']},
+    mastt:{n:'Mastt',cat:'startup',domain:'mastt.com',
+      t:'Owner-side capital project controls with AI payment claim verification',
+      lvl:'AI assistant / copilot',e:'AI extracts contract compliance items and checks uploaded progress claims; a human reviews each status',
+      c:{orch:'none',boq:'none',capex:'none',tender:'none',cost:'partial',value:'none'},
+      does:['AI payment verification against contract terms','Contract, variation and progress claim registers','Owner dashboards for cost, schedule, risk'],
+      gaps:['Claims uploaded manually, not agentically collected','No BoQ, CAPEX estimating or tender evaluation','No predictive risk or procurement value AI'],
+      src:['https://www.mastt.com/solutions/project-owners','https://www.mastt.com/features/ai-payment-verification']},
+    northspyre:{n:'Northspyre',cat:'startup',domain:'northspyre.com',
+      t:'Real estate development management with AI bidding and cost automation',
+      lvl:'AI assistant / copilot',e:'LLM flags scope gaps in bids and recommends vendors; invoice extraction is human-in-the-loop automation',
+      c:{orch:'partial',boq:'none',capex:'partial',tender:'partial',cost:'partial',value:'partial'},
+      does:['Developer platform from deal to close-out','GenAI scope-gap detection across vendor bids','Automated invoice and pay-app extraction'],
+      gaps:['Workflow platform; agents do not carry decisions across stages','Budget lines, not AI-built spec-level BoQ or indices','Vendor savings estimates, not AI price range or risk'],
+      src:['https://www.businesswire.com/news/home/20240305365651/en/Northspyre-Unveils-Northspyre-AI-Including-Industry-First-Generative-AI-Tool-for-Bidding-Process-To-Drive-Down-Development-Costs','https://www.northspyre.com/project-planning']}
+  };
+  // two data-v spellings point at the same company
+  const ALIAS={autodeskacc:'autodesk',alicetechnologies:'alice'};
+  const CATLAB={established:'Established platform',startup:'Startup'};
+  const COVLAB={full:'Full',partial:'Partial',none:'No evidence'};
+
+  const MODS=[['orch','End-to-end orchestration'],['boq','AI-generated unified BoQ'],['capex','Dynamic bottom-up CAPEX'],
+              ['tender','Smart tender bid evaluation'],['cost','Portfolio performance management'],['value','AI value intelligence']];
+
+  const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const li=a=>(a||[]).map(x=>'<li>'+esc(x)+'</li>').join('');
+
+  function bubble(v){
+    const rows=MODS.map(([k,nm],i)=>{
+      const cv=(v.c&&v.c[k])||'none';
+      return '<span class="mrow '+cv+'"><i>'+(i+1)+'</i>'+nm+'<em>'+COVLAB[cv]+'</em></span>';
+    }).join('');
+    return '<span class="pop">'
+      +'<span class="pnm"><img class="plg" alt="" hidden>'+esc(v.n)
+      +(v.cat?'<span class="pcat '+v.cat+'">'+CATLAB[v.cat]+'</span>':'')+'</span>'
+      +'<span class="mlvl">AI maturity: '+esc(v.lvl)+(v.e?' <small>&middot; '+esc(v.e)+'</small>':'')+'</span>'
+      +'<span class="pev">'+esc(v.t)+'</span>'
+      +'<span class="pmh">Coverage vs Blue Currency\u2019s 6 capabilities</span>'+rows
+      +'<span class="pcols"><span><span class="pmh">Strongest capabilities</span><ul>'+li(v.does)+'</ul></span>'
+      +'<span class="gaps"><span class="pmh">Gaps vs Blue Currency</span><ul>'+li(v.gaps)+'</ul></span></span>'
+      +'</span>';
+  }
+
+  // a bubble this tall opens wherever there is room on the page, and slides
+  // back inside the page edge when the chip sits near the left or right margin
+  function orient(el){
+    const st=el.closest('.stage'),pop=el.querySelector('.pop');
+    if(!st||!pop)return;
+    const b=st.getBoundingClientRect(),r=el.getBoundingClientRect();
+    el.classList.toggle('tip-down',(b.bottom-r.bottom)>(r.top-b.top));
+    // the page is drawn through a scale() transform, so measure in page pixels
+    const k=(b.width/st.offsetWidth)||1,sw=st.offsetWidth,edge=12;
+    const w=parseFloat(getComputedStyle(pop).width)||0;
+    const c=(r.left+r.width/2-b.left)/k;
+    let sx=0;
+    if(c-w/2<edge) sx=edge-(c-w/2);
+    else if(c+w/2>sw-edge) sx=(sw-edge)-(c+w/2);
+    el.style.setProperty('--sx',Math.round(Math.max(22-w/2,Math.min(w/2-22,sx)))+'px');
+  }
+
+  const vid=el=>ALIAS[el.dataset.v]||el.dataset.v;
+  document.querySelectorAll('[data-v]').forEach(el=>{
+    const v=VENDORS[vid(el)];
+    if(!v){console.warn('no vendor record for',el.dataset.v);return;}
+    if(v.cat)el.classList.add('cat-'+v.cat);
+    el.insertAdjacentHTML('beforeend',bubble(v));
+    el.addEventListener('mouseenter',()=>orient(el));
+  });
+
+  // logo lookup, in order: a file dropped into /logos (kreo.svg, oracle.png), then the vendor's own
+  // favicon served from its official domain. Nothing is drawn if neither resolves.
+  const LOGO={};
+  function logoFor(id,done){
+    const v=VENDORS[id];
+    if(!v)return;
+    // a resolved entry is a string; while the lookup is in flight it is the queue of waiting callbacks
+    if(typeof LOGO[id]==='string'){if(LOGO[id]!=='none')done(LOGO[id]);return;}
+    if(LOGO[id]===undefined)LOGO[id]=[];
+    LOGO[id].push(done);
+    if(LOGO[id].length>1)return;
+    const cands=['logos/'+id+'.svg','logos/'+id+'.png'];
+    if(v.domain)cands.push('https://www.google.com/s2/favicons?domain='+v.domain+'&sz=64');
+    let n=0;
+    (function tryNext(){
+      if(n>=cands.length){const q=LOGO[id];LOGO[id]='none';return;}
+      const img=new Image();
+      img.onload=()=>{
+        // Google returns a 16px globe placeholder when a site has no favicon; skip it
+        if(cands[n].indexOf('favicons')>-1&&img.naturalWidth<=16){n++;tryNext();return;}
+        const q=LOGO[id];LOGO[id]=cands[n];q.forEach(f=>f(cands[n]));
+      };
+      img.onerror=()=>{n++;tryNext();};
+      img.src=cands[n];
+    })();
+  }
+  // every pill (archetype page and deep-dive page) carries the logo; every tooltip shows it beside the name
+  document.querySelectorAll('.chip[data-v],.vchip[data-v]').forEach(el=>{
+    logoFor(vid(el),src=>{
+      const img=new Image();img.className='lgo';img.alt='';img.src=src;el.prepend(img);el.classList.add('haslogo');
+      const p=el.querySelector('.pop .plg');if(p){p.src=src;p.hidden=false;}
+    });
+  });
+
+  function closeTips(){document.querySelectorAll('.vchip.open,.chip.open').forEach(n=>n.classList.remove('open'));}
+  document.addEventListener('click',e=>{
+    const tip=e.target.closest('.vchip,.chip');
+    if(!tip){closeTips();return;}
+    const was=tip.classList.contains('open');
+    closeTips();
+    if(!was){orient(tip);tip.classList.add('open');}
+  });
+
+  function fit(){
+    const wrap=document.getElementById('stageWrap');
+    const navReserve=68;
+    const availW=window.innerWidth-40, availH=window.innerHeight-40-navReserve;
+    const scale=Math.min(availW/1280, availH/720, 1.1);
+    wrap.style.transform='scale('+scale+')';
+    wrap.style.transformOrigin='center center';
+  }
+  function checkRotateHint(){
+    const el=document.getElementById('rotateHint');
+    if(!el||el.dataset.dismissed)return;
+    const portraitNarrow=window.matchMedia('(max-width: 820px) and (orientation: portrait)').matches;
+    el.classList.toggle('show',portraitNarrow);
+  }
+  function dismissRotateHint(){
+    const el=document.getElementById('rotateHint');
+    if(!el)return;
+    el.dataset.dismissed='1';
+    el.classList.remove('show');
+  }
+  function applyRoute(){
+    const m=location.hash.match(/p(\d)/);
+    if(m) show(parseInt(m[1],10)-1);
+    const tip=(new URLSearchParams(location.search)).get('tip');
+    if(tip){
+      const scope=pages[i]||document;
+      const el=[...scope.querySelectorAll('.vchip,.chip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
+      if(el){closeTips();orient(el);el.classList.add('open');}
+    }
+  }
+  window.addEventListener('resize',()=>{fit();checkRotateHint();});
+  window.addEventListener('orientationchange',checkRotateHint);
+  window.addEventListener('hashchange',()=>{const m=location.hash.match(/p(\d)/);if(m)show(parseInt(m[1],10)-1);});
+  window.addEventListener('load',()=>{applyRoute();fit();checkRotateHint();});
+  applyRoute();fit();checkRotateHint();
+  setTimeout(()=>{
+    pages.forEach(p=>p.classList.add('active'));
+    const w=el=>{const o=el.style.whiteSpace;el.style.whiteSpace='nowrap';const v=Math.ceil(el.scrollWidth);el.style.whiteSpace=o;return v;};
+    const mx=sel=>Math.max(0,...[...document.querySelectorAll(sel)].map(w));
+    const ov=sel=>[...document.querySelectorAll(sel)].map(e=>e.scrollHeight-e.clientHeight).join('/');
+    const wr=sel=>[...document.querySelectorAll(sel)].map(e=>Math.round(e.getBoundingClientRect().height)).join('/');
+    const m=['P2MODB='+mx('#p2 .modcap b'),'TTXT='+mx('#p2 .ttxt'),'TTXTH='+wr('#p2 .ttxt'),
+             'WHYOV='+ov('#p2 .why'),'QOV='+ov('#p3 .q'),'QH='+wr('#p3 .q'),
+             'FLOWH='+wr('#p1 .flow span'),'MODBH='+wr('#p2 .mc.mod')];
+    pages.forEach((p,n)=>p.classList.toggle('active',n===i));
+    const r=pages.map((p,n)=>{p.classList.add('active');const v=p.scrollHeight;const kids=[...p.children].filter(c=>!c.classList.contains('pgno')).map(c=>c.className+':'+c.scrollHeight).join(',');p.classList.toggle('active',n===i);return 'P'+(n+1)+'='+v+'['+kids+']';}).join(' ');
+    document.title='MEAS '+r+' || '+m.join(' ');
+  },1400);
+</script>
+</body>
+</html>
