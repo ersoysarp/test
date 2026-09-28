@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PRE AI Platform — Progress Demo · 17 September 2026</title>
+<style>
+:root{
+  --teal-dark:#37796C;
+  --teal-deep:#1c4a41;
+  --teal-bright:#00A8A3;
+  --ink:#222927;
+  --ink-soft:#5b6360;
+  --ink-faint:#8b938f;
+  --line:#d8dedd;
+  --band:#eef4f2;
+  --paper:#ffffff;
+
+  /* three-state palette, used by the Gantt and the architecture appendix */
+  --done:#1c6b5d;      --done-bg:#e2efeb;
+  --live:#b8862b;      --live-bg:#fbf3e2;
+  --gap:#a8482f;       --gap-bg:#fbeae5;
+  --idle:#9aa5a1;      --idle-bg:#f1f4f3;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#3a4340;font-family:"Helvetica Neue",Arial,"Segoe UI",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ───────────── deck mechanics ───────────── */
+#deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{
+  position:absolute;top:50%;left:50%;
+  width:1280px;height:720px;
+  transform:translate(-50%,-50%) scale(var(--s,1));
+  background:var(--paper);
+  display:none;
+  padding:44px 56px 40px;
+  flex-direction:column;
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+}
+.slide.on{display:flex}
+
+#hud{
+  position:fixed;right:14px;bottom:12px;z-index:50;
+  font-size:11px;letter-spacing:.06em;color:#c9d2cf;
+  font-variant-numeric:tabular-nums;
+}
+#hint{
+  position:fixed;left:14px;bottom:12px;z-index:50;
+  font-size:11px;letter-spacing:.04em;color:#8d9894;
+}
+
+/* ───────────── shared slide furniture ───────────── */
+.kicker{
+  font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal-dark);margin:0 0 8px;
+}
+h1.sh{font-size:31px;font-weight:800;line-height:1.12;margin:0 0 4px;letter-spacing:-.4px}
+p.dek{font-size:14.5px;color:var(--ink-soft);line-height:1.45;margin:8px 0 0;max-width:1020px}
+.rule{height:2.5px;background:var(--teal-dark);margin:14px 0 20px;flex:0 0 auto}
+.body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.foot{
+  flex:0 0 auto;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);
+  font-size:11px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:20px;
+}
+.foot b{color:var(--teal-dark);font-weight:700}
+
+/* chips */
+.chip{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 7px;border-radius:3px;white-space:nowrap;
+}
+.c-done{background:var(--done-bg);color:var(--done);border:1px solid #b8dbd0}
+.c-live{background:var(--live-bg);color:#8a6620;border:1px solid #e6d3a6}
+.c-gap {background:var(--gap-bg); color:var(--gap); border:1px solid #e0b3a4}
+.c-idle{background:var(--idle-bg);color:#6e7a76;border:1px solid var(--line)}
+
+/* ───────────── slide 1 · title ───────────── */
+.title-slide{background:linear-gradient(160deg,#0f3b34 0%,#1c4a41 55%,#245a4f 100%);color:#fff;padding:0}
+.title-wrap{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;padding:0 64px}
+.title-slide .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7fd0c4;margin:0 0 20px}
+.title-slide h1{font-size:52px;font-weight:800;line-height:1.05;margin:0;letter-spacing:-1.2px;max-width:900px}
+.title-slide .claim{
+  font-size:19px;line-height:1.45;color:#cfe4df;margin:22px 0 0;max-width:820px;font-weight:400;
+  border-left:3px solid var(--teal-bright);padding-left:18px;
+}
+.title-slide .claim b{color:#fff;font-weight:700}
+.runorder{
+  flex:0 0 auto;background:rgba(255,255,255,.055);border-top:1px solid rgba(127,208,196,.28);
+  padding:20px 64px 22px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.ro{padding:0 22px;border-left:1px solid rgba(255,255,255,.14)}
+.ro:first-child{padding-left:0;border-left:none}
+.ro .n{font-size:10px;font-weight:700;letter-spacing:.14em;color:#7fd0c4;margin:0 0 6px}
+.ro .who{font-size:16px;font-weight:700;color:#fff;margin:0 0 3px}
+.ro .what{font-size:12.5px;color:#a9c6c0;line-height:1.35;margin:0}
+.ro .min{font-size:11px;color:#7fd0c4;font-weight:700;margin:6px 0 0}
+.title-meta{position:absolute;top:36px;right:64px;text-align:right;font-size:11.5px;color:#8fb5ad;line-height:1.6}
+
+/* ───────────── slide 2 · gantt ───────────── */
+.gantt{flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
+.slide.dense h1.sh{font-size:26.5px}
+.slide.dense .rule{margin:11px 0 14px}
+.slide.dense .g-row{padding:1px 0}
+.slide.dense .g-track{height:23px}
+.slide.dense .g-band{margin:6px 0 3px}
+.g-legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:10.5px;color:var(--ink-soft);margin:0 0 12px}
+.g-legend .li{display:flex;align-items:center;gap:6px}
+.swatch{width:26px;height:10px;border-radius:2px;display:inline-block}
+.sw-done{background:var(--done)}
+.sw-live{background:var(--live)}
+.sw-plan{background:var(--idle-bg);border:1px solid var(--line)}
+.sw-gap{background:var(--gap-bg);border:1px dashed var(--gap)}
+
+.g-head,.g-row{display:grid;grid-template-columns:240px 1fr 318px;align-items:center}
+.g-head{border-bottom:1.5px solid var(--teal-dark);padding-bottom:5px;margin-bottom:2px}
+.g-axis{position:relative;height:16px}
+.g-axis .wk{
+  position:absolute;top:0;font-size:9.5px;color:var(--ink-faint);
+  transform:translateX(-50%);white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+.g-band{
+  grid-column:1 / -1;display:flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);
+  margin:9px 0 5px;
+}
+.g-band::after{content:"";flex:1 1 auto;height:1px;background:var(--line)}
+.g-band .gt{font-size:10px;color:var(--ink-faint);letter-spacing:.04em;text-transform:none;font-weight:400}
+
+.g-row{padding:2.5px 0}
+.g-label{padding-right:14px}
+.g-label .t{font-size:12.5px;font-weight:700;line-height:1.2;color:var(--ink)}
+.g-label .o{font-size:10.5px;color:var(--ink-faint);margin-top:1px}
+.g-track{position:relative;height:26px;border-left:1px solid var(--line)}
+.g-track::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(to right,transparent 0,transparent calc(10% - 1px),#eef1f0 calc(10% - 1px),#eef1f0 10%);
+}
+.bar{
+  position:absolute;top:5px;height:16px;border-radius:3px;
+  background:var(--idle-bg);border:1px solid var(--line);overflow:hidden;
+}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px 0 0 2px}
+.bar.done{border-color:#b8dbd0;background:var(--done-bg)}
+.bar.done .fill{background:var(--done)}
+.bar.live{border-color:#e6d3a6;background:var(--live-bg)}
+.bar.live .fill{background:var(--live)}
+.bar.gap{border:1px dashed var(--gap);background:var(--gap-bg)}
+.bar.idle{border:1px dashed var(--idle);background:var(--idle-bg)}
+.g-note{padding-left:16px;font-size:10.5px;line-height:1.3;color:var(--ink-soft)}
+.g-note b{color:var(--ink);font-weight:700}
+.g-note .blk{color:var(--gap);font-weight:700}
+.today{position:absolute;top:-2px;bottom:-2px;width:0;border-left:2px solid #c0392b;z-index:3}
+.gate{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--teal-dark);z-index:2}
+.marks{position:relative;height:18px;grid-column:2}
+.marks .m{
+  position:absolute;top:0;font-size:10px;font-weight:700;white-space:nowrap;transform:translateX(-50%);
+}
+.marks .m.t{color:#c0392b}
+.marks .m.g{color:var(--teal-dark)}
+
+/* ───────────── slide 3 · now / next ───────────── */
+.split{flex:1 1 auto;display:grid;grid-template-columns:1fr 1.06fr;gap:26px;min-height:0;align-content:center}
+.panel{display:flex;flex-direction:column;min-height:0}
+.panel h3{
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  margin:0 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);color:var(--ink-faint);
+}
+.quiet{color:var(--ink-soft)}
+.factlist{list-style:none;margin:0;padding:0}
+.factlist li{padding:9px 0;border-bottom:1px solid #f0f3f2;font-size:13.5px;line-height:1.4}
+.factlist li:last-child{border-bottom:none}
+.factlist .h{font-weight:700;color:var(--ink);display:block}
+.factlist .s{color:var(--ink-soft);font-size:12.5px}
+
+.hi{
+  background:var(--band);border:1.5px solid var(--teal-dark);border-radius:6px;
+  padding:20px 22px;display:flex;flex-direction:column;
+}
+.hi h3{color:var(--teal-deep);border-bottom-color:#bcd4cd;margin-bottom:14px}
+.proof{padding:13px 0;border-bottom:1px solid #d9e4e0}
+.proof:last-of-type{border-bottom:none}
+.proof .who{font-size:16.5px;font-weight:800;color:var(--teal-deep);margin:0 0 4px}
+.proof .who small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-left:8px}
+.proof .txt{font-size:13.5px;line-height:1.45;color:var(--ink);margin:0}
+.proof .txt b{color:var(--teal-deep)}
+.hi .caveat{
+  margin-top:auto;padding-top:14px;border-top:1px solid #d9e4e0;
+  font-size:12px;line-height:1.45;color:var(--ink-soft);
+}
+.hi .caveat b{color:var(--gap)}
+
+/* ───────────── slide 4 · plan + risks ───────────── */
+.two{flex:1 1 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;min-height:0;align-content:center}
+.gatecard{border-left:3px solid var(--teal-dark);padding-left:18px}
+.gatecard .gh{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin:0 0 3px}
+.gatecard .gd{font-size:11.5px;color:var(--ink-faint);margin:0 0 14px}
+.lands{list-style:none;margin:0;padding:0}
+.lands li{position:relative;padding:0 0 12px 22px;font-size:13.5px;line-height:1.4}
+.lands li::before{
+  content:"";position:absolute;left:0;top:6px;width:9px;height:9px;border-radius:2px;background:var(--teal-dark);
+}
+.lands li .s{display:block;color:var(--ink-soft);font-size:12px;margin-top:2px}
+.risks{list-style:none;margin:0;padding:0}
+.risks li{
+  padding:9px 12px;margin-bottom:7px;background:var(--gap-bg);
+  border-left:3px solid var(--gap);font-size:12.2px;line-height:1.38;
+}
+.risks li .rh{display:block;font-weight:700;color:#7d3520;margin-bottom:2px}
+.risks li .rs{color:#6b4438}
+
+/* ───────────── slide 5 · MVP ───────────── */
+.mvp{flex:1 1 auto;display:grid;grid-template-columns:1fr 1.12fr 0.86fr;gap:24px;min-height:0;align-content:center}
+.mvp .col h3{
+  font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  margin:0 0 11px;padding-bottom:7px;border-bottom:1px solid var(--line);
+}
+.mvp .col.can h3{color:var(--teal-deep);border-bottom-color:#bcd4cd}
+.mvp .col.build h3{color:#8a6620;border-bottom-color:#e6d3a6}
+.mvp .col.out h3{color:var(--ink-faint)}
+.mvp ul{list-style:none;margin:0;padding:0}
+.mvp li{position:relative;padding:0 0 9px 16px;font-size:13px;line-height:1.36}
+.mvp li::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%}
+.mvp .can li::before{background:var(--teal-dark)}
+.mvp .build li::before{background:var(--live)}
+.mvp .out li::before{background:var(--idle);width:6px;height:1.5px;border-radius:0;top:9px}
+.mvp li b{color:var(--ink)}
+.mvp .out li{color:var(--ink-soft);font-size:12.5px}
+.mvp .col.can{background:var(--band);border-left:3px solid var(--teal-dark);padding:16px 18px}
+.mvp .note{
+  grid-column:1 / -1;margin-top:4px;padding:11px 16px;background:var(--band);
+  border-left:3px solid var(--teal-bright);font-size:12.5px;line-height:1.45;color:var(--ink-soft);
+}
+.mvp .note b{color:var(--teal-deep)}
+
+/* ───────────── slide 6 · asks ───────────── */
+.asks{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;gap:0}
+.ask{
+  display:grid;grid-template-columns:32px 1fr 190px 132px;gap:18px;align-items:center;
+  padding:17px 0;border-bottom:1px solid var(--line);
+}
+.ask:last-child{border-bottom:none}
+.ask .num{
+  font-size:13px;font-weight:800;color:#fff;background:var(--teal-dark);
+  width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+}
+.ask .what{font-size:16px;font-weight:700;color:var(--ink);line-height:1.25}
+.ask .what span{display:block;font-size:12.5px;font-weight:400;color:var(--ink-soft);margin-top:3px}
+.ask .who{font-size:14.5px;font-weight:700;color:var(--teal-deep)}
+.ask .when{
+  font-size:13px;font-weight:800;text-align:center;padding:7px 10px;border-radius:4px;
+  background:var(--band);color:var(--teal-deep);border:1px solid #bcd4cd;
+}
+.ask .when.hot{background:var(--gap-bg);color:var(--gap);border-color:#e0b3a4}
+.ask .when .sub{display:block;font-weight:400;font-size:10.5px;margin-top:2px;opacity:.85}
+.ask-note{
+  margin-top:16px;padding:12px 16px;background:var(--band);border-left:3px solid var(--teal-bright);
+  font-size:12.5px;line-height:1.45;color:var(--ink-soft);
+}
+.ask-note b{color:var(--teal-deep)}
+
+/* ───────────── appendix · architecture ───────────── */
+.arch{flex:1 1 auto;display:flex;flex-direction:column;gap:7px;min-height:0;justify-content:center}
+.a-legend{display:flex;gap:20px;align-items:center;font-size:10.5px;color:var(--ink-soft);margin:0 0 4px}
+.a-legend .li{display:flex;align-items:center;gap:6px}
+.a-sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+.a-sw.d{background:var(--done-bg);border:1.5px solid var(--done)}
+.a-sw.l{background:var(--live-bg);border:1.5px solid var(--live)}
+.a-sw.g{background:var(--gap-bg);border:1.5px dashed var(--gap)}
+.a-sw.t{background:#f1f4f3;border:1.5px dashed #9aa5a1}
+
+.layer{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:stretch}
+.layer .ln{
+  font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);
+  display:flex;align-items:center;justify-content:flex-end;text-align:right;padding-right:10px;
+  border-right:1px solid var(--line);
+}
+.boxes{display:flex;gap:7px;flex-wrap:nowrap}
+.box{
+  flex:1 1 0;min-width:0;border-radius:4px;padding:7px 9px;
+  display:flex;flex-direction:column;justify-content:center;min-height:44px;
+}
+.box .bt{font-size:11.5px;font-weight:700;line-height:1.2}
+.box .bs{font-size:9.5px;line-height:1.28;margin-top:2px;opacity:.92}
+.box.d{background:var(--done-bg);border:1.5px solid var(--done);color:#164e44}
+.box.l{background:var(--live-bg);border:1.5px solid var(--live);color:#7a5a17}
+.box.g{background:var(--gap-bg);border:1.5px dashed var(--gap);color:#7d3520}
+.box.t{background:#f1f4f3;border:1.5px dashed #9aa5a1;color:#5b6360}
+.box.flow{flex:0 0 22px;min-height:44px;align-items:center;justify-content:center;background:none;border:none;color:var(--ink-faint);font-size:15px;padding:0}
+.arch-note{
+  margin-top:4px;font-size:11px;line-height:1.45;color:var(--ink-soft);
+  border-top:1px solid var(--line);padding-top:9px;
+}
+.arch-note b{color:var(--ink)}
+
+/* ───────────── print ───────────── */
+@page{size:1280px 720px;margin:0}
+@media print{
+  html,body{background:#fff}
+  #hud,#hint{display:none}
+  #deck{width:auto;height:auto;overflow:visible}
+  .slide{
+    position:static;display:flex !important;transform:none;
+    width:1280px;height:720px;box-shadow:none;break-after:page;page-break-after:always;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="deck">
+
+<!-- ══════════════════ 1 · TITLE ══════════════════ -->
+<section class="slide title-slide on">
+  <div class="title-meta">
+    Bi-weekly progress review<br>
+    17 September 2026 · Baku<br>
+    30 minutes
+  </div>
+  <div class="title-wrap">
+    <p class="eyebrow">PASHA Real Estate · AI Transformation</p>
+    <h1>The platform is running<br>in Azure, and it called a<br>real model yesterday.</h1>
+    <p class="claim">Two weeks ago this was a design. Today three services are deployed,
+      the real portfolio renders from the database, and the platform has made
+      <b>a live call to a model through a gateway that masks what it sends</b>.
+      Everything you are about to see is the deployed system, not a prototype.</p>
+  </div>
+  <div class="runorder">
+    <div class="ro">
+      <p class="n">01</p>
+      <p class="who">Andrei</p>
+      <p class="what">Where we are against the plan</p>
+      <p class="min">3 min</p>
+    </div>
+    <div class="ro">
+      <p class="n">02</p>
+      <p class="who">Samir</p>
+      <p class="what">The platform, live — portfolio and project</p>
+      <p class="min">7 min</p>
+    </div>
+    <div class="ro">
+      <p class="n">03</p>
+      <p class="who">Madiyar</p>
+      <p class="what">An agent run, and the masking control</p>
+      <p class="min">5 min</p>
+    </div>
+    <div class="ro">
+      <p class="n">04</p>
+      <p class="who">Andrei</p>
+      <p class="what">The gate, the risks, four asks</p>
+      <p class="min">4 min</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 2 · GANTT ══════════════════ -->
+<section class="slide dense">
+  <p class="kicker">Plan and progress</p>
+  <h1 class="sh">Six of eight M1 tracks are on plan. The two that are not wait on inputs, not on code.</h1>
+  <p class="dek">The bar is the plan, the solid fill is what is finished. Everything above the divider
+    has to clear <b>M1 on 30 September</b>.</p>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="gantt">
+
+    <div class="g-legend">
+      <span class="li"><span class="swatch sw-done"></span> Delivered</span>
+      <span class="li"><span class="swatch sw-live"></span> In flight, on track</span>
+      <span class="li"><span class="swatch sw-plan"></span> Planned, not started</span>
+      <span class="li"><span class="swatch sw-gap"></span> Blocked — waiting on an input we do not have</span>
+      <span class="li"><span class="swatch" style="width:0;border-left:2px solid #c0392b;height:12px"></span> today</span>
+      <span class="li"><span class="swatch" style="width:0;border-left:2px dashed var(--teal-dark);height:12px"></span> gate</span>
+    </div>
+
+    <div class="g-head">
+      <div></div>
+      <div class="g-axis">
+        <span class="wk" style="left:2%">4 Sep</span>
+        <span class="wk" style="left:20%">18 Sep</span>
+        <span class="wk" style="left:40%">2 Oct</span>
+        <span class="wk" style="left:60%">16 Oct</span>
+        <span class="wk" style="left:80%">30 Oct</span>
+        <span class="wk" style="left:97%">13 Nov</span>
+      </div>
+      <div></div>
+    </div>
+
+    <div class="g-row">
+      <div></div>
+      <div class="marks">
+        <span class="m t" style="left:18.6%">17 Sep</span>
+        <span class="m g" style="left:37.1%">M1</span>
+        <span class="m g" style="left:96%">M2</span>
+      </div>
+      <div></div>
+    </div>
+
+    <!-- ── M1 band ── -->
+    <div class="g-band">M1 · Stages 1–3 and the foundation <span class="gt">— 30 September</span></div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Requirements &amp; architecture</div><div class="o">Andrei · scope of record, contracts</div></div>
+      <div class="g-track">
+        <div class="bar done" style="left:0%;width:11.4%"><div class="fill" style="width:100%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>Done.</b> Scope adopted, requirements at v0.4, API contracts published</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Azure environment &amp; delivery pipeline</div><div class="o">Ismat</div></div>
+      <div class="g-track">
+        <div class="bar done" style="left:0%;width:30%"><div class="fill" style="width:80%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>3 of 3 services</b> deploy by pipeline and run warm · repository governance still open</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Model gateway &amp; agentic spine</div><div class="o">Madiyar</div></div>
+      <div class="g-track">
+        <div class="bar done" style="left:5.7%;width:31.4%"><div class="fill" style="width:85%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>Live model call proven</b> yesterday, with masking on the real path</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Portal and live portfolio</div><div class="o">Ismat · Samir · Sabina (UX)</div></div>
+      <div class="g-track">
+        <div class="bar done" style="left:5.7%;width:31.4%"><div class="fill" style="width:72%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>32 real projects</b> rendering from the database — demo 2</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Data schema &amp; ETL</div><div class="o">Faig · 40 tables, 501 columns</div></div>
+      <div class="g-track">
+        <div class="bar live" style="left:5.7%;width:35.7%"><div class="fill" style="width:60%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>v2.0 in review.</b> Seven items back with Faig this week · sizing inputs now complete</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Stage 1 · Project Brief</div><div class="o">Samir · create, capture, draft</div></div>
+      <div class="g-track">
+        <div class="bar live" style="left:15.7%;width:21.4%"><div class="fill" style="width:35%"></div></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>Read path live</b>, write path in build this week</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Stage 2 · Concept Design</div><div class="o">estimation from realised cost</div></div>
+      <div class="g-track">
+        <div class="bar gap" style="left:25.7%;width:11.4%"></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><span class="blk">Blocked.</span> Format due the week of the gate, then the data is captured by hand per project — <b>ask 2</b></div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Stage 3 · Technical Design &amp; CAPEX</div><div class="o">prices the BoQ line by line</div></div>
+      <div class="g-track">
+        <div class="bar gap" style="left:25.7%;width:11.4%"></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><span class="blk">Blocked.</span> The unified BoQ item list does not exist yet — <b>ask 1</b></div>
+    </div>
+
+    <!-- ── M2 band ── -->
+    <div class="g-band">M2 · Procurement and the rest of the foundation <span class="gt">— 13 November</span></div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Security posture, test &amp; UAT</div><div class="o">Ismat + PRE Security · gates external users</div></div>
+      <div class="g-track">
+        <div class="bar idle" style="left:31.4%;width:45.7%"></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>Not started.</b> No environment exists yet in which to let an external designer in</div>
+    </div>
+
+    <div class="g-row">
+      <div class="g-label"><div class="t">Stage 4 · Procurement, Aconex, Coins</div><div class="o">owner not yet named</div></div>
+      <div class="g-track">
+        <div class="bar idle" style="left:44.3%;width:55.7%"></div>
+        <div class="today" style="left:18.6%"></div><div class="gate" style="left:37.1%"></div><div class="gate" style="left:100%"></div>
+      </div>
+      <div class="g-note"><b>Not started.</b> Coins licence decision still open — <b>ask 3</b></div>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="foot">
+    <span>Delivery started <b>4 September</b> · M1 <b>30 September</b> · M2 <b>13 November</b></span>
+    <span>Overall health <b>Amber</b> — the build is ahead of where it was promised; the open items are inputs, not code</span>
+  </div>
+</section>
+
+<!-- ══════════════════ 3 · NOW / NEXT ══════════════════ -->
+<section class="slide">
+  <p class="kicker">What changed, and what you are about to see</p>
+  <h1 class="sh">Two weeks ago this was a design. The risk has moved from building it to trusting it.</h1>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="split">
+
+    <div class="panel">
+      <h3>What exists now that did not two weeks ago</h3>
+      <ul class="factlist quiet">
+        <li><span class="h">Three services deployed in Azure, all warm</span>
+          <span class="s">Portal, application core, model gateway. Every one shipped by the pipeline — nothing hand-deployed, so any of us can ship the next change.</span></li>
+        <li><span class="h">The real portfolio, served from the database</span>
+          <span class="s">32 PASHA developments with their CAPEX, across five RIBA stages, through the deployed chain.</span></li>
+        <li><span class="h">A model gateway that no service can route around</span>
+          <span class="s">Authenticated by managed identity. No model API key exists anywhere in the estate.</span></li>
+        <li><span class="h">The data schema at v2.0</span>
+          <span class="s">40 tables, 501 columns, reviewed column by column and back with Faig on seven items.</span></li>
+        <li><span class="h">CI and delivery back under our control</span>
+          <span class="s">Build minutes ran out on 15 September; a self-hosted runner inside our own network replaced them the same day.</span></li>
+      </ul>
+    </div>
+
+    <div class="panel hi">
+      <h3>The two proofs, live on the deployed system</h3>
+
+      <div class="proof">
+        <p class="who">Samir <small>7 minutes</small></p>
+        <p class="txt">The portfolio and one project, end to end. Search and filter run against the
+          database while you watch — <b>this is an application, not a screenshot.</b> He will also
+          show you the stages that are deliberately empty, because honest empty states are how the
+          data actually looks today.</p>
+      </div>
+
+      <div class="proof">
+        <p class="who">Madiyar <small>5 minutes</small></p>
+        <p class="txt">An agent run on that same project: the platform asks a real model to draft the
+          project brief, and <b>the draft comes back on screen</b> with a verification hash beside it.
+          Then the control that makes this safe — <b>identifiers are masked before anything leaves our
+          network, and restored on the way back.</b></p>
+      </div>
+
+      <p class="caveat"><b>What we are not claiming.</b> The path to the model is proven; the
+        <b>quality</b> of what it writes has nothing behind it yet. Building that evaluation is
+        explicitly the next two weeks' work.</p>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 4 · GATE + RISKS ══════════════════ -->
+<section class="slide">
+  <p class="kicker">The next two weeks</p>
+  <h1 class="sh">The gate is reachable on engineering. The risks are quality, environment, and inputs we cannot produce ourselves.</h1>
+  <p class="dek">Not a plan slide. Everything on the left has to be true on 30 September, and the four
+    risks on the right are the reasons it might not be. <b>Two of the four are inputs, not engineering.</b></p>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="two">
+
+    <div class="panel">
+      <div class="gatecard">
+        <p class="gh">What lands by 30 September</p>
+        <p class="gd">M1 · Stages 1–3 and the foundation</p>
+      </div>
+      <ul class="lands" style="margin-top:16px">
+        <li><b>Stage 1 writeable end to end</b>
+          <span class="s">Create a project, capture its intent, produce a brief — and come back to the same one tomorrow.</span></li>
+        <li><b>The 40-table schema applied to the live database</b>
+          <span class="s">Turns on Faig closing out seven review items this week.</span></li>
+        <li><b>Stages 2 and 3 reading live data</b>
+          <span class="s">The screens and the estimate structure, on whatever inputs exist by then.</span></li>
+        <li><b>Gateway and agentic hardening, plus repository governance</b>
+          <span class="s">A red build stops being able to reach the main branch by omission.</span></li>
+        <li><b>The first evaluation of answer quality</b>
+          <span class="s">So that next time we can say the answer is good, not only that the call succeeded.</span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>The four risks we are carrying</h3>
+      <ul class="risks">
+        <li><span class="rh">Answer quality is unproven</span>
+          <span class="rs">The plumbing works and nothing yet judges the output. Until an evaluation exists,
+          no AI-drafted result should be treated as reviewed.</span></li>
+        <li><span class="rh">Stage 3’s BoQ has no way into the platform</span>
+          <span class="rs">In the BRD, five of the seven BoQ intake steps are performed by a third party
+          inside the platform. That needs a protected public entry point and a test environment to prove
+          it in, and we have neither. Until then a BoQ arrives as an email attachment and someone re-keys it.</span></li>
+        <li><span class="rh">… and no agreed format for it to land in</span>
+          <span class="rs">The unified BoQ item list does not exist, and only PRE can supply it. It is inside
+          this gate, and three other pieces of work key off it — <b>ask 1</b>.</span></li>
+        <li><span class="rh">Concept Design cost data has to be typed in by hand, project by project</span>
+          <span class="rs">Stages 1–2 estimate from realised costs, and that data exists in nobody’s system —
+          the business supplies it manually per project. Concept Design is the harder of the two and its
+          format is not defined until end of September. <b>Even once the format lands, the capture is
+          human effort nobody has been resourced for</b>, so this is the risk most likely to be slow
+          rather than blocked.</span></li>
+      </ul>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="foot">
+    <span>Next review <b>1 October</b> — the first one after the gate</span>
+    <span>What we expect to show then: <b>Stage 1 end to end on the real schema, a number for answer quality, and the first real users on it</b></span>
+  </div>
+</section>
+
+<!-- ══════════════════ 5 · MVP ══════════════════ -->
+<section class="slide">
+  <p class="kicker">After the gate</p>
+  <h1 class="sh">The MVP is not a bigger demo. It is the first time someone outside this team creates a real project.</h1>
+  <p class="dek">Straight after 30 September. A small group of PRE users get their own accounts and run
+    their own projects on the platform. <b>The point is feedback from real work</b>, not a wider audience.</p>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="mvp">
+
+    <div class="col can">
+      <h3>What a real user will do</h3>
+      <ul>
+        <li><b>Sign in as themselves</b>, with their own role and their own projects</li>
+        <li><b>Create a project</b> and capture what it is meant to be</li>
+        <li>Get an <b>AI-drafted brief</b>, then correct it and keep the correction</li>
+        <li>See their own portfolio and their own worklist</li>
+        <li>Come back the next day and find their work where they left it</li>
+      </ul>
+    </div>
+
+    <div class="col build">
+      <h3>What we build to get there</h3>
+      <ul>
+        <li><b>Real accounts and login.</b> Today the platform resolves one seeded development user for
+          everybody — this is the single biggest piece of work</li>
+        <li><b>The ten workflow roles</b>, with permissions enforced per project and per stage</li>
+        <li><b>Write paths throughout.</b> Most screens currently only read; the MVP has to save</li>
+        <li><b>The 40-table schema applied</b>, so data persists in the shape it will keep</li>
+        <li><b>Access from outside the Baku office.</b> Today's IP allowlist is a demo control, not a way
+          to reach users</li>
+        <li><b>A first answer-quality check</b>, so a draft is worth editing rather than distrusting</li>
+      </ul>
+    </div>
+
+    <div class="col out">
+      <h3>Deliberately not in it</h3>
+      <ul>
+        <li>Stage 3 CAPEX pricing — waits on the BoQ item list</li>
+        <li>Designer and vendor access — needs the protected entry point and a test environment</li>
+        <li>Procurement, Aconex and Coins — November</li>
+        <li>The construction control tower</li>
+        <li>Concept Design estimation, to the extent the cost data has not been captured yet</li>
+      </ul>
+    </div>
+
+    <p class="note"><b>How we will know it worked.</b> Not that it stays up — that someone tells us what is
+      wrong with it. A platform nobody complains about in October is a platform nobody used.</p>
+
+  </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 6 · ASKS ══════════════════ -->
+<section class="slide">
+  <p class="kicker">What we need from this room</p>
+  <h1 class="sh">Three asks. A date on each, and one name.</h1>
+  <p class="dek">Nothing here is a code problem. All three are inputs or decisions that only PRE can
+    give, and two of them sit inside the September gate.</p>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="asks">
+
+    <div class="ask">
+      <div class="num">1</div>
+      <div class="what">Unified BoQ item list — first version
+        <span>Stage 3 prices the BoQ line by line. The mapping agent has no target format, and procurement,
+          contracts and reporting all reference this list. It is the single biggest thing between us and the gate.</span></div>
+      <div class="who">Sarp</div>
+      <div class="when hot">24 Sep</div>
+    </div>
+
+    <div class="ask">
+      <div class="num">2</div>
+      <div class="what">Concept Design — the format, and who captures the data
+        <span>The format is due end of September, the week the gate it feeds is meant to close. And the
+          realised costs behind it are typed in by hand, project by project — so the format on its own
+          changes nothing without <b>a named owner and a volume</b>.</span></div>
+      <div class="who">Sarp · PRE</div>
+      <div class="when">24 Sep<span class="sub">+ an owner</span></div>
+    </div>
+
+    <div class="ask">
+      <div class="num">3</div>
+      <div class="what">Coins licence — a decision date
+        <span>The current licence excludes third-party access, which Stage 4 procurement depends on.
+          Options were going to the CEO the week of 14 September.</span></div>
+      <div class="who">Rafig · Nigar</div>
+      <div class="when">Date only</div>
+    </div>
+
+  </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ 7 · ARCHITECTURE APPENDIX ══════════════════ -->
+<section class="slide">
+  <p class="kicker">Appendix · reference</p>
+  <h1 class="sh">The request path is complete end to end. The gaps are at the edge, not in the middle.</h1>
+  <p class="dek">Simplified deliberately. Read the colour, not the boxes — and note the distinction
+    between <b>red</b>, which we know we need and have not built, and <b>grey</b>, which nobody has
+    decided yet.</p>
+  <div class="rule"></div>
+
+  <div class="body">
+  <div class="arch">
+
+    <div class="a-legend">
+      <span class="li"><span class="a-sw d"></span> Built and proven on the deployed system</span>
+      <span class="li"><span class="a-sw l"></span> In progress — inside the September gate</span>
+      <span class="li"><span class="a-sw g"></span> Needed, and not built</span>
+      <span class="li"><span class="a-sw t"></span> Not yet decided — no owner or date</span>
+    </div>
+
+    <div class="layer">
+      <div class="ln">People</div>
+      <div class="boxes">
+        <div class="box l"><div class="bt">PRE internal users</div><div class="bs">10 workflow roles in the design · the running system still resolves one seeded development account</div></div>
+        <div class="box g"><div class="bt">Designers &amp; vendors — external</div><div class="bs">scoped, time-bound, auto-expiring access · the whole surface is unbuilt</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Edge</div>
+      <div class="boxes">
+        <div class="box g"><div class="bt">Application Gateway + WAF — the sole public entry</div><div class="bs">required by the design as the only way in · does not exist, so the portal is held behind an IP allowlist instead</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Application</div>
+      <div class="boxes">
+        <div class="box d"><div class="bt">Keystone portal</div><div class="bs">home, portfolio, project, tasks</div></div>
+        <div class="box flow">→</div>
+        <div class="box d"><div class="bt">Projects &amp; portfolio</div><div class="bs">32 live · read path proven</div></div>
+        <div class="box l"><div class="bt">Stage 1 · Brief</div><div class="bs">write path this week</div></div>
+        <div class="box g"><div class="bt">Stages 2–3</div><div class="bs">concept, technical, CAPEX</div></div>
+        <div class="box g"><div class="bt">Stage 4 · Procurement</div><div class="bs">owner not named</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Model plane</div>
+      <div class="boxes">
+        <div class="box d"><div class="bt">Model gateway + masking</div><div class="bs">internal only · no service can route around it</div></div>
+        <div class="box flow">→</div>
+        <div class="box d"><div class="bt">Azure AI Foundry · gpt-5-mini</div><div class="bs">private endpoint · managed identity · no API key anywhere in the estate</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Data</div>
+      <div class="boxes">
+        <div class="box d"><div class="bt">PostgreSQL — deployed, private path proven</div><div class="bs">serving the portfolio today</div></div>
+        <div class="box l"><div class="bt">Target schema · 40 tables</div><div class="bs">v2.0 in review, applied inside this gate</div></div>
+        <div class="box g"><div class="bt">Document store &amp; data lake</div><div class="bs">not built · sizing inputs arrived today</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Monitoring</div>
+      <div class="boxes">
+        <div class="box d"><div class="bt">Telemetry plane</div><div class="bs">Log Analytics, App Insights, health probes on all three services, five alert rules</div></div>
+        <div class="box g"><div class="bt">Answer-quality &amp; agent evals</div><div class="bs">the gap behind risk 1 — nothing judges output yet</div></div>
+        <div class="box t"><div class="bt">Service SLOs &amp; dashboards</div><div class="bs">TBD</div></div>
+        <div class="box t"><div class="bt">Support model &amp; on-call</div><div class="bs">TBD — the PRE IT / app-team split is unagreed</div></div>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div class="ln">Delivery</div>
+      <div class="boxes">
+        <div class="box d"><div class="bt">Pipeline → Container Apps</div><div class="bs">all three services, self-hosted runner in our network</div></div>
+        <div class="box l"><div class="bt">Branch protection</div><div class="bs">enforced after the demo</div></div>
+        <div class="box g"><div class="bt">Test &amp; UAT environments</div><div class="bs">empty — risk 2</div></div>
+        <div class="box g"><div class="bt">Aconex &amp; Coins integrations</div><div class="bs">M2 · licence open</div></div>
+      </div>
+    </div>
+
+    <p class="arch-note"><b>Why this shape matters.</b> The green chain is a complete request path, and
+      it is the part that is expensive to retrofit: a person reaches the portal, the portal reaches the
+      core, the core reaches the database and the model, and the model is reachable only through a gateway
+      that masks. <b>The red sits in two places</b> — the edge, which is what stands between us and the
+      first external designer, and the later stages, which wait on inputs rather than on engineering.
+      <b>The grey is the honest gap:</b> operational ownership has not been decided, and that is a
+      conversation to have before go-live, not after.</p>
+
+  </div>
+  </div>
+</section>
+
+</div>
+
+<div id="hint">← → or space · P print</div>
+<div id="hud"><span id="cur">1</span> / <span id="tot">6</span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  document.getElementById('tot').textContent = slides.length;
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1280, window.innerHeight / 720) * 0.955;
+    slides.forEach(function(el){ el.style.setProperty('--s', s); });
+  }
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(el, k){ el.classList.toggle('on', k === i); });
+    document.getElementById('cur').textContent = i + 1;
+    if (String(i + 1) !== location.hash.slice(1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fromHash(){
+    var n = parseInt(location.hash.slice(1), 10);
+    return isNaN(n) ? 0 : n - 1;
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', function(){ show(fromHash()); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(i + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(i - 1); e.preventDefault(); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+    else if (e.key === 'p' || e.key === 'P') { window.print(); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen();
+    }
+  });
+  document.addEventListener('click', function(e){
+    if (e.clientX < window.innerWidth * 0.25) show(i - 1); else show(i + 1);
+  });
+  fit(); show(fromHash());
+})();
+</script>
+</body>
+</html>
