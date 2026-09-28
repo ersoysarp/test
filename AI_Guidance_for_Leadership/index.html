@@ -129,6 +129,21 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .proof .pk .n{font-size:26px;font-weight:700;color:var(--azure-deep);}
 .proof .pk .l{font-size:15px;color:var(--ink-soft);}
 .proof .sep{width:1px;align-self:stretch;background:var(--line-strong);}
+
+/* use case cards with embedded prompt */
+.ugrid{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:13px;min-height:0;}
+.ucard{display:flex;flex-direction:column;background:var(--paper-2);border:1px solid var(--line);border-top:3px solid var(--azure);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);min-height:0;}
+.ucard.gold{border-top-color:var(--gold);}
+.ucard .uh{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
+.ucard .uh .ut{font-size:17px;font-weight:700;color:var(--ink);line-height:1.12;}
+.ucard .uh .ic{color:var(--azure-deep);}
+.ucard.gold .uh .ic{color:var(--gold);}
+.ucard .ud{font-size:15px;color:var(--ink-soft);line-height:1.34;}
+.ucard .up{margin-top:auto;background:var(--tint);border-radius:8px;padding:8px 11px;}
+.ucard.gold .up{background:var(--tint-gold);}
+.ucard .up .ul{font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-deep);margin-bottom:2px;}
+.ucard.gold .up .ul{color:var(--gold);}
+.ucard .up .upt{font-size:15px;color:var(--ink-soft);line-height:1.32;font-style:italic;}
 .mt .cat .ci{display:flex;align-items:center;gap:12px;}
 .mt .sub{display:block;font-size:14px;color:var(--ink-faint);margin-top:2px;}
 .verdict{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700;margin-bottom:6px;}
@@ -404,26 +419,40 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <h2 class="title">Public and internal work: use cases, each with a prompt</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="duo" style="grid-template-columns:1fr 1fr;">
-      <div class="exh">
-        <div class="eh">Use case</div>
-        <div class="rows">
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="ct">Draft &amp; translate</span></div><div class="val"><ul class="ulist"><li>Speeches, congratulatory letters</li><li>Translate to English, Russian, Turkish</li></ul></div></div>
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="ct">Analyse &amp; research</span></div><div class="val"><ul class="ulist"><li>Trends across ministry data</li><li>Benchmark against OECD and peers</li></ul></div></div>
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ct">Visualise &amp; report</span></div><div class="val"><ul class="ulist"><li>Charts and dashboards from data</li><li>One page visual reports</li></ul></div></div>
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16"/></svg><span class="ct">Assist &amp; coordinate</span></div><div class="val"><ul class="ulist"><li>Briefing packs and agendas</li><li>Track directives and actions</li></ul></div></div>
-        </div>
+    <div class="ugrid">
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="ut">Draft &amp; translate</span></div>
+        <div class="ud">Speeches, congratulatory letters, press statements. Translate to English, Russian, Turkish.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Translate this cleared statement into formal English. Keep official titles exact.</div></div>
       </div>
-      <div class="exh">
-        <div class="eh">Matching prompt</div>
-        <div class="prompt"><div class="pl">Draft &amp; translate</div><div class="pt">Translate this cleared statement into formal English for an international audience. Keep official titles exact.</div></div>
-        <div class="prompt"><div class="pl">Analyse &amp; research</div><div class="pt">Compare the Azerbaijan 2030 priorities to OECD best practice. Return a table: our approach, OECD practice, the gap.</div></div>
-        <div class="prompt"><div class="pl">Visualise &amp; report</div><div class="pt">Turn this budget spreadsheet into a one page visual report: a chart per programme and three key takeaways.</div></div>
-        <div class="prompt"><div class="pl">Assist &amp; coordinate</div><div class="pt">From today's agenda and papers, prepare a briefing pack: the decision needed, the risks, and a recommended line for each item.</div></div>
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="ut">Summarise reports</span></div>
+        <div class="ud">Condense a 50 page ministry report into a one page brief with the key points.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Summarise this report in one page: three headlines, main commitments, two open questions.</div></div>
+      </div>
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="ut">Analyse data</span></div>
+        <div class="ud">Spot trends across ministry figures and benchmark against OECD and peer states.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Compare Azerbaijan 2030 to OECD practice. Return a table: our approach, theirs, the gap.</div></div>
+      </div>
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ut">Visualise &amp; report</span></div>
+        <div class="ud">Build charts, dashboards and one page visual reports from raw spreadsheets.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Turn this budget spreadsheet into a one page visual: a chart per programme, three takeaways.</div></div>
+      </div>
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16"/></svg><span class="ut">Meeting preparation</span></div>
+        <div class="ud">Agendas, briefing packs, minutes and tracked follow up actions.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">From these papers, draft a chair note: the decision needed and one question per item.</div></div>
+      </div>
+      <div class="ucard">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 11h6M12 8v6"/></svg><span class="ut">Research &amp; synthesis</span></div>
+        <div class="ud">Scan international best practice and cross check public sources fast.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Find how three OECD states run this policy. Five lines each, with a source.</div></div>
       </div>
     </div>
     <div class="proof">
-      <div class="plabel">Proven, United Kingdom<span class="sub2">Microsoft 365 Copilot, 20,000 officials, 12 departments, 3 months</span></div>
+      <div class="plabel">Proven, United Kingdom<span class="sub2">M365 Copilot, 20,000 officials, 12 departments, 3 months</span></div>
       <div class="pk"><span class="n">26 min</span><span class="l">saved daily</span></div>
       <div class="sep"></div>
       <div class="pk"><span class="n">85%</span><span class="l">good value</span></div>
@@ -442,22 +471,36 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <h2 class="title">On sensitive data: use cases, each with a prompt</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="duo" style="grid-template-columns:1fr 1fr;">
-      <div class="exh">
-        <div class="eh">Use case</div>
-        <div class="rows">
-          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span class="ct">Citizen appeals</span></div><div class="val"><ul class="ulist"><li>Triage, summarise, route to ministries</li><li>Draft replies citing the relevant law</li></ul></div></div>
-          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ct">Briefings &amp; dashboards</span></div><div class="val"><ul class="ulist"><li>Visual briefing packs for the President</li><li>Live decision dashboards across ministries</li></ul></div></div>
-          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="ct">Security &amp; defence</span></div><div class="val"><ul class="ulist"><li>Cross domain analysis for the Security Council</li><li>Scenario and readiness planning</li></ul></div></div>
-          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-4 6 4v12M10 21v-5h4v5"/></svg><span class="ct">Reconstruction</span></div><div class="val"><ul class="ulist"><li>Great Return delivery dashboards</li><li>Project and budget tracking by region</li></ul></div></div>
-        </div>
+    <div class="ugrid">
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span class="ut">Citizen appeals</span></div>
+        <div class="ud">Triage and summarise appeals, route to the right ministry, draft replies.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Summarise this appeal, name the responsible ministry, draft a reply citing the articles of law.</div></div>
       </div>
-      <div class="exh">
-        <div class="eh">Matching prompt</div>
-        <div class="prompt"><div class="pl">Citizen appeals</div><div class="pt">Summarise this appeal, name the responsible ministry, and draft a reply citing the relevant articles of law.</div></div>
-        <div class="prompt"><div class="pl">Briefings &amp; dashboards</div><div class="pt">From these ministry inputs, build a one page visual brief for the President: a chart per priority, key risks, three options.</div></div>
-        <div class="prompt"><div class="pl">Security &amp; defence</div><div class="pt">Across these reports, produce a risk map by region with evidence, and recommend one action for each.</div></div>
-        <div class="prompt"><div class="pl">Reconstruction</div><div class="pt">From these project files, build a status dashboard by district: budget, progress, blockers, and next milestone.</div></div>
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ut">Leadership dashboards</span></div>
+        <div class="ud">Live cross ministry decision dashboards for the President, updated on demand.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Build a dashboard from these inputs: one chart per priority, status and top risk for each.</div></div>
+      </div>
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span class="ut">Briefing packs</span></div>
+        <div class="ud">Daily visual brief for the President: decisions, risks and options.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Write a one page brief for the President: decisions required, key risks, three options.</div></div>
+      </div>
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="ut">Security &amp; defence</span></div>
+        <div class="ud">Cross domain analysis for the Security Council and readiness scenarios.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Across these reports, produce a risk map by region with evidence and one action each.</div></div>
+      </div>
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-4 6 4v12M10 21v-5h4v5"/></svg><span class="ut">Reconstruction</span></div>
+        <div class="ud">Great Return delivery: status, budget and blockers by district.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Build a status dashboard by district: budget, progress, blockers, next milestone.</div></div>
+      </div>
+      <div class="ucard gold">
+        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 3v7l-3 8h18l-3-8V3M9 3h6M10 21h4"/></svg><span class="ut">Legal drafting</span></div>
+        <div class="ud">Draft decisions and official correspondence with legal references.</div>
+        <div class="up"><div class="ul">Prompt</div><div class="upt">Draft this decision with the relevant legal references and a plain language summary.</div></div>
       </div>
     </div>
   </div>
