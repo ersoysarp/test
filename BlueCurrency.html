@@ -18,7 +18,8 @@
     -webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;}
   #stageWrap{position:relative;}
   .stage{width:1280px;min-height:720px;background:var(--white);box-shadow:0 20px 60px rgba(0,0,0,.45);
-    padding:26px 40px 24px;display:none;flex-direction:column;}
+    padding:26px 40px 24px;display:none;flex-direction:column;position:relative;}
+  .pgno{position:absolute;right:20px;bottom:5px;font-size:14px;font-weight:700;color:var(--grey-l);}
   .stage.active{display:flex;}
   .kicker{font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:6px;}
   h1{font-size:25px;line-height:1.2;font-weight:700;color:var(--ink);max-width:1190px;}
@@ -94,6 +95,8 @@
   .mv-head,.mv-row{display:grid;gap:6px;}
   .mv-row{flex:1;}
   .mv-3a{grid-template-columns:1fr 3.18fr 1.2fr;}
+  .mv.plain .mv-row > .mc + .mc{border-left:1px solid #DDE4E8;}
+  .mv.plain .mv-row > .mc.sol{border-left:none;}
   .mv-3{grid-template-columns:0.95fr 1.33fr 1.33fr;}
   .mh{color:#fff;font-size:15px;font-weight:700;padding:9px 12px;border-radius:3px;letter-spacing:.01em;}
   .mh.ink{background:var(--ink);}
@@ -105,9 +108,10 @@
   .mc{border-radius:3px;padding:6px 11px;font-size:14px;line-height:1.32;color:var(--ink2);
     display:flex;align-items:flex-start;background:var(--soft);}
   .mc.mod{background:#EDF0F2;flex-direction:column;justify-content:center;gap:8px;}
-  .mc.sol{background:var(--teal-soft);color:var(--teal-d);font-weight:600;align-items:center;}
+  .mv.plain .mc.mod{justify-content:center;}
+  .mc.sol{background:var(--teal-soft);color:var(--ink);font-weight:600;align-items:center;}
   /* page 2 runs open rather than as a grid of coloured boxes */
-  .mv.plain .mc{background:#fff;border-radius:0;border-bottom:1px solid var(--rule);}
+  .mv.plain .mc{background:#fff;border-radius:0;border-bottom:1px solid #C3CCD2;}
   .mv.plain .mc.sol{background:var(--teal-soft);border-radius:3px;border-bottom:none;}
   .modcap{display:flex;align-items:center;gap:9px;}
   .modcap .mn{flex-shrink:0;width:27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;
@@ -121,49 +125,53 @@
   /* page 2 — how leaders and developing players work today, each with its own severity */
   .today{flex-direction:column;justify-content:center;align-items:stretch;}
   .trow{display:flex;gap:11px;align-items:center;padding:6px 0;}
-  .trow + .trow{border-top:1px dashed var(--rule);}
-  .tlab{flex:0 0 94px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-d);}
+  .trow + .trow{border-top:1px solid #E1E7EA;}
+  .tlab{flex:0 0 94px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);}
   .trow.dev .tlab{color:var(--grey-l);}
   .ttxt{flex:1;font-size:14px;line-height:1.3;color:var(--ink2);}
   /* severity reads as one equal-sized coloured box per row */
   .slv{flex:0 0 96px;height:26px;display:flex;align-items:center;justify-content:center;
-    border-radius:3px;font-size:14px;font-weight:800;letter-spacing:.05em;color:#fff;}
-  .s-high .slv{background:var(--red);}
-  .s-med .slv{background:#D9982F;}
-  .s-low .slv{background:#98A2AB;}
+    border-radius:3px;font-size:14px;font-weight:800;letter-spacing:.05em;}
+  .s-high .slv{background:#F2DAD6;color:#9B3328;}
+  .s-med .slv{background:#F7E7C6;color:#8A5B14;}
+  .s-low .slv{background:#E3E8EB;color:#5A6671;}
+  .sevhd{flex:0 0 96px;text-align:center;font-size:14px;font-weight:700;opacity:.9;}
   .mv.plain .mc.sol{font-size:14px;}
 
   /* ============ PAGE 3 — FOUR ARCHETYPES ON A 2x2 ============ */
   .p3{flex:1;display:flex;flex-direction:column;margin-top:12px;min-height:0;}
-  .matrix{flex:1;display:grid;grid-template-columns:30px 1fr;grid-template-rows:1fr 26px;gap:10px;min-height:0;}
-  .yax{grid-area:1/1;display:flex;align-items:center;justify-content:center;}
+  .matrix{flex:1;display:grid;grid-template-columns:34px 1fr;grid-template-rows:1fr 30px;gap:10px;min-height:0;}
+  .yax{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    border-left:2px solid var(--ink2);padding:2px 0;}
   .yax span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:14px;font-weight:700;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--grey);white-space:nowrap;}
-  .xax{grid-area:2/2;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--grey);}
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap;}
+  .axend{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);}
+  .xax{grid-area:2/2;display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);border-top:2px solid var(--ink2);padding-top:4px;}
   .quads{grid-area:1/2;position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
-    column-gap:14px;row-gap:72px;min-height:0;}
+    column-gap:12px;row-gap:56px;min-height:0;}
 
-  /* one header, the players, one takeaway: nothing else in a quadrant */
-  .q{border:1px solid var(--rule);border-radius:6px;padding:15px 17px;background:#fff;
-    display:flex;flex-direction:column;justify-content:space-between;gap:12px;min-height:0;}
-  .q .qh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-  .q .qn{font-size:19px;font-weight:700;color:var(--ink);}
-  .q .qt{font-size:15px;font-weight:700;color:var(--grey);}
-  .q .qf{padding-top:12px;border-top:1px solid var(--rule);font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
+  /* one sentence, the example vendors, one takeaway */
+  .q{border:2px solid #C3CCD2;border-radius:4px;padding:13px 16px;background:#fff;
+    display:flex;flex-direction:column;gap:9px;min-height:0;}
+  .q .qn{font-size:19px;font-weight:700;color:var(--ink);display:block;}
+  .q .qd{font-size:15px;line-height:1.35;color:var(--ink2);}
+  .q .vhd{font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--grey);
+    margin-top:auto;}
+  .q .qf{padding-top:10px;border-top:1px solid #D7DEE2;font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
   .q .qf span{color:var(--red);}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;align-content:center;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
   .chip{display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
     border-radius:18px;padding:5px 12px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.25;}
   .q.ai .chip{background:var(--teal-soft);border-color:#CFE4E0;color:var(--teal-d);}
   /* drop kreo.svg or oracle.png into /logos and it appears in front of the name */
   .lgo{height:21px;max-width:88px;margin-right:8px;border-radius:3px;}
 
-  .q.empty{background:#F4FAF9;border:1px dashed #9CCBC5;}
+  .q.empty{background:#F4FAF9;border:2px dashed #79B8B1;}
   .q.empty .qn{color:var(--teal-d);}
   .q.empty .qf{border-top-color:#CFE4E0;color:var(--teal-d);}
   .q.empty .qf span{color:var(--teal-d);}
-  .emptytag{flex:1;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;
+  .emptytag{flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;
     letter-spacing:.09em;text-transform:uppercase;color:var(--teal-d);
     text-align:center;border-radius:6px;background:rgba(11,127,119,.08);}
 
@@ -192,15 +200,6 @@
   .cvmid .cbadge{background:#F5E3BF;color:#8A5B14;}
   .cvlow .cbadge{background:#F0D4CF;color:#9B3328;}
 
-  .opp{display:flex;align-items:center;gap:9px;padding:6px 9px;border-radius:3px;width:100%;}
-  .opp .ol{font-size:14px;font-weight:800;letter-spacing:.07em;}
-  .opp .os{font-size:14px;font-weight:600;}
-  .opp.white{background:var(--ink);}
-  .opp.white .ol{color:#fff;} .opp.white .os{color:#AEB6BC;}
-  .opp.gap{background:#DCE2E6;}
-  .opp.gap .ol{color:var(--ink);} .opp.gap .os{color:var(--grey);}
-  .opp.crowd{background:#F4F6F7;border:1px solid var(--rule);}
-  .opp.crowd .ol{color:var(--grey);} .opp.crowd .os{color:var(--grey-l);}
 
   .pcell{flex-direction:row;align-items:stretch;gap:10px;}
   .pbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:7px;}
@@ -273,6 +272,7 @@
 
   <!-- ===================== PAGE 1 — INTRODUCTION ===================== -->
   <section class="stage active" id="p1">
+    <div class="pgno">1</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Agentic AI for Real Estate Development and Construction</div>
     <h1>The solution covers the end-to-end real estate development lifecycle with different modules, <b>powered by an agentic AI core</b></h1>
 
@@ -331,13 +331,17 @@
 
   <!-- ===================== PAGE 2 — PROBLEM / SOLUTION ===================== -->
   <section class="stage" id="p2">
+    <div class="pgno">2</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; The problem we solve</div>
     <h1>Even the market leaders still run these workflows manually, at <b>severe and compounding cost</b></h1>
 
     <div class="mv plain">
       <div class="mv-head mv-3a">
         <div class="mh ink">Module</div>
-        <div class="mh grey">How it is done today<span class="sub">leaders and developing players, with the severity of each</span></div>
+        <div class="mh grey" style="display:flex;align-items:flex-start;gap:11px;">
+          <span style="flex:1;">How it is done today<span class="sub">leaders and developing players</span></span>
+          <span class="sevhd">Severity of<br>the problem</span>
+        </div>
         <div class="mh teal">What Blue Currency does</div>
       </div>
 
@@ -353,7 +357,7 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">2</span><b>AI Generated Unified BoQ</b></span></div>
         <div class="mc today">
-          <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Unified BoQ exists, but not always at spec level and manually maintained</span><span class="slv">HIGH</span></div>
+          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">Unified BoQ exists, but not always at spec level and manually maintained</span><span class="slv">LOW</span></div>
           <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Only standardization in WBS, but near-zero at BoQ level</span><span class="slv">HIGH</span></div>
         </div>
         <div class="mc sol">Using the client's own historical data, an AI gatekeeper maintains the structure</div>
@@ -380,7 +384,7 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">5</span><b>Agentic Cost Realization Tracking</b></span></div>
         <div class="mc today">
-          <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">PM and ERP solutions used, mostly not integrated</span><span class="slv">MEDIUM</span></div>
+          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">PM and ERP solutions used, mostly not integrated</span><span class="slv">LOW</span></div>
           <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual tracking in Excels and e-mails</span><span class="slv">MEDIUM</span></div>
         </div>
         <div class="mc sol">Predicts future delays from historical realizations</div>
@@ -399,16 +403,23 @@
 
   <!-- ===================== PAGE 3 — CATEGORY VIEW ===================== -->
   <section class="stage" id="p3">
+    <div class="pgno">3</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
     <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them</h1>
 
     <div class="p3">
       <div class="matrix">
-        <div class="yax"><span>AI-native reasoning &rarr;</span></div>
+        <div class="yax">
+          <span class="axend">High</span>
+          <span>AI-native reasoning</span>
+          <span class="axend">Low</span>
+        </div>
 
         <div class="quads">
           <div class="q ai">
-            <div class="qh"><span class="qn">AI specialists</span><span class="qt">AI-native, one step</span></div>
+            <span class="qn">AI specialists</span>
+            <div class="qd">Machine learning products built for one step of the lifecycle, such as takeoff or site capture, that give a real AI answer inside that step only.</div>
+            <div class="vhd">Example vendors</div>
             <div class="chips">
               <span class="chip" data-logo="kreo">Kreo</span>
               <span class="chip" data-logo="buildots">Buildots</span>
@@ -425,13 +436,16 @@
           </div>
 
           <div class="q empty">
-            <div class="qh"><span class="qn">Agentic platforms</span><span class="qt">AI-native, across the lifecycle</span></div>
+            <span class="qn">Agentic platforms</span>
+            <div class="qd">One platform whose agents reason across every stage, carrying the BoQ, the estimate, the tender and site actuals forward as a single thread.</div>
             <div class="emptytag">No one is here yet</div>
             <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
           </div>
 
           <div class="q">
-            <div class="qh"><span class="qn">Point tools</span><span class="qt">Rules-based, one step</span></div>
+            <span class="qn">Point tools</span>
+            <div class="qd">Single-task software for measuring, pricing or marking up drawings, where every judgement is made by the operator rather than the tool.</div>
+            <div class="vhd">Example vendors</div>
             <div class="chips">
               <span class="chip" data-logo="bluebeam">Bluebeam Revu</span>
               <span class="chip" data-logo="planswift">PlanSwift</span>
@@ -445,7 +459,9 @@
           </div>
 
           <div class="q">
-            <div class="qh"><span class="qn">Enterprise suites</span><span class="qt">Rules-based, broad</span></div>
+            <span class="qn">Enterprise suites</span>
+            <div class="qd">Systems of record that span many stages through configured modules and workflows, so breadth comes from setup rather than from reasoning.</div>
+            <div class="vhd">Example vendors</div>
             <div class="chips">
               <span class="chip" data-logo="oracle">Oracle</span>
               <span class="chip" data-logo="procore">Procore</span>
@@ -467,13 +483,18 @@
           </div>
         </div>
 
-        <div class="xax">Breadth of lifecycle coverage &rarr;</div>
+        <div class="xax">
+          <span class="axend">Low</span>
+          <span>Breadth of lifecycle coverage</span>
+          <span class="axend">High</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================== PAGE 4 — PLAYER DEEP DIVE ===================== -->
   <section class="stage" id="p4">
+    <div class="pgno">4</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive deep dive</div>
     <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
 
@@ -486,7 +507,7 @@
 
     <div class="mv plain">
       <div class="mv-head mv-3">
-        <div class="mh ink">Module and opportunity area</div>
+        <div class="mh ink">Module</div>
         <div class="mh grey">Legacy players</div>
         <div class="mh deep">Emerging AI players</div>
       </div>
@@ -494,7 +515,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap star"><span class="mn">1</span><b>End to End Agentic Orchestration</b></span>
-          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
           <span class="cbadge">BARELY</span>
@@ -529,7 +549,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap"><span class="mn">2</span><b>AI Generated Unified BoQ</b></span>
-          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
           <span class="cbadge">PARTIAL</span>
@@ -564,7 +583,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap"><span class="mn">3</span><b>Dynamic Bottom Up CAPEX</b></span>
-          <div class="opp crowd"><span class="ol">CROWDED</span><span class="os">low opportunity</span></div>
         </div>
         <div class="mc cvhigh pcell">
           <span class="cbadge">COVERS MOST</span>
@@ -599,7 +617,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap"><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span>
-          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
           <span class="cbadge">PARTIAL</span>
@@ -634,7 +651,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap"><span class="mn">5</span><b>Agentic Cost Realization Tracking</b></span>
-          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
           <span class="cbadge">PARTIAL</span>
@@ -669,7 +685,6 @@
       <div class="mv-row mv-3">
         <div class="mc mod">
           <span class="modcap opt"><span class="mn">6</span><b>AI-Based Value Optimizer</b></span>
-          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
           <span class="cbadge">BARELY</span>
