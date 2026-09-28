@@ -804,14 +804,19 @@
 
   function bubble(v){
     const dots=[1,2,3,4,5].map(i=>'<i class="'+(i<=v.ai?'on':'')+'"></i>').join('');
-    const rows=MODS.map((nm,k)=>{
-      const on=v.m.includes(k+1);
-      return '<span class="mrow '+(on?'on':'')+'"><i>'+(on?'\u2713':'\u2013')+'</i>'+nm+'</span>';
-    }).join('');
+    const group=(has)=>MODS
+      .filter((nm,k)=>v.m.includes(k+1)===has)
+      .map(nm=>'<span class="mrow '+(has?'on':'')+'"><i>'+(has?'\u2713':'\u2013')+'</i>'+nm+'</span>')
+      .join('');
+    const section=(label,has)=>{
+      const rows=group(has);
+      return rows?'<span class="pmh">'+label+'</span>'+rows:'';
+    };
     return '<span class="pop">'
       +'<span class="pnm">'+v.n+'</span>'
       +'<span class="prow"><span class="plab">AI native</span><span class="dots">'+dots+'</span></span>'
-      +'<span class="pmh">Modules it covers</span>'+rows
+      +section('What they have',true)
+      +section('What is missing',false)
       +'</span>';
   }
 
