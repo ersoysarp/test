@@ -310,82 +310,82 @@ def build_slide2(prs):
         ],
     )
 
-    add_text(slide, Inches(0.42), Inches(1.00), Inches(3.4), Inches(0.26),
-             "Each row carries its own severity bar", 13, True, INK)
-    # legend
-    for i, (col, lab) in enumerate([(CRIT, "Critical"), (HIGH, "High"), (MED, "Medium")]):
-        x = Inches(4.0) + i * Inches(1.35)
+    add_text(slide, Inches(0.42), Inches(1.00), Inches(3.5), Inches(0.26),
+             "Each row carries its own severity of pain", 13, True, INK)
+    for i, (col, lab) in enumerate([(CRIT, "High"), (HIGH, "Medium"), (MED, "Low")]):
+        x = Inches(4.1) + i * Inches(1.35)
         add_rect(slide, x, Inches(1.06), Inches(0.28), Inches(0.12), col, radius=0.5)
         add_text(slide, x + Inches(0.34), Inches(1.00), Inches(0.95), Inches(0.24), lab, 13, False, INK2)
 
-    # headers
     headers = [
         (Inches(0.42), Inches(2.15), INK, "Module"),
-        (Inches(2.65), Inches(4.55), INK2, "How it is done today\nleaders and developing players, with the severity of each"),
-        (Inches(7.28), Inches(2.55), RGBColor(0x4C, 0x58, 0x66), "What it costs them"),
-        (Inches(9.91), Inches(3.00), TEAL, "What Blue Currency does"),
+        (Inches(2.65), Inches(7.20), INK2,
+         "How it is done today\nleaders and developing players, with the severity of each"),
+        (Inches(9.95), Inches(2.96), TEAL, "What Blue Currency does"),
     ]
     hy = Inches(1.32)
-    hh = Inches(0.58)
     for x, w, fill, text in headers:
-        h = add_rect(slide, x, hy, w, hh, fill, radius=0.04)
+        h = add_rect(slide, x, hy, w, Inches(0.58), fill, radius=0.04)
         add_shape_text(h, text, 14, True, WHITE, PP_ALIGN.LEFT, "ctr")
+
+    LEVELS = {
+        "HIGH": (CRIT, RGBColor(0xA8, 0x39, 0x2C), 0.92),
+        "MEDIUM": (HIGH, RGBColor(0x96, 0x64, 0x1A), 0.62),
+        "LOW": (MED, RGBColor(0x5C, 0x66, 0x70), 0.32),
+    }
 
     rows = [
         ("1", TEAL_D, "End to End Agentic Orchestration",
-         "Point tools stitched by IT.", 0.76, HIGH,
-         "Isolated stages, email only.", 0.96, CRIT,
-         "Nothing learns from the last project.",
-         "One governed agentic layer across every stage, smarter with each project."),
+         "Core ERP with ad hoc point tools and limited integration", "MEDIUM",
+         "No end-to-end tracking, only e-mails, Excels and random SharePoints", "HIGH",
+         "One governed agentic layer across every stage, smarter with each project"),
         ("2", TEAL, "AI Generated Unified BoQ",
-         "In-house coding, kept by hand.", 0.72, HIGH,
-         "Cost items as free text.", 0.92, CRIT,
-         "No comparison across projects or bidders.",
-         "AI codes every item and maps any format into one standard BoQ."),
+         "Unified BoQ exists, but not always at spec level and manually maintained", "HIGH",
+         "Only standardization in WBS, but near-zero at BoQ level", "HIGH",
+         "Using the client's own historical data, an AI gatekeeper maintains the structure"),
         ("3", TEAL, "Dynamic Bottom Up CAPEX",
-         "Estimating on old rates.", 0.54, MED,
-         "Last cost plus inflation.", 0.84, HIGH,
-         "Budgets set on prices already stale.",
-         "Item-level forecasts kept live with commodity, labor and FX."),
+         "Dependent on expensive cost consultants or top-down estimation models", "LOW",
+         "Last cost plus inflation, with no accuracy tracking", "MEDIUM",
+         "Item-level bottom-up cost breakdown with live index data integration"),
         ("4", TEAL, "Smart Tender Bid Evaluation",
-         "Leveling by hand in Excel.", 0.70, HIGH,
-         "Each bidder's own format.", 0.88, CRIT,
-         "Weeks per tender; scope gaps priced in.",
-         "Bids mapped to one structure, then scored and ranked in minutes."),
+         "E-tender solutions are adopted, but with limited AI use in comparison", "LOW",
+         "Manual consolidation and comparison in random Excels", "MEDIUM",
+         "Comparison in seconds, with an AI-based price recommendation"),
         ("5", TEAL, "Agentic Cost Realization Tracking",
-         "PM platforms, manual reports.", 0.80, HIGH,
-         "Spreadsheets and site walks.", 0.94, CRIT,
-         "Overruns surface once irreversible.",
-         "AI checks quantities and progress, and flags mismatches early."),
+         "PM and ERP solutions used, mostly not integrated", "MEDIUM",
+         "Manual tracking in Excels and e-mails", "MEDIUM",
+         "Predicts future delays from historical realizations"),
         ("6", AMBER, "AI-Based Value Optimizer",
-         "Value engineering at gates.", 0.48, MED,
-         "Cost cuts after the breach.", 0.74, HIGH,
-         "Savings found too late to design in.",
-         "An always-on loop that surfaces savings as work proceeds."),
+         "Expert-led value engineering with limited AI use", "HIGH",
+         "Most value opportunities are not recognized", "HIGH",
+         "Not just savings — identifies opportunities and predicts future risks and issues"),
     ]
 
     y = Inches(1.98)
     rh = Inches(0.86)
-    for num, fill, name, ltxt, lp, lc, dtxt, dp, dc, cost, sol in rows:
+    for num, fill, name, ltxt, llvl, dtxt, dlvl, sol in rows:
         add_rect(slide, Inches(0.42), y + rh - Inches(0.01), Inches(12.49), Inches(0.01), RULE)
         add_oval(slide, Inches(0.50), y + Inches(0.26), Inches(0.32), Inches(0.32), fill, WHITE, num, 11)
-        add_text(slide, Inches(0.90), y + Inches(0.18), Inches(1.68), Inches(0.56), name, 14, True, INK)
+        add_text(slide, Inches(0.90), y + Inches(0.18), Inches(1.68), Inches(0.56), name, 13, True, INK)
 
-        add_text(slide, Inches(2.68), y + Inches(0.06), Inches(1.05), Inches(0.32), "LEADERS", 12, True, TEAL_D)
-        add_text(slide, Inches(3.70), y + Inches(0.06), Inches(2.40), Inches(0.32), ltxt, 14, False, INK2)
-        meter(slide, Inches(6.16), y + Inches(0.12), Inches(0.95), Inches(0.14), lp, lc)
+        for idx, (lab, txt, lvl, lab_col) in enumerate([
+            ("LEADERS", ltxt, llvl, TEAL_D),
+            ("DEVELOPING", dtxt, dlvl, GREY_L),
+        ]):
+            ry = y + Inches(0.06) + idx * Inches(0.40)
+            bar_col, word_col, frac = LEVELS[lvl]
+            add_text(slide, Inches(2.68), ry, Inches(1.00), Inches(0.30), lab, 11, True, lab_col)
+            add_text(slide, Inches(3.70), ry, Inches(4.05), Inches(0.36), txt, 12, False, INK2)
+            add_text(slide, Inches(7.78), ry, Inches(0.85), Inches(0.30), lvl, 11, True, word_col,
+                     PP_ALIGN.RIGHT)
+            meter(slide, Inches(8.72), ry + Inches(0.08), Inches(1.00), Inches(0.14), frac, bar_col)
 
-        add_text(slide, Inches(2.68), y + Inches(0.46), Inches(1.05), Inches(0.32), "DEVELOPING", 12, True, GREY_L)
-        add_text(slide, Inches(3.70), y + Inches(0.46), Inches(2.40), Inches(0.32), dtxt, 14, False, INK2)
-        meter(slide, Inches(6.16), y + Inches(0.52), Inches(0.95), Inches(0.14), dp, dc)
-
-        add_text(slide, Inches(7.32), y + Inches(0.16), Inches(2.48), Inches(0.58), cost, 14, False, INK)
-
-        solb = add_rect(slide, Inches(9.91), y + Inches(0.08), Inches(3.00), Inches(0.70), TEAL_SOFT, radius=0.04)
-        add_shape_text(solb, sol, 14, True, TEAL_D, PP_ALIGN.LEFT, "ctr")
+        solb = add_rect(slide, Inches(9.95), y + Inches(0.06), Inches(2.96), Inches(0.72),
+                        TEAL_SOFT, radius=0.04)
+        add_shape_text(solb, sol, 12, True, TEAL_D, PP_ALIGN.LEFT, "ctr")
         y += rh
 
-    add_notes(slide, "Page 2 — The problem. Even market leaders still run these workflows manually. Severity is shown separately for leaders and developing players. Developing players consistently hurt more. Consequence of each gap is in the third column; Blue Currency response in the last.")
+    add_notes(slide, "Page 2 - The problem. Severity of the pain is rated High / Medium / Low separately for market leaders and developing players. The 'what it costs them' column was removed; severity carries that message.")
 
 
 def chip(slide, x, y, w, h, label, fill=WHITE, line=RULE, color=INK2):
