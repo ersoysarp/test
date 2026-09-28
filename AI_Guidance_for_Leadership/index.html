@@ -156,6 +156,24 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .ucard.gold .up .ul{color:var(--gold);}
 .ucard .up .upt{font-size:15px;color:var(--ink-soft);line-height:1.32;font-style:italic;}
 
+/* deep dive rows: category, use cases, prompt */
+.drows{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+.dhead{display:grid;grid-template-columns:238px 1fr 340px;gap:24px;padding:0 4px 7px;border-bottom:2px solid var(--line-strong);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-deep);}
+.drow{flex:1 1 0;display:grid;grid-template-columns:238px 1fr 340px;gap:24px;align-items:center;padding:0 4px;border-bottom:1px solid var(--line);min-height:0;}
+.drow:last-child{border-bottom:none;}
+.drow .dc{display:flex;align-items:center;gap:12px;}
+.drow .dc .ic{color:var(--azure-deep);}
+.drow.gold .dc .ic{color:var(--gold);}
+.drow .dc .dt{font-size:17px;font-weight:700;color:var(--ink);line-height:1.15;}
+.uc2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:24px;}
+.uc2 li{position:relative;padding:0 0 5px 15px;font-size:15px;color:var(--ink-soft);line-height:1.3;}
+.uc2 li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold-soft);}
+.pbox{background:var(--tint);border-radius:8px;padding:9px 12px;}
+.drow.gold .pbox{background:var(--tint-gold);}
+.pbox .pl2{font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--azure-deep);margin-bottom:2px;}
+.drow.gold .pbox .pl2{color:var(--gold);}
+.pbox .pt2{font-size:14px;color:var(--ink-soft);line-height:1.3;font-style:italic;}
+
 /* left to right use case rows */
 .flow{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
 .fhead{display:grid;grid-template-columns:320px 1fr;gap:28px;padding:0 4px 7px;border-bottom:2px solid var(--line-strong);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-deep);}
@@ -445,50 +463,51 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <h2 class="title">Public and internal work: use cases, each with a prompt</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="ugrid" style="grid-template-columns:repeat(2,1fr);">
-      <div class="ucard">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="ut">Draft &amp; translate</span></div>
-        <ul class="ulist">
+    <div class="drows">
+      <div class="dhead"><div>Use case</div><div>What it covers</div><div>Example prompt</div></div>
+      <div class="drow">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="dt">Draft &amp; translate</span></div>
+        <ul class="uc2">
           <li>Speeches, remarks and toasts</li>
-          <li>Congratulatory and condolence letters</li>
-          <li>Press statements and talking points</li>
           <li>Translate to English, Russian, Turkish</li>
+          <li>Congratulatory and condolence letters</li>
           <li>Polish tone and register</li>
+          <li>Press statements and talking points</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Translate this cleared statement into formal English. Keep official titles exact.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Translate this cleared statement into formal English. Keep official titles exact.</div></div>
       </div>
-      <div class="ucard">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="ut">Summarize &amp; analyze</span></div>
-        <ul class="ulist">
+      <div class="drow">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="dt">Summarize &amp; analyze</span></div>
+        <ul class="uc2">
           <li>Condense 50 page reports to one page</li>
-          <li>Compare policy to OECD and EU practice</li>
-          <li>Spot trends across ministry data</li>
           <li>Benchmark against peer states</li>
+          <li>Compare policy to OECD and EU practice</li>
           <li>Extract action points from long files</li>
+          <li>Spot trends across ministry data</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Compare Azerbaijan 2030 to OECD practice. Return a table: our approach, theirs, the gap.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Compare Azerbaijan 2030 to OECD practice. Return a table: our approach, theirs, the gap.</div></div>
       </div>
-      <div class="ucard">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ut">Visualize &amp; report</span></div>
-        <ul class="ulist">
+      <div class="drow">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="dt">Visualize &amp; report</span></div>
+        <ul class="uc2">
           <li>Charts and graphs from spreadsheets</li>
-          <li>One page visual reports</li>
-          <li>Slide packs from State Statistics data</li>
           <li>Simple decision dashboards</li>
+          <li>One page visual reports</li>
           <li>Infographics for the public</li>
+          <li>Slide packs from State Statistics data</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Turn this budget spreadsheet into a one page visual: a chart per program, three takeaways.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Turn this budget spreadsheet into a one page visual: a chart per program, three takeaways.</div></div>
       </div>
-      <div class="ucard">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16"/></svg><span class="ut">Assist &amp; coordinate</span></div>
-        <ul class="ulist">
+      <div class="drow">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 11h16"/></svg><span class="dt">Assist &amp; coordinate</span></div>
+        <ul class="uc2">
           <li>Draft agendas and minutes</li>
-          <li>Assemble briefing packs</li>
-          <li>Track directives and actions</li>
           <li>Prepare meeting questions</li>
+          <li>Assemble briefing packs</li>
           <li>Reminders and follow ups</li>
+          <li>Track directives and actions</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">From these papers, draft a chair note: the decision needed and one question per item.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">From these papers, draft a chair note: the decision needed and one question per item.</div></div>
       </div>
     </div>
     <div class="proof">
@@ -511,50 +530,51 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <h2 class="title">On sensitive data: use cases, each with a prompt</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="ugrid" style="grid-template-columns:repeat(2,1fr);">
-      <div class="ucard gold">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span class="ut">Citizen appeals &amp; correspondence</span></div>
-        <ul class="ulist">
+    <div class="drows">
+      <div class="dhead"><div>Use case</div><div>What it covers</div><div>Example prompt</div></div>
+      <div class="drow gold">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span class="dt">Citizen appeals</span></div>
+        <ul class="uc2">
           <li>Triage and summarize appeals</li>
-          <li>Route to the responsible ministry</li>
-          <li>Draft replies citing the relevant law</li>
           <li>Detect duplicates and patterns</li>
+          <li>Route to the responsible ministry</li>
           <li>Track status through to closure</li>
+          <li>Draft replies citing the relevant law</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Summarize this appeal, name the responsible ministry, draft a reply citing the articles of law.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Summarize this appeal, name the responsible ministry, draft a reply citing the articles of law.</div></div>
       </div>
-      <div class="ucard gold">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="ut">Leadership briefings &amp; dashboards</span></div>
-        <ul class="ulist">
+      <div class="drow gold">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-3 3 2 4-5"/></svg><span class="dt">Briefings &amp; dashboards</span></div>
+        <ul class="uc2">
           <li>Cross ministry briefing packs</li>
-          <li>Live decision dashboards</li>
-          <li>Daily situation updates</li>
           <li>Track KPIs across domains</li>
+          <li>Live decision dashboards</li>
           <li>Visual summaries for the President</li>
+          <li>Daily situation updates</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Build a dashboard from these inputs: one chart per priority, status and top risk for each.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Build a dashboard from these inputs: one chart per priority, status and top risk for each.</div></div>
       </div>
-      <div class="ucard gold">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="ut">Security &amp; defense</span></div>
-        <ul class="ulist">
+      <div class="drow gold">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="dt">Security &amp; defense</span></div>
+        <ul class="uc2">
           <li>Cross domain analysis for the Council</li>
-          <li>Risk maps by region</li>
-          <li>Scenario and readiness planning</li>
           <li>Synthesize classified reports</li>
+          <li>Risk maps by region</li>
           <li>Recommended actions with evidence</li>
+          <li>Scenario and readiness planning</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Across these reports, produce a risk map by region with evidence and one action each.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Across these reports, produce a risk map by region with evidence and one action each.</div></div>
       </div>
-      <div class="ucard gold">
-        <div class="uh"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-4 6 4v12M10 21v-5h4v5"/></svg><span class="ut">Reconstruction, Great Return</span></div>
-        <ul class="ulist">
+      <div class="drow gold">
+        <div class="dc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-4 6 4v12M10 21v-5h4v5"/></svg><span class="dt">Reconstruction, Great Return</span></div>
+        <ul class="uc2">
           <li>Delivery dashboards by district</li>
-          <li>Budget and progress tracking</li>
-          <li>Blocker and delay detection</li>
           <li>Contractor and milestone monitoring</li>
+          <li>Budget and progress tracking</li>
           <li>Status reports for leadership</li>
+          <li>Blocker and delay detection</li>
         </ul>
-        <div class="up"><div class="ul">Example prompt</div><div class="upt">Build a status dashboard by district: budget, progress, blockers, next milestone.</div></div>
+        <div class="pbox"><div class="pl2">Example prompt</div><div class="pt2">Build a status dashboard by district: budget, progress, blockers, next milestone.</div></div>
       </div>
     </div>
   </div>
