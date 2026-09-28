@@ -111,7 +111,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 
 /* mckinsey table */
 .mt{flex:1 1 auto;width:100%;height:100%;border-collapse:separate;border-spacing:0;background:var(--paper-2);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
-.mt th,.mt td{text-align:left;vertical-align:middle;padding:8px 15px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
+.mt th,.mt td{text-align:left;vertical-align:middle;padding:7px 14px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
 .mt thead th{background:var(--azure-deep);color:#fff;font-size:16px;font-weight:700;line-height:1.2;}
 .mt thead th span{display:block;font-size:14px;font-weight:400;color:#bcd8e1;margin-top:2px;}
 .mt thead th:first-child{background:var(--ink);}
@@ -120,16 +120,16 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .mt .cat{background:var(--tint);}
 .mt .cat .ct{font-size:19px;font-weight:700;color:var(--ink);display:block;}
 .mt .cat .ex{font-size:14px;color:var(--ink-faint);margin-top:3px;display:block;line-height:1.35;}
-.mt .cat .ecs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
-.mt .cat .ec{font-size:14px;font-weight:700;color:var(--azure-deep);background:#fff;border:1px solid var(--line-strong);border-radius:6px;padding:4px 8px;line-height:1.2;}
-.ucs{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
-.ucs .ub{font-size:14.5px;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line-strong);border-radius:7px;padding:4px 9px;line-height:1.25;}
-.ucs .ub.on{border-color:#bcd9c9;background:#f2f8f5;}
-.ucs .ub.off{border-style:dashed;color:var(--ink-faint);background:transparent;}
-.mt td.vc{border-bottom:none;padding-bottom:2px;}
-.mt td.uc{padding-top:2px;}
-.mt td.span2{background:linear-gradient(180deg,#f7fbfc,#f7fbfc);}
-.spanlabel{font-size:14px;color:var(--ink-faint);margin-bottom:5px;}
+.mt .cat{background:transparent;}
+.mt tr.band td{background:#f3f0e8;}
+.src{font-size:15px;color:var(--ink-soft);line-height:1.42;margin-top:5px;}
+.vsplit{display:grid;grid-template-columns:1fr 1fr;margin-bottom:6px;}
+.ucs{display:grid;gap:4px;margin-top:6px;}
+.ucs.two{grid-template-columns:1fr 1fr;}
+.ucs.one{grid-template-columns:1fr;}
+.ucs .ub{display:block;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-left:3px solid var(--azure);border-radius:6px;padding:5px 10px;line-height:1.3;}
+.ucs .ub.gold{border-left-color:var(--gold);}
+.ucs .ub.off{border-left-color:var(--stop);color:var(--ink-faint);background:transparent;}
 .proof{display:flex;align-items:center;gap:24px;margin-top:9px;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:10px 22px;flex:0 0 auto;}
 .proof .plabel{font-size:16px;font-weight:700;color:var(--azure-deep);min-width:210px;line-height:1.2;}
 .proof .plabel .sub2{display:block;font-size:14px;font-weight:400;color:var(--ink-soft);margin-top:4px;line-height:1.35;}
@@ -431,45 +431,61 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
     <table class="mt">
       <thead>
         <tr>
-          <th style="width:40%">Government data sources</th>
+          <th style="width:32%">Government data sources</th>
           <th>Enterprise account<span>Vendor cloud, governed</span></th>
           <th>Fully secure, on premise<span>Closed, national control</span></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="cat" rowspan="2"><span class="ct">Public</span><div class="ecs"><span class="ec">Published statistics</span><span class="ec">National strategies</span><span class="ec">Delivered speeches</span><span class="ec">Press releases</span><span class="ec">Legislation</span><span class="ec">Open budget data</span></div></td>
-          <td class="vc"><span class="verdict v-safe">Safe</span></td>
-          <td class="vc"><span class="verdict v-safe">Safe</span></td>
+        <tr class="band">
+          <td class="cat"><span class="ct">Public</span><div class="src">Published statistics, national strategies, delivered speeches, press releases, open budget data</div></td>
+          <td colspan="2">
+            <div class="vsplit"><span class="verdict v-safe">Safe</span><span class="verdict v-safe">Safe</span></div>
+            <div class="ucs two">
+              <span class="ub">Translate a speech into another language</span>
+              <span class="ub">Draft a press statement from approved facts</span>
+              <span class="ub">Compare our strategy with other countries</span>
+              <span class="ub">Summarize a long published report</span>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="uc span2" colspan="2"><div class="spanlabel">Same use cases in either environment</div><div class="ucs"><span class="ub on">Translate a speech</span><span class="ub on">Draft press lines</span><span class="ub on">Benchmark against OECD</span><span class="ub on">Summarize a published report</span></div></td>
+          <td class="cat"><span class="ct">Internal</span><div class="src">Operational reports, draft policy papers, program performance, agency correspondence, internal analytics</div></td>
+          <td colspan="2">
+            <div class="vsplit"><span class="verdict v-caution">With controls</span><span class="verdict v-safe">Safe</span></div>
+            <div class="ucs two">
+              <span class="ub">Summarize a ministry report into one page</span>
+              <span class="ub">Draft policy text from an outline</span>
+              <span class="ub">Build a progress tracker across agencies</span>
+              <span class="ub">Pull the action points out of long documents</span>
+            </div>
+          </td>
+        </tr>
+        <tr class="band">
+          <td class="cat"><span class="ct">Limited access</span><div class="src">Citizen appeals, personal records, draft decrees, case files, procurement documents</div></td>
+          <td><span class="verdict v-stop">Not permitted</span>
+            <div class="ucs one"><span class="ub off">This data must stay in the country</span></div>
+          </td>
+          <td><span class="verdict v-safe">Safe</span>
+            <div class="ucs one">
+              <span class="ub gold">Summarize a citizen appeal and its history</span>
+              <span class="ub gold">Send each appeal to the right ministry</span>
+              <span class="ub gold">Draft a reply that cites the correct law</span>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="cat" rowspan="2"><span class="ct">Internal</span><div class="ecs"><span class="ec">Operational reports</span><span class="ec">Draft policy papers</span><span class="ec">Program data</span><span class="ec">Agency letters</span><span class="ec">Meeting minutes</span><span class="ec">Internal analytics</span></div></td>
-          <td class="vc"><span class="verdict v-caution">With controls</span></td>
-          <td class="vc"><span class="verdict v-safe">Safe</span></td>
-        </tr>
-        <tr>
-          <td class="uc span2" colspan="2"><div class="spanlabel">Same use cases, with access controls on the enterprise account</div><div class="ucs"><span class="ub on">Summarize ministry reports</span><span class="ub on">Draft policy text</span><span class="ub on">Cross agency trackers</span><span class="ub on">Extract action points</span></div></td>
-        </tr>
-        <tr>
-          <td class="cat" rowspan="2"><span class="ct">Limited access</span><div class="ecs"><span class="ec">Citizen appeals</span><span class="ec">Personal records</span><span class="ec">Draft decrees</span><span class="ec">Case files</span><span class="ec">Procurement files</span><span class="ec">Predecision advice</span></div></td>
-          <td class="vc"><span class="verdict v-stop">Not permitted</span></td>
-          <td class="vc"><span class="verdict v-safe">Safe</span></td>
-        </tr>
-        <tr>
-          <td class="uc"><div class="ucs"><span class="ub off">Data must stay in national control</span></div></td>
-          <td class="uc"><div class="ucs"><span class="ub on">Summarize appeals</span><span class="ub on">Route to ministries</span><span class="ub on">Draft legal replies</span><span class="ub on">Spot case patterns</span></div></td>
-        </tr>
-        <tr>
-          <td class="cat" rowspan="2"><span class="ct">Restricted</span><div class="ecs"><span class="ec">Security assessments</span><span class="ec">Council minutes</span><span class="ec">Defense readiness</span><span class="ec">Intelligence</span><span class="ec">Cabinet papers</span><span class="ec">Infrastructure plans</span></div></td>
-          <td class="vc"><span class="verdict v-stop">Not permitted</span></td>
-          <td class="vc"><span class="verdict v-safe">Safe</span></td>
-        </tr>
-        <tr>
-          <td class="uc"><div class="ucs"><span class="ub off">Accredited environment only</span></div></td>
-          <td class="uc"><div class="ucs"><span class="ub on">Cross domain analysis</span><span class="ub on">Decision dashboards</span><span class="ub on">Briefing packs</span><span class="ub on">Scenario planning</span></div></td>
+          <td class="cat"><span class="ct">Restricted</span><div class="src">Security assessments, Security Council minutes, defense readiness, intelligence summaries, infrastructure plans</div></td>
+          <td><span class="verdict v-stop">Not permitted</span>
+            <div class="ucs one"><span class="ub off">Only inside an accredited closed system</span></div>
+          </td>
+          <td><span class="verdict v-safe">Safe</span>
+            <div class="ucs one">
+              <span class="ub gold">Combine defense, security and regional reports</span>
+              <span class="ub gold">Keep one live dashboard for the President</span>
+              <span class="ub gold">Prepare a briefing pack for a closed meeting</span>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
