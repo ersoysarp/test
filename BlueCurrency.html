@@ -136,6 +136,8 @@
   .qcap.tr{top:12px;right:14px;text-align:right;}
   .qcap.bl{bottom:12px;left:14px;}
   .qcap.br{bottom:12px;right:14px;text-align:right;}
+  .gapzone{position:absolute;top:50%;left:50%;width:34%;height:34%;transform:translate(-50%,-50%);
+    border:1.5px dashed rgba(11,127,119,.38);border-radius:50%;pointer-events:none;}
   button.node,button.vchip{-webkit-appearance:none;appearance:none;}
   .node{position:absolute;transform:translate(-50%,-50%);background:#fff;border:1.5px solid var(--grey-l);
     border-radius:20px;padding:6px 11px;font-size:13px;font-weight:600;color:var(--ink2);white-space:nowrap;
@@ -275,7 +277,7 @@
         <div>
           <div class="rhd">Key value propositions</div>
           <div class="vpgrid">
-            <div class="vp"><div class="vt">Only agentic platform that runs the construction lifecycle</div></div>
+            <div class="vp"><div class="vt">More complete than AI point tools, more AI-native than the legacy suites</div></div>
             <div class="vp"><div class="vt">Easy to use, covering the fundamentals clients need — more features would only add complexity</div></div>
             <div class="vp"><div class="vt">Plug and play setup, with near zero data prep</div></div>
             <div class="vp"><div class="vt">Modular by design, and works with other McKinsey assets</div></div>
@@ -345,7 +347,7 @@
   <!-- ===================== PAGE 3 — UNIQUE POSITION ===================== -->
   <section class="stage" id="p3">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>Blue Currency is not the broadest suite. It has a <b>unique position</b>: agentic, and complete on the fundamentals</h1>
+    <h1>Blue Currency sits in the gap: <b>broader than the AI startups</b>, more AI-native than the legacy suites</h1>
 
     <div class="mlegend">
       <span class="mi"><span class="mdot emerging"></span>Emerging AI players</span>
@@ -361,14 +363,15 @@
           <div class="plot">
             <div class="plot-clip">
               <div class="vline"></div><div class="hline"></div>
+              <div class="gapzone"></div>
               <div class="qcap tl">Smart but narrow</div>
               <div class="qcap tr">More features, more complexity</div>
               <div class="qcap bl">Manual point tools</div>
               <div class="qcap br">Broad suites, expert heavy</div>
             </div>
 
-            <button type="button" class="node own tip-down" style="top:18%;left:46%;">Blue Currency
-              <span class="pop">Agentic layer on the fundamentals clients need. Not a broader suite — more features would make it harder to use.</span>
+            <button type="button" class="node own" style="top:50%;left:50%;">Blue Currency
+              <span class="pop">Less AI-native than the startups, broader than they are. Less broad than the legacy suites, more AI-native than they are.</span>
             </button>
 
             <button type="button" class="node emerging tip-down" style="top:16%;left:16%;">Kreo
@@ -387,7 +390,7 @@
               <span class="pop">Tender, estimating and bid comparison. Strong on bidding, not an agentic lifecycle layer.</span>
             </button>
 
-            <button type="button" class="node legacy" style="top:64%;left:56%;">Cleopatra
+            <button type="button" class="node legacy" style="top:66%;left:61%;">Cleopatra
               <span class="pop">Enterprise cost estimating and controls, configured by experts. Rules-based, not agentic.</span>
             </button>
             <button type="button" class="node legacy" style="top:73%;left:70%;">RIB iTWO
@@ -404,17 +407,17 @@
             </button>
           </div>
         </div>
-        <div class="xaxis"><span>Single step</span><span class="axname">Scope · fundamentals, not a feature suite</span><span>Feature-heavy suite</span></div>
+        <div class="xaxis"><span>Single step</span><span class="axname">Scope</span><span>Feature-heavy suite</span></div>
       </div>
 
       <div class="takeaways">
         <div class="rhd">Key takeaways</div>
         <ul class="tklist">
-          <li>Emerging AI players are genuinely AI native, but each one solves only a single step.</li>
-          <li>Legacy suites add more modules and stay rules-based — broader, and harder to use.</li>
-          <li>Blue Currency is not trying to win on breadth. It covers the fundamentals, orchestrated by one agentic layer.</li>
+          <li>Emerging AI players are more AI-native than we are, but each one covers only a single step.</li>
+          <li>Legacy suites are broader than we are, and stay rules-based rather than AI-native.</li>
+          <li>That leaves a gap in the middle — more complete than a point tool, more AI-native than a suite.</li>
         </ul>
-        <div class="tkcall">Unique position: agentic, easy to use, and complete on the fundamentals clients need.</div>
+        <div class="tkcall">Unique position: less AI-native than the startups, less broad than the suites — and that is the point.</div>
       </div>
     </div>
   </section>
@@ -586,6 +589,7 @@
     i=Math.max(0,Math.min(pages.length-1,n));
     pages.forEach((p,x)=>p.classList.toggle('active',x===i));
     closeTips();
+    if(location.hash!=='#p'+(i+1)) history.replaceState(null,'','#p'+(i+1)+location.search);
     fit();
   }
   function go(d){show(i+d);}
@@ -625,7 +629,19 @@
     wrap.style.transform='scale('+scale+')';
     wrap.style.transformOrigin='center center';
   }
-  window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
+  function applyRoute(){
+    const m=location.hash.match(/p(\d)/);
+    if(m) show(parseInt(m[1],10)-1);
+    const tip=(new URLSearchParams(location.search)).get('tip');
+    if(tip){
+      const el=[...document.querySelectorAll('.node,.vchip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
+      if(el){closeTips();el.classList.add('open');}
+    }
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('hashchange',()=>{const m=location.hash.match(/p(\d)/);if(m)show(parseInt(m[1],10)-1);});
+  window.addEventListener('load',()=>{applyRoute();fit();});
+  applyRoute();fit();
 </script>
 </body>
 </html>
