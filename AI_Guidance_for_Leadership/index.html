@@ -149,8 +149,10 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 
 /* left to right use case rows */
 .flow{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
-.fhead{display:grid;grid-template-columns:225px 1fr 300px;gap:20px;padding:0 4px 7px;border-bottom:2px solid var(--line-strong);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-deep);}
-.frow{flex:1 1 0;display:grid;grid-template-columns:225px 1fr 300px;gap:20px;align-items:center;padding:0 4px;border-bottom:1px solid var(--line);min-height:0;}
+.fhead{display:grid;grid-template-columns:320px 1fr;gap:28px;padding:0 4px 7px;border-bottom:2px solid var(--line-strong);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure-deep);}
+.frow{flex:1 1 0;display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:center;padding:0 4px;border-bottom:1px solid var(--line);min-height:0;}
+.frow .fp{font-size:16px;}
+.fo{display:none;}
 .frow:last-child{border-bottom:none;}
 .frow .fc{display:flex;align-items:center;gap:12px;}
 .frow .fc .ic{color:var(--azure-deep);}
@@ -435,7 +437,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <div class="rule"></div>
   <div class="body">
     <div class="flow">
-      <div class="fhead"><div>Use case</div><div>Example prompt</div><div>Example output</div></div>
+      <div class="fhead"><div>Use case</div><div>Example prompt</div></div>
       <div class="frow">
         <div class="fc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span><span class="ft">Draft &amp; translate</span><span class="fcs">Speeches, letters, press lines</span></span></div>
         <div class="fp">Translate this cleared statement into formal English. Keep official titles exact.</div>
@@ -488,7 +490,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <div class="rule"></div>
   <div class="body">
     <div class="flow">
-      <div class="fhead"><div>Use case</div><div>Example prompt</div><div>Example output</div></div>
+      <div class="fhead"><div>Use case</div><div>Example prompt</div></div>
       <div class="frow gold">
         <div class="fc"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span><span class="ft">Citizen appeals</span><span class="fcs">Triage, route, reply</span></span></div>
         <div class="fp">Summarize this appeal, name the responsible ministry, draft a reply citing the articles of law.</div>
