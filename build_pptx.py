@@ -273,7 +273,7 @@ def build_slide1(prs):
 
     vps = [
         "More complete than AI point tools, more AI-native than legacy suites",
-        "Easy to use — covering all the fundamentals, without suite complexities",
+        "Easy to use: covering all the fundamentals, without suite complexities",
         "Plug and play: limited data prep or integration need",
         "Modular, and works with other McKinsey assets",
     ]
@@ -289,13 +289,7 @@ def build_slide1(prs):
         add_text(slide, x + Inches(0.14), yy + Inches(0.08), vw - Inches(0.22), vh - Inches(0.12),
                  vp, 14, True, TEAL_D)
 
-    add_notes(slide, "Page 1 — Introduction. Blue Currency is the first agentic AI platform that runs the entire construction lifecycle, end to end. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Built on existing McKinsey assets.")
-
-
-def meter(slide, x, y, w, h, pct, color):
-    add_rect(slide, x, y, w, h, TRACK, radius=0.5)
-    if pct > 0:
-        add_rect(slide, x, y, int(w * pct), h, color, radius=0.5)
+    add_notes(slide, "Page 1. Introduction. Blue Currency is the first agentic AI platform that runs the entire construction lifecycle, end to end. Modules: orchestration, unified BoQ, dynamic CAPEX, tender evaluation, procurement and progress tracking, plus optional Value Optimizer. Built on existing McKinsey assets.")
 
 
 def build_slide2(prs):
@@ -305,17 +299,10 @@ def build_slide2(prs):
         slide,
         "BLUE CURRENCY  |  THE PROBLEM WE SOLVE",
         [
-            ("Even the market leaders still run these workflows manually — at ", True, INK),
+            ("Even the market leaders still run these workflows manually, at ", True, INK),
             ("severe and compounding cost", True, TEAL_D),
         ],
     )
-
-    add_text(slide, Inches(0.42), Inches(1.00), Inches(3.5), Inches(0.26),
-             "Each row carries its own severity of pain", 13, True, INK)
-    for i, (col, lab) in enumerate([(CRIT, "High"), (HIGH, "Medium"), (MED, "Low")]):
-        x = Inches(4.1) + i * Inches(1.35)
-        add_rect(slide, x, Inches(1.06), Inches(0.28), Inches(0.12), col, radius=0.5)
-        add_text(slide, x + Inches(0.34), Inches(1.00), Inches(0.95), Inches(0.24), lab, 13, False, INK2)
 
     headers = [
         (Inches(0.42), Inches(2.15), INK, "Module"),
@@ -328,11 +315,7 @@ def build_slide2(prs):
         h = add_rect(slide, x, hy, w, Inches(0.58), fill, radius=0.04)
         add_shape_text(h, text, 14, True, WHITE, PP_ALIGN.LEFT, "ctr")
 
-    LEVELS = {
-        "HIGH": (CRIT, RGBColor(0xA8, 0x39, 0x2C), 0.92),
-        "MEDIUM": (HIGH, RGBColor(0x96, 0x64, 0x1A), 0.62),
-        "LOW": (MED, RGBColor(0x5C, 0x66, 0x70), 0.32),
-    }
+    LEVELS = {"HIGH": CRIT, "MEDIUM": HIGH, "LOW": MED}
 
     rows = [
         ("1", TEAL_D, "End to End Agentic Orchestration",
@@ -358,7 +341,7 @@ def build_slide2(prs):
         ("6", AMBER, "AI-Based Value Optimizer",
          "Expert-led value engineering with limited AI use", "HIGH",
          "Most value opportunities are not recognized", "HIGH",
-         "Not just savings — identifies opportunities and predicts future risks and issues"),
+         "Not just savings: identifies opportunities and predicts future risks and issues"),
     ]
 
     y = Inches(1.98)
@@ -373,19 +356,18 @@ def build_slide2(prs):
             ("DEVELOPING", dtxt, dlvl, GREY_L),
         ]):
             ry = y + Inches(0.06) + idx * Inches(0.40)
-            bar_col, word_col, frac = LEVELS[lvl]
             add_text(slide, Inches(2.68), ry, Inches(1.00), Inches(0.30), lab, 11, True, lab_col)
-            add_text(slide, Inches(3.70), ry, Inches(4.05), Inches(0.36), txt, 12, False, INK2)
-            add_text(slide, Inches(7.78), ry, Inches(0.85), Inches(0.30), lvl, 11, True, word_col,
-                     PP_ALIGN.RIGHT)
-            meter(slide, Inches(8.72), ry + Inches(0.08), Inches(1.00), Inches(0.14), frac, bar_col)
+            add_text(slide, Inches(3.70), ry, Inches(4.55), Inches(0.36), txt, 12, False, INK2)
+            lvlbox = add_rect(slide, Inches(8.55), ry + Inches(0.02), Inches(1.15), Inches(0.28),
+                              LEVELS[lvl], radius=0.04)
+            add_shape_text(lvlbox, lvl, 11, True, WHITE, PP_ALIGN.CENTER)
 
         solb = add_rect(slide, Inches(9.95), y + Inches(0.06), Inches(2.96), Inches(0.72),
                         TEAL_SOFT, radius=0.04)
         add_shape_text(solb, sol, 12, True, TEAL_D, PP_ALIGN.LEFT, "ctr")
         y += rh
 
-    add_notes(slide, "Page 2 - The problem. Severity of the pain is rated High / Medium / Low separately for market leaders and developing players. The 'what it costs them' column was removed; severity carries that message.")
+    add_notes(slide, "Page 2. The problem. Severity of the pain is rated High / Medium / Low separately for market leaders and developing players. The 'what it costs them' column was removed; severity carries that message.")
 
 
 def chip(slide, x, y, w, h, label, fill=WHITE, line=RULE, color=INK2):
@@ -403,7 +385,7 @@ def build_slide3(prs):
         [
             ("The market falls into ", True, INK),
             ("four archetypes", True, TEAL_D),
-            (" — we sit deliberately between them, not at the far corner", True, INK),
+            (", and we sit deliberately between them, not at the far corner", True, INK),
         ],
     )
 
@@ -443,7 +425,7 @@ def build_slide3(prs):
     add_text(slide, qx1 + Inches(0.14), qy1 + Inches(1.50), Inches(5.6), Inches(0.24),
              "Strong in  takeoff, cost classification, tendering, site progress", 14, False, GREY)
     add_rich(slide, qx1 + Inches(0.14), qy1 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Each solves a slice — ", True, INK),
+             [("Each solves a slice, and ", True, INK),
               ("nothing carries across a handover.", True, RED)])
 
     # empty / agentic platforms
@@ -457,7 +439,7 @@ def build_slide3(prs):
                      RGBColor(0xDC, 0xEE, 0xEA), radius=0.08)
     add_shape_text(empty, "NO ONE IS HERE YET", 14, True, TEAL_D, PP_ALIGN.CENTER)
     add_rich(slide, qx2 + Inches(0.14), qy1 + Inches(1.60), Inches(5.6), Inches(0.50),
-             [("Where the market is heading — ", True, TEAL_D),
+             [("Where the market is heading, ", True, TEAL_D),
               ("and what Blue Currency is built for.", True, TEAL_D)])
 
     # point tools
@@ -476,8 +458,8 @@ def build_slide3(prs):
     add_text(slide, qx1 + Inches(0.14), qy2 + Inches(1.50), Inches(5.6), Inches(0.24),
              "Strong in  measurement, pricing, drawing markup", 14, False, GREY)
     add_rich(slide, qx1 + Inches(0.14), qy2 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Where most of the market still sits — ", True, INK),
-              ("no automation, no memory.", True, RED)])
+             [("Where most of the market still sits, with ", True, INK),
+              ("no automation and no memory.", True, RED)])
 
     # enterprise
     add_rect(slide, qx2, qy2, q_w, q_h, SOFT, RULE, 0.75, radius=0.08)
@@ -495,7 +477,7 @@ def build_slide3(prs):
     add_text(slide, qx2 + Inches(0.14), qy2 + Inches(1.50), Inches(5.6), Inches(0.24),
              "Strong in  cost control, scheduling, procurement, documents", 14, False, GREY)
     add_rich(slide, qx2 + Inches(0.14), qy2 + Inches(1.76), Inches(5.6), Inches(0.40),
-             [("Breadth without intelligence — ", True, INK),
+             [("Breadth without intelligence: ", True, INK),
               ("more features, and harder to use.", True, RED)])
 
     # Blue Currency centre band
@@ -513,7 +495,7 @@ def build_slide3(prs):
     add_text(slide, Inches(0.52), Inches(6.68), Inches(12.1), Inches(0.28),
              "BREADTH OF LIFECYCLE COVERAGE  →", 12, True, GREY, PP_ALIGN.CENTER)
 
-    add_notes(slide, "Page 3 — Competitive landscape as four archetypes. Axes: AI-native reasoning (up) and breadth of lifecycle coverage (right). Blue Currency sits in the middle of the matrix, not in the top-right corner. Top-right (agentic + end to end) is empty — no one is there yet. AI specialists: Kreo, Buildots, Costify, Zebel, ConWize, Ediphi, Doxel, OpenSpace, ALICE, nPlan. Point tools: Bluebeam, PlanSwift, RIB CostX, RIB Candy, Sage Estimating, Causeway, Excel. Enterprise suites: Oracle, Procore, RIB iTWO, Cleopatra, SAP Ariba, Autodesk ACC, InEight, Trimble, Jaggaer.")
+    add_notes(slide, "Page 3. Competitive landscape as four archetypes. Axes are AI-native reasoning (up) and breadth of lifecycle coverage (right). Blue Currency sits in the middle of the matrix, not in the top-right corner. Top-right (agentic plus end to end) is empty: no one is there yet. AI specialists: Kreo, Buildots, Costify, Zebel, ConWize, Ediphi, Doxel, OpenSpace, ALICE, nPlan. Point tools: Bluebeam, PlanSwift, RIB CostX, RIB Candy, Sage Estimating, Causeway, Excel. Enterprise suites: Oracle, Procore, RIB iTWO, Cleopatra, SAP Ariba, Autodesk ACC, InEight, Trimble, Jaggaer.")
 
 
 def build_slide4(prs):
@@ -529,7 +511,7 @@ def build_slide4(prs):
     )
 
     add_text(slide, Inches(0.42), Inches(1.00), Inches(6.4), Inches(0.24),
-             "Box colour = how much of the module that group already covers", 13, True, INK)
+             "Badge = how much of the module that group already covers", 13, True, INK)
     for i, (col, lab) in enumerate([
         (RGBColor(0xCF, 0xE8, 0xD8), "Covers most"),
         (RGBColor(0xF5, 0xE3, 0xBF), "Partial"),
@@ -540,7 +522,7 @@ def build_slide4(prs):
         add_text(slide, x + Inches(0.32), Inches(0.98), Inches(1.18), Inches(0.24), lab, 12, False, INK2)
 
     headers = [
-        (Inches(0.42), Inches(2.95), INK, "Module and our opportunity"),
+        (Inches(0.42), Inches(2.95), INK, "Module and opportunity area"),
         (Inches(3.45), Inches(4.70), INK2, "Legacy players"),
         (Inches(8.23), Inches(4.68), TEAL_D, "Emerging AI players"),
     ]
@@ -551,47 +533,47 @@ def build_slide4(prs):
 
     rows = [
         ("1", TEAL_D, "End to End Agentic Orchestration",
-         ("WHITE SPACE", "ours to take", TEAL_D, WHITE, RGBColor(0xB9, 0xDC, 0xD8)),
+         ("WHITE SPACE", "high opportunity", INK, WHITE, RGBColor(0xAE, 0xB6, 0xBC)),
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
-          "Suites link stages through integration — workflow, not a model that learns.",
+          "Not agentic either: no automation and no learning across stages.",
           "RIB iTWO   ·   Oracle   ·   InEight"),
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
           "Each tool owns a single stage; nobody governs the whole lifecycle.",
           "Kreo   ·   Buildots   ·   ConWize")),
         ("2", TEAL, "AI Generated Unified BoQ",
-         ("OPEN GAP", "partly served", TEAL_SOFT, TEAL_D, RGBColor(0x5D, 0x8C, 0x88)),
+         ("OPEN GAP", "medium opportunity", RGBColor(0xDC, 0xE2, 0xE6), INK, GREY),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
-          "Cost structures exist, but coding items and mapping formats stays manual.",
+          "Provides structure, but no BoQ catalog creation from scratch out of historical data.",
           "Cleopatra   ·   RIB CostX   ·   Trimble"),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
-          "Good at classifying documents into data; they stop short of a live BoQ.",
+          "Document to data translation, but limited BoQ hierarchy focus.",
           "Costify   ·   Zebel   ·   ConWize")),
         ("3", TEAL, "Dynamic Bottom Up CAPEX",
-         ("CROWDED", "well served", MOD_BG, RGBColor(0x5C, 0x66, 0x70), GREY_L),
+         ("CROWDED", "low opportunity", RGBColor(0xF4, 0xF6, 0xF7), GREY, GREY_L),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
-          "Mature estimating engines, priced off libraries rather than live markets.",
+          "Mature estimating engines; this step is already well served.",
           "RIB CostX   ·   Cleopatra   ·   InEight"),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
-          "Genuinely strong AI estimating, but preconstruction only.",
+          "Genuinely strong AI estimating; also well served.",
           "Zebel   ·   Kreo   ·   Ediphi")),
         ("4", TEAL, "Smart Tender Bid Evaluation",
-         ("OPEN GAP", "partly served", TEAL_SOFT, TEAL_D, RGBColor(0x5D, 0x8C, 0x88)),
+         ("OPEN GAP", "medium opportunity", RGBColor(0xDC, 0xE2, 0xE6), INK, GREY),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
-          "Sourcing workflow is solved; leveling construction BoQs is not.",
+          "Standard templates make comparison workable; the gap is AI recommendation and spec analysis.",
           "Cleopatra   ·   SAP Ariba   ·   Jaggaer"),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
-          "Real line-by-line bid comparison exists — and it ends at the tender.",
+          "They cover bid comparison well, so no real gap here.",
           "ConWize   ·   Zebel   ·   Ediphi")),
         ("5", TEAL, "Agentic Cost Realization Tracking",
-         ("CROWDED", "well served", MOD_BG, RGBColor(0x5C, 0x66, 0x70), GREY_L),
-         (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
-          "Entrenched systems of record, still fed by manual site reporting.",
+         ("OPEN GAP", "medium opportunity", RGBColor(0xDC, 0xE2, 0xE6), INK, GREY),
+         (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
+          "Systems of record are entrenched, but recording is fully manual.",
           "Procore   ·   Oracle Primavera   ·   Autodesk ACC"),
-         (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
-          "Best-in-class AI progress capture, with no link to procurement.",
+         (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
+          "Physical progress capture only, with no contract or IPC cost tracking.",
           "Buildots   ·   Doxel   ·   OpenSpace")),
         ("6", AMBER, "AI-Based Value Optimizer",
-         ("WHITE SPACE", "ours to take", TEAL_D, WHITE, RGBColor(0xB9, 0xDC, 0xD8)),
+         ("WHITE SPACE", "high opportunity", INK, WHITE, RGBColor(0xAE, 0xB6, 0xBC)),
          (RED_BOX, RED, RGBColor(0xF0, 0xD4, 0xCF), RGBColor(0x9B, 0x33, 0x28), "BARELY",
           "Static what-if analysis at gates; no continuous savings loop anywhere.",
           "Cleopatra   ·   RIB iTWO   ·   Oracle"),
@@ -603,7 +585,7 @@ def build_slide4(prs):
     y = Inches(1.70)
     rh = Inches(0.92)
     for num, fill, name, opp, left, right in rows:
-        add_rect(slide, Inches(0.42), y, Inches(2.95), rh - Inches(0.06), MOD_BG, radius=0.04)
+        add_rect(slide, Inches(0.42), y + rh - Inches(0.07), Inches(2.95), Inches(0.01), RULE)
         add_oval(slide, Inches(0.50), y + Inches(0.10), Inches(0.28), Inches(0.28), fill, WHITE, num, 11)
         add_text(slide, Inches(0.84), y + Inches(0.08), Inches(2.45), Inches(0.36), name, 14, True, INK)
         ol, os, ofill, ocol, oscol = opp
@@ -622,8 +604,7 @@ def build_slide4(prs):
 
         def camp(x, w, data):
             bg, border, bbg, bfg, blab, comment, vendors = data
-            box = add_rect(slide, x, y, w, rh - Inches(0.06), bg, radius=0.04)
-            add_rect(slide, x, y, Inches(0.06), rh - Inches(0.06), border)
+            add_rect(slide, x, y + rh - Inches(0.07), w, Inches(0.01), RULE)
             # badge + comment
             add_rect(slide, x + Inches(0.14), y + Inches(0.08), Inches(1.18), Inches(0.24), bbg, radius=0.04)
             add_text(slide, x + Inches(0.14), y + Inches(0.08), Inches(1.18), Inches(0.24),
@@ -637,56 +618,56 @@ def build_slide4(prs):
         camp(Inches(8.23), Inches(4.68), right)
         y += rh
 
-    notes = """Page 4 — Competitive deep dive. Box colour is the group's coverage of that module, not each vendor.
+    notes = """Page 4. Competitive deep dive. Box colour is the group's coverage of that module, not each vendor.
 
 VENDOR EVIDENCE (from the HTML hover notes)
 
 End to End Agentic Orchestration
-• RIB iTWO — Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.
-• Oracle — Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.
-• InEight — Estimating through to field execution in one platform, driven by workflow and rules rather than agents.
-• Kreo — Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.
-• Buildots — Site progress only. No link back to the BoQ, the budget or the procurement pipeline.
-• ConWize — Tendering only. The model stops once the contract is awarded.
+• RIB iTWO: Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.
+• Oracle: Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.
+• InEight: Estimating through to field execution in one platform, driven by workflow and rules rather than agents.
+• Kreo: Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.
+• Buildots: Site progress only. No link back to the BoQ, the budget or the procurement pipeline.
+• ConWize: Tendering only. The model stops once the contract is awarded.
 
 AI Generated Unified BoQ
-• Cleopatra — Configurable cost-breakdown structures. Mapping items into it stays expert-led.
-• RIB CostX — Measured takeoff and BoQs from drawings. No automatic coding of any incoming format.
-• Trimble — Maintains cost libraries. Mapping third-party formats remains manual.
-• Costify — Turns BoQs into a classified private database. Data, not a live BoQ engine.
-• Zebel — Standardizes historical spreadsheets into a cost database, not one unified BoQ.
-• ConWize — Imports and manages BoQs for tendering, limited automatic standardization.
+• Cleopatra: Configurable cost-breakdown structures. Mapping items into it stays expert-led.
+• RIB CostX: Measured takeoff and BoQs from drawings. No automatic coding of any incoming format.
+• Trimble: Maintains cost libraries. Mapping third-party formats remains manual.
+• Costify: Turns BoQs into a classified private database. Data, not a live BoQ engine.
+• Zebel: Standardizes historical spreadsheets into a cost database, not one unified BoQ.
+• ConWize: Imports and manages BoQs for tendering, limited automatic standardization.
 
 Dynamic Bottom Up CAPEX
-• RIB CostX — Bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.
-• Cleopatra — Estimating and benchmarking driven by rules and cost libraries.
-• InEight — Cost estimating and project controls. Capable engine, still planner-driven.
-• Zebel — Conceptual estimates from a firm's own history. Preconstruction focus.
-• Kreo — AI takeoff from drawings through to quantities and estimates. One step, done well.
-• Ediphi — Preconstruction estimating and early bid leveling, not live bottom-up CAPEX.
+• RIB CostX: Bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.
+• Cleopatra: Estimating and benchmarking driven by rules and cost libraries.
+• InEight: Cost estimating and project controls. Capable engine, still planner-driven.
+• Zebel: Conceptual estimates from a firm's own history. Preconstruction focus.
+• Kreo: AI takeoff from drawings through to quantities and estimates. One step, done well.
+• Ediphi: Preconstruction estimating and early bid leveling, not live bottom-up CAPEX.
 
 Smart Tender Bid Evaluation
-• Cleopatra — Standardized bid comparison once data is already structured. Setup is expert-heavy.
-• SAP Ariba — Sourcing and bid workflow. Generic, not construction-BoQ native.
-• Jaggaer — Generic sourcing and scoring. Not built to normalize construction BoQs line by line.
-• ConWize — Line-by-line BoQ bid comparison that flags anomalies. Strong at tendering only.
-• Zebel — Bid leveling against historical unit prices. A preconstruction worksheet.
-• Ediphi — Early-stage bid leveling, not full tender evaluation through to award.
+• Cleopatra: Standardized bid comparison once data is already structured. Setup is expert-heavy.
+• SAP Ariba: Sourcing and bid workflow. Generic, not construction-BoQ native.
+• Jaggaer: Generic sourcing and scoring. Not built to normalize construction BoQs line by line.
+• ConWize: Line-by-line BoQ bid comparison that flags anomalies. Strong at tendering only.
+• Zebel: Bid leveling against historical unit prices. A preconstruction worksheet.
+• Ediphi: Early-stage bid leveling, not full tender evaluation through to award.
 
 Procurement and Progress Tracking
-• Procore — Project and field management. Manual site reporting still feeds it.
-• Oracle Primavera — Schedule and earned-value controls. Strong on plan, weak as a quantity gatekeeper.
-• Autodesk ACC — Construction cloud for models, issues and field data. Coordination, not agentic cost control.
-• Buildots — AI compares site captures against BIM and schedule. Best-in-class for that step alone.
-• Doxel — Reality capture versus plan. Progress evidence, not procurement control.
-• OpenSpace — 360 capture and visual progress documentation. No agentic check on quantities.
+• Procore: Project and field management. Manual site reporting still feeds it.
+• Oracle Primavera: Schedule and earned-value controls. Strong on plan, weak as a quantity gatekeeper.
+• Autodesk ACC: Construction cloud for models, issues and field data. Coordination, not agentic cost control.
+• Buildots: AI compares site captures against BIM and schedule. Best-in-class for that step alone.
+• Doxel: Reality capture versus plan. Progress evidence, not procurement control.
+• OpenSpace: 360 capture and visual progress documentation. No agentic check on quantities.
 
 Value Optimizer
-• Cleopatra — Static what-if analysis on an estimate. Not a continuous savings loop.
-• RIB iTWO — Scenario comparison inside the estimate. No always-on value-engineering loop.
-• Oracle — Capital planning and portfolio what-ifs, run by analysts at decision points.
-• ALICE Technologies — Schedule optioneering. Time, not a cost-value loop.
-• nPlan — AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.
+• Cleopatra: Static what-if analysis on an estimate. Not a continuous savings loop.
+• RIB iTWO: Scenario comparison inside the estimate. No always-on value-engineering loop.
+• Oracle: Capital planning and portfolio what-ifs, run by analysts at decision points.
+• ALICE Technologies: Schedule optioneering. Time, not a cost-value loop.
+• nPlan: AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.
 """
     add_notes(slide, notes)
 

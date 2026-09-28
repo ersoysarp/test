@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blue Currency — investment pitch</title>
+<title>Blue Currency investment pitch</title>
 <style>
   :root{
     --ink:#26303A; --ink2:#3A454F; --grey:#6B7580; --grey-l:#9AA3AC;
@@ -90,7 +90,7 @@
   .vp .vt{font-size:14px;font-weight:700;color:var(--teal-d);line-height:1.3;}
 
   /* ============ MARVIN BOX TABLES ============ */
-  .mv{display:flex;flex-direction:column;gap:5px;flex:1;margin-top:12px;min-height:0;}
+  .mv{display:flex;flex-direction:column;gap:4px;flex:1;margin-top:12px;min-height:0;}
   .mv-head,.mv-row{display:grid;gap:6px;}
   .mv-row{flex:1;}
   .mv-3a{grid-template-columns:1fr 3.18fr 1.2fr;}
@@ -102,7 +102,7 @@
   .mh.teal{background:var(--teal);}
   .mh.deep{background:var(--teal-d);}
   .mh .sub{display:block;font-size:14px;font-weight:600;opacity:.82;margin-top:1px;}
-  .mc{border-radius:3px;padding:7px 11px;font-size:14px;line-height:1.32;color:var(--ink2);
+  .mc{border-radius:3px;padding:6px 11px;font-size:14px;line-height:1.32;color:var(--ink2);
     display:flex;align-items:flex-start;background:var(--soft);}
   .mc.mod{background:#EDF0F2;flex-direction:column;justify-content:center;gap:8px;}
   .mc.sol{background:var(--teal-soft);color:var(--teal-d);font-weight:600;align-items:center;}
@@ -125,18 +125,12 @@
   .tlab{flex:0 0 94px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-d);}
   .trow.dev .tlab{color:var(--grey-l);}
   .ttxt{flex:1;font-size:14px;line-height:1.3;color:var(--ink2);}
-  .slv{flex:0 0 62px;font-size:14px;font-weight:800;letter-spacing:.05em;text-align:right;}
-  .meter{flex:0 0 86px;height:10px;border-radius:5px;background:#EDF0F2;overflow:hidden;}
-  .meter i{display:block;height:100%;border-radius:5px;}
-  .s-high .slv{color:#A8392C;}
-  .s-high .meter i{width:92%;background:var(--red);}
-  .s-med .slv{color:#96641A;}
-  .s-med .meter i{width:62%;background:#D9982F;}
-  .s-low .slv{color:#5C6670;}
-  .s-low .meter i{width:32%;background:#98A2AB;}
-  .sevlegend{display:flex;gap:18px;align-items:center;margin-top:8px;font-size:14px;color:var(--ink2);flex-wrap:wrap;}
-  .sevlegend .lgt{font-weight:700;color:var(--ink);}
-  .sevlegend .sw{display:inline-block;width:26px;height:10px;border-radius:5px;margin-right:7px;vertical-align:middle;}
+  /* severity reads as one equal-sized coloured box per row */
+  .slv{flex:0 0 96px;height:26px;display:flex;align-items:center;justify-content:center;
+    border-radius:3px;font-size:14px;font-weight:800;letter-spacing:.05em;color:#fff;}
+  .s-high .slv{background:var(--red);}
+  .s-med .slv{background:#D9982F;}
+  .s-low .slv{background:#98A2AB;}
   .mv.plain .mc.sol{font-size:14px;}
 
   /* ============ PAGE 3 — FOUR ARCHETYPES ON A 2x2 ============ */
@@ -200,10 +194,7 @@
   .sw.m{background:#F5E3BF;border:1px solid #D9982F;}
   .sw.l{background:#F0D4CF;border:1px solid var(--red);}
 
-  /* how much of the module each group already covers — colour is per box */
-  .mc.cvhigh{background:#E9F4ED;border-left:4px solid var(--green);}
-  .mc.cvmid{background:#FBF3E3;border-left:4px solid #D9982F;}
-  .mc.cvlow{background:#F9EAE7;border-left:4px solid var(--red);}
+  /* how much of the module each group already covers: colour sits in the badge, not the box */
   .cbadge{display:inline-flex;align-items:center;font-size:14px;font-weight:800;letter-spacing:.05em;
     padding:2px 8px;border-radius:3px;margin-right:8px;}
   .cvhigh .cbadge{background:#CFE8D8;color:#1E6B3D;}
@@ -213,18 +204,18 @@
   .opp{display:flex;align-items:center;gap:9px;padding:6px 9px;border-radius:3px;width:100%;}
   .opp .ol{font-size:14px;font-weight:800;letter-spacing:.07em;}
   .opp .os{font-size:14px;font-weight:600;}
-  .opp.white{background:var(--teal-d);}
-  .opp.white .ol{color:#fff;} .opp.white .os{color:#B9DCD8;}
-  .opp.gap{background:var(--teal-soft);}
-  .opp.gap .ol{color:var(--teal-d);} .opp.gap .os{color:#5D8C88;}
-  .opp.crowd{background:#EDF0F2;}
-  .opp.crowd .ol{color:#5C6670;} .opp.crowd .os{color:var(--grey-l);}
+  .opp.white{background:var(--ink);}
+  .opp.white .ol{color:#fff;} .opp.white .os{color:#AEB6BC;}
+  .opp.gap{background:#DCE2E6;}
+  .opp.gap .ol{color:var(--ink);} .opp.gap .os{color:var(--grey);}
+  .opp.crowd{background:#F4F6F7;border:1px solid var(--rule);}
+  .opp.crowd .ol{color:var(--grey);} .opp.crowd .os{color:var(--grey-l);}
 
-  .pcell{flex-direction:column;align-items:stretch;justify-content:center;gap:8px;}
+  .pcell{flex-direction:column;align-items:stretch;justify-content:center;gap:7px;}
   .pov{font-size:15px;line-height:1.35;color:var(--ink);font-weight:700;}
-  .vcol{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;}
-  .vchip{position:relative;display:inline-flex;align-items:center;background:#fff;border:1px solid var(--rule);
-    border-radius:18px;padding:3px 11px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;
+  .vcol{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start;}
+  .vchip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
+    border-radius:18px;padding:3px 11px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
     line-height:1.25;text-align:left;max-width:100%;}
   .vchip:hover,.vchip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
   .pop{
@@ -338,7 +329,7 @@
         <div class="rhd" style="margin-top:12px">Key value propositions</div>
         <div class="vpgrid">
           <div class="vp"><div class="vt">More complete than AI point tools, more AI-native than legacy suites</div></div>
-          <div class="vp"><div class="vt">Easy to use — covering all the fundamentals, without suite complexities</div></div>
+          <div class="vp"><div class="vt">Easy to use: covering all the fundamentals, without suite complexities</div></div>
           <div class="vp"><div class="vt">Plug and play: limited data prep or integration need</div></div>
           <div class="vp"><div class="vt">Modular, and works with other McKinsey assets</div></div>
         </div>
@@ -349,14 +340,7 @@
   <!-- ===================== PAGE 2 — PROBLEM / SOLUTION ===================== -->
   <section class="stage" id="p2">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; The problem we solve</div>
-    <h1>Even the market leaders still run these workflows manually — at <b>severe and compounding cost</b></h1>
-
-    <div class="sevlegend">
-      <span class="lgt">Each row carries its own severity of pain</span>
-      <span><span class="sw" style="background:#C0453B"></span>High</span>
-      <span><span class="sw" style="background:#D9982F"></span>Medium</span>
-      <span><span class="sw" style="background:#98A2AB"></span>Low</span>
-    </div>
+    <h1>Even the market leaders still run these workflows manually, at <b>severe and compounding cost</b></h1>
 
     <div class="mv plain">
       <div class="mv-head mv-3a">
@@ -368,8 +352,8 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap star"><span class="mn">1</span><b>End to End Agentic Orchestration</b></span></div>
         <div class="mc today">
-          <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">Core ERP with ad hoc point tools and limited integration</span><span class="slv">MEDIUM</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">No end-to-end tracking, only e-mails, Excels and random SharePoints</span><span class="slv">HIGH</span><span class="meter"><i></i></span></div>
+          <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">Core ERP with ad hoc point tools and limited integration</span><span class="slv">MEDIUM</span></div>
+          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">No end-to-end tracking, only e-mails, Excels and random SharePoints</span><span class="slv">HIGH</span></div>
         </div>
         <div class="mc sol">One governed agentic layer across every stage, smarter with each project</div>
       </div>
@@ -377,8 +361,8 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">2</span><b>AI Generated Unified BoQ</b></span></div>
         <div class="mc today">
-          <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Unified BoQ exists, but not always at spec level and manually maintained</span><span class="slv">HIGH</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Only standardization in WBS, but near-zero at BoQ level</span><span class="slv">HIGH</span><span class="meter"><i></i></span></div>
+          <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Unified BoQ exists, but not always at spec level and manually maintained</span><span class="slv">HIGH</span></div>
+          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Only standardization in WBS, but near-zero at BoQ level</span><span class="slv">HIGH</span></div>
         </div>
         <div class="mc sol">Using the client's own historical data, an AI gatekeeper maintains the structure</div>
       </div>
@@ -386,8 +370,8 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">3</span><b>Dynamic Bottom Up CAPEX</b></span></div>
         <div class="mc today">
-          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">Dependent on expensive cost consultants or top-down estimation models</span><span class="slv">LOW</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Last cost plus inflation, with no accuracy tracking</span><span class="slv">MEDIUM</span><span class="meter"><i></i></span></div>
+          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">Dependent on expensive cost consultants or top-down estimation models</span><span class="slv">LOW</span></div>
+          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Last cost plus inflation, with no accuracy tracking</span><span class="slv">MEDIUM</span></div>
         </div>
         <div class="mc sol">Item-level bottom-up cost breakdown with live index data integration</div>
       </div>
@@ -395,8 +379,8 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span></div>
         <div class="mc today">
-          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">E-tender solutions are adopted, but with limited AI use in comparison</span><span class="slv">LOW</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual consolidation and comparison in random Excels</span><span class="slv">MEDIUM</span><span class="meter"><i></i></span></div>
+          <div class="trow s-low"><span class="tlab">Leaders</span><span class="ttxt">E-tender solutions are adopted, but with limited AI use in comparison</span><span class="slv">LOW</span></div>
+          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual consolidation and comparison in random Excels</span><span class="slv">MEDIUM</span></div>
         </div>
         <div class="mc sol">Comparison in seconds, with an AI-based price recommendation</div>
       </div>
@@ -404,8 +388,8 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap"><span class="mn">5</span><b>Agentic Cost Realization Tracking</b></span></div>
         <div class="mc today">
-          <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">PM and ERP solutions used, mostly not integrated</span><span class="slv">MEDIUM</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual tracking in Excels and e-mails</span><span class="slv">MEDIUM</span><span class="meter"><i></i></span></div>
+          <div class="trow s-med"><span class="tlab">Leaders</span><span class="ttxt">PM and ERP solutions used, mostly not integrated</span><span class="slv">MEDIUM</span></div>
+          <div class="trow dev s-med"><span class="tlab">Developing</span><span class="ttxt">Manual tracking in Excels and e-mails</span><span class="slv">MEDIUM</span></div>
         </div>
         <div class="mc sol">Predicts future delays from historical realizations</div>
       </div>
@@ -413,10 +397,10 @@
       <div class="mv-row mv-3a">
         <div class="mc mod"><span class="modcap opt"><span class="mn">6</span><b>AI-Based Value Optimizer</b></span></div>
         <div class="mc today">
-          <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Expert-led value engineering with limited AI use</span><span class="slv">HIGH</span><span class="meter"><i></i></span></div>
-          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Most value opportunities are not recognized</span><span class="slv">HIGH</span><span class="meter"><i></i></span></div>
+          <div class="trow s-high"><span class="tlab">Leaders</span><span class="ttxt">Expert-led value engineering with limited AI use</span><span class="slv">HIGH</span></div>
+          <div class="trow dev s-high"><span class="tlab">Developing</span><span class="ttxt">Most value opportunities are not recognized</span><span class="slv">HIGH</span></div>
         </div>
-        <div class="mc sol">Not just savings — identifies opportunities and predicts future risks and issues</div>
+        <div class="mc sol">Not just savings: identifies opportunities and predicts future risks and issues</div>
       </div>
     </div>
   </section>
@@ -424,7 +408,7 @@
   <!-- ===================== PAGE 3 — CATEGORY VIEW ===================== -->
   <section class="stage" id="p3">
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Competitive landscape</div>
-    <h1>The market falls into <b>four archetypes</b> — we sit deliberately between them, not at the far corner</h1>
+    <h1>The market falls into <b>four archetypes</b>, and we sit deliberately between them, not at the far corner</h1>
 
     <div class="p3">
       <div class="matrix">
@@ -450,7 +434,7 @@
             </div>
             <div>
               <div class="qs"><b>Strong in</b> takeoff, cost classification, tendering, site progress</div>
-              <div class="qf">Each solves a slice — <span>nothing carries across a handover</span>.</div>
+              <div class="qf">Each solves a slice, and <span>nothing carries across a handover</span>.</div>
             </div>
           </div>
 
@@ -460,7 +444,7 @@
               <div class="qd">One platform that reasons across every stage, from BoQ through to site.</div>
             </div>
             <div class="emptytag">No one is here yet</div>
-            <div class="qf">Where the market is heading — <span>and what Blue Currency is built for</span>.</div>
+            <div class="qf">Where the market is heading, <span>and what Blue Currency is built for</span>.</div>
           </div>
 
           <div class="q">
@@ -479,7 +463,7 @@
             </div>
             <div>
               <div class="qs"><b>Strong in</b> measurement, pricing, drawing markup</div>
-              <div class="qf">Where most of the market still sits — <span>no automation, no memory</span>.</div>
+              <div class="qf">Where most of the market still sits, with <span>no automation and no memory</span>.</div>
             </div>
           </div>
 
@@ -501,7 +485,7 @@
             </div>
             <div>
               <div class="qs"><b>Strong in</b> cost control, scheduling, procurement, documents</div>
-              <div class="qf">Breadth without intelligence — <span>more features, and harder to use</span>.</div>
+              <div class="qf">Breadth without intelligence: <span>more features, and harder to use</span>.</div>
             </div>
           </div>
 
@@ -522,27 +506,26 @@
     <h1>Module by module, legacy suites are feature-heavy and emerging AI tools are <b>smart but narrow</b></h1>
 
     <div class="legend">
-      <span class="lgt">Box colour = how much of the module that group already covers</span>
+      <span class="lgt">Badge = how much of the module that group already covers</span>
       <span class="lg"><span class="sw h"></span>Covers most</span>
       <span class="lg"><span class="sw m"></span>Partial</span>
       <span class="lg"><span class="sw l"></span>Barely</span>
-      <span class="mhint">Hover or tap a vendor for the evidence</span>
     </div>
 
-    <div class="mv">
+    <div class="mv plain">
       <div class="mv-head mv-3">
-        <div class="mh ink">Module and our opportunity</div>
+        <div class="mh ink">Module and opportunity area</div>
         <div class="mh grey">Legacy players</div>
         <div class="mh deep">Emerging AI players</div>
       </div>
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap star"><svg class="ico"><use href="#i-orbit"/></svg><span class="mn">1</span><b>End to End Agentic Orchestration</b></span>
-          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">ours to take</span></div>
+          <span class="modcap star"><span class="mn">1</span><b>End to End Agentic Orchestration</b></span>
+          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
-          <div class="pov"><span class="cbadge">BARELY</span>Suites link stages through integration projects — workflow, not a model that learns.</div>
+          <div class="pov"><span class="cbadge">BARELY</span>Not agentic either: no automation and no learning across stages.</div>
           <div class="vcol">
             <button type="button" class="vchip tip-down">RIB iTWO
               <span class="pop">Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.</span></button>
@@ -567,11 +550,11 @@
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap"><svg class="ico"><use href="#i-list"/></svg><span class="mn">2</span><b>AI Generated Unified BoQ</b></span>
-          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">partly served</span></div>
+          <span class="modcap"><span class="mn">2</span><b>AI Generated Unified BoQ</b></span>
+          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Cost structures exist, but coding items and mapping formats stays manual.</div>
+          <div class="pov"><span class="cbadge">PARTIAL</span>Provides structure, but no BoQ catalog creation from scratch out of historical data.</div>
           <div class="vcol">
             <button type="button" class="vchip">Cleopatra
               <span class="pop">Configurable cost-breakdown structures. The structure is there; mapping items into it stays expert-led.</span></button>
@@ -582,7 +565,7 @@
           </div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Good at classifying documents into data; they stop short of a live BoQ.</div>
+          <div class="pov"><span class="cbadge">PARTIAL</span>Document to data translation, but limited BoQ hierarchy focus.</div>
           <div class="vcol">
             <button type="button" class="vchip">Costify
               <span class="pop">Turns BoQs and pricing documents into a classified private database. Delivers data, not a live BoQ engine.</span></button>
@@ -596,11 +579,11 @@
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap"><svg class="ico"><use href="#i-chart"/></svg><span class="mn">3</span><b>Dynamic Bottom Up CAPEX</b></span>
-          <div class="opp crowd"><span class="ol">CROWDED</span><span class="os">well served</span></div>
+          <span class="modcap"><span class="mn">3</span><b>Dynamic Bottom Up CAPEX</b></span>
+          <div class="opp crowd"><span class="ol">CROWDED</span><span class="os">low opportunity</span></div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Mature estimating engines, priced off libraries rather than live markets.</div>
+          <div class="pov"><span class="cbadge">COVERS MOST</span>Mature estimating engines; this step is already well served.</div>
           <div class="vcol">
             <button type="button" class="vchip">RIB CostX
               <span class="pop">Detailed bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.</span></button>
@@ -611,7 +594,7 @@
           </div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Genuinely strong AI estimating, but preconstruction only.</div>
+          <div class="pov"><span class="cbadge">COVERS MOST</span>Genuinely strong AI estimating; also well served.</div>
           <div class="vcol">
             <button type="button" class="vchip">Zebel
               <span class="pop">Conceptual estimates from a firm's own history, adjusted for location and escalation. Preconstruction focus.</span></button>
@@ -625,11 +608,11 @@
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap"><svg class="ico"><use href="#i-gavel"/></svg><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span>
-          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">partly served</span></div>
+          <span class="modcap"><span class="mn">4</span><b>Smart Tender Bid Evaluation</b></span>
+          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Sourcing workflow is solved; leveling construction BoQs is not.</div>
+          <div class="pov"><span class="cbadge">PARTIAL</span>Standard templates make comparison workable; the gap is AI recommendation and spec analysis.</div>
           <div class="vcol">
             <button type="button" class="vchip">Cleopatra
               <span class="pop">Standardized bid comparison once data is already structured. Setup is expert-heavy.</span></button>
@@ -640,7 +623,7 @@
           </div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Real line-by-line bid comparison exists — and it ends at the tender.</div>
+          <div class="pov"><span class="cbadge">COVERS MOST</span>They cover bid comparison well, so no real gap here.</div>
           <div class="vcol">
             <button type="button" class="vchip">ConWize
               <span class="pop">Line-by-line BoQ bid comparison that flags anomalies and missing prices. Strong at tendering only.</span></button>
@@ -654,11 +637,11 @@
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap"><svg class="ico"><use href="#i-track"/></svg><span class="mn">5</span><b>Agentic Cost Realization Tracking</b></span>
-          <div class="opp crowd"><span class="ol">CROWDED</span><span class="os">well served</span></div>
+          <span class="modcap"><span class="mn">5</span><b>Agentic Cost Realization Tracking</b></span>
+          <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
-        <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Entrenched systems of record, still fed by manual site reporting.</div>
+        <div class="mc cvmid pcell">
+          <div class="pov"><span class="cbadge">PARTIAL</span>Systems of record are entrenched, but recording is fully manual.</div>
           <div class="vcol">
             <button type="button" class="vchip">Procore
               <span class="pop">Project and field management across documents and progress. Manual site reporting still feeds it.</span></button>
@@ -668,8 +651,8 @@
               <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
           </div>
         </div>
-        <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Best-in-class AI progress capture, with no link to procurement.</div>
+        <div class="mc cvmid pcell">
+          <div class="pov"><span class="cbadge">PARTIAL</span>Physical progress capture only, with no contract or IPC cost tracking.</div>
           <div class="vcol">
             <button type="button" class="vchip">Buildots
               <span class="pop">AI compares site captures against BIM and schedule to track progress. Best-in-class for that step alone.</span></button>
@@ -683,8 +666,8 @@
 
       <div class="mv-row mv-3">
         <div class="mc mod">
-          <span class="modcap opt"><svg class="ico"><use href="#i-spark"/></svg><span class="mn">6</span><b>AI-Based Value Optimizer</b></span>
-          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">ours to take</span></div>
+          <span class="modcap opt"><span class="mn">6</span><b>AI-Based Value Optimizer</b></span>
+          <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
           <div class="pov"><span class="cbadge">BARELY</span>Static what-if analysis at gates; no continuous savings loop anywhere.</div>
