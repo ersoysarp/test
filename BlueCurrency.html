@@ -231,7 +231,7 @@
   .pop{
     display:none;position:absolute;left:50%;bottom:calc(100% + 9px);
     transform:translateX(calc(-50% + var(--sx,0px)));
-    width:286px;background:var(--ink);color:#fff;font-size:14px;line-height:1.35;font-weight:500;
+    width:372px;background:var(--ink);color:#fff;font-size:14px;line-height:1.35;font-weight:500;
     padding:11px 13px 12px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
     box-shadow:0 10px 24px rgba(0,0,0,.28);
   }
@@ -244,12 +244,21 @@
   .pop .dots i.on{background:#43C6B0;}
   .pop .pmh{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.18);
     font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
-  .pop .mrow{display:flex;align-items:flex-start;gap:8px;margin-top:5px;font-size:14px;font-weight:600;
-    line-height:1.25;color:#7F9096;}
-  .pop .mrow i{flex:0 0 18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  .pop .mrow{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:14px;font-weight:600;
+    line-height:1.2;color:#AEBDC2;}
+  .pop .mrow i{flex:0 0 18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;
     font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.10);color:#8D9EA2;}
+  .pop .mrow em{margin-left:auto;font-style:normal;font-size:14px;font-weight:700;color:#8D9EA2;white-space:nowrap;}
   .pop .mrow.on{color:#fff;font-weight:700;}
   .pop .mrow.on i{background:#43C6B0;color:#06342F;}
+  .pop .mrow.on em{color:#43C6B0;}
+  /* what they are strongest at, and what they leave to us, side by side */
+  .pop .pcols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .pop .pcols ul{list-style:none;margin:5px 0 0;padding:0;}
+  .pop .pcols li{position:relative;padding-left:10px;font-size:14px;line-height:1.25;color:#DCEDEA;margin-top:3px;}
+  .pop .pcols li::before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#93A7A5;}
+  .pop .gaps li{color:#F1D6D2;}
+  .pop .gaps li::before{background:#E08A80;}
   .pop:after{content:"";position:absolute;top:100%;left:50%;transform:translateX(calc(-50% - var(--sx,0px)));
     border:6px solid transparent;border-top-color:var(--ink);}
   .vchip:hover > .pop,.vchip.open > .pop{display:block;}
@@ -799,16 +808,25 @@
     nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects',e:'Forecasts risk from a corpus of past project schedules',p:'startup',s:['Schedule risk learned from past projects','Strong forecasting'],w:['Risk only, no cost optimization','No execution workflow']}
   };
 
+  const MODS=['End to end orchestration','AI generated unified BoQ','Dynamic bottom up CAPEX',
+              'Smart tender bid evaluation','Agentic cost realization','AI-based value optimizer'];
+  const li=(items)=>items.map(t=>'<li>'+t+'</li>').join('');
+
   function bubble(v){
     const dots=[1,2,3,4,5].map(i=>'<i class="'+(i<=v.ai?'on':'')+'"></i>').join('');
-    const section=(label,items,good)=>'<span class="pmh">'+label+'</span>'
-      +items.map(t=>'<span class="mrow '+(good?'on':'')+'"><i>'+(good?'\u2713':'\u2013')+'</i>'+t+'</span>').join('');
+    const rows=MODS.map((nm,k)=>{
+      const on=v.m.includes(k+1);
+      return '<span class="mrow '+(on?'on':'')+'"><i>'+(k+1)+'</i>'+nm
+        +'<em>'+(on?'Covers':'No')+'</em></span>';
+    }).join('');
     return '<span class="pop">'
       +'<span class="pnm">'+v.n+'</span>'
       +'<span class="prow"><span class="plab">AI native</span><span class="dots">'+dots+'</span></span>'
-      +section('Strengths',v.s,true)
-      +section('Weaknesses',v.w,false)
-      +'</span>';
+      +'<span class="pmh">Coverage of our six capabilities</span>'+rows
+      +'<span class="pcols">'
+      +'<span><span class="pmh">Strongest capabilities</span><ul>'+li(v.s)+'</ul></span>'
+      +'<span class="gaps"><span class="pmh">Gaps vs Blue Currency</span><ul>'+li(v.w)+'</ul></span>'
+      +'</span></span>';
   }
 
   // a bubble this tall opens wherever there is room on the page, and slides
