@@ -174,10 +174,11 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 
 /* roadmap */
 .road{flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch;}
-.prin{flex:1 1 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:center;min-height:0;}
-.pcard{background:var(--paper-2);border:1px solid var(--line);border-top:3px solid var(--azure);border-radius:12px;padding:16px 22px;box-shadow:var(--shadow);}
-.pcard .pn{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
-.pcard .pt{font-size:19px;font-weight:700;color:var(--ink);margin:5px 0 7px;}
+.prin{flex:1 1 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;min-height:0;}
+.pcard{display:flex;flex-direction:column;justify-content:center;background:var(--paper-2);border:1px solid var(--line);border-top:3px solid var(--azure);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);}
+.pcard .pn{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--azure-deep);}
+.pcard .pn .ic{color:var(--gold);}
+.pcard .pt{font-size:19px;font-weight:700;color:var(--ink);margin:10px 0 7px;}
 .pcard .pd{font-size:16px;color:var(--ink-soft);line-height:1.35;}
 .rstep{position:relative;display:flex;flex-direction:column;padding:14px 16px 0;}
 .rstep:not(:last-child)::after{content:"";position:absolute;left:38px;top:34px;right:0;height:3px;background:var(--line-strong);z-index:0;}
@@ -483,11 +484,12 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
       <div class="rstep hl"><div class="dot">4</div><div class="when">Quarters 2 to 4</div><h4>Prove sensitive cases</h4><p>Decision dashboard, case correspondence, cross domain analysis</p><div class="get"><b>You get.</b> Leadership value shown</div></div>
       <div class="rstep hl"><div class="dot">5</div><div class="when">Year 2 onward</div><h4>Scale to sovereignty</h4><p>Dedicated classified facility and the wider sovereign stack</p><div class="get"><b>You get.</b> Full national capability</div></div>
     </div>
-    <div class="eh" style="margin:14px 0 0;">Three principles that govern every step</div>
+    <div class="eh" style="margin:14px 0 0;">Prerequisites to enable this roadmap</div>
     <div class="prin">
-      <div class="pcard"><div class="pn">01</div><div class="pt">Classify first</div><div class="pd">The data tier sets the environment, and the tasks allowed in it</div></div>
-      <div class="pcard"><div class="pn">02</div><div class="pt">Verify every output</div><div class="pd">Check against an authoritative source before it informs a decision</div></div>
-      <div class="pcard"><div class="pn">03</div><div class="pt">Disclose AI</div><div class="pd">State when AI has materially shaped a public facing output</div></div>
+      <div class="pcard"><div class="pn"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg>Leadership mandate</div><div class="pt">A named senior owner</div><div class="pd">One accountable sponsor and a clear decision to proceed</div></div>
+      <div class="pcard"><div class="pn"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"/></svg>Data classification</div><div class="pt">Tiers defined</div><div class="pd">So every task maps to the right environment</div></div>
+      <div class="pcard"><div class="pn"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg>Enterprise agreement</div><div class="pt">Contract in place</div><div class="pd">No training on data, central control, full audit</div></div>
+      <div class="pcard"><div class="pn"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Funding &amp; security path</div><div class="pt">Budget and route</div><div class="pd">Committed funding and an accreditation path for the secure room</div></div>
     </div>
   </div>
   <div class="foot"><span>Classification decides everything, value arrives early and compounds</span><span>Section <b>07</b></span></div>
