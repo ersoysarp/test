@@ -99,7 +99,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .pan .li:last-child{border-bottom:none;}
 .pan .li .lb{font-size:18px;font-weight:700;color:var(--ink);}
 .pan .li .ds{font-size:16px;color:var(--ink-soft);line-height:1.35;}
-.insight{flex:0 0 auto;margin-top:16px;background:var(--azure-deep);color:#fff;border-radius:12px;padding:14px 26px;font-size:17px;line-height:1.4;}
+.insight{flex:0 0 auto;margin-top:12px;background:var(--azure-deep);color:#fff;border-radius:12px;padding:12px 24px;font-size:16px;line-height:1.4;}
 .insight b{color:var(--gold-soft);}
 
 /* two-level item grid */
@@ -111,7 +111,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 
 /* mckinsey table */
 .mt{flex:1 1 auto;width:100%;height:100%;border-collapse:separate;border-spacing:0;background:var(--paper-2);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
-.mt th,.mt td{text-align:left;vertical-align:middle;padding:12px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
+.mt th,.mt td{text-align:left;vertical-align:middle;padding:9px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
 .mt thead th{background:var(--azure-deep);color:#fff;font-size:16px;font-weight:700;line-height:1.2;}
 .mt thead th span{display:block;font-size:14px;font-weight:400;color:#bcd8e1;margin-top:2px;}
 .mt thead th:first-child{background:var(--ink);}
@@ -120,6 +120,14 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .mt .cat{background:var(--tint);}
 .mt .cat .ct{font-size:19px;font-weight:700;color:var(--ink);display:block;}
 .mt .cat .ex{font-size:14px;color:var(--ink-faint);margin-top:3px;display:block;line-height:1.35;}
+.mt .cat .ecs{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
+.mt .cat .ec{font-size:15px;font-weight:700;color:var(--azure-deep);background:#fff;border:1px solid var(--line-strong);border-radius:6px;padding:3px 9px;}
+.proof{display:flex;align-items:center;gap:24px;margin-top:14px;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:12px 22px;flex:0 0 auto;}
+.proof .plabel{font-size:16px;font-weight:700;color:var(--azure-deep);min-width:170px;line-height:1.2;}
+.proof .pk{display:flex;align-items:baseline;gap:9px;}
+.proof .pk .n{font-size:26px;font-weight:700;color:var(--azure-deep);}
+.proof .pk .l{font-size:15px;color:var(--ink-soft);}
+.proof .sep{width:1px;align-self:stretch;background:var(--line-strong);}
 .mt .cat .ci{display:flex;align-items:center;gap:12px;}
 .mt .sub{display:block;font-size:14px;color:var(--ink-faint);margin-top:2px;}
 .verdict{display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:700;margin-bottom:6px;}
@@ -363,22 +371,22 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
       </thead>
       <tbody>
         <tr>
-          <td class="cat"><span class="ct">Public</span><span class="ex">State Statistics data, Azerbaijan 2030, COP29 speeches</span></td>
+          <td class="cat"><span class="ct">Public</span><div class="ecs"><span class="ec">State Statistics</span><span class="ec">Azerbaijan 2030</span><span class="ec">COP29 speeches</span></div></td>
           <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Translate a COP29 address for the world</li><li>Compare Azerbaijan 2030 to OECD practice</li></ul></td>
           <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Available, rarely needed here</li></ul></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Internal</span><span class="ex">Ministry reports, draft policy, process notes</span></td>
+          <td class="cat"><span class="ct">Internal</span><div class="ecs"><span class="ec">Ministry reports</span><span class="ec">Draft policy</span><span class="ec">Process notes</span></div></td>
           <td><span class="verdict v-caution">With controls</span><ul class="ulist"><li>Summarise ministry reports, draft policy</li><li>Design cross agency trackers</li></ul></td>
           <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>The natural home, no external processing</li></ul></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Limited access</span><span class="ex">Citizen appeals, personal records, draft orders</span></td>
+          <td class="cat"><span class="ct">Limited access</span><div class="ecs"><span class="ec">Citizen appeals</span><span class="ec">Personal records</span><span class="ec">Draft orders</span></div></td>
           <td><span class="verdict v-stop">Not permitted</span><ul class="ulist"><li>Personal data must stay in national control</li></ul></td>
           <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Summarise citizen appeals, route to ministries</li><li>Draft replies citing the relevant law</li></ul></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Restricted</span><span class="ex">Security assessments, closed Security Council minutes</span></td>
+          <td class="cat"><span class="ct">Restricted</span><div class="ecs"><span class="ec">Security assessments</span><span class="ec">Security Council minutes</span></div></td>
           <td><span class="verdict v-stop">Not permitted</span><ul class="ulist"><li>Never outside an accredited environment</li></ul></td>
           <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Cross domain analysis for the Security Council</li><li>Leadership dashboards and briefing packs</li></ul></td>
         </tr>
@@ -392,44 +400,71 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 <!-- 6 · ENTERPRISE DEEP DIVE -->
 <section class="slide">
   <div class="kicker"><span class="n">04</span> Deep dive, enterprise account</div>
-  <h2 class="title">Officials capture value on public and internal work in weeks</h2>
+  <h2 class="title">Public and internal work: practical use cases and prompts</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="duo">
+    <div class="duo" style="grid-template-columns:1fr 1fr;">
       <div class="exh">
-        <div class="eh">Most common use cases</div>
+        <div class="eh">Practical use cases</div>
         <div class="rows">
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="ct">Draft &amp; translate</span></div><div class="val"><ul class="ulist"><li>Speeches and congratulatory letters</li><li>Translate to English, Russian, Turkish</li></ul></div></div>
-          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="ct">Summarise &amp; track</span></div><div class="val"><ul class="ulist"><li>Ministry reports and public appeals</li><li>Action tracking across agencies</li></ul></div></div>
+          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 20h4L18 8l-4-4L4 16z"/></svg><span class="ct">Draft &amp; translate</span></div><div class="val"><ul class="ulist"><li>Speeches, congratulatory letters, press lines</li><li>Translate to English, Russian, Turkish</li></ul></div></div>
+          <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="ct">Summarise &amp; track</span></div><div class="val"><ul class="ulist"><li>Condense ministry reports to one page</li><li>Action tracking across agencies</li></ul></div></div>
           <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg><span class="ct">Create content</span></div><div class="val"><ul class="ulist"><li>Slide packs from State Statistics data</li><li>Speaking notes and briefing lines</li></ul></div></div>
           <div class="row"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="ct">Research</span></div><div class="val"><ul class="ulist"><li>OECD and EU best practice scans</li><li>Benchmark against peer states</li></ul></div></div>
         </div>
       </div>
       <div class="exh">
-        <div class="eh">Proven impact, United Kingdom</div>
-        <div class="kpis">
-          <div class="kpi"><div class="n">26 min</div><div class="l">saved per official, every day</div></div>
-          <div class="kpi"><div class="n">20,000</div><div class="l">officials, 12 departments</div></div>
-          <div class="kpi"><div class="n">85%</div><div class="l">said it gave good value</div></div>
-        </div>
-        <div class="eh" style="margin-top:4px;">Example prompt</div>
+        <div class="eh">Example prompts you can use today</div>
+        <div class="prompt"><div class="pl">Translation</div><div class="pt">Translate this cleared statement into formal English for an international audience. Keep official titles exact.</div></div>
         <div class="prompt"><div class="pl">Comparison</div><div class="pt">Compare the Azerbaijan 2030 priorities to OECD best practice. Return a table: our approach, OECD practice, the gap.</div></div>
-        <div class="eh" style="margin-top:14px;">What makes it work</div>
-        <ul class="ulist" style="margin-top:2px;">
-          <li>Governance and data access fixed before rollout, not after</li>
-          <li>Training drives sustained use, more than the tool itself</li>
-          <li>Human oversight kept for policy and sensitive cases</li>
-        </ul>
+        <div class="prompt"><div class="pl">Briefing</div><div class="pt">Summarise this published strategy into a one page brief: three headlines, key commitments, two open questions.</div></div>
+        <div class="prompt"><div class="pl">Meeting</div><div class="pt">From these public agenda items, draft a chair note: the decision required and one clarifying question for each.</div></div>
+      </div>
+    </div>
+    <div class="proof">
+      <div class="plabel">Proven, United Kingdom</div>
+      <div class="pk"><span class="n">26 min</span><span class="l">saved per official, daily</span></div>
+      <div class="sep"></div>
+      <div class="pk"><span class="n">20,000</span><span class="l">officials, 12 departments</span></div>
+      <div class="sep"></div>
+      <div class="pk"><span class="n">85%</span><span class="l">said it gave good value</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Governance and data access fixed before rollout; training drives use. Source UK GDS 2025</span><span>Section <b>04</b></span></div>
+</section>
+
+<!-- 7 · SECURE DEEP DIVE, USE CASES -->
+<section class="slide gold-edge">
+  <div class="kicker"><span class="n">05</span> Deep dive, fully secure environment</div>
+  <h2 class="title">On sensitive data: practical use cases and prompts</h2>
+  <div class="rule"></div>
+  <div class="body">
+    <div class="duo" style="grid-template-columns:1fr 1fr;">
+      <div class="exh">
+        <div class="eh">Practical use cases</div>
+        <div class="rows">
+          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12l2 2 4-4"/></svg><span class="ct">Citizen appeals</span></div><div class="val"><ul class="ulist"><li>Triage, summarise, route to ministries</li><li>Draft replies citing the relevant law</li></ul></div></div>
+          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M4 4h16v14H4z"/><path d="M8 20h8M12 18v2"/></svg><span class="ct">Leadership briefings</span></div><div class="val"><ul class="ulist"><li>Cross ministry packs for the President</li><li>Daily situation and decision updates</li></ul></div></div>
+          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span class="ct">Security &amp; defence</span></div><div class="val"><ul class="ulist"><li>Cross domain analysis for the Security Council</li><li>Scenario and readiness planning</li></ul></div></div>
+          <div class="row gold"><div class="cat"><svg class="ic sm" viewBox="0 0 24 24"><path d="M3 21h18M6 21V9l6-4 6 4v12M10 21v-5h4v5"/></svg><span class="ct">Reconstruction</span></div><div class="val"><ul class="ulist"><li>Great Return delivery dashboards</li><li>Project and budget tracking by region</li></ul></div></div>
+        </div>
+      </div>
+      <div class="exh">
+        <div class="eh">Example prompts for the secure platform</div>
+        <div class="prompt"><div class="pl">Citizen appeal</div><div class="pt">Summarise this appeal, name the responsible ministry, and draft a reply citing the relevant articles of law.</div></div>
+        <div class="prompt"><div class="pl">Leadership brief</div><div class="pt">From these ministry inputs, write a one page brief for the President: decisions required, key risks, three options.</div></div>
+        <div class="prompt"><div class="pl">Cross domain analysis</div><div class="pt">Across these reports, list the top risks by region with evidence, and recommend one action for each.</div></div>
+        <div class="prompt"><div class="pl">Reconstruction</div><div class="pt">From these project files, build a status view by district: budget, progress, blockers, and next milestone.</div></div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>Governance before rollout, value in drafting, human oversight kept. Source UK GDS 2025</span><span>Section <b>04</b></span></div>
+  <div class="foot"><span>All processing stays inside the accredited platform, in national control</span><span>Section <b>05</b></span></div>
 </section>
 
-<!-- 7 · SECURE DEEP DIVE -->
+<!-- 8 · SECURE DEEP DIVE, CASE STUDIES -->
 <section class="slide gold-edge">
   <div class="kicker"><span class="n">05</span> Deep dive, fully secure environment</div>
-  <h2 class="title">National control unlocks the highest value cases, proven worldwide</h2>
+  <h2 class="title">The measured impact of these cases, proven worldwide</h2>
   <div class="rule"></div>
   <div class="body">
     <div class="rows">
@@ -506,7 +541,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 </div>
 
 <div id="hint">Arrow keys or space to navigate &middot; F fullscreen &middot; P print</div>
-<div id="hud"><span id="cur">1</span> / <span id="tot">9</span></div>
+<div id="hud"><span id="cur">1</span> / <span id="tot">10</span></div>
 
 <script>
 (function(){
