@@ -1,5 +1,9 @@
 # test
 
+## BlueCurrency.pptx
+
+Editable 16:9 PowerPoint of the four-page deck. Open `BlueCurrency.pptx` in PowerPoint, Keynote or Google Slides — every title, box and chip is a native shape, not a screenshot. Vendor evidence that lives as hover notes on page 4 of the HTML is in the speaker notes of slide 4 (View → Notes). To rebuild after HTML changes: `python3 build_pptx.py`.
+
 ## BlueCurrency.html
 
 The Blue Currency investment pitch deck. Open the file in any browser: arrow keys, swipe or the Prev/Next buttons move between the four pages, and Ctrl/Cmd+P exports to PDF at 1280x760 per page.
