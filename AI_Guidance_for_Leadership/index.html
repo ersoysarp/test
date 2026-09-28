@@ -46,7 +46,7 @@ a{color:var(--azure);text-decoration:none;border-bottom:1px solid rgba(14,110,14
   transform:translate(-50%,-50%) scale(var(--s,1));
   background:var(--paper);
   display:none;flex-direction:column;
-  padding:56px 72px 30px;
+  padding:54px 72px 28px;
   box-shadow:0 24px 70px rgba(0,0,0,.45);
   overflow:hidden;
 }
@@ -60,18 +60,18 @@ a{color:var(--azure);text-decoration:none;border-bottom:1px solid rgba(14,110,14
 #pbar{position:fixed;left:0;top:0;height:3px;background:var(--gold);z-index:60;width:0;transition:width .25s ease;}
 
 /* slide furniture */
-.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--azure-deep);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--azure-deep);margin-bottom:10px;display:flex;align-items:center;gap:12px;}
 .kicker .n{font-family:'Fraunces',serif;color:var(--gold);font-weight:500;letter-spacing:.02em;}
 .kicker .n::after{content:"";display:inline-block;width:26px;height:1px;background:var(--line-strong);vertical-align:middle;margin-left:12px;}
-h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
-.lede{font-size:17px;line-height:1.5;color:var(--ink-soft);max-width:70ch;margin-top:12px;}
-.rule{height:3px;width:56px;background:var(--azure);margin:16px 0 22px;flex:0 0 auto;}
+h2.title{font-size:36px;line-height:1.1;max-width:26ch;}
+.lede{font-size:16px;line-height:1.5;color:var(--ink-soft);max-width:74ch;margin-top:10px;}
+.rule{height:3px;width:56px;background:var(--azure);margin:14px 0 20px;flex:0 0 auto;}
 .body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;}
-.foot{flex:0 0 auto;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em;}
+.foot{flex:0 0 auto;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em;}
 .foot b{color:var(--azure-deep);font-weight:600;}
 
 /* pills */
-.pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;letter-spacing:.03em;text-transform:uppercase;}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.03em;text-transform:uppercase;}
 .pill::before{content:"";width:7px;height:7px;border-radius:50%;}
 .pill.safe{background:var(--safe-bg);color:var(--safe);}      .pill.safe::before{background:var(--safe);}
 .pill.caution{background:var(--caution-bg);color:var(--caution);}.pill.caution::before{background:var(--caution);}
@@ -82,25 +82,20 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
 .g2{grid-template-columns:repeat(2,1fr);}
 .g3{grid-template-columns:repeat(3,1fr);}
 .g4{grid-template-columns:repeat(4,1fr);}
-.card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow);border-top:3px solid var(--azure);}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);border-top:3px solid var(--azure);}
 .card.gold{border-top-color:var(--gold);}
 .card.stop{border-top-color:var(--stop);}
-.card .tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px;display:block;color:var(--azure-deep);}
+.card .tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:block;color:var(--azure-deep);}
 .card.gold .tag{color:var(--gold);}
 .card.stop .tag{color:var(--stop);}
-.card h4{font-size:20px;margin-bottom:8px;}
-.card p{font-size:14px;color:var(--ink-soft);line-height:1.5;}
-.card ul{margin:12px 0 0;padding-left:0;list-style:none;}
-.card li{position:relative;padding:0 0 8px 18px;font-size:13.5px;color:var(--ink-soft);line-height:1.42;}
-.card li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card h4{font-size:19px;margin-bottom:7px;}
+.card p{font-size:13.5px;color:var(--ink-soft);line-height:1.5;}
+.card ul{margin:11px 0 0;padding-left:0;list-style:none;}
+.card li{position:relative;padding:0 0 7px 18px;font-size:13px;color:var(--ink-soft);line-height:1.4;}
+.card li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
 .card li b{color:var(--ink);}
 
-/* big statement slide */
-.statement{display:flex;flex-direction:column;justify-content:center;height:100%;}
-.statement .big{font-family:'Fraunces',serif;font-weight:400;font-size:52px;line-height:1.08;max-width:20ch;letter-spacing:-.02em;}
-.statement .big em{font-style:italic;color:var(--azure-deep);}
-
-/* title slide */
+/* title / cover */
 .slide.cover{background:linear-gradient(155deg,#0a3038 0%,#0a4c62 58%,#0e6e8c 130%);color:#fff;padding:0;}
 .slide.cover::before{display:none;}
 .cover-body{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;padding:0 80px;}
@@ -115,80 +110,13 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
 .act .an{font-family:'Fraunces',serif;font-size:15px;color:#8fd0df;margin-bottom:7px;}
 .act .at{font-size:16px;font-weight:600;color:#fff;line-height:1.3;}
 
-/* matrix */
-.matrix{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper-2);}
-.matrix th,.matrix td{padding:15px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
-.matrix thead th{background:var(--azure-deep);color:#fff;font-family:'Fraunces',serif;font-weight:500;font-size:16px;}
-.matrix thead th:first-child{background:var(--ink);}
-.matrix td:last-child,.matrix th:last-child{border-right:none;}
-.matrix tbody tr:last-child td{border-bottom:none;}
-.matrix .rowhead{width:30%;background:var(--paper);}
-.matrix .tier{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);display:block;margin-bottom:3px;}
-.matrix .ex{font-size:11.5px;color:var(--ink-faint);line-height:1.35;}
-.matrix .use{font-size:12px;color:var(--ink-soft);margin-top:7px;line-height:1.4;}
-
-/* stats */
-.stats{display:grid;gap:22px;}
-.stat .n{font-family:'Fraunces',serif;font-size:52px;color:var(--azure-deep);line-height:1;font-weight:500;}
-.stat.gold .n{color:var(--gold);}
-.stat .l{font-size:13.5px;color:var(--ink-soft);margin-top:10px;line-height:1.4;}
-.stat{padding-top:16px;border-top:2px solid var(--gold);}
-.hero-stat{display:flex;align-items:baseline;gap:20px;}
-.hero-stat .hn{font-family:'Fraunces',serif;font-size:120px;line-height:.85;color:var(--azure-deep);font-weight:500;letter-spacing:-3px;}
-.hero-stat .hl{font-size:20px;color:var(--ink);font-weight:500;max-width:16ch;line-height:1.25;}
-
-/* do / avoid */
-.doavoid{display:flex;flex-direction:column;gap:9px;margin-top:12px;}
-.da{font-size:13px;color:var(--ink-soft);line-height:1.4;display:flex;gap:9px;align-items:flex-start;}
-.da .pill{flex:0 0 auto;margin-top:1px;}
-
-/* principles / enablers rows */
-.principle{padding-top:16px;border-top:2px solid var(--azure);}
-.principle .pn{font-family:'Fraunces',serif;font-size:34px;color:var(--gold);line-height:1;}
-.principle b{display:block;font-family:'Fraunces',serif;font-size:20px;font-weight:500;margin:10px 0 8px;color:var(--ink);}
-.principle p{font-size:13.5px;color:var(--ink-soft);line-height:1.45;}
-
-/* sovereign stack */
-.stack{display:flex;flex-direction:column;gap:6px;}
-.layer{display:grid;grid-template-columns:52px 200px 1fr;align-items:center;border:1px solid var(--line);border-radius:9px;background:var(--paper-2);overflow:hidden;box-shadow:0 1px 2px rgba(21,37,48,.04);}
-.layer .idx{align-self:stretch;background:var(--azure-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;}
-.layer .lt{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);padding:9px 16px;font-weight:500;}
-.layer .ls{font-size:12.5px;color:var(--ink-soft);padding:9px 18px 9px 0;line-height:1.35;}
-.layer.base .idx{background:var(--gold);}
-.layer.top .idx{background:#0a3038;}
-
-/* comparison */
-.cmp{width:100%;border-collapse:collapse;font-size:13.5px;}
-.cmp th,.cmp td{text-align:left;vertical-align:top;padding:13px 18px;border-bottom:1px solid var(--line);}
-.cmp thead th{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:var(--ink);border-bottom:2px solid var(--line-strong);}
-.cmp tbody th{font-weight:600;color:var(--azure-deep);width:150px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
-.cmp td{color:var(--ink-soft);line-height:1.4;}
-.cmp tbody tr:last-child td,.cmp tbody tr:last-child th{border-bottom:none;}
-
-/* callout */
-.callout{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:18px 24px;box-shadow:var(--shadow);}
-.callout p{font-size:16px;color:var(--ink);line-height:1.5;}
-.callout .k{font-family:'Fraunces',serif;color:var(--azure-deep);}
-
-/* roadmap */
-.road{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:8px;}
-.rstep{position:relative;padding:0 18px;}
-.rstep:not(:last-child)::after{content:"";position:absolute;left:0;top:15px;right:0;height:2px;background:var(--line-strong);z-index:0;}
-.rstep .dot{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--azure-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:15px;margin-bottom:16px;}
-.rstep .when{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);}
-.rstep h4{font-size:16px;margin:6px 0 7px;line-height:1.2;}
-.rstep p{font-size:12.5px;color:var(--ink-soft);line-height:1.42;}
-
-/* case grid */
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.mini{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);border-top:3px solid var(--gold);display:flex;flex-direction:column;}
-.mini .flag{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;}
-.mini .m{font-family:'Fraunces',serif;font-size:34px;color:var(--azure-deep);line-height:1;font-weight:500;}
-.mini .md{font-size:12.5px;color:var(--ink-soft);margin-top:8px;line-height:1.4;}
-.mini .md b{color:var(--ink);}
-
-.note{font-size:11px;color:var(--ink-faint);margin-top:10px;}
-.note a{font-size:11px;color:var(--ink-faint);border-bottom-color:var(--line-strong);}
+/* contents */
+.toc{list-style:none;margin:0;padding:0;counter-reset:t;}
+.toc li{counter-increment:t;display:flex;align-items:baseline;gap:22px;padding:14px 6px;border-top:1px solid var(--line);transition:padding .15s ease;}
+.toc li:last-child{border-bottom:1px solid var(--line);}
+.toc li::before{content:counter(t,decimal-leading-zero);font-family:'Fraunces',serif;color:var(--gold);font-size:16px;min-width:32px;}
+.toc .tt{font-family:'Fraunces',serif;font-size:21px;color:var(--ink);font-weight:500;flex:0 0 auto;width:40%;}
+.toc .td{font-size:13px;color:var(--ink-soft);line-height:1.4;}
 
 /* two-panel strong/human */
 .panels{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
@@ -202,6 +130,80 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
 .panel li{position:relative;padding:0 0 10px 22px;font-size:14px;color:var(--ink-soft);line-height:1.42;}
 .panel li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:2px;background:var(--safe);}
 .panel.h li::before{background:var(--stop);border-radius:50%;}
+
+/* matrix */
+.matrix{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper-2);}
+.matrix th,.matrix td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
+.matrix thead th{background:var(--azure-deep);color:#fff;font-family:'Fraunces',serif;font-weight:500;font-size:16px;}
+.matrix thead th:first-child{background:var(--ink);}
+.matrix thead th span{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:#bfe0ea;letter-spacing:.02em;text-transform:none;margin-top:3px;}
+.matrix td:last-child,.matrix th:last-child{border-right:none;}
+.matrix tbody tr:last-child td{border-bottom:none;}
+.matrix .rowhead{width:28%;background:var(--paper);}
+.matrix .tier{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);display:block;margin-bottom:3px;}
+.matrix .ex{font-size:11px;color:var(--ink-faint);line-height:1.35;}
+.matrix .use{font-size:11.5px;color:var(--ink-soft);margin-top:7px;line-height:1.38;}
+
+/* stats */
+.stats{display:grid;gap:22px;}
+.stat .n{font-family:'Fraunces',serif;font-size:44px;color:var(--azure-deep);line-height:1;font-weight:500;}
+.stat.gold .n{color:var(--gold);}
+.stat .l{font-size:12.5px;color:var(--ink-soft);margin-top:9px;line-height:1.38;}
+.stat{padding-top:14px;border-top:2px solid var(--gold);}
+
+/* enterprise deep dive */
+.ucl{list-style:none;margin:0;padding:0;}
+.ucl li{padding:11px 0;border-bottom:1px solid var(--line);}
+.ucl li:last-child{border-bottom:none;}
+.ucl .uh{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);font-weight:500;display:block;margin-bottom:3px;}
+.ucl .us{font-size:12.5px;color:var(--ink-soft);line-height:1.4;}
+.ucl .us .g{color:var(--safe);font-weight:600;}
+.prompt{background:#12303b;color:#e9eef0;border-radius:12px;padding:18px 22px;box-shadow:var(--shadow);}
+.prompt .pl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7fb4c4;font-weight:700;margin-bottom:9px;}
+.prompt code{font-family:'Inter',sans-serif;color:#f2f4f3;font-style:italic;font-size:13.5px;line-height:1.55;}
+.evi{background:var(--paper-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:15px 18px;box-shadow:var(--shadow);margin-top:16px;}
+.evi .en{font-family:'Fraunces',serif;font-size:32px;color:var(--azure-deep);line-height:1;font-weight:500;}
+.evi .es{font-size:12.5px;color:var(--ink-soft);line-height:1.4;margin-top:5px;}
+
+/* case grid */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.mini{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);border-top:3px solid var(--gold);display:flex;flex-direction:column;}
+.mini .flag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;}
+.mini .m{font-family:'Fraunces',serif;font-size:30px;color:var(--azure-deep);line-height:1;font-weight:500;}
+.mini .md{font-size:11.5px;color:var(--ink-soft);margin-top:7px;line-height:1.4;}
+.mini .md b{color:var(--ink);}
+
+/* sovereign stack */
+.stack{display:flex;flex-direction:column;gap:5px;}
+.layer{display:grid;grid-template-columns:44px 168px 1fr;align-items:center;border:1px solid var(--line);border-radius:8px;background:var(--paper-2);overflow:hidden;box-shadow:0 1px 2px rgba(21,37,48,.04);}
+.layer .idx{align-self:stretch;background:var(--azure-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:16px;}
+.layer .lt{font-family:'Fraunces',serif;font-size:15px;color:var(--ink);padding:7px 14px;font-weight:500;}
+.layer .ls{font-size:11.5px;color:var(--ink-soft);padding:7px 16px 7px 0;line-height:1.3;}
+.layer.base .idx{background:var(--gold);}
+.layer.top .idx{background:#0a3038;}
+.enablers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.en-card{border-top:2px solid var(--azure);padding-top:11px;}
+.en-card .et{font-family:'Fraunces',serif;font-size:14.5px;color:var(--ink);font-weight:500;display:block;margin-bottom:4px;}
+.en-card .es{font-size:11.5px;color:var(--ink-soft);line-height:1.38;}
+.en-card .enum{font-family:'Fraunces',serif;font-size:13px;color:var(--gold);}
+
+/* callout */
+.callout{background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:16px 22px;box-shadow:var(--shadow);}
+.callout p{font-size:15px;color:var(--ink);line-height:1.5;}
+.callout .k{font-family:'Fraunces',serif;color:var(--azure-deep);}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:6px;}
+.rstep{position:relative;padding:0 16px;}
+.rstep:not(:last-child)::after{content:"";position:absolute;left:0;top:15px;right:0;height:2px;background:var(--line-strong);z-index:0;}
+.rstep .dot{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--azure-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:15px;margin-bottom:14px;}
+.rstep.hl .dot{background:var(--gold);}
+.rstep .when{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);}
+.rstep h4{font-size:15px;margin:5px 0 6px;line-height:1.2;}
+.rstep p{font-size:12px;color:var(--ink-soft);line-height:1.4;}
+
+.note{font-size:11px;color:var(--ink-faint);}
+.note a{font-size:11px;color:var(--ink-faint);border-bottom-color:var(--line-strong);}
 
 @media print{
   @page{size:1280px 720px;margin:0;}
@@ -232,20 +234,28 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
   </div>
 </section>
 
-<!-- 2 · THE THREAD -->
+<!-- 2 · CONTENTS -->
 <section class="slide">
-  <div class="kicker"><span class="n">01</span> The single thread</div>
+  <div class="kicker"><span class="n">Contents</span></div>
+  <h2 class="title">What this deck covers</h2>
+  <div class="rule"></div>
   <div class="body">
-    <div class="statement">
-      <p class="big">Start with <em>safe, governed use</em> that pays off in weeks. Then build the secure platform that unlocks the <em>most sensitive work.</em></p>
-    </div>
+    <ol class="toc">
+      <li><span class="tt">Understanding AI today</span><span class="td">What the technology does well, and where judgement stays with people</span></li>
+      <li><span class="tt">Three ways to use AI</span><span class="td">Personal, enterprise, and fully secure on-premise environments</span></li>
+      <li><span class="tt">Matching data to the environment</span><span class="td">A matrix of government data types against the two governed options</span></li>
+      <li><span class="tt">Deep dive: enterprise account</span><span class="td">Common use cases, what is possible, and an example prompt</span></li>
+      <li><span class="tt">Deep dive: fully secure environment</span><span class="td">What it unlocks, with case studies from around the world</span></li>
+      <li><span class="tt">Building the sovereign capability</span><span class="td">What a fully secure environment requires</span></li>
+      <li><span class="tt">Summary — where to start</span><span class="td">A sequenced path to the secure environment</span></li>
+    </ol>
   </div>
-  <div class="foot"><span>A staged path — value arrives early and compounds</span><span><b>OECD 2026</b> · UK GDS 2025 · deployment case studies</span></div>
+  <div class="foot"><span>A single thread: start safe today, then build the platform that unlocks sensitive work</span><span><b>OECD 2026</b> · UK GDS 2025 · deployment case studies</span></div>
 </section>
 
-<!-- 3 · UNDERSTANDING AI -->
+<!-- 3 · INTRO TO AI -->
 <section class="slide">
-  <div class="kicker"><span class="n">02</span> Understanding AI today</div>
+  <div class="kicker"><span class="n">01</span> Understanding AI today</div>
   <h2 class="title">A capable assistant, not a decision maker</h2>
   <div class="rule"></div>
   <div class="body">
@@ -272,12 +282,12 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
       </div>
     </div>
   </div>
-  <div class="foot"><span>Capture the speed of language work — protect the judgement, verification and accountability</span><span>Section <b>02</b></span></div>
+  <div class="foot"><span>Capture the speed of language work — protect the judgement, verification and accountability</span><span>Section <b>01</b></span></div>
 </section>
 
-<!-- 4 · THREE DOORS -->
+<!-- 4 · THREE WAYS -->
 <section class="slide">
-  <div class="kicker"><span class="n">03</span> Three ways to use AI</div>
+  <div class="kicker"><span class="n">02</span> Three ways to use AI</div>
   <h2 class="title">Same model, three very different doors</h2>
   <div class="rule"></div>
   <div class="body">
@@ -285,6 +295,7 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
       <div class="card stop">
         <span class="tag">Not for official work</span>
         <h4>Personal account</h4>
+        <p>A private login on a public tool.</p>
         <ul>
           <li>Prompts may be retained and used to train the model</li>
           <li>No central control, no audit trail</li>
@@ -294,6 +305,7 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
       <div class="card">
         <span class="tag">The starting point</span>
         <h4>Enterprise account</h4>
+        <p>Contracted by the entity, centrally administered.</p>
         <ul>
           <li><b>Does not train</b> on your data</li>
           <li>Central administration, access control, audit</li>
@@ -302,296 +314,162 @@ h2.title{font-size:38px;line-height:1.1;max-width:24ch;}
       </div>
       <div class="card gold">
         <span class="tag">Most sensitive work</span>
-        <h4>Fully secure environment</h4>
+        <h4>Fully secure, on-premise</h4>
+        <p>A closed platform on state premises.</p>
         <ul>
-          <li>Data never leaves national control</li>
+          <li>Data <b>never leaves</b> national control</li>
           <li>Accredited for confidential and restricted data</li>
           <li>Higher cost and effort to run</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The door decides who sees your data, whether there is an audit trail, and which data may be used at all</span><span>Section <b>03</b></span></div>
+  <div class="foot"><span>The door decides who sees your data, whether there is an audit trail, and which data may be used at all</span><span>Section <b>02</b></span></div>
 </section>
 
-<!-- 5 · THREE PRINCIPLES -->
-<section class="slide gold-edge">
-  <div class="kicker"><span class="n">04</span> What 14+ governments share</div>
-  <h2 class="title">Three principles, simple to state and consequential in practice</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <div class="grid g3">
-      <div class="principle"><div class="pn">01</div><b>Classify the data first</b><p>The classification tier decides the permitted environment — and with it the tasks that may be performed.</p></div>
-      <div class="principle"><div class="pn">02</div><b>Verify every output</b><p>Check each output against an authoritative source before it informs a decision, a record, or advice to leadership.</p></div>
-      <div class="principle"><div class="pn">03</div><b>Disclose AI involvement</b><p>State clearly when AI has materially shaped a public-facing output, so accountability stays with the entity.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span class="note">Source: OECD, <a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/07/generative-ai-experimentation-in-government_706b6f2b/42815683-en.pdf" target="_blank" rel="noopener">Generative AI experimentation in government</a> (2026)</span><span>Section <b>04</b></span></div>
-</section>
-
-<!-- 6 · DATA MATRIX -->
+<!-- 5 · MATRIX -->
 <section class="slide">
-  <div class="kicker"><span class="n">05</span> Matching data to the environment</div>
-  <h2 class="title">Which data belongs where</h2>
+  <div class="kicker"><span class="n">03</span> Matching data to the environment</div>
+  <h2 class="title">Which government data belongs where</h2>
   <div class="rule"></div>
   <div class="body">
     <table class="matrix">
       <thead>
-        <tr><th>Data classification</th><th>Enterprise account</th><th>Fully secure environment</th></tr>
+        <tr>
+          <th>Data type &amp; examples</th>
+          <th>Enterprise account<span>Vendor cloud, governed</span></th>
+          <th>Fully secure, on-premise<span>Closed, in national control</span></th>
+        </tr>
       </thead>
       <tbody>
         <tr>
           <td class="rowhead"><span class="tier">Public</span><span class="ex">Published statistics, strategies, delivered speeches</span></td>
-          <td><span class="pill safe">Safe</span><div class="use">Translate a cleared speech, draft public communications.</div></td>
-          <td><span class="pill safe">Safe</span><div class="use">Available, rarely necessary for public material.</div></td>
+          <td><span class="pill safe">Safe</span><div class="use">Translate a cleared speech · draft public communications · compare strategy to international practice.</div></td>
+          <td><span class="pill safe">Safe</span><div class="use">Available, though rarely necessary for public material.</div></td>
         </tr>
         <tr>
           <td class="rowhead"><span class="tier">Internal</span><span class="ex">Operational reports, policy drafts, process notes</span></td>
-          <td><span class="pill caution">With controls</span><div class="use">Summarise reports, draft policy text within the agreement.</div></td>
+          <td><span class="pill caution">With controls</span><div class="use">Summarise internal reports · draft policy text · design trackers, within the agreement.</div></td>
           <td><span class="pill safe">Safe</span><div class="use">The natural home, with no external processing.</div></td>
         </tr>
         <tr>
-          <td class="rowhead"><span class="tier">Limited access</span><span class="ex">Citizen records and appeals, draft decrees</span></td>
-          <td><span class="pill stop">Not permitted</span><div class="use">Personal and pre-decisional data stays in national control.</div></td>
-          <td><span class="pill safe">Safe</span><div class="use">Summarise appeals, route cases, draft with legal references.</div></td>
+          <td class="rowhead"><span class="tier">Limited access</span><span class="ex">Citizen records &amp; appeals, draft decrees</span></td>
+          <td><span class="pill stop">Not permitted</span><div class="use">Personal and pre-decisional data must not leave national control.</div></td>
+          <td><span class="pill safe">Safe</span><div class="use">Summarise appeals · route cases · draft correspondence with legal references.</div></td>
         </tr>
         <tr>
           <td class="rowhead"><span class="tier">Restricted</span><span class="ex">Security assessments, closed-meeting minutes</span></td>
           <td><span class="pill stop">Not permitted</span><div class="use">Never processed outside a closed, accredited environment.</div></td>
-          <td><span class="pill safe">Safe</span><div class="use">Cross-domain analysis, decision dashboards, briefing packs.</div></td>
+          <td><span class="pill safe">Safe</span><div class="use">Cross-domain analysis · decision dashboards · briefing packs for the most sensitive files.</div></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="foot"><span>Where a task mixes tiers, the highest tier present governs the environment</span><span>Section <b>05</b></span></div>
+  <div class="foot"><span>Classification comes first — where a task mixes tiers, the highest tier present governs the environment</span><span>Section <b>03</b></span></div>
 </section>
 
-<!-- 7 · ENTERPRISE IN PRACTICE -->
+<!-- 6 · ENTERPRISE DEEP DIVE -->
 <section class="slide">
-  <div class="kicker"><span class="n">06</span> The enterprise account, in practice</div>
-  <h2 class="title">Where adoption begins — four families of task</h2>
+  <div class="kicker"><span class="n">04</span> Deep dive · the enterprise account</div>
+  <h2 class="title">Where adoption begins</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="grid g4">
-      <div class="card">
-        <span class="tag">General use</span>
-        <h4>Q&amp;A, drafting, translation</h4>
-        <div class="doavoid">
-          <div class="da"><span class="pill safe">Do</span>Translate a cleared public speech.</div>
-          <div class="da"><span class="pill stop">Avoid</span>Build a meeting pack from ministry submissions.</div>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag">Productivity</span>
-        <h4>Summaries, inbox, tracking</h4>
-        <div class="doavoid">
-          <div class="da"><span class="pill safe">Do</span>Design a template tracker.</div>
-          <div class="da"><span class="pill stop">Avoid</span>Summarise a citizen appeal with case history.</div>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag">Content</span>
-        <h4>Slides, notes, reports</h4>
-        <div class="doavoid">
-          <div class="da"><span class="pill safe">Do</span>Draft a deck from published statistics.</div>
-          <div class="da"><span class="pill stop">Avoid</span>Notes for a closed session on a live decree.</div>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag">Research</span>
-        <h4>Best practice, synthesis</h4>
-        <div class="doavoid">
-          <div class="da"><span class="pill safe">Do</span>Analyse OECD and EU best practice.</div>
-          <div class="da"><span class="pill stop">Avoid</span>Compare a confidential package to it.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="foot"><span>The line between Do and Avoid is drawn by the sensitivity of the data</span><span>Section <b>06</b></span></div>
-</section>
-
-<!-- 8 · UK PROOF -->
-<section class="slide">
-  <div class="kicker"><span class="n">07</span> Proof · United Kingdom</div>
-  <h2 class="title">The largest government trial to date</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <div class="grid g2" style="align-items:center;gap:40px;">
+    <div class="grid g2" style="gap:40px;align-items:start;">
       <div>
-        <div class="hero-stat"><span class="hn">26</span><span class="hl">minutes saved per official, every day</span></div>
-        <p class="lede" style="margin-top:26px;">Microsoft 365 Copilot across <b>20,000 officials</b> in twelve departments over three months. Governance came before rollout; value concentrated in drafting; human oversight stayed mandatory.</p>
+        <ul class="ucl">
+          <li><span class="uh">Q&amp;A, drafting &amp; translation</span><span class="us"><span class="g">Do</span> translate a cleared public speech from Azerbaijani into formal English.</span></li>
+          <li><span class="uh">Summaries, inbox &amp; action tracking</span><span class="us"><span class="g">Do</span> design a template tracker for initiative control.</span></li>
+          <li><span class="uh">Slides, speaking notes &amp; reports</span><span class="us"><span class="g">Do</span> draft a deck on a programme from published statistics.</span></li>
+          <li><span class="uh">Research &amp; synthesis</span><span class="us"><span class="g">Do</span> analyse OECD and EU best practice on policy design.</span></li>
+        </ul>
       </div>
-      <div class="stats g2" style="grid-template-columns:1fr 1fr;">
-        <div class="stat"><div class="n">85%</div><div class="l">said it gave good value</div></div>
-        <div class="stat"><div class="n">82%</div><div class="l">would choose to keep using it</div></div>
-        <div class="stat gold"><div class="n">~80%</div><div class="l">reached sustained active use</div></div>
-        <div class="stat gold"><div class="n">12</div><div class="l">departments, incl. tax, welfare, justice</div></div>
+      <div>
+        <div class="prompt">
+          <div class="pl">Example prompt · comparison</div>
+          <code>Compare our published policy approach against OECD best practice on the same topic. Present a table with three columns — our approach, the OECD practice, and the gap — and note where we are already ahead.</code>
+        </div>
+        <div class="evi">
+          <div class="en">26 min/day</div>
+          <div class="es">saved per official in the UK trial of Microsoft 365 Copilot across <b>20,000 officials</b>. 85% said it gave good value; ~80% reached sustained use.</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span class="note">Source: UK Government Digital Service, <a href="https://assets.publishing.service.gov.uk/media/683db42bd23a62e5d32680d0/M365_Copilot_Experiment_Findings_Report.pdf" target="_blank" rel="noopener">M365 Copilot cross-government findings</a> (June 2025)</span><span>Section <b>07</b></span></div>
+  <div class="foot"><span class="note">Good prompts state the role, task, source and format · Source: UK GDS, <a href="https://assets.publishing.service.gov.uk/media/683db42bd23a62e5d32680d0/M365_Copilot_Experiment_Findings_Report.pdf" target="_blank" rel="noopener">M365 Copilot findings</a> (2025)</span><span>Section <b>04</b></span></div>
 </section>
 
-<!-- 9 · SECURE UNLOCKS -->
+<!-- 7 · SECURE DEEP DIVE -->
 <section class="slide gold-edge">
-  <div class="kicker"><span class="n">08</span> The fully secure environment</div>
-  <h2 class="title">Where the highest-value cases live</h2>
+  <div class="kicker"><span class="n">05</span> Deep dive · the fully secure environment</div>
+  <h2 class="title">What national control unlocks</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="stats g4">
-      <div class="stat"><div class="n">1.4mn</div><div class="l">annual workforce hours saved by initiative prioritisation</div></div>
-      <div class="stat"><div class="n">~1,300</div><div class="l">hours saved each month by a regulatory synthesiser</div></div>
-      <div class="stat"><div class="n">~75%</div><div class="l">less drafting time in written case correspondence</div></div>
-      <div class="stat"><div class="n">10x</div><div class="l">faster development of options in defence planning</div></div>
-    </div>
-    <p class="lede" style="margin-top:34px;text-align:center;max-width:80ch;margin-left:auto;margin-right:auto;">A closed platform on state premises removes the one constraint the enterprise account cannot — it lets the <b>most sensitive data</b> be used with AI, because that data never leaves national control.</p>
-  </div>
-  <div class="foot"><span>Real deployments and their measured impact</span><span>Section <b>08</b></span></div>
-</section>
-
-<!-- 10 · SECURE CASES -->
-<section class="slide">
-  <div class="kicker"><span class="n">09</span> Secure environment · case studies</div>
-  <h2 class="title">Measured impact on sensitive work</h2>
-  <div class="rule"></div>
-  <div class="body">
+    <p class="lede" style="margin-bottom:18px;">The highest-value cases live here — from cross-domain analysis for leadership to drafting on confidential files — because the <b>most sensitive data never leaves national control</b>. Real deployments and their measured impact:</p>
     <div class="cases">
-      <div class="mini"><div class="flag">Defence organisation</div><div class="m">10x</div><div class="md"><b>Digital twin for investment planning.</b> Faster courses of action; 2x faster mission planning; 5x faster budget rationalisation.</div></div>
-      <div class="mini"><div class="flag">Public services agency</div><div class="m">~1,300h</div><div class="md"><b>Regulatory synthesiser for inspectors.</b> Saved per month; assessments cut from 40 to 20 minutes, then lower.</div></div>
-      <div class="mini"><div class="flag">Agency · 30,000+ staff</div><div class="m">1.4mn h</div><div class="md"><b>One tracker to prioritise initiatives.</b> Annualised hours saved, and <b>+9%</b> citizen satisfaction.</div></div>
-      <div class="mini"><div class="flag">Ministry</div><div class="m">1 source</div><div class="md"><b>Live decision dashboard for leadership.</b> One source of truth, higher update frequency at lower effort.</div></div>
-      <div class="mini"><div class="flag">Public authority</div><div class="m">~75%</div><div class="md"><b>Writing assistance for correspondence.</b> Less drafting time; 95% of drafts need no changes; 100% of laws identified.</div></div>
-      <div class="mini" style="border-top-color:var(--azure);background:var(--azure-deep);"><div class="flag" style="color:#8fd0df;">Common thread</div><div class="m" style="color:#fff;">Sensitive</div><div class="md" style="color:#cfe4ec;">Every case handles data that <b style="color:#fff;">cannot leave national control</b> — impossible on an enterprise account.</div></div>
+      <div class="mini"><div class="flag">Defence organisation</div><div class="m">10x</div><div class="md"><b>Digital twin for investment planning.</b> Faster courses of action; 2x mission planning; 5x budget rationalisation.</div></div>
+      <div class="mini"><div class="flag">Public services agency</div><div class="m">~1,300h</div><div class="md"><b>Regulatory synthesiser for inspectors.</b> Saved per month; assessments cut 40 → 20 minutes.</div></div>
+      <div class="mini"><div class="flag">Agency · 30,000+ staff</div><div class="m">1.4mn h</div><div class="md"><b>One tracker to prioritise initiatives.</b> Annual hours saved, and <b>+9%</b> citizen satisfaction.</div></div>
+      <div class="mini"><div class="flag">Public authority</div><div class="m">~75%</div><div class="md"><b>Correspondence drafting.</b> Less drafting time; 95% of drafts need no changes; 100% of laws identified.</div></div>
+      <div class="mini"><div class="flag">Executive leadership</div><div class="m">40%</div><div class="md"><b>Executive assistant.</b> Of meetings avoided; briefing packs and directive tracking; 2 hours/day saved.</div></div>
+      <div class="mini" style="border-top-color:var(--azure);background:var(--azure-deep);"><div class="flag" style="color:#8fd0df;">Leadership analytics</div><div class="m" style="color:#fff;">Minutes</div><div class="md" style="color:#cfe4ec;">not weeks. One set of numbers across domains, <b style="color:#fff;">answered on demand</b> at the point of decision.</div></div>
     </div>
   </div>
-  <div class="foot"><span>From cross-domain analysis for leadership to drafting on confidential files</span><span>Section <b>09</b></span></div>
+  <div class="foot"><span>Data that cannot leave national control — impossible on an enterprise account</span><span>Section <b>05</b></span></div>
 </section>
 
-<!-- 11 · BUILT FOR LEADERSHIP -->
-<section class="slide gold-edge">
-  <div class="kicker"><span class="n">10</span> Designed for executive leadership</div>
-  <h2 class="title">Two cases built for the top of the house</h2>
+<!-- 8 · SOVEREIGN / HOW TO ACHIEVE -->
+<section class="slide">
+  <div class="kicker"><span class="n">06</span> Building the sovereign capability</div>
+  <h2 class="title">What a fully secure environment requires</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="grid g2">
-      <div class="card gold">
-        <span class="tag">Executive assistant</span>
-        <h4>Stronger meeting memory and follow-through</h4>
-        <ul>
-          <li>Personalised briefing packs and recommended actions</li>
-          <li><b>Up to 40%</b> of meetings avoided entirely</li>
-          <li><b>Two hours</b> of daily preparation reduced</li>
-          <li>Decisions taken before the meeting begins</li>
-        </ul>
+    <div class="grid" style="grid-template-columns:1.5fr 1fr;gap:34px;align-items:center;">
+      <div class="stack">
+        <div class="layer top"><div class="idx">7</div><div class="lt">AI applications</div><div class="ls">Concrete use cases that create value locally</div></div>
+        <div class="layer"><div class="idx">6</div><div class="lt">Cloud &amp; AI platforms</div><div class="ls">Sovereign compute, storage and integration</div></div>
+        <div class="layer"><div class="idx">5</div><div class="lt">Models &amp; data</div><div class="ls">Models adapted on sovereign platforms, localised data</div></div>
+        <div class="layer"><div class="idx">4</div><div class="lt">Data centres</div><div class="ls">High-efficiency data centres and GPU clusters</div></div>
+        <div class="layer"><div class="idx">3</div><div class="lt">Connectivity</div><div class="ls">High-speed sovereign networks, redundant links</div></div>
+        <div class="layer"><div class="idx">2</div><div class="lt">Hardware</div><div class="ls">Locally trusted AI hardware, liquid-cooled racks</div></div>
+        <div class="layer"><div class="idx">1</div><div class="lt">Energy &amp; grid</div><div class="ls">Local, controlled, redundant energy</div></div>
+        <div class="layer base"><div class="idx">0</div><div class="lt">Responsible AI</div><div class="ls">Across every layer — policy and oversight</div></div>
       </div>
-      <div class="card gold">
-        <span class="tag">Leadership analytics</span>
-        <h4>One set of numbers, answered on demand</h4>
-        <ul>
-          <li>A unified data layer across every domain</li>
-          <li>Plain-language questions, evidence-backed answers</li>
-          <li>Cross-domain analysis in <b>minutes, not weeks</b></li>
-          <li>Answers delivered at the point of decision</li>
-        </ul>
+      <div>
+        <p class="lede" style="margin:0 0 16px;font-size:14px;">The stack stays under national control. Capturing value from it — not just a pilot — depends on four enablers advancing together:</p>
+        <div class="enablers">
+          <div class="en-card"><span class="et"><span class="enum">01</span> Talent</span><span class="es">People to run compute at scale; skills transfer from vendors.</span></div>
+          <div class="en-card"><span class="et"><span class="enum">02</span> Data &amp; tech</span><span class="es">Consolidate legacy systems; curate quality data; harden environments.</span></div>
+          <div class="en-card"><span class="et"><span class="enum">03</span> Governance</span><span class="es">Guardrails, access controls, usage guidance, quarterly review.</span></div>
+          <div class="en-card"><span class="et"><span class="enum">04</span> Cost</span><span class="es">Size compute to demand; pool infrastructure; retire weak cases.</span></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="foot"><span>The payoff of the secure platform, aimed directly at leadership</span><span>Section <b>10</b></span></div>
+  <div class="foot"><span>Each layer depends on the one beneath it — sovereignty means the whole stack stays under national control</span><span>Section <b>06</b></span></div>
 </section>
 
-<!-- 12 · SOVEREIGN STACK -->
-<section class="slide">
-  <div class="kicker"><span class="n">11</span> Building the platform</div>
-  <h2 class="title">The sovereign AI stack</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <div class="stack">
-      <div class="layer top"><div class="idx">7</div><div class="lt">AI applications</div><div class="ls">Concrete use cases that help ministries create value locally</div></div>
-      <div class="layer"><div class="idx">6</div><div class="lt">Cloud &amp; AI platforms</div><div class="ls">Sovereign compute, storage and integration services</div></div>
-      <div class="layer"><div class="idx">5</div><div class="lt">Models &amp; data</div><div class="ls">Models built or adapted on sovereign platforms, localised datasets</div></div>
-      <div class="layer"><div class="idx">4</div><div class="lt">Data centres</div><div class="ls">High-efficiency data centres and GPU clusters across the nation</div></div>
-      <div class="layer"><div class="idx">3</div><div class="lt">Connectivity</div><div class="ls">High-speed sovereign networks with redundant cross-border links</div></div>
-      <div class="layer"><div class="idx">2</div><div class="lt">Hardware</div><div class="ls">Locally trusted AI hardware, high-density liquid-cooled racks</div></div>
-      <div class="layer"><div class="idx">1</div><div class="lt">Energy &amp; grid</div><div class="ls">Local, controlled, redundant energy powering the infrastructure</div></div>
-      <div class="layer base"><div class="idx">0</div><div class="lt">Responsible AI</div><div class="ls">Across every layer — nationally aligned tools, policy and oversight</div></div>
-    </div>
-  </div>
-  <div class="foot"><span>Each layer depends on the one beneath it — sovereignty means the whole stack stays under national control</span><span>Section <b>11</b></span></div>
-</section>
-
-<!-- 13 · TWO WAYS TO HOST -->
-<section class="slide">
-  <div class="kicker"><span class="n">12</span> Hosting the most sensitive work</div>
-  <h2 class="title">Two homes — a sequence, not a choice</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <table class="cmp">
-      <thead><tr><th style="width:150px;">Dimension</th><th>Sovereign platform on state premises</th><th>Dedicated classified facility</th></tr></thead>
-      <tbody>
-        <tr><th>Facilities</th><td>Accredited secure room in an existing state data centre</td><td>Purpose-built classified facility with a backup site</td></tr>
-        <tr><th>Governance</th><td>State governs; vendor operates and upgrades</td><td>State owns operations, governance and recovery outright</td></tr>
-        <tr><th>People</th><td>Small technical team, with vendor knowledge transfer</td><td>Large cleared workforce across operations and security</td></tr>
-        <tr><th>Assessment</th><td>Lower cost, reuses facilities, ongoing vendor dependence</td><td>Maximum sovereignty, highest investment, hard to recruit</td></tr>
-      </tbody>
-    </table>
-    <div class="callout" style="margin-top:20px;"><p><span class="k">Sequence, do not choose.</span> Start with the accredited secure room to reach production faster, and build the dedicated facility as volumes and clearances grow.</p></div>
-  </div>
-  <div class="foot"><span>Accredit the secure room first, then grow into the dedicated facility</span><span>Section <b>12</b></span></div>
-</section>
-
-<!-- 14 · FOUR ENABLERS -->
-<section class="slide">
-  <div class="kicker"><span class="n">13</span> Four foundational enablers</div>
-  <h2 class="title">What turns a pilot into a capability</h2>
-  <div class="rule"></div>
-  <div class="body">
-    <div class="grid g4">
-      <div class="card"><span class="tag">01</span><h4>Talent &amp; capability</h4><p>Recruit and retain the people to run compute at scale; transfer skills from vendors to civil servants.</p></div>
-      <div class="card"><span class="tag">02</span><h4>Data &amp; technology</h4><p>Consolidate legacy systems, curate quality data, and harden environments beyond isolated pilots.</p></div>
-      <div class="card"><span class="tag">03</span><h4>Operational governance</h4><p>Embed guardrails and access controls; issue usage guidance; review outcomes each quarter.</p></div>
-      <div class="card"><span class="tag">04</span><h4>Cost sustainability</h4><p>Size compute to forecast demand, pool infrastructure, and retire cases that don't cover their cost.</p></div>
-    </div>
-  </div>
-  <div class="foot"><span>Capturing value depends on four enablers advancing together</span><span>Section <b>13</b></span></div>
-</section>
-
-<!-- 15 · ROADMAP -->
+<!-- 9 · SUMMARY / WHERE TO START -->
 <section class="slide gold-edge">
-  <div class="kicker"><span class="n">14</span> Where to start</div>
-  <h2 class="title">A sequenced path</h2>
+  <div class="kicker"><span class="n">07</span> Summary · where to start</div>
+  <h2 class="title">A sequenced path to the secure environment</h2>
   <div class="rule"></div>
   <div class="body">
     <div class="road">
       <div class="rstep"><div class="dot">1</div><div class="when">Weeks 1–8</div><h4>Stand up the enterprise account</h4><p>Contract it, fix data access before rollout, issue guidance on the three principles.</p></div>
-      <div class="rstep"><div class="dot">2</div><div class="when">Quarter 1</div><h4>Capture early value</h4><p>Drafting, translation, summaries on public and internal data. Train widely; measure minutes returned.</p></div>
-      <div class="rstep"><div class="dot">3</div><div class="when">Quarters 1–2</div><h4>Accredit a secure room</h4><p>Choose the platform on state premises for speed. Set up governance, clearances, a small team.</p></div>
-      <div class="rstep"><div class="dot">4</div><div class="when">Quarters 2–4</div><h4>Prove high-value cases</h4><p>A decision dashboard, case correspondence, cross-domain analysis on sensitive data.</p></div>
-      <div class="rstep"><div class="dot">5</div><div class="when">Year 2+</div><h4>Scale to sovereignty</h4><p>Invest in the dedicated facility and wider stack; advance the four enablers together.</p></div>
+      <div class="rstep"><div class="dot">2</div><div class="when">Quarter 1</div><h4>Capture early value</h4><p>Drafting, translation, summaries on public and internal data. Train widely.</p></div>
+      <div class="rstep hl"><div class="dot">3</div><div class="when">Quarters 1–2</div><h4>Accredit a secure room</h4><p>A secure room in an existing state data centre — the fastest route to production.</p></div>
+      <div class="rstep hl"><div class="dot">4</div><div class="when">Quarters 2–4</div><h4>Prove high-value cases</h4><p>A decision dashboard, case correspondence, cross-domain analysis on sensitive data.</p></div>
+      <div class="rstep hl"><div class="dot">5</div><div class="when">Year 2+</div><h4>Scale to sovereignty</h4><p>Build the dedicated classified facility and wider stack as clearances grow.</p></div>
     </div>
-    <div class="callout" style="margin-top:34px;"><p><span class="k">The first step is small and safe.</span> A governed enterprise account, clear guidance, and a short list of public and internal use cases can begin within weeks — while planning for the secure room runs in parallel.</p></div>
+    <div class="callout" style="margin-top:30px;"><p><span class="k">Sequence, do not choose.</span> For the secure environment, start with an accredited secure room on state premises — vendor-operated, faster to production — then grow into a fully state-owned dedicated facility as volumes and cleared staff grow.</p></div>
   </div>
-  <div class="foot"><span>Value arrives early and compounds as the platform matures</span><span>Section <b>14</b></span></div>
-</section>
-
-<!-- 16 · CLOSE -->
-<section class="slide cover">
-  <div class="meta">OECD (2026) · UK GDS (2025)<br>deployment case studies</div>
-  <div class="cover-body">
-    <p class="eyebrow">In summary</p>
-    <h1>Start <em>safe</em>. Build <em>sovereign</em>.</h1>
-    <p class="claim">Classification decides everything. Public and internal work can start now in a governed enterprise account; sensitive and restricted work waits for the closed platform — then becomes the source of the largest gains.</p>
-  </div>
-  <div class="acts">
-    <div class="act"><div class="an">Today</div><div class="at">Governed enterprise account</div></div>
-    <div class="act"><div class="an">This year</div><div class="at">Accredited secure room</div></div>
-    <div class="act"><div class="an">Beyond</div><div class="at">Full sovereign capability</div></div>
-  </div>
+  <div class="foot"><span>Classification decides everything · value arrives early and compounds as the platform matures</span><span>Section <b>07</b></span></div>
 </section>
 
 </div>
 
 <div id="hint">← → or space to navigate · F fullscreen · P print</div>
-<div id="hud"><span id="cur">1</span> / <span id="tot">16</span></div>
+<div id="hud"><span id="cur">1</span> / <span id="tot">9</span></div>
 
 <script>
 (function(){
