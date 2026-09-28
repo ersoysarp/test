@@ -161,9 +161,17 @@
   .q .qf{padding-top:10px;border-top:1px solid #D7DEE2;font-size:15px;line-height:1.3;font-weight:700;color:var(--ink);}
   .q .qf span{color:var(--red);}
   .chips{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;}
-  .chip{display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
-    border-radius:18px;padding:5px 12px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.25;}
+  .chip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
+    border-radius:18px;padding:5px 12px;font-size:15px;font-weight:700;color:var(--ink2);line-height:1.25;
+    cursor:pointer;font-family:inherit;text-align:left;}
   .q.ai .chip{background:var(--teal-soft);border-color:#CFE4E0;color:var(--teal-d);}
+  .chip:hover,.chip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
+  .chip:hover > .pop,.chip.open > .pop{display:block;}
+  .chip.tip-down > .pop{bottom:auto;top:calc(100% + 9px);}
+  .chip.tip-down > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
+  /* top row of the matrix has no room above, so its bubbles drop down */
+  .q.ai .chip > .pop{bottom:auto;top:calc(100% + 9px);}
+  .q.ai .chip > .pop:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink);}
   /* drop kreo.svg or oracle.png into /logos and it appears in front of the name */
   .lgo{height:21px;max-width:88px;margin-right:8px;border-radius:3px;}
 
@@ -211,10 +219,24 @@
   .vchip:hover,.vchip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
   .pop{
     display:none;position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
-    width:250px;background:var(--ink);color:#fff;font-size:14px;line-height:1.38;font-weight:500;
-    padding:11px 12px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
+    width:286px;background:var(--ink);color:#fff;font-size:14px;line-height:1.35;font-weight:500;
+    padding:11px 13px 12px;border-radius:8px;z-index:20;white-space:normal;text-align:left;
     box-shadow:0 10px 24px rgba(0,0,0,.28);
   }
+  /* the bubble is a scan card: name, AI maturity, modules covered, one line */
+  .pop .pnm{display:block;font-size:15px;font-weight:800;color:#fff;letter-spacing:.01em;}
+  .pop .prow{display:flex;align-items:center;gap:8px;margin-top:8px;}
+  .pop .plab{flex:0 0 84px;font-size:14px;font-weight:700;color:#93A7A5;letter-spacing:.02em;}
+  .pop .dots{display:flex;gap:4px;}
+  .pop .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22);}
+  .pop .dots i.on{background:#43C6B0;}
+  .pop .mlvl{font-size:14px;font-weight:700;color:#fff;}
+  .pop .mods{display:flex;gap:4px;}
+  .pop .mods i{width:22px;height:22px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:800;font-style:normal;background:rgba(255,255,255,.12);color:#8D9EA2;}
+  .pop .mods i.on{background:#43C6B0;color:#06342F;}
+  .pop .pnote{display:block;margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.18);
+    font-size:14px;line-height:1.3;color:#DCEDEA;font-weight:600;}
   .pop:after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
     border:6px solid transparent;border-top-color:var(--ink);}
   .vchip:hover > .pop,.vchip.open > .pop{display:block;}
@@ -421,16 +443,16 @@
             <div class="qd">Machine learning products built for one step of the lifecycle, such as takeoff or site capture, that give a real AI answer inside that step only.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
-              <span class="chip" data-logo="kreo">Kreo</span>
-              <span class="chip" data-logo="buildots">Buildots</span>
-              <span class="chip" data-logo="costify">Costify</span>
-              <span class="chip" data-logo="zebel">Zebel</span>
-              <span class="chip" data-logo="conwize">ConWize</span>
-              <span class="chip" data-logo="ediphi">Ediphi</span>
-              <span class="chip" data-logo="doxel">Doxel</span>
-              <span class="chip" data-logo="openspace">OpenSpace</span>
-              <span class="chip" data-logo="alice">ALICE</span>
-              <span class="chip" data-logo="nplan">nPlan</span>
+              <button type="button" class="chip" data-v="kreo">Kreo</button>
+              <button type="button" class="chip" data-v="buildots">Buildots</button>
+              <button type="button" class="chip" data-v="costify">Costify</button>
+              <button type="button" class="chip" data-v="zebel">Zebel</button>
+              <button type="button" class="chip" data-v="conwize">ConWize</button>
+              <button type="button" class="chip" data-v="ediphi">Ediphi</button>
+              <button type="button" class="chip" data-v="doxel">Doxel</button>
+              <button type="button" class="chip" data-v="openspace">OpenSpace</button>
+              <button type="button" class="chip" data-v="alice">ALICE</button>
+              <button type="button" class="chip" data-v="nplan">nPlan</button>
             </div>
             <div class="qf">Sharp on the one step they own, <span>nothing carries across a handover</span>.</div>
           </div>
@@ -447,13 +469,13 @@
             <div class="qd">Single-task software for measuring, pricing or marking up drawings, where every judgement is made by the operator rather than the tool.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
-              <span class="chip" data-logo="bluebeam">Bluebeam Revu</span>
-              <span class="chip" data-logo="planswift">PlanSwift</span>
-              <span class="chip" data-logo="ribcostx">RIB CostX</span>
-              <span class="chip" data-logo="ribcandy">RIB Candy</span>
-              <span class="chip" data-logo="sage">Sage Estimating</span>
-              <span class="chip" data-logo="causeway">Causeway</span>
-              <span class="chip" data-logo="excel">Excel templates</span>
+              <button type="button" class="chip" data-v="bluebeam">Bluebeam Revu</button>
+              <button type="button" class="chip" data-v="planswift">PlanSwift</button>
+              <button type="button" class="chip" data-v="ribcostx">RIB CostX</button>
+              <button type="button" class="chip" data-v="ribcandy">RIB Candy</button>
+              <button type="button" class="chip" data-v="sage">Sage Estimating</button>
+              <button type="button" class="chip" data-v="causeway">Causeway</button>
+              <button type="button" class="chip" data-v="excel">Excel templates</button>
             </div>
             <div class="qf">Most of the market still sits here, <span>no automation and no memory</span>.</div>
           </div>
@@ -463,15 +485,15 @@
             <div class="qd">Systems of record that span many stages through configured modules and workflows, so breadth comes from setup rather than from reasoning.</div>
             <div class="vhd">Example vendors</div>
             <div class="chips">
-              <span class="chip" data-logo="oracle">Oracle</span>
-              <span class="chip" data-logo="procore">Procore</span>
-              <span class="chip" data-logo="ribitwo">RIB iTWO</span>
-              <span class="chip" data-logo="cleopatra">Cleopatra</span>
-              <span class="chip" data-logo="sapariba">SAP Ariba</span>
-              <span class="chip" data-logo="autodesk">Autodesk ACC</span>
-              <span class="chip" data-logo="ineight">InEight</span>
-              <span class="chip" data-logo="trimble">Trimble</span>
-              <span class="chip" data-logo="jaggaer">Jaggaer</span>
+              <button type="button" class="chip" data-v="oracle">Oracle</button>
+              <button type="button" class="chip" data-v="procore">Procore</button>
+              <button type="button" class="chip" data-v="ribitwo">RIB iTWO</button>
+              <button type="button" class="chip" data-v="cleopatra">Cleopatra</button>
+              <button type="button" class="chip" data-v="sapariba">SAP Ariba</button>
+              <button type="button" class="chip" data-v="autodesk">Autodesk ACC</button>
+              <button type="button" class="chip" data-v="ineight">InEight</button>
+              <button type="button" class="chip" data-v="trimble">Trimble</button>
+              <button type="button" class="chip" data-v="jaggaer">Jaggaer</button>
             </div>
             <div class="qf">Broad but rules-based, <span>more features and harder to use</span>.</div>
           </div>
@@ -521,12 +543,9 @@
           <div class="pbody">
             <div class="pov">Not agentic either: no automation and no learning across stages.</div>
             <div class="vcol">
-                <button type="button" class="vchip tip-down">RIB iTWO
-                  <span class="pop">Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.</span></button>
-                <button type="button" class="vchip tip-down">Oracle
-                  <span class="pop">Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.</span></button>
-                <button type="button" class="vchip tip-down">InEight
-                  <span class="pop">Estimating through to field execution in one platform, driven by workflow and rules rather than agents.</span></button>
+                <button type="button" class="vchip tip-down" data-v="ribitwo">RIB iTWO</button>
+                <button type="button" class="vchip tip-down" data-v="oracle">Oracle</button>
+                <button type="button" class="vchip tip-down" data-v="ineight">InEight</button>
               </div>
           </div>
         </div>
@@ -535,12 +554,9 @@
           <div class="pbody">
             <div class="pov">Each tool owns a single stage; nobody governs the whole lifecycle.</div>
             <div class="vcol">
-                <button type="button" class="vchip tip-down">Kreo
-                  <span class="pop">Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.</span></button>
-                <button type="button" class="vchip tip-down">Buildots
-                  <span class="pop">Site progress only. No link back to the BoQ, the budget or the procurement pipeline.</span></button>
-                <button type="button" class="vchip tip-down">ConWize
-                  <span class="pop">Tendering only. The model stops once the contract is awarded.</span></button>
+                <button type="button" class="vchip tip-down" data-v="kreo">Kreo</button>
+                <button type="button" class="vchip tip-down" data-v="buildots">Buildots</button>
+                <button type="button" class="vchip tip-down" data-v="conwize">ConWize</button>
               </div>
           </div>
         </div>
@@ -555,12 +571,9 @@
           <div class="pbody">
             <div class="pov">Provides structure, but no BoQ catalog creation from scratch out of historical data.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Cleopatra
-                  <span class="pop">Configurable cost-breakdown structures. The structure is there; mapping items into it stays expert-led.</span></button>
-                <button type="button" class="vchip">RIB CostX
-                  <span class="pop">Measured takeoff and BoQs from drawings. Strong measurement, no automatic coding of any incoming format.</span></button>
-                <button type="button" class="vchip">Trimble
-                  <span class="pop">Maintains cost libraries. Mapping third-party formats into one code remains a manual exercise.</span></button>
+                <button type="button" class="vchip tip-down" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip tip-down" data-v="ribcostx">RIB CostX</button>
+                <button type="button" class="vchip tip-down" data-v="trimble">Trimble</button>
               </div>
           </div>
         </div>
@@ -569,12 +582,9 @@
           <div class="pbody">
             <div class="pov">Document to data translation, but limited BoQ hierarchy focus.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Costify
-                  <span class="pop">Turns BoQs and pricing documents into a classified private database. Delivers data, not a live BoQ engine.</span></button>
-                <button type="button" class="vchip">Zebel
-                  <span class="pop">Standardizes historical spreadsheets into a cost database. Standardization for estimating, not one unified BoQ.</span></button>
-                <button type="button" class="vchip">ConWize
-                  <span class="pop">Imports and manages BoQs for tendering, with limited automatic standardization across formats.</span></button>
+                <button type="button" class="vchip tip-down" data-v="costify">Costify</button>
+                <button type="button" class="vchip tip-down" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip tip-down" data-v="conwize">ConWize</button>
               </div>
           </div>
         </div>
@@ -589,12 +599,9 @@
           <div class="pbody">
             <div class="pov">Mature estimating engines; this step is already well served.</div>
             <div class="vcol">
-                <button type="button" class="vchip">RIB CostX
-                  <span class="pop">Detailed bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.</span></button>
-                <button type="button" class="vchip">Cleopatra
-                  <span class="pop">Estimating and benchmarking for capital projects, driven by rules and cost libraries.</span></button>
-                <button type="button" class="vchip">InEight
-                  <span class="pop">Cost estimating and project controls. Capable engine, still planner-driven.</span></button>
+                <button type="button" class="vchip" data-v="ribcostx">RIB CostX</button>
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="ineight">InEight</button>
               </div>
           </div>
         </div>
@@ -603,12 +610,9 @@
           <div class="pbody">
             <div class="pov">Genuinely strong AI estimating; also well served.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Zebel
-                  <span class="pop">Conceptual estimates from a firm's own history, adjusted for location and escalation. Preconstruction focus.</span></button>
-                <button type="button" class="vchip">Kreo
-                  <span class="pop">AI takeoff from drawings through to quantities and estimates. One step, done well.</span></button>
-                <button type="button" class="vchip">Ediphi
-                  <span class="pop">Preconstruction estimating and early bid leveling, not live bottom-up CAPEX across stages.</span></button>
+                <button type="button" class="vchip" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip" data-v="kreo">Kreo</button>
+                <button type="button" class="vchip" data-v="ediphi">Ediphi</button>
               </div>
           </div>
         </div>
@@ -623,12 +627,9 @@
           <div class="pbody">
             <div class="pov">Standard templates make it workable; the gap is AI recommendation and spec analysis.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Cleopatra
-                  <span class="pop">Standardized bid comparison once data is already structured. Setup is expert-heavy.</span></button>
-                <button type="button" class="vchip">SAP Ariba
-                  <span class="pop">Sourcing and bid workflow for procurement teams. Generic, not construction-BoQ native.</span></button>
-                <button type="button" class="vchip">Jaggaer
-                  <span class="pop">Generic sourcing and scoring. Not built to normalize construction BoQs line by line.</span></button>
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="sapariba">SAP Ariba</button>
+                <button type="button" class="vchip" data-v="jaggaer">Jaggaer</button>
               </div>
           </div>
         </div>
@@ -637,12 +638,9 @@
           <div class="pbody">
             <div class="pov">They cover bid comparison well, so no real gap here.</div>
             <div class="vcol">
-                <button type="button" class="vchip">ConWize
-                  <span class="pop">Line-by-line BoQ bid comparison that flags anomalies and missing prices. Strong at tendering only.</span></button>
-                <button type="button" class="vchip">Zebel
-                  <span class="pop">Bid leveling against historical unit prices. Useful, but a preconstruction worksheet.</span></button>
-                <button type="button" class="vchip">Ediphi
-                  <span class="pop">Early-stage bid leveling, not full tender evaluation through to award.</span></button>
+                <button type="button" class="vchip" data-v="conwize">ConWize</button>
+                <button type="button" class="vchip" data-v="zebel">Zebel</button>
+                <button type="button" class="vchip" data-v="ediphi">Ediphi</button>
               </div>
           </div>
         </div>
@@ -657,12 +655,9 @@
           <div class="pbody">
             <div class="pov">Systems of record are entrenched, but recording is fully manual.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Procore
-                  <span class="pop">Project and field management across documents and progress. Manual site reporting still feeds it.</span></button>
-                <button type="button" class="vchip">Primavera
-                  <span class="pop">Oracle Primavera: schedule and earned-value controls. Strong on plan, weak as a gatekeeper on quantities.</span></button>
-                <button type="button" class="vchip">Autodesk ACC
-                  <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
+                <button type="button" class="vchip" data-v="procore">Procore</button>
+                <button type="button" class="vchip" data-v="primavera">Primavera</button>
+                <button type="button" class="vchip" data-v="autodeskacc">Autodesk ACC</button>
               </div>
           </div>
         </div>
@@ -671,12 +666,9 @@
           <div class="pbody">
             <div class="pov">Physical progress capture only, with no contract or IPC cost tracking.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Buildots
-                  <span class="pop">AI compares site captures against BIM and schedule to track progress. Best-in-class for that step alone.</span></button>
-                <button type="button" class="vchip">Doxel
-                  <span class="pop">Reality capture versus plan for installed work. Progress evidence, not procurement control.</span></button>
-                <button type="button" class="vchip">OpenSpace
-                  <span class="pop">360 capture and visual progress documentation. No agentic check on quantities.</span></button>
+                <button type="button" class="vchip" data-v="buildots">Buildots</button>
+                <button type="button" class="vchip" data-v="doxel">Doxel</button>
+                <button type="button" class="vchip" data-v="openspace">OpenSpace</button>
               </div>
           </div>
         </div>
@@ -691,12 +683,9 @@
           <div class="pbody">
             <div class="pov">Static what-if analysis at gates; no continuous savings loop anywhere.</div>
             <div class="vcol">
-                <button type="button" class="vchip">Cleopatra
-                  <span class="pop">Static what-if analysis on an estimate. Not a continuous, always-on savings loop.</span></button>
-                <button type="button" class="vchip">RIB iTWO
-                  <span class="pop">Scenario comparison inside the estimate. No always-on value-engineering loop across projects.</span></button>
-                <button type="button" class="vchip">Oracle
-                  <span class="pop">Capital planning and portfolio what-ifs, run by analysts at decision points rather than continuously.</span></button>
+                <button type="button" class="vchip" data-v="cleopatra">Cleopatra</button>
+                <button type="button" class="vchip" data-v="ribitwo">RIB iTWO</button>
+                <button type="button" class="vchip" data-v="oracle">Oracle</button>
               </div>
           </div>
         </div>
@@ -705,10 +694,8 @@
           <div class="pbody">
             <div class="pov">Optimization exists for schedule; cost value is left untouched.</div>
             <div class="vcol">
-                <button type="button" class="vchip">ALICE Technologies
-                  <span class="pop">Schedule optioneering across many build sequences. Time, not a cost-value loop.</span></button>
-                <button type="button" class="vchip">nPlan
-                  <span class="pop">AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.</span></button>
+                <button type="button" class="vchip" data-v="alicetechnologies">ALICE Technologies</button>
+                <button type="button" class="vchip" data-v="nplan">nPlan</button>
               </div>
           </div>
         </div>
@@ -741,19 +728,72 @@
   });
   let touchStartX=0;
   document.addEventListener('touchstart',e=>{
-    if(e.target.closest('.vchip,.nav'))return;
+    if(e.target.closest('.vchip,.chip,.nav'))return;
     if(e.changedTouches&&e.changedTouches[0])touchStartX=e.changedTouches[0].clientX;
   },{passive:true});
   document.addEventListener('touchend',e=>{
-    if(e.target.closest('.vchip,.nav'))return;
+    if(e.target.closest('.vchip,.chip,.nav'))return;
     if(!e.changedTouches||!e.changedTouches[0])return;
     const dx=e.changedTouches[0].clientX-touchStartX;
     if(dx<=-50)go(1);
     else if(dx>=50)go(-1);
   },{passive:true});
 
+  // one vendor record drives every bubble on pages 3 and 4
+  // m = modules covered (1 orchestration, 2 BoQ, 3 CAPEX, 4 tender, 5 cost realization, 6 value)
+  // ai = how AI-native the product is, 1 to 5
+  const VENDORS={
+    ribitwo:{n:'RIB iTWO',m:[2,3,5],ai:2,t:'Estimating and controls inside one suite'},
+    oracle:{n:'Oracle',m:[3,5],ai:2,t:'Capital planning, schedule and cost'},
+    ineight:{n:'InEight',m:[3,5],ai:2,t:'Estimating through to field execution'},
+    cleopatra:{n:'Cleopatra',m:[2,3,4,6],ai:2,t:'Cost estimating and project controls'},
+    ribcostx:{n:'RIB CostX',m:[2,3],ai:2,t:'Measurement and estimating workbench'},
+    trimble:{n:'Trimble',m:[2,3],ai:2,t:'Measurement, estimating and field tools'},
+    sapariba:{n:'SAP Ariba',m:[4],ai:2,t:'Sourcing and supplier management'},
+    jaggaer:{n:'Jaggaer',m:[4],ai:2,t:'Sourcing, tendering and supplier data'},
+    procore:{n:'Procore',m:[5],ai:1,t:'Construction management system of record'},
+    primavera:{n:'Primavera',m:[5],ai:1,t:'Oracle Primavera: schedule and earned value'},
+    autodeskacc:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination'},
+    autodesk:{n:'Autodesk ACC',m:[5],ai:2,t:'Models, documents and site coordination'},
+    bluebeam:{n:'Bluebeam Revu',m:[2],ai:1,t:'Drawing markup and manual takeoff'},
+    planswift:{n:'PlanSwift',m:[2,3],ai:1,t:'On-screen takeoff with manual pricing'},
+    ribcandy:{n:'RIB Candy',m:[3],ai:1,t:'Bottom-up estimating and cash flow'},
+    sage:{n:'Sage Estimating',m:[3],ai:1,t:'Spreadsheet-style estimating database'},
+    causeway:{n:'Causeway',m:[3],ai:1,t:'Estimating and supply chain tools'},
+    excel:{n:'Excel templates',m:[2,3,4],ai:1,t:'Whatever each team builds by hand'},
+    kreo:{n:'Kreo',m:[2,3],ai:4,t:'Takeoff and estimating from drawings'},
+    buildots:{n:'Buildots',m:[5],ai:4,t:'Site progress from camera walks'},
+    costify:{n:'Costify',m:[2],ai:4,t:'Documents turned into structured cost data'},
+    zebel:{n:'Zebel',m:[2,3,4],ai:4,t:'Early-stage estimating from past projects'},
+    conwize:{n:'ConWize',m:[4],ai:4,t:'Tender collection and bid comparison'},
+    ediphi:{n:'Ediphi',m:[3,4],ai:4,t:'Conceptual estimating for preconstruction'},
+    doxel:{n:'Doxel',m:[5],ai:4,t:'Site progress and earned value from scans'},
+    openspace:{n:'OpenSpace',m:[5],ai:4,t:'Photo capture of site progress'},
+    alice:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search'},
+    alicetechnologies:{n:'ALICE',m:[6],ai:4,t:'Schedule optimization by scenario search'},
+    nplan:{n:'nPlan',m:[6],ai:4,t:'Schedule risk learned from past projects'}
+  };
+  const AILAB=['','rules only','rules only','some AI','AI-native','AI-native'];
+
+  function bubble(v){
+    const dots=[1,2,3,4,5].map(i=>'<i class="'+(i<=v.ai?'on':'')+'"></i>').join('');
+    const mods=[1,2,3,4,5,6].map(i=>'<i class="'+(v.m.includes(i)?'on':'')+'">'+i+'</i>').join('');
+    return '<span class="pop">'
+      +'<span class="pnm">'+v.n+'</span>'
+      +'<span class="prow"><span class="plab">AI maturity</span><span class="dots">'+dots+'</span>'
+      +'<span class="mlvl">'+AILAB[v.ai]+'</span></span>'
+      +'<span class="prow"><span class="plab">Covers</span><span class="mods">'+mods+'</span></span>'
+      +'<span class="pnote">'+v.t+'</span></span>';
+  }
+
+  document.querySelectorAll('[data-v]').forEach(el=>{
+    const v=VENDORS[el.dataset.v];
+    if(!v){console.warn('no vendor record for',el.dataset.v);return;}
+    el.insertAdjacentHTML('beforeend',bubble(v));
+  });
+
   // drop kreo.svg, oracle.png etc into /logos and it appears in front of the name
-  document.querySelectorAll('.chip[data-logo]').forEach(chip=>{
+  document.querySelectorAll('.chip[data-v]').forEach(chip=>{
     const exts=['svg','png'];
     let n=0;
     (function tryNext(){
@@ -761,13 +801,13 @@
       const img=new Image();
       img.onload=()=>{img.className='lgo';img.alt='';chip.prepend(img);chip.classList.add('haslogo');};
       img.onerror=()=>{n++;tryNext();};
-      img.src='logos/'+chip.dataset.logo+'.'+exts[n];
+      img.src='logos/'+chip.dataset.v+'.'+exts[n];
     })();
   });
 
-  function closeTips(){document.querySelectorAll('.vchip.open').forEach(n=>n.classList.remove('open'));}
+  function closeTips(){document.querySelectorAll('.vchip.open,.chip.open').forEach(n=>n.classList.remove('open'));}
   document.addEventListener('click',e=>{
-    const tip=e.target.closest('.vchip');
+    const tip=e.target.closest('.vchip,.chip');
     if(!tip){closeTips();return;}
     const was=tip.classList.contains('open');
     closeTips();
@@ -802,7 +842,7 @@
     const tip=(new URLSearchParams(location.search)).get('tip');
     if(tip){
       const scope=pages[i]||document;
-      const el=[...scope.querySelectorAll('.vchip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
+      const el=[...scope.querySelectorAll('.vchip,.chip')].find(n=>n.innerText.toLowerCase().includes(tip.toLowerCase()));
       if(el){closeTips();el.classList.add('open');}
     }
   }
