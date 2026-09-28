@@ -522,9 +522,9 @@ def build_slide4(prs):
         add_text(slide, x + Inches(0.32), Inches(0.98), Inches(1.18), Inches(0.24), lab, 12, False, INK2)
 
     headers = [
-        (Inches(0.42), Inches(2.95), INK, "Module and opportunity area"),
-        (Inches(3.45), Inches(4.70), INK2, "Legacy players"),
-        (Inches(8.23), Inches(4.68), TEAL_D, "Emerging AI players"),
+        (Inches(0.42), Inches(3.24), INK, "Module and opportunity area"),
+        (Inches(3.74), Inches(4.54), INK2, "Legacy players"),
+        (Inches(8.36), Inches(4.53), TEAL_D, "Emerging AI players"),
     ]
     hy = Inches(1.28)
     for x, w, fill, text in headers:
@@ -559,7 +559,7 @@ def build_slide4(prs):
         ("4", TEAL, "Smart Tender Bid Evaluation",
          ("OPEN GAP", "medium opportunity", RGBColor(0xDC, 0xE2, 0xE6), INK, GREY),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
-          "Standard templates make comparison workable; the gap is AI recommendation and spec analysis.",
+          "Standard templates make it workable; the gap is AI recommendation and spec analysis.",
           "Cleopatra   ·   SAP Ariba   ·   Jaggaer"),
          (GREEN_SOFT, GREEN, RGBColor(0xCF, 0xE8, 0xD8), RGBColor(0x1E, 0x6B, 0x3D), "COVERS MOST",
           "They cover bid comparison well, so no real gap here.",
@@ -568,7 +568,7 @@ def build_slide4(prs):
          ("OPEN GAP", "medium opportunity", RGBColor(0xDC, 0xE2, 0xE6), INK, GREY),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
           "Systems of record are entrenched, but recording is fully manual.",
-          "Procore   ·   Oracle Primavera   ·   Autodesk ACC"),
+          "Procore   ·   Primavera   ·   Autodesk ACC"),
          (AMBER_BOX, HIGH, RGBColor(0xF5, 0xE3, 0xBF), RGBColor(0x8A, 0x5B, 0x14), "PARTIAL",
           "Physical progress capture only, with no contract or IPC cost tracking.",
           "Buildots   ·   Doxel   ·   OpenSpace")),
@@ -585,11 +585,11 @@ def build_slide4(prs):
     y = Inches(1.70)
     rh = Inches(0.92)
     for num, fill, name, opp, left, right in rows:
-        add_rect(slide, Inches(0.42), y + rh - Inches(0.07), Inches(2.95), Inches(0.01), RULE)
+        add_rect(slide, Inches(0.42), y + rh - Inches(0.07), Inches(3.24), Inches(0.01), RULE)
         add_oval(slide, Inches(0.50), y + Inches(0.10), Inches(0.28), Inches(0.28), fill, WHITE, num, 11)
-        add_text(slide, Inches(0.84), y + Inches(0.08), Inches(2.45), Inches(0.36), name, 14, True, INK)
+        add_text(slide, Inches(0.84), y + Inches(0.08), Inches(2.74), Inches(0.36), name, 14, True, INK)
         ol, os, ofill, ocol, oscol = opp
-        badge = add_rect(slide, Inches(0.50), y + Inches(0.48), Inches(2.76), Inches(0.30), ofill, radius=0.04)
+        badge = add_rect(slide, Inches(0.50), y + Inches(0.48), Inches(3.05), Inches(0.30), ofill, radius=0.04)
         tf = badge.text_frame
         tf.word_wrap = False
         try:
@@ -605,20 +605,20 @@ def build_slide4(prs):
         def camp(x, w, data):
             bg, border, bbg, bfg, blab, comment, vendors = data
             add_rect(slide, x, y + rh - Inches(0.07), w, Inches(0.01), RULE)
-            # badge + comment
-            add_rect(slide, x + Inches(0.14), y + Inches(0.08), Inches(1.18), Inches(0.24), bbg, radius=0.04)
-            add_text(slide, x + Inches(0.14), y + Inches(0.08), Inches(1.18), Inches(0.24),
-                     blab, 10, True, bfg, PP_ALIGN.CENTER)
-            add_text(slide, x + Inches(1.38), y + Inches(0.06), w - Inches(1.50), Inches(0.46),
-                     comment, 13, True, INK)
-            add_text(slide, x + Inches(0.14), y + Inches(0.54), w - Inches(0.28), Inches(0.26),
-                     vendors, 13, True, INK2)
+            # full-height coverage box on the left, comment and players stacked to its right
+            box = add_rect(slide, x + Inches(0.14), y + Inches(0.06), Inches(0.84),
+                           rh - Inches(0.19), bbg, radius=0.05)
+            add_shape_text(box, blab, 10, True, bfg, PP_ALIGN.CENTER, "ctr")
+            tx = x + Inches(1.08)
+            tw = w - Inches(1.22)
+            add_text(slide, tx, y + Inches(0.05), tw, Inches(0.42), comment, 13, True, INK)
+            add_text(slide, tx, y + Inches(0.50), tw, Inches(0.26), vendors, 13, True, INK2)
 
-        camp(Inches(3.45), Inches(4.70), left)
-        camp(Inches(8.23), Inches(4.68), right)
+        camp(Inches(3.74), Inches(4.54), left)
+        camp(Inches(8.36), Inches(4.53), right)
         y += rh
 
-    notes = """Page 4. Competitive deep dive. Box colour is the group's coverage of that module, not each vendor.
+    notes = """Page 4. Competitive deep dive. Badge colour is the group's coverage of that module, not each vendor.
 
 VENDOR EVIDENCE (from the HTML hover notes)
 

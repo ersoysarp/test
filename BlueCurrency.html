@@ -94,7 +94,7 @@
   .mv-head,.mv-row{display:grid;gap:6px;}
   .mv-row{flex:1;}
   .mv-3a{grid-template-columns:1fr 3.18fr 1.2fr;}
-  .mv-3{grid-template-columns:1.12fr 1.24fr 1.24fr;}
+  .mv-3{grid-template-columns:0.95fr 1.33fr 1.33fr;}
   .mh{color:#fff;font-size:15px;font-weight:700;padding:9px 12px;border-radius:3px;letter-spacing:.01em;}
   .mh.ink{background:var(--ink);}
   .mh.grey{background:var(--ink2);}
@@ -195,8 +195,8 @@
   .sw.l{background:#F0D4CF;border:1px solid var(--red);}
 
   /* how much of the module each group already covers: colour sits in the badge, not the box */
-  .cbadge{display:inline-flex;align-items:center;font-size:14px;font-weight:800;letter-spacing:.05em;
-    padding:2px 8px;border-radius:3px;margin-right:8px;}
+  .cbadge{flex:0 0 78px;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:14px;font-weight:800;letter-spacing:.04em;line-height:1.15;padding:4px;border-radius:3px;}
   .cvhigh .cbadge{background:#CFE8D8;color:#1E6B3D;}
   .cvmid .cbadge{background:#F5E3BF;color:#8A5B14;}
   .cvlow .cbadge{background:#F0D4CF;color:#9B3328;}
@@ -211,11 +211,12 @@
   .opp.crowd{background:#F4F6F7;border:1px solid var(--rule);}
   .opp.crowd .ol{color:var(--grey);} .opp.crowd .os{color:var(--grey-l);}
 
-  .pcell{flex-direction:column;align-items:stretch;justify-content:center;gap:7px;}
-  .pov{font-size:15px;line-height:1.35;color:var(--ink);font-weight:700;}
+  .pcell{flex-direction:row;align-items:stretch;gap:10px;}
+  .pbody{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:7px;}
+  .pov{font-size:14px;line-height:1.35;color:var(--ink);font-weight:700;}
   .vcol{display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start;}
   .vchip{position:relative;display:inline-flex;align-items:center;background:#F7F9F9;border:1px solid #E9EDEF;
-    border-radius:18px;padding:3px 11px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
+    border-radius:18px;padding:3px 9px;font-size:14px;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;
     line-height:1.25;text-align:left;max-width:100%;}
   .vchip:hover,.vchip.open{border-color:var(--teal);box-shadow:0 3px 10px rgba(10,95,89,.12);}
   .pop{
@@ -525,25 +526,31 @@
           <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
-          <div class="pov"><span class="cbadge">BARELY</span>Not agentic either: no automation and no learning across stages.</div>
-          <div class="vcol">
-            <button type="button" class="vchip tip-down">RIB iTWO
-              <span class="pop">Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.</span></button>
-            <button type="button" class="vchip tip-down">Oracle
-              <span class="pop">Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.</span></button>
-            <button type="button" class="vchip tip-down">InEight
-              <span class="pop">Estimating through to field execution in one platform, driven by workflow and rules rather than agents.</span></button>
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Not agentic either: no automation and no learning across stages.</div>
+            <div class="vcol">
+                <button type="button" class="vchip tip-down">RIB iTWO
+                  <span class="pop">Connects estimating and controls inside one suite. Integration between modules, not an agentic learning model.</span></button>
+                <button type="button" class="vchip tip-down">Oracle
+                  <span class="pop">Spans schedule, cost and capital planning. Broad, but configured by experts rather than reasoned by agents.</span></button>
+                <button type="button" class="vchip tip-down">InEight
+                  <span class="pop">Estimating through to field execution in one platform, driven by workflow and rules rather than agents.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvlow pcell">
-          <div class="pov"><span class="cbadge">BARELY</span>Each tool owns a single stage; nobody governs the whole lifecycle.</div>
-          <div class="vcol">
-            <button type="button" class="vchip tip-down">Kreo
-              <span class="pop">Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.</span></button>
-            <button type="button" class="vchip tip-down">Buildots
-              <span class="pop">Site progress only. No link back to the BoQ, the budget or the procurement pipeline.</span></button>
-            <button type="button" class="vchip tip-down">ConWize
-              <span class="pop">Tendering only. The model stops once the contract is awarded.</span></button>
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Each tool owns a single stage; nobody governs the whole lifecycle.</div>
+            <div class="vcol">
+                <button type="button" class="vchip tip-down">Kreo
+                  <span class="pop">Takeoff and estimating only. Nothing carries forward into tendering, procurement or site control.</span></button>
+                <button type="button" class="vchip tip-down">Buildots
+                  <span class="pop">Site progress only. No link back to the BoQ, the budget or the procurement pipeline.</span></button>
+                <button type="button" class="vchip tip-down">ConWize
+                  <span class="pop">Tendering only. The model stops once the contract is awarded.</span></button>
+              </div>
           </div>
         </div>
       </div>
@@ -554,25 +561,31 @@
           <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Provides structure, but no BoQ catalog creation from scratch out of historical data.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Cleopatra
-              <span class="pop">Configurable cost-breakdown structures. The structure is there; mapping items into it stays expert-led.</span></button>
-            <button type="button" class="vchip">RIB CostX
-              <span class="pop">Measured takeoff and BoQs from drawings. Strong measurement, no automatic coding of any incoming format.</span></button>
-            <button type="button" class="vchip">Trimble
-              <span class="pop">Maintains cost libraries. Mapping third-party formats into one code remains a manual exercise.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Provides structure, but no BoQ catalog creation from scratch out of historical data.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Cleopatra
+                  <span class="pop">Configurable cost-breakdown structures. The structure is there; mapping items into it stays expert-led.</span></button>
+                <button type="button" class="vchip">RIB CostX
+                  <span class="pop">Measured takeoff and BoQs from drawings. Strong measurement, no automatic coding of any incoming format.</span></button>
+                <button type="button" class="vchip">Trimble
+                  <span class="pop">Maintains cost libraries. Mapping third-party formats into one code remains a manual exercise.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Document to data translation, but limited BoQ hierarchy focus.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Costify
-              <span class="pop">Turns BoQs and pricing documents into a classified private database. Delivers data, not a live BoQ engine.</span></button>
-            <button type="button" class="vchip">Zebel
-              <span class="pop">Standardizes historical spreadsheets into a cost database. Standardization for estimating, not one unified BoQ.</span></button>
-            <button type="button" class="vchip">ConWize
-              <span class="pop">Imports and manages BoQs for tendering, with limited automatic standardization across formats.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Document to data translation, but limited BoQ hierarchy focus.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Costify
+                  <span class="pop">Turns BoQs and pricing documents into a classified private database. Delivers data, not a live BoQ engine.</span></button>
+                <button type="button" class="vchip">Zebel
+                  <span class="pop">Standardizes historical spreadsheets into a cost database. Standardization for estimating, not one unified BoQ.</span></button>
+                <button type="button" class="vchip">ConWize
+                  <span class="pop">Imports and manages BoQs for tendering, with limited automatic standardization across formats.</span></button>
+              </div>
           </div>
         </div>
       </div>
@@ -583,25 +596,31 @@
           <div class="opp crowd"><span class="ol">CROWDED</span><span class="os">low opportunity</span></div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Mature estimating engines; this step is already well served.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">RIB CostX
-              <span class="pop">Detailed bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.</span></button>
-            <button type="button" class="vchip">Cleopatra
-              <span class="pop">Estimating and benchmarking for capital projects, driven by rules and cost libraries.</span></button>
-            <button type="button" class="vchip">InEight
-              <span class="pop">Cost estimating and project controls. Capable engine, still planner-driven.</span></button>
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">Mature estimating engines; this step is already well served.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">RIB CostX
+                  <span class="pop">Detailed bottom-up estimating from measured quantities, using maintained rates rather than live market drivers.</span></button>
+                <button type="button" class="vchip">Cleopatra
+                  <span class="pop">Estimating and benchmarking for capital projects, driven by rules and cost libraries.</span></button>
+                <button type="button" class="vchip">InEight
+                  <span class="pop">Cost estimating and project controls. Capable engine, still planner-driven.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>Genuinely strong AI estimating; also well served.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Zebel
-              <span class="pop">Conceptual estimates from a firm's own history, adjusted for location and escalation. Preconstruction focus.</span></button>
-            <button type="button" class="vchip">Kreo
-              <span class="pop">AI takeoff from drawings through to quantities and estimates. One step, done well.</span></button>
-            <button type="button" class="vchip">Ediphi
-              <span class="pop">Preconstruction estimating and early bid leveling, not live bottom-up CAPEX across stages.</span></button>
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">Genuinely strong AI estimating; also well served.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Zebel
+                  <span class="pop">Conceptual estimates from a firm's own history, adjusted for location and escalation. Preconstruction focus.</span></button>
+                <button type="button" class="vchip">Kreo
+                  <span class="pop">AI takeoff from drawings through to quantities and estimates. One step, done well.</span></button>
+                <button type="button" class="vchip">Ediphi
+                  <span class="pop">Preconstruction estimating and early bid leveling, not live bottom-up CAPEX across stages.</span></button>
+              </div>
           </div>
         </div>
       </div>
@@ -612,25 +631,31 @@
           <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Standard templates make comparison workable; the gap is AI recommendation and spec analysis.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Cleopatra
-              <span class="pop">Standardized bid comparison once data is already structured. Setup is expert-heavy.</span></button>
-            <button type="button" class="vchip">SAP Ariba
-              <span class="pop">Sourcing and bid workflow for procurement teams. Generic, not construction-BoQ native.</span></button>
-            <button type="button" class="vchip">Jaggaer
-              <span class="pop">Generic sourcing and scoring. Not built to normalize construction BoQs line by line.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Standard templates make it workable; the gap is AI recommendation and spec analysis.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Cleopatra
+                  <span class="pop">Standardized bid comparison once data is already structured. Setup is expert-heavy.</span></button>
+                <button type="button" class="vchip">SAP Ariba
+                  <span class="pop">Sourcing and bid workflow for procurement teams. Generic, not construction-BoQ native.</span></button>
+                <button type="button" class="vchip">Jaggaer
+                  <span class="pop">Generic sourcing and scoring. Not built to normalize construction BoQs line by line.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvhigh pcell">
-          <div class="pov"><span class="cbadge">COVERS MOST</span>They cover bid comparison well, so no real gap here.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">ConWize
-              <span class="pop">Line-by-line BoQ bid comparison that flags anomalies and missing prices. Strong at tendering only.</span></button>
-            <button type="button" class="vchip">Zebel
-              <span class="pop">Bid leveling against historical unit prices. Useful, but a preconstruction worksheet.</span></button>
-            <button type="button" class="vchip">Ediphi
-              <span class="pop">Early-stage bid leveling, not full tender evaluation through to award.</span></button>
+          <span class="cbadge">COVERS MOST</span>
+          <div class="pbody">
+            <div class="pov">They cover bid comparison well, so no real gap here.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">ConWize
+                  <span class="pop">Line-by-line BoQ bid comparison that flags anomalies and missing prices. Strong at tendering only.</span></button>
+                <button type="button" class="vchip">Zebel
+                  <span class="pop">Bid leveling against historical unit prices. Useful, but a preconstruction worksheet.</span></button>
+                <button type="button" class="vchip">Ediphi
+                  <span class="pop">Early-stage bid leveling, not full tender evaluation through to award.</span></button>
+              </div>
           </div>
         </div>
       </div>
@@ -641,25 +666,31 @@
           <div class="opp gap"><span class="ol">OPEN GAP</span><span class="os">medium opportunity</span></div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Systems of record are entrenched, but recording is fully manual.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Procore
-              <span class="pop">Project and field management across documents and progress. Manual site reporting still feeds it.</span></button>
-            <button type="button" class="vchip">Oracle Primavera
-              <span class="pop">Schedule and earned-value controls. Strong on plan, weak as a gatekeeper on quantities.</span></button>
-            <button type="button" class="vchip">Autodesk ACC
-              <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Systems of record are entrenched, but recording is fully manual.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Procore
+                  <span class="pop">Project and field management across documents and progress. Manual site reporting still feeds it.</span></button>
+                <button type="button" class="vchip">Primavera
+                  <span class="pop">Oracle Primavera: schedule and earned-value controls. Strong on plan, weak as a gatekeeper on quantities.</span></button>
+                <button type="button" class="vchip">Autodesk ACC
+                  <span class="pop">Construction cloud for models, issues and field data. Coordination, not agentic cost control.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Physical progress capture only, with no contract or IPC cost tracking.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Buildots
-              <span class="pop">AI compares site captures against BIM and schedule to track progress. Best-in-class for that step alone.</span></button>
-            <button type="button" class="vchip">Doxel
-              <span class="pop">Reality capture versus plan for installed work. Progress evidence, not procurement control.</span></button>
-            <button type="button" class="vchip">OpenSpace
-              <span class="pop">360 capture and visual progress documentation. No agentic check on quantities.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Physical progress capture only, with no contract or IPC cost tracking.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Buildots
+                  <span class="pop">AI compares site captures against BIM and schedule to track progress. Best-in-class for that step alone.</span></button>
+                <button type="button" class="vchip">Doxel
+                  <span class="pop">Reality capture versus plan for installed work. Progress evidence, not procurement control.</span></button>
+                <button type="button" class="vchip">OpenSpace
+                  <span class="pop">360 capture and visual progress documentation. No agentic check on quantities.</span></button>
+              </div>
           </div>
         </div>
       </div>
@@ -670,23 +701,29 @@
           <div class="opp white"><span class="ol">WHITE SPACE</span><span class="os">high opportunity</span></div>
         </div>
         <div class="mc cvlow pcell">
-          <div class="pov"><span class="cbadge">BARELY</span>Static what-if analysis at gates; no continuous savings loop anywhere.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">Cleopatra
-              <span class="pop">Static what-if analysis on an estimate. Not a continuous, always-on savings loop.</span></button>
-            <button type="button" class="vchip">RIB iTWO
-              <span class="pop">Scenario comparison inside the estimate. No always-on value-engineering loop across projects.</span></button>
-            <button type="button" class="vchip">Oracle
-              <span class="pop">Capital planning and portfolio what-ifs, run by analysts at decision points rather than continuously.</span></button>
+          <span class="cbadge">BARELY</span>
+          <div class="pbody">
+            <div class="pov">Static what-if analysis at gates; no continuous savings loop anywhere.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">Cleopatra
+                  <span class="pop">Static what-if analysis on an estimate. Not a continuous, always-on savings loop.</span></button>
+                <button type="button" class="vchip">RIB iTWO
+                  <span class="pop">Scenario comparison inside the estimate. No always-on value-engineering loop across projects.</span></button>
+                <button type="button" class="vchip">Oracle
+                  <span class="pop">Capital planning and portfolio what-ifs, run by analysts at decision points rather than continuously.</span></button>
+              </div>
           </div>
         </div>
         <div class="mc cvmid pcell">
-          <div class="pov"><span class="cbadge">PARTIAL</span>Optimization exists for schedule; cost value is left untouched.</div>
-          <div class="vcol">
-            <button type="button" class="vchip">ALICE Technologies
-              <span class="pop">Schedule optioneering across many build sequences. Time, not a cost-value loop.</span></button>
-            <button type="button" class="vchip">nPlan
-              <span class="pop">AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.</span></button>
+          <span class="cbadge">PARTIAL</span>
+          <div class="pbody">
+            <div class="pov">Optimization exists for schedule; cost value is left untouched.</div>
+            <div class="vcol">
+                <button type="button" class="vchip">ALICE Technologies
+                  <span class="pop">Schedule optioneering across many build sequences. Time, not a cost-value loop.</span></button>
+                <button type="button" class="vchip">nPlan
+                  <span class="pop">AI schedule-risk forecasting from past programmes. Time risk, not continuous cost value.</span></button>
+              </div>
           </div>
         </div>
       </div>
