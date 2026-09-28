@@ -85,6 +85,23 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .row .cat .csub{font-size:14px;font-weight:400;color:var(--ink-faint);margin-top:2px;display:block;}
 .row .val{display:flex;align-items:center;padding:14px 24px;}
 
+/* full-height panels (slide 3) */
+.split{flex:1 1 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0;}
+.pan{display:flex;flex-direction:column;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;}
+.pan.s{border-top:4px solid var(--safe);}
+.pan.h{border-top:4px solid var(--stop);}
+.pan .ph{display:flex;align-items:center;gap:14px;padding:16px 24px;background:var(--safe-bg);color:var(--safe);}
+.pan.h .ph{background:var(--stop-bg);color:var(--stop);}
+.pan .ph .pt{font-size:22px;font-weight:700;color:var(--ink);line-height:1.1;}
+.pan .ph .psub{font-size:15px;color:var(--ink-faint);display:block;margin-top:2px;}
+.pan .pl{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between;padding:6px 24px 10px;}
+.pan .li{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line);}
+.pan .li:last-child{border-bottom:none;}
+.pan .li .lb{font-size:18px;font-weight:700;color:var(--ink);}
+.pan .li .ds{font-size:16px;color:var(--ink-soft);line-height:1.35;}
+.insight{flex:0 0 auto;margin-top:16px;background:var(--azure-deep);color:#fff;border-radius:12px;padding:14px 26px;font-size:17px;line-height:1.4;}
+.insight b{color:var(--gold-soft);}
+
 /* two-level item grid */
 .items{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;width:100%;}
 .it{display:flex;gap:10px;align-items:baseline;}
@@ -251,34 +268,31 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
   <h2 class="title">A capable assistant for language work, not a decision maker</h2>
   <div class="rule"></div>
   <div class="body">
-    <div class="rows">
-      <div class="row safe">
-        <div class="cat"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-12h-7z"/></svg><span><span class="ct">Where it is strong</span><span class="csub">Language work, at speed and scale</span></span></div>
-        <div class="val">
-          <div class="items">
-            <div class="it"><span class="dot"></span><span><span class="lb">Draft.</span> <span class="ds">Letters, briefs, slides, notes</span></span></div>
-            <div class="it"><span class="dot"></span><span><span class="lb">Summarise.</span> <span class="ds">Reports, appeals, correspondence</span></span></div>
-            <div class="it"><span class="dot"></span><span><span class="lb">Translate.</span> <span class="ds">Azerbaijani and other languages</span></span></div>
-            <div class="it"><span class="dot"></span><span><span class="lb">Compare.</span> <span class="ds">A document against a standard</span></span></div>
-            <div class="it"><span class="dot"></span><span><span class="lb">Prepare.</span> <span class="ds">Meeting notes and follow ups</span></span></div>
-            <div class="it"><span class="dot"></span><span><span class="lb">Extract.</span> <span class="ds">Key points from long files</span></span></div>
-          </div>
+    <div class="split">
+      <div class="pan s">
+        <div class="ph"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 10-12h-7z"/></svg><span><span class="pt">Where it is strong</span><span class="psub">Language work, in seconds, at scale</span></span></div>
+        <div class="pl">
+          <div class="li"><span class="lb">Draft</span><span class="ds">Briefs, letters, speeches, minutes from an outline</span></div>
+          <div class="li"><span class="lb">Summarise</span><span class="ds">A 50 page report into a one page brief</span></div>
+          <div class="li"><span class="lb">Translate</span><span class="ds">Azerbaijani to and from any language</span></div>
+          <div class="li"><span class="lb">Synthesise</span><span class="ds">Many documents into a single view</span></div>
+          <div class="li"><span class="lb">Compare</span><span class="ds">A document against a standard or best practice</span></div>
+          <div class="li"><span class="lb">Prepare</span><span class="ds">Agendas, briefing packs, action follow ups</span></div>
         </div>
       </div>
-      <div class="row stop">
-        <div class="cat"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="ct">Where judgement stays human</span><span class="csub">It assists, it does not decide</span></span></div>
-        <div class="val">
-          <div class="items">
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Accuracy.</span> <span class="ds">Can state errors with confidence</span></span></div>
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Authority.</span> <span class="ds">Carries no accountability</span></span></div>
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Verify.</span> <span class="ds">Check outputs against a source</span></span></div>
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Decide.</span> <span class="ds">Named officials stay responsible</span></span></div>
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Nuance.</span> <span class="ds">Weak on sensitive policy calls</span></span></div>
-            <div class="it"><span class="dot" style="background:var(--stop)"></span><span><span class="lb">Disclose.</span> <span class="ds">Flag AI shaped outputs</span></span></div>
-          </div>
+      <div class="pan h">
+        <div class="ph"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span><span class="pt">Where judgement stays human</span><span class="psub">It assists, it does not decide</span></span></div>
+        <div class="pl">
+          <div class="li"><span class="lb">Truth</span><span class="ds">Confident, and sometimes simply wrong</span></div>
+          <div class="li"><span class="lb">Accountability</span><span class="ds">Holds no authority, carries no responsibility</span></div>
+          <div class="li"><span class="lb">Verification</span><span class="ds">Every output checked against a trusted source</span></div>
+          <div class="li"><span class="lb">Sensitivity</span><span class="ds">Weak on policy nuance and hard cases</span></div>
+          <div class="li"><span class="lb">Disclosure</span><span class="ds">Flag where AI shaped a public output</span></div>
+          <div class="li"><span class="lb">Decision</span><span class="ds">The named official signs, not the model</span></div>
         </div>
       </div>
     </div>
+    <div class="insight"><b>Rule of thumb.</b> Let AI produce the first draft. People own the check, the decision, and the record.</div>
   </div>
   <div class="foot"><span>Capture the speed of language work, protect the judgement, verification and accountability</span><span>Section <b>01</b></span></div>
 </section>
