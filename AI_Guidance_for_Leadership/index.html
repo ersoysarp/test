@@ -111,7 +111,7 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 
 /* mckinsey table */
 .mt{flex:1 1 auto;width:100%;height:100%;border-collapse:separate;border-spacing:0;background:var(--paper-2);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
-.mt th,.mt td{text-align:left;vertical-align:middle;padding:9px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
+.mt th,.mt td{text-align:left;vertical-align:middle;padding:8px 15px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:16px;color:var(--ink-soft);}
 .mt thead th{background:var(--azure-deep);color:#fff;font-size:16px;font-weight:700;line-height:1.2;}
 .mt thead th span{display:block;font-size:14px;font-weight:400;color:#bcd8e1;margin-top:2px;}
 .mt thead th:first-child{background:var(--ink);}
@@ -120,8 +120,12 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
 .mt .cat{background:var(--tint);}
 .mt .cat .ct{font-size:19px;font-weight:700;color:var(--ink);display:block;}
 .mt .cat .ex{font-size:14px;color:var(--ink-faint);margin-top:3px;display:block;line-height:1.35;}
-.mt .cat .ecs{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
-.mt .cat .ec{font-size:15px;font-weight:700;color:var(--azure-deep);background:#fff;border:1px solid var(--line-strong);border-radius:6px;padding:3px 9px;}
+.mt .cat .ecs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.mt .cat .ec{font-size:14px;font-weight:700;color:var(--azure-deep);background:#fff;border:1px solid var(--line-strong);border-radius:6px;padding:4px 8px;line-height:1.2;}
+.ucs{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.ucs .ub{font-size:14.5px;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line-strong);border-radius:7px;padding:4px 9px;line-height:1.25;}
+.ucs .ub.on{border-color:#bcd9c9;background:#f2f8f5;}
+.ucs .ub.off{border-style:dashed;color:var(--ink-faint);background:transparent;}
 .proof{display:flex;align-items:center;gap:24px;margin-top:9px;background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:10px 22px;flex:0 0 auto;}
 .proof .plabel{font-size:16px;font-weight:700;color:var(--azure-deep);min-width:210px;line-height:1.2;}
 .proof .plabel .sub2{display:block;font-size:14px;font-weight:400;color:var(--ink-soft);margin-top:4px;line-height:1.35;}
@@ -427,35 +431,34 @@ h2.title em{font-style:normal;color:var(--azure-deep);}
     <table class="mt">
       <thead>
         <tr>
-          <th style="width:26%">Government data type</th>
+          <th style="width:40%">Government data sources</th>
           <th>Enterprise account<span>Vendor cloud, governed</span></th>
           <th>Fully secure, on premise<span>Closed, national control</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="cat"><span class="ct">Public</span><div class="ecs"><span class="ec">State Statistics</span><span class="ec">Azerbaijan 2030</span><span class="ec">COP29 speeches</span></div></td>
-          <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Translate a COP29 address for the world</li><li>Compare Azerbaijan 2030 to OECD practice</li></ul></td>
-          <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Available, rarely needed here</li></ul></td>
+          <td class="cat"><span class="ct">Public</span><div class="ecs"><span class="ec">State Statistics</span><span class="ec">Azerbaijan 2030</span><span class="ec">COP29 speeches</span><span class="ec">Published decrees</span><span class="ec">Press releases</span><span class="ec">Open budget data</span></div></td>
+          <td><span class="verdict v-safe">Safe</span><div class="ucs"><span class="ub on">Translate speeches</span><span class="ub on">Draft press lines</span><span class="ub on">Benchmark strategy</span></div></td>
+          <td><span class="verdict v-safe">Safe</span><div class="ucs"><span class="ub on">All of the above</span><span class="ub off">Rarely needed here</span></div></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Internal</span><div class="ecs"><span class="ec">Ministry reports</span><span class="ec">Draft policy</span><span class="ec">Process notes</span></div></td>
-          <td><span class="verdict v-caution">With controls</span><ul class="ulist"><li>Summarize ministry reports, draft policy</li><li>Design cross agency trackers</li></ul></td>
-          <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>The natural home, no external processing</li></ul></td>
+          <td class="cat"><span class="ct">Internal</span><div class="ecs"><span class="ec">Ministry reports</span><span class="ec">Draft policy papers</span><span class="ec">Process notes</span><span class="ec">Program data</span><span class="ec">Agency letters</span><span class="ec">Internal analytics</span></div></td>
+          <td><span class="verdict v-caution">With controls</span><div class="ucs"><span class="ub on">Summarize reports</span><span class="ub on">Draft policy text</span><span class="ub on">Cross agency trackers</span></div></td>
+          <td><span class="verdict v-safe">Safe</span><div class="ucs"><span class="ub on">The natural home</span><span class="ub on">No external processing</span></div></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Limited access</span><div class="ecs"><span class="ec">Citizen appeals</span><span class="ec">Personal records</span><span class="ec">Draft orders</span></div></td>
-          <td><span class="verdict v-stop">Not permitted</span><ul class="ulist"><li>Personal data must stay in national control</li></ul></td>
-          <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Summarize citizen appeals, route to ministries</li><li>Draft replies citing the relevant law</li></ul></td>
+          <td class="cat"><span class="ct">Limited access</span><div class="ecs"><span class="ec">Citizen appeals</span><span class="ec">Personal records</span><span class="ec">Draft orders</span><span class="ec">Case files</span><span class="ec">Procurement files</span><span class="ec">Predecision advice</span></div></td>
+          <td><span class="verdict v-stop">Not permitted</span><div class="ucs"><span class="ub off">Must stay in national control</span></div></td>
+          <td><span class="verdict v-safe">Safe</span><div class="ucs"><span class="ub on">Summarize appeals</span><span class="ub on">Route to ministries</span><span class="ub on">Draft legal replies</span><span class="ub on">Spot case patterns</span></div></td>
         </tr>
         <tr>
-          <td class="cat"><span class="ct">Restricted</span><div class="ecs"><span class="ec">Security assessments</span><span class="ec">Security Council minutes</span></div></td>
-          <td><span class="verdict v-stop">Not permitted</span><ul class="ulist"><li>Never outside an accredited environment</li></ul></td>
-          <td><span class="verdict v-safe">Safe</span><ul class="ulist"><li>Cross domain analysis for the Security Council</li><li>Leadership dashboards and briefing packs</li></ul></td>
+          <td class="cat"><span class="ct">Restricted</span><div class="ecs"><span class="ec">Security assessments</span><span class="ec">Council minutes</span><span class="ec">Defense readiness</span><span class="ec">Intelligence</span><span class="ec">Cabinet papers</span><span class="ec">Infrastructure plans</span></div></td>
+          <td><span class="verdict v-stop">Not permitted</span><div class="ucs"><span class="ub off">Accredited environment only</span></div></td>
+          <td><span class="verdict v-safe">Safe</span><div class="ucs"><span class="ub on">Cross domain analysis</span><span class="ub on">Decision dashboards</span><span class="ub on">Briefing packs</span><span class="ub on">Scenario planning</span></div></td>
         </tr>
       </tbody>
     </table>
-    <div class="insight"><b>Read it this way.</b> Most everyday work is Public or Internal, so adoption can begin now. The sensitive tiers, where the largest gains sit, wait for the secure platform.</div>
   </div>
   <div class="foot"><span>Where a task mixes tiers, the highest tier present governs the environment</span><span>Section <b>03</b></span></div>
 </section>
