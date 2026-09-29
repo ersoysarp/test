@@ -356,18 +356,26 @@
   .rotate-hint button:hover{background:rgba(255,255,255,.1);}
 
   /* ============ PAGE 5 ============ */
-  .uccols{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;min-height:0;margin-top:10px;}
-  .uccol{display:flex;flex-direction:column;gap:5px;min-height:0;}
+  .ucleg{display:flex;align-items:center;gap:16px;margin-top:9px;}
+  .ucleg .lgt{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);}
+  .ucleg .lgs{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--ink2);}
+  .ucleg .b{flex:0 0 21px;height:21px;border-radius:4px;background:#EDF1F3;border:1px solid #DCE2E6;
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:transparent;}
+  .ucleg .b.dir{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .ucleg .b.sup{background:var(--teal-soft);border-color:#A9D2CC;color:var(--teal-d);}
+  .uccols{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;min-height:0;margin-top:12px;}
+  .uccol{display:flex;flex-direction:column;min-height:0;}
+  .ucl{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:5px;min-height:0;}
   .uchd{display:flex;align-items:baseline;gap:8px;font-size:14px;font-weight:800;letter-spacing:.04em;
     text-transform:uppercase;color:var(--ink);padding-bottom:5px;border-bottom:2px solid var(--ink);margin-bottom:2px;}
   .uct{margin-left:auto;font-size:14px;font-weight:800;color:var(--teal-d);letter-spacing:0;}
   .uc{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.2;color:var(--grey-l);}
-  .ucnote{margin-top:auto;padding-top:9px;border-top:1px solid var(--rule);font-size:14px;line-height:1.25;
-    color:var(--teal-d);font-weight:600;}
   .uc .b{flex:0 0 21px;height:21px;border-radius:4px;background:#EDF1F3;border:1px solid #DCE2E6;
     display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:transparent;}
-  .uc.on{color:var(--ink);font-weight:600;}
-  .uc.on .b{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .uc.dir{color:var(--ink);font-weight:700;}
+  .uc.dir .b{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .uc.sup{color:var(--ink2);font-weight:600;}
+  .uc.sup .b{background:var(--teal-soft);border-color:#A9D2CC;color:var(--teal-d);}
   .uclegend{display:flex;align-items:center;gap:10px;margin-top:11px;padding-top:9px;border-top:1px solid var(--rule);}
   .uclegend .lgt{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--grey);
     flex:0 0 auto;max-width:86px;line-height:1.15;}
@@ -852,70 +860,80 @@
   <section class="stage" id="p5">
     <div class="pgno">5</div>
     <div class="kicker">Blue Currency &nbsp;|&nbsp; Coverage of the project delivery use case library</div>
-    <h1>Our scope covers <b>18 of the 39 use cases</b> in the library, concentrated on the commercial spine from project brief to cost realization</h1>
+    <h1>Our scope reaches <b>18 of the 39 use cases</b> in the library: 9 we deliver ourselves and 9 we complement, concentrated on the commercial spine</h1>
+
+    <div class="ucleg">
+      <span class="lgt">Our role</span>
+      <span class="lgs"><span class="b dir">1</span>Directly delivered by the module shown (9)</span>
+      <span class="lgs"><span class="b sup">1</span>Complemented, the module feeds or partly covers it (9)</span>
+      <span class="lgs"><span class="b"></span>Outside our scope (21)</span>
+    </div>
 
     <div class="uccols">
     <div class="uccol">
       <div class="uchd">Design &amp; Engineering<span class="uct">3/8</span></div>
-      <div class="uc on"><span class="b">2</span>Automated BoQ and Quantity Takeoff</div>
-      <div class="uc"><span class="b"></span>BoD Change Impact Analyser</div>
-      <div class="uc"><span class="b"></span>Common Data Environment for Design</div>
-      <div class="uc on"><span class="b">3</span>Cost Benchmarking and Early Estimating</div>
-      <div class="uc"><span class="b"></span>Design Code Compliance and Constructability</div>
-      <div class="uc"><span class="b"></span>Federated BIM Coordination and Clash Detection</div>
-      <div class="uc"><span class="b"></span>Generative Space and Layout Planning</div>
-      <div class="uc on"><span class="b">1</span>Project Brief Generation</div>
-      <div class="ucnote">We enter at the brief and at the quantities. Modelling, code checking and layout design stay with the design tools.</div>
+      <div class="ucl">
+        <div class="uc dir"><span class="b">2</span>Automated BoQ and Quantity Takeoff</div>
+        <div class="uc"><span class="b"></span>BoD Change Impact Analyser</div>
+        <div class="uc"><span class="b"></span>Common Data Environment for Design</div>
+        <div class="uc sup"><span class="b">3</span>Cost Benchmarking and Early Estimating</div>
+        <div class="uc"><span class="b"></span>Design Code Compliance and Constructability</div>
+        <div class="uc"><span class="b"></span>Federated BIM Coordination and Clash Detection</div>
+        <div class="uc"><span class="b"></span>Generative Space and Layout Planning</div>
+        <div class="uc dir"><span class="b">1</span>Project Brief Generation</div>
+      </div>
     </div>
     <div class="uccol">
       <div class="uchd">Procurement &amp; Contracting<span class="uct">10/14</span></div>
-      <div class="uc"><span class="b"></span>Buying Agent</div>
-      <div class="uc on"><span class="b">6</span>Category Management Platform</div>
-      <div class="uc on"><span class="b">3</span>Cleansheet Assistant</div>
-      <div class="uc on"><span class="b">3</span>Commodity Price Intelligence and Hedging</div>
-      <div class="uc on"><span class="b">5</span>Contract Lifecycle Assistant</div>
-      <div class="uc"><span class="b"></span>Inventory Management</div>
-      <div class="uc on"><span class="b">5</span>Invoice Validation Agent</div>
-      <div class="uc on"><span class="b">4</span>Negotiation Assistant</div>
-      <div class="uc"><span class="b"></span>Procurement Capability Academy</div>
-      <div class="uc on"><span class="b">6</span>Spend Intelligence, direct and indirect</div>
-      <div class="uc on"><span class="b">4</span>Supplier Discovery and Shortlisting</div>
-      <div class="uc"><span class="b"></span>Supplier Onboarding and Verification</div>
-      <div class="uc on"><span class="b">4</span>Tender Management and eAuction</div>
-      <div class="uc on"><span class="b">4</span>Vendor Performance Evaluation Platform</div>
-      <div class="ucnote">The commercial core is ours end to end, from should-cost through tender to invoice validation.</div>
+      <div class="ucl">
+        <div class="uc"><span class="b"></span>Buying Agent</div>
+        <div class="uc sup"><span class="b">6</span>Category Management Platform</div>
+        <div class="uc dir"><span class="b">3</span>Cleansheet Assistant</div>
+        <div class="uc dir"><span class="b">3</span>Commodity Price Intelligence</div>
+        <div class="uc sup"><span class="b">5</span>Contract Lifecycle Assistant</div>
+        <div class="uc"><span class="b"></span>Inventory Management</div>
+        <div class="uc sup"><span class="b">5</span>Invoice Validation Agent</div>
+        <div class="uc sup"><span class="b">4</span>Negotiation Assistant</div>
+        <div class="uc"><span class="b"></span>Procurement Capability Academy</div>
+        <div class="uc dir"><span class="b">6</span>Spend Intelligence</div>
+        <div class="uc sup"><span class="b">4</span>Supplier Discovery and Shortlisting</div>
+        <div class="uc"><span class="b"></span>Supplier Onboarding and Verification</div>
+        <div class="uc dir"><span class="b">4</span>Tender Management and eAuction</div>
+        <div class="uc sup"><span class="b">4</span>Vendor Performance Evaluation</div>
+      </div>
     </div>
     <div class="uccol">
       <div class="uchd">Schedule Planning &amp; Project Controls<span class="uct">4/6</span></div>
-      <div class="uc on"><span class="b">5</span>Claims Early Warning</div>
-      <div class="uc"><span class="b"></span>Generative Scheduling and Construction Optioneering</div>
-      <div class="uc on"><span class="b">5</span>Integrated Change and Variation Management</div>
-      <div class="uc on"><span class="b">1</span>Integrated Digital Control Tower</div>
-      <div class="uc on"><span class="b">6</span>Schedule Risk Analysis and Probabilistic Forecasting</div>
-      <div class="uc"><span class="b"></span>Site-Based Progress Monitoring</div>
-      <div class="ucnote">We own the integrated control tower and the risk view. Schedule optimisation and site capture stay specialist.</div>
+      <div class="ucl">
+        <div class="uc sup"><span class="b">5</span>Claims Early Warning</div>
+        <div class="uc"><span class="b"></span>Generative Scheduling and Construction Optioneering</div>
+        <div class="uc dir"><span class="b">5</span>Integrated Change and Variation Management</div>
+        <div class="uc dir"><span class="b">1</span>Integrated Digital Control Tower</div>
+        <div class="uc dir"><span class="b">6</span>Schedule Risk Analysis and Probabilistic Forecasting</div>
+        <div class="uc"><span class="b"></span>Site-Based Progress Monitoring</div>
+      </div>
     </div>
     <div class="uccol">
       <div class="uchd">Construction Management<span class="uct">1/11</span></div>
-      <div class="uc"><span class="b"></span>Installed-Work Verification and Rework Reduction</div>
-      <div class="uc"><span class="b"></span>Construction Logistics Tracking</div>
-      <div class="uc on"><span class="b">5</span>Contractor Management Platform</div>
-      <div class="uc"><span class="b"></span>Daily Progress Planning and Tracking</div>
-      <div class="uc"><span class="b"></span>Digital QA/QC, Inspection and Defect Management</div>
-      <div class="uc"><span class="b"></span>Digital Safety Inspections, Permits and Incidents</div>
-      <div class="uc"><span class="b"></span>IoT-Enabled Equipment Monitoring</div>
-      <div class="uc"><span class="b"></span>IoT-Enabled Labour Productivity and Planning</div>
-      <div class="uc"><span class="b"></span>IoT-Enabled Workforce Safety</div>
-      <div class="uc"><span class="b"></span>Safety Analytics and PPE Compliance</div>
-      <div class="uc"><span class="b"></span>Vendor Manufacturing Inspection</div>
-      <div class="ucnote">Field execution, quality and HSE stay outside. We consume their signals rather than replace them.</div>
+      <div class="ucl">
+        <div class="uc"><span class="b"></span>Installed-Work Verification and Rework Reduction</div>
+        <div class="uc"><span class="b"></span>Construction Logistics Tracking</div>
+        <div class="uc sup"><span class="b">5</span>Contractor Management Platform</div>
+        <div class="uc"><span class="b"></span>Daily Progress Planning and Tracking</div>
+        <div class="uc"><span class="b"></span>Digital QA/QC, Inspection and Defect Management</div>
+        <div class="uc"><span class="b"></span>Digital Safety Inspections, Permits and Incidents</div>
+        <div class="uc"><span class="b"></span>IoT-Enabled Equipment Monitoring</div>
+        <div class="uc"><span class="b"></span>IoT-Enabled Labour Productivity and Planning</div>
+        <div class="uc"><span class="b"></span>IoT-Enabled Workforce Safety</div>
+        <div class="uc"><span class="b"></span>Safety Analytics and PPE Compliance</div>
+        <div class="uc"><span class="b"></span>Vendor Manufacturing Inspection</div>
+      </div>
     </div>
     </div>
 
     <div class="uclegend">
-      <span class="lgt">Covered by module</span>
+      <span class="lgt">Our modules</span>
       <div class="lgm"><span class="b">1</span><span class="ln">End-to-End Agentic Orchestration</span></div><div class="lgm"><span class="b">2</span><span class="ln">AI-Generated Unified BoQ</span></div><div class="lgm"><span class="b">3</span><span class="ln">Dynamic Bottom-Up CAPEX</span></div><div class="lgm"><span class="b">4</span><span class="ln">Smart Tender Bid Evaluation</span></div><div class="lgm"><span class="b">5</span><span class="ln">Portfolio Performance Management</span></div><div class="lgm"><span class="b">6</span><span class="ln">AI Value Intelligence</span></div>
-      <div class="lgm off"><span class="b"></span><span class="ln">Outside our scope</span></div>
     </div>
   </section>
 
